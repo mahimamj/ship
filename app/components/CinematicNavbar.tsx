@@ -20,11 +20,23 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
 
   const navItems = [
     { name: "ABOUT", href: "#about" },
-    { name: "CAPABILITIES", href: "#services" },
+    { name: "CAPABILITIES", href: "#capabilities" },
     { name: "FLEET", href: "#vessels" },
     { name: "GLOBAL", href: "#presence" },
     { name: "CONTACT", href: "#contact" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileOpen(false);
+
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.hash = href;
+    }
+  };
 
   return (
     <header
@@ -35,7 +47,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
-        <a href="#" className="flex items-center gap-3 group">
+        <a href="#" className="flex items-center gap-3 group" onClick={(e) => handleNavClick(e, "#")}>
           <img
             src="/images/logo_nobg.png"
             alt="Oceanic Star Fleet"
@@ -50,6 +62,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
           </span>
         </a>
 
+        {/* Desktop Nav Links */}
         <nav
           className={`hidden lg:flex items-center gap-10 text-[11px] font-mono tracking-[0.2em] ${
             scrolled ? "text-[#071A2B]" : "text-white/90"
@@ -59,6 +72,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
             <a
               key={item.name}
               href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
               className="relative py-1 hover:text-[#176B87] transition-colors duration-300"
             >
               {item.name}
@@ -66,33 +80,39 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
           ))}
         </nav>
 
+        {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`lg:hidden p-2 transition-colors ${
-            scrolled ? "text-[#071A2B]" : "text-white"
+          className={`lg:hidden p-2.5 rounded-xl border transition-all ${
+            scrolled
+              ? "text-[#071A2B] bg-[#F5F5F2] border-[rgba(7,26,43,0.12)]"
+              : "text-white bg-white/10 border-white/20"
           }`}
           aria-label="Toggle menu"
+          data-cursor
+          data-cursor-text="MENU"
         >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
+      {/* Mobile Slideout Navigation Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden bg-white border-b border-[rgba(7,26,43,0.12)] overflow-hidden"
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden bg-white border-b border-[rgba(7,26,43,0.12)] overflow-hidden shadow-2xl"
           >
-            <div className="px-6 py-8 flex flex-col gap-6">
+            <div className="px-8 py-8 flex flex-col gap-6">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm font-mono tracking-[0.2em] text-[#071A2B] hover:text-[#176B87] transition-colors"
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="text-base font-mono font-bold tracking-[0.2em] text-[#071A2B] hover:text-[#176B87] transition-colors py-1.5 border-b border-slate-100"
                 >
                   {item.name}
                 </a>
@@ -102,12 +122,16 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
                   onClick={() => {
                     setMobileOpen(false);
                     onOpenQuote();
+                    const contactSection = document.querySelector("#contact");
+                    if (contactSection) {
+                      contactSection.scrollIntoView({ behavior: "smooth" });
+                    }
                   }}
-                  className="mt-2 text-left text-sm font-mono tracking-[0.2em] text-[#176B87]"
+                  className="mt-2 text-left text-sm font-mono font-bold tracking-[0.2em] text-[#176B87] hover:text-[#071A2B] transition-colors py-2 flex items-center gap-2"
                   data-cursor
                   data-cursor-text="OPEN"
                 >
-                  START A CONVERSATION →
+                  <span>START A CONVERSATION →</span>
                 </button>
               )}
             </div>

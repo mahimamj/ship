@@ -48,7 +48,7 @@ export const Section2StatementStats: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-28 md:py-40 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+    <section id="about" className="relative py-28 md:py-40 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Monospace label */}
         <p className="label-mono text-[#667783] mb-8 font-semibold tracking-widest text-xs">
