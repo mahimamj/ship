@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Cinzel, Inter, Manrope } from "next/font/google";
+import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
 
