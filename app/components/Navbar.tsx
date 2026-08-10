@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
           {/* Action CTA */}
           <div className="hidden sm:flex items-center space-x-3">
             <a
-              href="https://wa.me/97143990000"
+              href="https://wa.me/912268000000"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-1.5 text-xs text-emerald-400 hover:text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 px-3 py-2 rounded-xl transition hover:bg-emerald-500/20"

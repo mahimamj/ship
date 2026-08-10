@@ -17,6 +17,7 @@ import { WhyUsStatementSection } from "./components/WhyUsStatementSection";
 import { FinalCinematicCTA } from "./components/FinalCinematicCTA";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
+import { FloatingWhatsAppButton } from "./components/FloatingWhatsAppButton";
 
 import { FleetVideoModal } from "./components/FleetVideoModal";
 import { QuoteModal } from "./components/QuoteModal";
@@ -100,6 +101,9 @@ export default function Home() {
         jobTitle={careerModalState.jobTitle}
         onClose={() => setCareerModalState({ isOpen: false })}
       />
+
+      {/* Persistent Floating India WhatsApp Chat Button */}
+      <FloatingWhatsAppButton />
     </div>
   );
 }

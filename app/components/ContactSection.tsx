@@ -114,7 +114,7 @@ export const ContactSection: React.FC = () => {
 
             {/* Direct WhatsApp Quick Contact */}
             <a
-              href="https://wa.me/97143990000"
+              href="https://wa.me/912268000000"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-emerald-50 border border-emerald-200 rounded-3xl p-6 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100"
@@ -125,7 +125,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold font-syne text-emerald-950">Direct WhatsApp Operations</h4>
-                  <p className="text-xs text-emerald-700 font-mono">24/7 Fleet Dispatch Hotline</p>
+                  <p className="text-xs text-emerald-700 font-mono">India Dispatch Hotline (+91 22 6800 0000)</p>
                 </div>
               </div>
               <span className="text-xs font-mono font-bold px-4 py-2 bg-emerald-600 text-white rounded-full">
