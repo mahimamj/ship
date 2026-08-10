@@ -11,6 +11,7 @@ import { FleetVisualizationSection } from "./components/FleetVisualizationSectio
 import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
 import { HorizontalTimelineSection } from "./components/HorizontalTimelineSection";
 import { CertificationsMarquee } from "./components/CertificationsMarquee";
+import { CertificationsSection } from "./components/CertificationsSection";
 import { MissionVisionSplit } from "./components/MissionVisionSplit";
 import { WhyUsStatementSection } from "./components/WhyUsStatementSection";
 import { FinalCinematicCTA } from "./components/FinalCinematicCTA";
@@ -63,8 +64,9 @@ export default function Home() {
       {/* Section 7: Horizontal Timeline */}
       <HorizontalTimelineSection />
 
-      {/* Section 8: Certifications Marquee */}
+      {/* Section 8: Certifications Marquee & Full Accreditation Grid */}
       <CertificationsMarquee />
+      <CertificationsSection />
 
       {/* Section 9: Mission & Vision Split */}
       <MissionVisionSplit />
