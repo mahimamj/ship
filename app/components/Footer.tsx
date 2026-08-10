@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
 
             <div className="flex items-center space-x-2 bg-white border border-[rgba(7,26,43,0.12)] rounded-xl px-3.5 py-2 text-[11px] text-[#071A2B] font-mono font-semibold w-fit">
               <ShieldCheck className="w-4 h-4 text-[#176B87]" />
-              <span>ISO 9001:2015 & DG SHIPPING RPSL-MUM-245</span>
+              <span>ISO 9001:2015 & DG SHIPPING RPSL-MUM-506</span>
             </div>
           </div>
 
@@ -71,14 +71,15 @@ export const Footer: React.FC = () => {
             </h4>
             <div className="space-y-3 font-light text-[#667783]">
               <div>
-                <strong className="text-[#071A2B] block font-semibold">Dubai HQ (UAE):</strong>
-                <span>Business Bay, P.O. Box 48802, Dubai</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">+971 4 399 0000</span>
+                <strong className="text-[#071A2B] block font-semibold">Dubai Office (UAE):</strong>
+                <span>Al Jawharah Building, Bur Dubai, UAE</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarshipping.com</span>
               </div>
               <div>
-                <strong className="text-[#071A2B] block font-semibold">Mumbai HQ (India):</strong>
-                <span>Fort Maritime Center, SBS Road, Mumbai</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">+91 22 6800 0000</span>
+                <strong className="text-[#071A2B] block font-semibold">India HQ (Navi Mumbai):</strong>
+                <span>Real Tech Park, Sector 30A, Vashi, Navi Mumbai</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">+91 22 2781 7171 / 72</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">Mob: +91 90043 90041</span>
               </div>
             </div>
           </div>

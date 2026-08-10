@@ -69,15 +69,11 @@ export const ContactSection: React.FC = () => {
               <div className="text-xs font-manrope text-[#667783] space-y-2.5 pt-4 border-t border-[rgba(7,26,43,0.12)]">
                 <p className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-[#176B87] shrink-0 mt-0.5" />
-                  <span>Suite 1402, Commercial Tower, Business Bay, P.O. Box 48802, Dubai, UAE</span>
-                </p>
-                <p className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-[#176B87] shrink-0" />
-                  <a href="tel:+97143990000" className="hover:text-[#071A2B] transition font-bold">+971 4 399 0000</a>
+                  <span>Office No. 601, 6th Floor, Al Jawharah Building, Bur Dubai, UAE</span>
                 </p>
                 <p className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#176B87] shrink-0" />
-                  <a href="mailto:dubai@oceanicstar.com" className="hover:text-[#071A2B] transition font-bold">dubai@oceanicstar.com</a>
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#071A2B] transition font-bold">info@oceanicstarshipping.com</a>
                 </p>
               </div>
             </div>
@@ -92,29 +88,33 @@ export const ContactSection: React.FC = () => {
                   <h3 className="font-syne text-lg font-bold text-[#071A2B]">
                     Oceanic Star Shipping Pvt. Ltd.
                   </h3>
-                  <p className="text-xs font-mono text-[#176B87] font-semibold">Mumbai HQ & Crewing Center</p>
+                  <p className="text-xs font-mono text-[#176B87] font-semibold">Navi Mumbai HQ & Crewing Center</p>
                 </div>
               </div>
 
               <div className="text-xs font-manrope text-[#667783] space-y-2.5 pt-4 border-t border-[rgba(7,26,43,0.12)]">
                 <p className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-[#176B87] shrink-0 mt-0.5" />
-                  <span>Fort Maritime Center, 4th Floor, SBS Road, Mumbai - 400001, India</span>
+                  <span>Real Tech Park, Office No. 602–603, Sector 30A, Vashi, Navi Mumbai – 400 703, India</span>
                 </p>
                 <p className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-[#176B87] shrink-0" />
-                  <a href="tel:+912268000000" className="hover:text-[#071A2B] transition font-bold">+91 22 6800 0000</a>
+                  <span>+91 22 2781 7171 / 72</span>
+                </p>
+                <p className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-[#176B87] shrink-0" />
+                  <span>Mob: +91 90043 90041 / +91 90043 90141</span>
                 </p>
                 <p className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#176B87] shrink-0" />
-                  <a href="mailto:mumbai@oceanicstar.com" className="hover:text-[#071A2B] transition font-bold">mumbai@oceanicstar.com</a>
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#071A2B] transition font-bold">info@oceanicstarshipping.com</a>
                 </p>
               </div>
             </div>
 
             {/* Direct WhatsApp Quick Contact */}
             <a
-              href="https://wa.me/912268000000"
+              href="https://wa.me/919004390041"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-emerald-50 border border-emerald-200 rounded-3xl p-6 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100"
@@ -125,7 +125,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold font-syne text-emerald-950">Direct WhatsApp Operations</h4>
-                  <p className="text-xs text-emerald-700 font-mono">India Dispatch Hotline (+91 22 6800 0000)</p>
+                  <p className="text-xs text-emerald-700 font-mono">Dispatch Hotline (+91 90043 90041)</p>
                 </div>
               </div>
               <span className="text-xs font-mono font-bold px-4 py-2 bg-emerald-600 text-white rounded-full">
