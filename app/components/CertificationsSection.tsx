@@ -314,17 +314,17 @@ export const CertificationsSection: React.FC = () => {
   };
 
   return (
-    <section id="certifications" className="py-24 sm:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-16">
+    <section id="certifications" className="py-16 sm:py-24 md:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 space-y-12 sm:space-y-16">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-8 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-6 sm:pb-8 gap-4 sm:gap-6">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-100 text-xs font-mono text-[#176B87] font-semibold mb-3">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-100 text-[11px] font-mono text-[#176B87] font-semibold mb-3">
               <ShieldCheck className="w-3.5 h-3.5 text-[#176B87]" />
               <span>MINISTRY & GLOBAL CLASS ACCREDITATIONS</span>
             </div>
-            <h2 className="font-jakarta text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#071A2B]">
+            <h2 className="font-jakarta text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-[#071A2B]">
               OFFICIAL CERTIFICATIONS
             </h2>
           </div>
@@ -335,7 +335,7 @@ export const CertificationsSection: React.FC = () => {
         </div>
 
         {/* Official Cert Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {OFFICIAL_CERTIFICATES.map((cert, idx) => (
             <motion.div
               key={cert.id}
@@ -344,21 +344,21 @@ export const CertificationsSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
               onClick={() => setSelectedCert(cert)}
-              className="bg-white rounded-3xl p-7 border border-[rgba(7,26,43,0.12)] flex flex-col justify-between group cursor-pointer relative overflow-hidden shadow-sm hover:shadow-md transition"
+              className="bg-white rounded-3xl p-6 sm:p-7 border border-[rgba(7,26,43,0.12)] flex flex-col justify-between group cursor-pointer relative overflow-hidden shadow-sm hover:shadow-md transition"
               data-cursor
               data-cursor-text="INSPECT"
             >
               <div>
                 <div className="flex justify-between items-start mb-4 border-b border-slate-100 pb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87] group-hover:scale-110 transition duration-300 shadow-sm">
-                    <Award className="w-6 h-6" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87] group-hover:scale-110 transition duration-300 shadow-sm">
+                    <Award className="w-5 h-5 sm:w-6 sm:h-6" />
                   </div>
-                  <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                     {cert.verifiedBadge}
                   </span>
                 </div>
 
-                <h3 className="font-jakarta text-lg font-bold text-[#071A2B] group-hover:text-[#176B87] transition mb-1">
+                <h3 className="font-jakarta text-base sm:text-lg font-bold text-[#071A2B] group-hover:text-[#176B87] transition mb-1">
                   {cert.title}
                 </h3>
                 <p className="text-xs font-mono text-[#176B87] mb-2">{cert.subtitle}</p>
@@ -378,15 +378,15 @@ export const CertificationsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Dedicated Flag State World Map Banner (Matching Reference Image 1) */}
-        <div className="bg-[#FFFFFF] border border-[rgba(7,26,43,0.12)] rounded-3xl p-6 sm:p-10 shadow-sm space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center space-x-2 bg-sky-50 border border-sky-100 px-3.5 py-1.5 rounded-full text-xs font-mono text-[#176B87] font-semibold">
-              <Globe className="w-4 h-4 text-[#176B87]" />
+        {/* Dedicated Flag State World Map Container */}
+        <div className="bg-[#FFFFFF] border border-[rgba(7,26,43,0.12)] rounded-3xl p-4 sm:p-8 lg:p-10 shadow-sm space-y-6 sm:space-y-8">
+          <div className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3">
+            <div className="inline-flex items-center space-x-2 bg-sky-50 border border-sky-100 px-3 py-1.5 rounded-full text-xs font-mono text-[#176B87] font-semibold">
+              <Globe className="w-3.5 h-3.5 text-[#176B87]" />
               <span>GLOBAL OPEN REGISTRIES WORLD MAP</span>
             </div>
 
-            <h3 className="font-jakarta text-3xl sm:text-5xl font-extrabold text-[#071A2B] tracking-tight uppercase">
+            <h3 className="font-jakarta text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A2B] tracking-tight uppercase">
               FLAG STATE CERTIFICATION & PROCESSING
             </h3>
 
@@ -395,25 +395,25 @@ export const CertificationsSection: React.FC = () => {
             </p>
           </div>
 
-          {/* High-Tech Dark World Map Display Container (Matches Reference Image) */}
-          <div className="relative w-full h-[460px] sm:h-[540px] bg-[#071A2B] rounded-3xl border border-[rgba(7,26,43,0.12)] overflow-hidden shadow-2xl">
+          {/* Map Surface Container */}
+          <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[540px] bg-[#071A2B] rounded-2xl sm:rounded-3xl border border-[rgba(7,26,43,0.12)] overflow-hidden shadow-2xl">
             {/* Leaflet Dark Matter Basemap Surface */}
             <div ref={flagMapRef} className="w-full h-full z-0" />
 
             {/* Bottom-Left Zoom & Center Map Controls */}
-            <div className="absolute bottom-5 left-5 z-20 flex items-center bg-[#0A192F]/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg p-1 space-x-1 text-white">
-              <button onClick={handleZoomOut} className="p-2 hover:bg-white/10 rounded-lg transition" aria-label="Zoom out">
-                <Minus className="w-4 h-4" />
+            <div className="absolute bottom-4 left-4 z-20 flex items-center bg-[#0A192F]/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg p-1 space-x-1 text-white">
+              <button onClick={handleZoomOut} className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition" aria-label="Zoom out">
+                <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
-              <button onClick={handleZoomIn} className="p-2 hover:bg-white/10 rounded-lg transition" aria-label="Zoom in">
-                <Plus className="w-4 h-4" />
+              <button onClick={handleZoomIn} className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition" aria-label="Zoom in">
+                <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
-              <button onClick={handleResetZoom} className="p-2 hover:bg-white/10 rounded-lg transition" aria-label="Reset zoom">
-                <Target className="w-4 h-4" />
+              <button onClick={handleResetZoom} className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition" aria-label="Reset zoom">
+                <Target className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
             </div>
 
-            {/* Floating Dark Info Card Overlay (Right Side on Map) */}
+            {/* Desktop Overlay Card (Right side overlay on Desktop screen >= 1024px) */}
             <AnimatePresence mode="wait">
               {selectedFlag && (
                 <motion.div
@@ -422,7 +422,7 @@ export const CertificationsSection: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.35 }}
-                  className="absolute top-5 right-5 bottom-5 w-80 sm:w-96 bg-[#071A2B]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl z-20 text-white flex flex-col justify-between overflow-y-auto"
+                  className="hidden lg:flex absolute top-5 right-5 bottom-5 w-96 bg-[#071A2B]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl z-20 text-white flex-col justify-between overflow-y-auto"
                 >
                   <div className="space-y-4">
                     {/* Header */}
@@ -489,15 +489,77 @@ export const CertificationsSection: React.FC = () => {
             </AnimatePresence>
           </div>
 
+          {/* Mobile Info Panel Card (Sits OUTSIDE underneath map on screens < 1024px) */}
+          <AnimatePresence mode="wait">
+            {selectedFlag && (
+              <motion.div
+                key={`mobile-${selectedFlag.code}`}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="block lg:hidden bg-[#071A2B] text-white p-5 rounded-2xl border border-white/10 shadow-xl space-y-4"
+              >
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <div className="flex items-center space-x-2.5">
+                    <img
+                      src={selectedFlag.flagUrl}
+                      alt={`${selectedFlag.country} Flag`}
+                      className="w-7 h-4.5 object-cover rounded border border-white/20"
+                    />
+                    <div>
+                      <h4 className="font-jakarta text-base font-bold text-white">
+                        {selectedFlag.country} ({selectedFlag.code})
+                      </h4>
+                      <p className="text-[10px] font-mono text-sky-400 font-semibold">{selectedFlag.registry}</p>
+                    </div>
+                  </div>
+
+                  <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-500/30 shrink-0">
+                    ● {selectedFlag.turnaround}
+                  </span>
+                </div>
+
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-mono text-white/60 uppercase block font-bold">
+                    SERVICES & ENDORSEMENTS:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedFlag.services.map((s, i) => (
+                      <span key={i} className="px-2 py-0.5 rounded-md bg-white/10 text-[10px] font-mono text-white/90 border border-white/10">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-xs font-manrope text-white/80 font-light leading-relaxed">
+                  {selectedFlag.about}
+                </p>
+
+                <button
+                  onClick={() => {
+                    const matchCert = OFFICIAL_CERTIFICATES.find((c) => c.title.includes("PANAMA")) || OFFICIAL_CERTIFICATES[0];
+                    setSelectedCert(matchCert);
+                  }}
+                  className="w-full py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs flex items-center justify-center gap-2 transition"
+                >
+                  <span>View Registry Details</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           {/* 9 Flag State Country Selection Cards Below Map */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3 pt-2">
+          <div className="flex sm:grid sm:grid-cols-5 lg:grid-cols-9 gap-2.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
             {FLAG_STATE_LOCATIONS.map((loc) => {
               const isSelected = selectedFlag.code === loc.code;
               return (
                 <button
                   key={loc.code}
                   onClick={() => handleSelectFlagCard(loc)}
-                  className={`p-3.5 rounded-2xl border text-center transition duration-300 flex flex-col items-center justify-center space-y-2 group ${
+                  className={`p-3 rounded-2xl border text-center transition duration-300 flex flex-col items-center justify-center space-y-1.5 shrink-0 w-24 sm:w-auto group ${
                     isSelected
                       ? "bg-[#071A2B] border-[#071A2B] text-white shadow-md scale-105"
                       : "bg-white border-slate-200 text-[#667783] hover:border-[#071A2B] hover:text-[#071A2B]"
@@ -506,11 +568,11 @@ export const CertificationsSection: React.FC = () => {
                   <img
                     src={loc.flagUrl}
                     alt={`${loc.country} National Flag`}
-                    className="w-9 h-6 object-cover rounded shadow-sm border border-slate-200 group-hover:scale-110 transition duration-300"
+                    className="w-8 h-5 object-cover rounded shadow-sm border border-slate-200 group-hover:scale-110 transition duration-300"
                   />
                   <div className="text-center">
                     <span className={`text-xs font-mono font-bold block ${isSelected ? "text-white" : "text-[#071A2B]"}`}>{loc.code}</span>
-                    <span className={`text-[10px] font-mono block truncate max-w-[70px] ${isSelected ? "text-sky-200" : "text-[#667783]"}`}>{loc.country}</span>
+                    <span className={`text-[9px] font-mono block truncate max-w-[65px] ${isSelected ? "text-sky-200" : "text-[#667783]"}`}>{loc.country}</span>
                   </div>
                 </button>
               );
@@ -518,44 +580,44 @@ export const CertificationsSection: React.FC = () => {
           </div>
 
           {/* 4 Metrics Bar Below Flag Cards */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-100">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t border-slate-100">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87]">
-                <Globe className="w-5 h-5" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87] shrink-0">
+                <Globe className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <span className="font-jakarta font-extrabold text-base text-[#071A2B] block leading-none">9</span>
-                <span className="text-[10px] font-mono tracking-wider text-[#667783] uppercase">OPEN REGISTRIES</span>
+                <span className="font-jakarta font-extrabold text-sm sm:text-base text-[#071A2B] block leading-none">9</span>
+                <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-[#667783] uppercase">OPEN REGISTRIES</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87]">
-                <ShieldCheck className="w-5 h-5" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87] shrink-0">
+                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <span className="font-jakarta font-extrabold text-base text-[#071A2B] block leading-none">100+</span>
-                <span className="text-[10px] font-mono tracking-wider text-[#667783] uppercase">LICENSE VERIFICATIONS</span>
+                <span className="font-jakarta font-extrabold text-sm sm:text-base text-[#071A2B] block leading-none">100+</span>
+                <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-[#667783] uppercase">LICENSE VERIFICATIONS</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87]">
-                <Zap className="w-5 h-5" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87] shrink-0">
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <span className="font-jakarta font-extrabold text-base text-[#071A2B] block leading-none">24–48 HRS</span>
-                <span className="text-[10px] font-mono tracking-wider text-[#667783] uppercase">PROCESSING TIME</span>
+                <span className="font-jakarta font-extrabold text-sm sm:text-base text-[#071A2B] block leading-none">24–48 HRS</span>
+                <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-[#667783] uppercase">PROCESSING TIME</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87]">
-                <Award className="w-5 h-5" />
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#176B87] shrink-0">
+                <Award className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <div>
-                <span className="font-jakarta font-extrabold text-base text-[#071A2B] block leading-none">GLOBAL</span>
-                <span className="text-[10px] font-mono tracking-wider text-[#667783] uppercase">DEDICATED SUPPORT</span>
+                <span className="font-jakarta font-extrabold text-sm sm:text-base text-[#071A2B] block leading-none">GLOBAL</span>
+                <span className="text-[9px] sm:text-[10px] font-mono tracking-wider text-[#667783] uppercase">DEDICATED SUPPORT</span>
               </div>
             </div>
           </div>
@@ -572,7 +634,7 @@ export const CertificationsSection: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-3xl p-8 max-w-xl w-full border border-[rgba(7,26,43,0.12)] shadow-2xl relative space-y-5"
+              className="bg-white rounded-3xl p-6 sm:p-8 max-w-xl w-full border border-[rgba(7,26,43,0.12)] shadow-2xl relative space-y-4 sm:space-y-5 max-h-[90vh] overflow-y-auto"
             >
               <button
                 onClick={() => setSelectedCert(null)}
@@ -581,12 +643,12 @@ export const CertificationsSection: React.FC = () => {
                 <X size={18} />
               </button>
 
-              <div className="flex items-center space-x-3.5 border-b border-slate-100 pb-4">
-                <div className="w-12 h-12 rounded-2xl bg-sky-50 text-[#176B87] border border-sky-100 flex items-center justify-center">
-                  <ShieldCheck size={28} />
+              <div className="flex items-center space-x-3.5 border-b border-slate-100 pb-4 pr-8">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sky-50 text-[#176B87] border border-sky-100 flex items-center justify-center shrink-0">
+                  <ShieldCheck size={24} />
                 </div>
                 <div>
-                  <h3 className="font-jakarta text-2xl font-bold text-[#071A2B]">{selectedCert.title}</h3>
+                  <h3 className="font-jakarta text-xl sm:text-2xl font-bold text-[#071A2B]">{selectedCert.title}</h3>
                   <p className="text-xs font-mono text-[#176B87] font-bold">{selectedCert.subtitle}</p>
                 </div>
               </div>
