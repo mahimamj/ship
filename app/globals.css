@@ -1,81 +1,110 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --color-bg-primary: #F5F5F2;
+  --color-bg-white: #FFFFFF;
+  --color-navy-deep: #071A2B;
+  --color-navy-secondary: #123047;
+  --color-ocean: #176B87;
+  --color-muted: #667783;
+  --color-border-subtle: rgba(7, 26, 43, 0.12);
+  --font-display: var(--font-bebas);
+  --font-editorial: var(--font-syne);
+  --font-body: var(--font-inter);
+  --font-alt: var(--font-manrope);
+}
 
 :root {
-  /* Light Color Theme Palette */
-  --color-light-bg: #F8FAFC;
+  --color-light-bg: #F5F5F2;
   --color-card-bg: #FFFFFF;
-  --color-text-dark: #0F172A;
-  --color-text-muted: #64748B;
-  --color-[#0284C7]: #0284C7;
-  --color-border-light: #E2E8F0;
-
-  --font-bebas: 'Bebas Neue', sans-serif;
-  --font-syne: 'Syne', sans-serif;
-  --font-inter: 'Inter', sans-serif;
-  --font-manrope: 'Manrope', sans-serif;
+  --color-text-dark: #071A2B;
+  --color-text-muted: #667783;
+  --color-ocean-blue: #176B87;
+  --color-border-light: rgba(7, 26, 43, 0.12);
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-light-bg);
   color: var(--color-text-dark);
-  font-family: var(--font-inter);
+  font-family: var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  cursor: none;
+}
+
+@media (max-width: 767px) {
+  body {
+    cursor: auto;
+  }
 }
 
 .font-bebas {
-  font-family: var(--font-bebas);
+  font-family: var(--font-bebas), sans-serif;
 }
 
 .font-syne {
-  font-family: var(--font-syne);
+  font-family: var(--font-syne), sans-serif;
 }
 
-/* Light Editorial Glass Cards */
-.editorial-card {
-  background: #FFFFFF;
-  border: 1px solid #E2E8F0;
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.font-manrope {
+  font-family: var(--font-manrope), sans-serif;
 }
 
-.editorial-card:hover {
-  background: #FFFFFF;
-  border-color: #0284C7;
-  box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.15);
-  transform: translateY(-4px);
+/* Premium editorial utilities */
+.section-padding {
+  padding-top: clamp(5rem, 12vw, 9rem);
+  padding-bottom: clamp(5rem, 12vw, 9rem);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+.border-subtle {
+  border-color: rgba(7, 26, 43, 0.12);
 }
 
-::-webkit-scrollbar-track {
-  background: #F8FAFC;
+.text-muted {
+  color: #667783;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 4px;
+.label-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #667783;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #0284C7;
+/* Marquee */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-/* Vertical Line Pulse */
-@keyframes vertical-line-pulse {
+.animate-marquee {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Scroll line pulse */
+@keyframes scroll-line-pulse {
   0%, 100% {
-    transform: scaleY(0.4);
-    opacity: 0.3;
+    transform: scaleY(0.35);
+    opacity: 0.35;
   }
   50% {
     transform: scaleY(1);
@@ -83,6 +112,46 @@ body {
   }
 }
 
-.animate-line-pulse {
-  animation: vertical-line-pulse 2s ease-in-out infinite;
+.animate-scroll-line {
+  animation: scroll-line-pulse 2.4s ease-in-out infinite;
+}
+
+/* Route dot travel */
+@keyframes route-travel {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F5F2;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(7, 26, 43, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #176B87;
+}
+
+::selection {
+  background: #176B87;
+  color: #FFFFFF;
 }

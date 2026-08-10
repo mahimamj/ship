@@ -7,39 +7,46 @@ export const CinematicCustomCursor: React.FC = () => {
   const [cursorText, setCursorText] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
-  // Smooth springs for cursor position
-  const mouseX = useSpring(0, { damping: 28, stiffness: 250 });
-  const mouseY = useSpring(0, { damping: 28, stiffness: 250 });
+  const mouseX = useSpring(0, { damping: 32, stiffness: 280 });
+  const mouseY = useSpring(0, { damping: 32, stiffness: 280 });
 
   useEffect(() => {
-    // Hide default cursor on desktop devices when custom cursor active
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
       if (!isVisible) setIsVisible(true);
 
-      // Check if mouse is over interactive hero text or buttons
       const target = e.target as HTMLElement | null;
       if (target) {
         const interactiveEl = target.closest("[data-cursor]");
         if (interactiveEl) {
-          const text = interactiveEl.getAttribute("data-cursor-text") || "EXPLORE";
+          const text =
+            interactiveEl.getAttribute("data-cursor-text") ||
+            (interactiveEl.tagName === "BUTTON" || interactiveEl.tagName === "A"
+              ? "OPEN"
+              : "EXPLORE");
           setCursorText(text);
           setIsHovered(true);
           return;
         }
       }
 
-      if (isHovered) {
-        setIsHovered(false);
-        setCursorText("");
-      }
+      setIsHovered(false);
+      setCursorText("");
     };
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
+    const handleMouseLeave = () => setIsVisible(false);
 
     window.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseleave", handleMouseLeave);
@@ -48,38 +55,34 @@ export const CinematicCustomCursor: React.FC = () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [mouseX, mouseY, isHovered, isVisible]);
+  }, [mouseX, mouseY, isVisible, isMobile]);
 
-  // Hide custom cursor on mobile touch devices
-  if (typeof window !== "undefined" && window.innerWidth < 768) {
-    return null;
-  }
-
-  if (!isVisible) return null;
+  if (isMobile || !isVisible) return null;
 
   return (
     <motion.div
-      style={{
-        x: mouseX,
-        y: mouseY,
-      }}
-      className="fixed top-0 left-0 pointer-events-none z-50 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
+      style={{ x: mouseX, y: mouseY }}
+      className="fixed top-0 left-0 pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2"
     >
       <motion.div
         animate={{
-          width: isHovered ? 90 : 20,
-          height: isHovered ? 90 : 20,
-          backgroundColor: isHovered ? "rgba(79, 163, 184, 0.25)" : "rgba(245, 247, 248, 0.4)",
-          borderColor: isHovered ? "rgba(79, 163, 184, 0.8)" : "rgba(245, 247, 248, 0.6)",
+          width: isHovered ? 88 : 14,
+          height: isHovered ? 88 : 14,
+          backgroundColor: isHovered
+            ? "rgba(23, 107, 135, 0.12)"
+            : "rgba(7, 26, 43, 0.85)",
+          borderColor: isHovered
+            ? "rgba(23, 107, 135, 0.5)"
+            : "rgba(7, 26, 43, 0.85)",
         }}
-        transition={{ type: "spring", stiffness: 350, damping: 25 }}
-        className="rounded-full border backdrop-blur-[2px] flex items-center justify-center shadow-lg transition-colors"
+        transition={{ type: "spring", stiffness: 400, damping: 28 }}
+        className="rounded-full border flex items-center justify-center"
       >
         {isHovered && cursorText && (
           <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-[10px] font-mono tracking-widest text-[#F5F7F8] font-bold uppercase"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-[9px] font-mono tracking-[0.25em] text-[#071A2B] font-semibold uppercase"
           >
             {cursorText}
           </motion.span>

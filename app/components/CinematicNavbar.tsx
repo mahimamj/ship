@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 interface CinematicNavbarProps {
   onOpenQuote?: () => void;
@@ -13,98 +13,86 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.15);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
     { name: "ABOUT", href: "#about" },
-    { name: "SERVICES", href: "#services" },
+    { name: "CAPABILITIES", href: "#services" },
     { name: "FLEET", href: "#vessels" },
+    { name: "GLOBAL", href: "#presence" },
     { name: "CONTACT", href: "#contact" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl border-b border-slate-200 py-3.5 shadow-sm"
-          : "bg-transparent py-5 md:py-7"
+          ? "bg-white/95 backdrop-blur-md border-b border-[rgba(7,26,43,0.12)] py-4"
+          : "bg-transparent py-6 md:py-8"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 flex justify-between items-center">
-        {/* Top Left: Company Logo */}
-        <a href="#" className="flex items-center space-x-3.5 group">
-          <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center shadow-md group-hover:scale-105 transition duration-300">
-            <img
-              src="/images/logo_nobg.png"
-              alt="Oceanic Star Shipping"
-              className="h-7 w-auto object-contain"
-            />
-          </div>
-          <div>
-            <span className="font-syne text-base md:text-lg font-bold tracking-tight text-[#0F172A] group-hover:text-[#0284C7] transition">
-              OCEANIC STAR
-            </span>
-            <span className="text-[9px] font-mono tracking-widest text-[#64748B] uppercase block">
-              FLEET MANAGEMENT
-            </span>
-          </div>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
+        <a href="#" className="flex items-center gap-3 group">
+          <img
+            src="/images/logo_nobg.png"
+            alt="Oceanic Star Fleet"
+            className="h-9 w-auto object-contain"
+          />
+          <span
+            className={`hidden sm:block font-syne text-sm font-bold tracking-[0.15em] transition-colors duration-500 ${
+              scrolled ? "text-[#071A2B]" : "text-white"
+            }`}
+          >
+            OCEANIC STAR
+          </span>
         </a>
 
-        {/* Top Right: Minimal Navigation */}
-        <nav className="hidden md:flex items-center space-x-10 text-xs font-mono tracking-widest text-[#0F172A]">
+        <nav
+          className={`hidden lg:flex items-center gap-10 text-[11px] font-mono tracking-[0.2em] ${
+            scrolled ? "text-[#071A2B]" : "text-white/90"
+          }`}
+        >
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="relative py-1 group hover:text-[#0284C7] transition-colors"
+              className="relative py-1 hover:text-[#176B87] transition-colors duration-300"
             >
-              <span>{item.name}</span>
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0284C7] transition-all duration-300 group-hover:w-full"></span>
+              {item.name}
             </a>
           ))}
-
-          {onOpenQuote && (
-            <button
-              onClick={onOpenQuote}
-              className="px-5 py-2.5 rounded-full bg-[#0284C7] hover:bg-[#0369A1] text-white font-semibold transition flex items-center space-x-1.5 shadow-md group"
-            >
-              <span>DISPATCH</span>
-              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" />
-            </button>
-          )}
         </nav>
 
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-lg bg-white border border-slate-200 text-[#0F172A]"
+          className={`lg:hidden p-2 transition-colors ${
+            scrolled ? "text-[#071A2B]" : "text-white"
+          }`}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white/95 backdrop-blur-2xl border-b border-slate-200 px-6 py-6"
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden bg-white border-b border-[rgba(7,26,43,0.12)] overflow-hidden"
           >
-            <div className="flex flex-col space-y-5 text-sm font-mono tracking-widest text-[#0F172A]">
+            <div className="px-6 py-8 flex flex-col gap-6">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="hover:text-[#0284C7] transition border-b border-slate-100 pb-2"
+                  className="text-sm font-mono tracking-[0.2em] text-[#071A2B] hover:text-[#176B87] transition-colors"
                 >
                   {item.name}
                 </a>
@@ -115,9 +103,11 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
                     setMobileOpen(false);
                     onOpenQuote();
                   }}
-                  className="mt-2 w-full py-3 rounded-xl bg-[#0284C7] text-white font-bold text-xs tracking-wider"
+                  className="mt-2 text-left text-sm font-mono tracking-[0.2em] text-[#176B87]"
+                  data-cursor
+                  data-cursor-text="OPEN"
                 >
-                  REQUEST MARITIME DISPATCH
+                  START A CONVERSATION →
                 </button>
               )}
             </div>

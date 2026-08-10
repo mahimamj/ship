@@ -1,308 +1,206 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { ArrowDown, Play, Sparkles } from "lucide-react";
+import React, { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useMotionValue,
+  MotionValue,
+} from "framer-motion";
+import { VIDEOS } from "@/lib/content/videos";
 
 interface HeroProps {
-  onOpenVideoModal?: () => void;
   onOpenQuote?: () => void;
 }
 
-export const InteractiveCinematicHero: React.FC<HeroProps> = ({
-  onOpenVideoModal,
-  onOpenQuote,
-}) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [isHoveringTitle, setIsHoveringTitle] = useState(false);
+function HeroWord({
+  text,
+  mouseX,
+  mouseY,
+  parallaxFactor = 1,
+  className = "",
+}: {
+  text: string;
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
+  parallaxFactor?: number;
+  className?: string;
+}) {
+  const x = useTransform(mouseX, [-400, 400], [-18 * parallaxFactor, 18 * parallaxFactor]);
+  const y = useTransform(mouseY, [-300, 300], [-10 * parallaxFactor, 10 * parallaxFactor]);
+  const scale = useTransform(
+    mouseX,
+    [-400, 0, 400],
+    [1 + 0.015 * parallaxFactor, 1, 1 + 0.015 * parallaxFactor]
+  );
 
-  // Mouse position motion values for magnetic letter interaction
+  return (
+    <motion.div
+      style={{ x, y, scale }}
+      className={`flex flex-wrap ${className}`}
+      data-cursor
+      data-cursor-text="EXPLORE"
+    >
+      {text.split("").map((char, i) => {
+        if (char === " ") {
+          return <span key={i} className="w-[0.35em]" />;
+        }
+        const letterX = useTransform(
+          mouseX,
+          [-400, 400],
+          [(-3 + i * 0.4) * parallaxFactor, (3 - i * 0.4) * parallaxFactor]
+        );
+        return (
+          <motion.span
+            key={i}
+            style={{ x: letterX }}
+            className="inline-block font-bebas leading-[0.85] tracking-[-0.02em] text-white"
+          >
+            {char}
+          </motion.span>
+        );
+      })}
+    </motion.div>
+  );
+}
+
+export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenQuote }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const springX = useSpring(mouseX, { stiffness: 80, damping: 22 });
+  const springY = useSpring(mouseY, { stiffness: 80, damping: 22 });
 
-  // Smooth springs for liquid typography response
-  const springX = useSpring(mouseX, { stiffness: 120, damping: 20 });
-  const springY = useSpring(mouseY, { stiffness: 120, damping: 20 });
-
-  // Transform spring position into letter offsets
-  const letterRotateX = useTransform(springY, [-300, 300], [12, -12]);
-  const letterRotateY = useTransform(springX, [-500, 500], [-15, 15]);
-  const letterTranslateX = useTransform(springX, [-500, 500], [-25, 25]);
-  const letterTranslateY = useTransform(springY, [-300, 300], [-15, 15]);
-
-  // Scroll animations: scale video down, move title up
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.5]);
-  const titleY = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const line1Y = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const line2Y = useTransform(scrollYProgress, [0, 1], [0, -120]);
+  const line3Y = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const line4Y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  // HTML5 Ocean Canvas Simulation Loop
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationId: number;
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-
-    // Seabird particles
-    const birds = Array.from({ length: 7 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * (height * 0.4),
-      speed: 0.4 + Math.random() * 0.6,
-      size: 2 + Math.random() * 2,
-      wingPhase: Math.random() * Math.PI * 2,
-    }));
-
-    // Ocean ripples
-    let time = 0;
-
-    const render = () => {
-      time += 0.02;
-      ctx.clearRect(0, 0, width, height);
-
-      // Draw subtle ocean wave shimmer overlay
-      ctx.fillStyle = "rgba(79, 163, 184, 0.04)";
-      for (let i = 0; i < 4; i++) {
-        ctx.beginPath();
-        ctx.arc(
-          width * 0.5 + Math.sin(time + i) * 60,
-          height * 0.6 + Math.cos(time * 0.8 + i) * 40,
-          180 + i * 90,
-          0,
-          Math.PI * 2
-        );
-        ctx.fill();
-      }
-
-      // Render flying seabirds in upper sky
-      ctx.strokeStyle = "rgba(245, 247, 248, 0.45)";
-      ctx.lineWidth = 1.2;
-
-      birds.forEach((bird) => {
-        bird.x += bird.speed;
-        if (bird.x > width + 20) bird.x = -20;
-        bird.wingPhase += 0.08;
-
-        const wingY = Math.sin(bird.wingPhase) * (bird.size * 1.5);
-        ctx.beginPath();
-        ctx.moveTo(bird.x - bird.size * 2, bird.y + wingY);
-        ctx.lineTo(bird.x, bird.y);
-        ctx.lineTo(bird.x + bird.size * 2, bird.y + wingY);
-        ctx.stroke();
-      });
-
-      animationId = requestAnimationFrame(render);
-    };
-
-    render();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      cancelAnimationFrame(animationId);
-    };
-  }, []);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    mouseX.set(e.clientX - centerX);
-    mouseY.set(e.clientY - centerY);
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
   };
 
   const handleMouseLeave = () => {
     mouseX.set(0);
     mouseY.set(0);
-    setIsHoveringTitle(false);
   };
-
-  const word1 = "OCEANIC";
-  const word2 = "STAR FLEET";
 
   return (
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen w-full flex flex-col justify-between items-center bg-black overflow-hidden select-none"
+      className="relative h-screen min-h-[700px] w-full overflow-hidden bg-[#071A2B]"
     >
-      {/* 1. Full-Screen Cinematic Aerial Drone Background Video & Photorealistic Maritime Vessel */}
+      {/* Cinematic video background */}
       <motion.div
-        style={{ scale: videoScale, opacity: videoOpacity }}
-        className="absolute inset-0 z-0 overflow-hidden origin-center pointer-events-none"
+        style={{ scale: videoScale }}
+        className="absolute inset-0 origin-center will-change-transform"
       >
-        {/* Background Image / Aerial Drone Motion Container */}
-        <motion.div
-          animate={{
-            scale: [1, 1.05, 1],
-            y: [0, -12, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="w-full h-full relative"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={VIDEOS.heroPoster}
+          className="absolute inset-0 w-full h-full object-cover"
         >
-          <img
-            src="/images/cinematic_vessel_bg.png"
-            alt="Aerial Drone Maritime Container Vessel"
-            className="w-full h-full object-cover filter brightness-[0.9] contrast-110 opacity-95 transition-opacity duration-700"
-          />
-        </motion.div>
-
-        {/* Ocean Simulation Canvas Overlay (Water Shimmer & Flying Seabirds) */}
-        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-1" />
-
-        {/* Minimal Vignette Overlay for Text Contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/75 pointer-events-none z-2"></div>
+          <source src={VIDEOS.hero} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#071A2B]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071A2B]/30 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Spacer to push title down under top navbar */}
-      <div className="pt-28 md:pt-36 z-10 w-full pointer-events-none"></div>
-
-      {/* 2. Center Hero Interactive Typography */}
+      {/* Hero typography */}
       <motion.div
-        style={{ y: titleY, opacity: titleOpacity }}
-        className="relative z-10 my-auto text-center px-4 max-w-7xl mx-auto flex flex-col items-center justify-center cursor-pointer"
-        onMouseEnter={() => setIsHoveringTitle(true)}
-        data-cursor
-        data-cursor-text="EXPLORE"
+        style={{ opacity: heroOpacity }}
+        className="relative z-10 h-full flex flex-col justify-end px-6 md:px-12 pb-24 md:pb-32 max-w-[1400px] mx-auto"
       >
-        {/* Enormous Display Typography */}
-        <div className="perspective-1000 py-2 flex flex-col items-center">
-          {/* Row 1: OCEANIC */}
-          <motion.div
-            style={{
-              rotateX: letterRotateX,
-              rotateY: letterRotateY,
-              x: letterTranslateX,
-              y: letterTranslateY,
-            }}
-            className="flex items-center justify-center space-x-1 sm:space-x-3 transition-shadow duration-300"
-          >
-            {word1.split("").map((char, index) => (
-              <motion.span
-                key={index}
-                className="font-bebas text-7xl sm:text-9xl md:text-[12rem] lg:text-[15rem] leading-none tracking-tight font-extrabold text-white inline-block transition-all duration-200 drop-shadow-[0_10px_35px_rgba(0,0,0,0.9)]"
-                style={{
-                  textShadow: isHoveringTitle
-                    ? "0 0 40px rgba(0, 245, 212, 0.8)"
-                    : "0 8px 30px rgba(0, 0, 0, 0.9)",
-                }}
-                whileHover={{ scale: 1.08, y: -8 }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </motion.div>
+        <p className="label-mono text-white/60 mb-6 md:mb-10">
+          OCEANIC STAR FLEET — INTERNATIONAL SHIP MANAGEMENT
+        </p>
 
-          {/* Row 2: STAR FLEET */}
-          <motion.div
-            style={{
-              rotateX: letterRotateX,
-              rotateY: letterRotateY,
-              x: useTransform(letterTranslateX, (v) => -v * 0.8),
-              y: useTransform(letterTranslateY, (v) => -v * 0.8),
-            }}
-            className="flex items-center justify-center space-x-1 sm:space-x-3 -mt-3 sm:-mt-8 md:-mt-12"
-          >
-            {word2.split("").map((char, index) => {
-              if (char === " ") {
-                return <span key={index} className="w-4 sm:w-8 md:w-12"></span>;
-              }
-              return (
-                <motion.span
-                  key={index}
-                  className="font-bebas text-6xl sm:text-8xl md:text-[10.5rem] lg:text-[13rem] leading-none tracking-tight font-extrabold text-white/95 inline-block transition-all duration-200 drop-shadow-[0_10px_35px_rgba(0,0,0,0.9)]"
-                  style={{
-                    textShadow: isHoveringTitle
-                      ? "0 0 40px rgba(0, 245, 212, 0.8)"
-                      : "0 8px 30px rgba(0, 0, 0, 0.9)",
-                  }}
-                  whileHover={{ scale: 1.08, y: -8 }}
-                >
-                  {char}
-                </motion.span>
-              );
-            })}
+        <div className="select-none">
+          <motion.div style={{ y: line1Y }}>
+            <HeroWord
+              text="THE OCEAN"
+              mouseX={springX}
+              mouseY={springY}
+              parallaxFactor={1.2}
+              className="text-[clamp(3.5rem,14vw,11rem)]"
+            />
+          </motion.div>
+          <motion.div style={{ y: line2Y }}>
+            <HeroWord
+              text="IS OUR"
+              mouseX={springX}
+              mouseY={springY}
+              parallaxFactor={0.9}
+              className="text-[clamp(3.5rem,14vw,11rem)] text-white/95"
+            />
+          </motion.div>
+          <motion.div style={{ y: line3Y }}>
+            <HeroWord
+              text="OPERATING"
+              mouseX={springX}
+              mouseY={springY}
+              parallaxFactor={1.1}
+              className="text-[clamp(3.5rem,14vw,11rem)]"
+            />
+          </motion.div>
+          <motion.div style={{ y: line4Y }}>
+            <HeroWord
+              text="GROUND."
+              mouseX={springX}
+              mouseY={springY}
+              parallaxFactor={0.8}
+              className="text-[clamp(3.5rem,14vw,11rem)] text-[#176B87]"
+            />
           </motion.div>
         </div>
 
-        {/* Subtitle Copy */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-3 md:mt-5 text-sm sm:text-base font-light text-slate-200 max-w-2xl text-center leading-relaxed drop-shadow-md uppercase tracking-wider"
-        >
-          OCEANIC STAR FLEET IS A GLOBAL PROVIDER OF INTERNATIONAL SHIP MANAGEMENT SERVICES
-        </motion.p>
-
-        {/* Interactive Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-6 flex flex-wrap items-center justify-center gap-4"
-        >
-          {onOpenVideoModal && (
-            <button
-              onClick={onOpenVideoModal}
-              className="px-7 py-3.5 rounded-full bg-black/60 border border-white/30 hover:border-white text-white font-mono text-xs tracking-wider font-semibold flex items-center space-x-2.5 transition backdrop-blur-md shadow-2xl hover:bg-black/80 group"
-              data-cursor
-              data-cursor-text="PLAY"
-            >
-              <span className="w-6 h-6 rounded-full bg-white text-black flex items-center justify-center group-hover:scale-110 transition">
-                <Play className="w-3 h-3 fill-current ml-0.5" />
-              </span>
-              <span>CINEMATIC FLEET REEL</span>
-              <Sparkles className="w-3.5 h-3.5 text-teal-300" />
-            </button>
-          )}
+        <div className="mt-10 md:mt-14 flex items-end justify-between gap-8">
+          <p className="max-w-md text-sm md:text-base font-manrope font-light text-white/70 leading-relaxed">
+            Global provider of technical vessel management, crew logistics, and
+            maritime operations across Dubai, Mumbai, and Colombo.
+          </p>
 
           {onOpenQuote && (
             <button
               onClick={onOpenQuote}
-              className="px-7 py-3.5 rounded-full bg-white hover:bg-slate-100 text-black font-mono text-xs tracking-wider font-bold transition shadow-2xl hover:scale-105"
+              className="hidden md:flex items-center gap-3 text-[11px] font-mono tracking-[0.2em] text-white border border-white/30 px-8 py-4 hover:bg-white hover:text-[#071A2B] transition-all duration-500"
+              data-cursor
+              data-cursor-text="OPEN"
             >
-              REQUEST FLEET DISPATCH
+              START A CONVERSATION →
             </button>
           )}
-        </motion.div>
+        </div>
       </motion.div>
 
-      {/* 3. Bottom Center Scroll Indicator */}
+      {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 1 }}
-        className="relative z-10 pb-8 flex flex-col items-center justify-center text-center space-y-2 pointer-events-none"
+        style={{ opacity: heroOpacity }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
-        <span className="text-[11px] font-mono tracking-widest text-slate-300 uppercase font-semibold drop-shadow">
-          SCROLL TO EXPLORE
+        <span className="text-[10px] font-mono tracking-[0.25em] text-white/50 uppercase">
+          Scroll
         </span>
-        <div className="w-[1.5px] h-10 bg-white/30 relative overflow-hidden rounded-full">
-          <div className="w-full h-full bg-white animate-line-pulse"></div>
+        <div className="w-px h-12 bg-white/20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-white animate-scroll-line origin-top" />
         </div>
-        <ArrowDown className="w-3.5 h-3.5 text-white animate-bounce mt-1" />
       </motion.div>
     </section>
   );

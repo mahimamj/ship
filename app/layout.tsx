@@ -47,9 +47,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebas.variable} ${syne.variable} ${inter.variable} ${manrope.variable} light scroll-smooth`}
+      className={`${bebas.variable} ${syne.variable} ${inter.variable} ${manrope.variable} scroll-smooth`}
     >
-      <body className="bg-[#F8FAFC] text-[#0F172A] font-sans selection:bg-[#0284C7] selection:text-white antialiased min-h-screen flex flex-col overflow-x-hidden">
+      <body className="bg-[#F5F5F2] text-[#071A2B] font-sans antialiased min-h-screen overflow-x-hidden">
         {children}
       </body>
     </html>
