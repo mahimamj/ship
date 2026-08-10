@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Light Color Theme Palette */
+  --color-light-bg: #F8FAFC;
+  --color-card-bg: #FFFFFF;
+  --color-text-dark: #0F172A;
+  --color-text-muted: #64748B;
+  --color-[#0284C7]: #0284C7;
+  --color-border-light: #E2E8F0;
+
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-manrope: 'Manrope', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-light-bg);
+  color: var(--color-text-dark);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.font-bebas {
+  font-family: var(--font-bebas);
+}
+
+.font-syne {
+  font-family: var(--font-syne);
+}
+
+/* Light Editorial Glass Cards */
+.editorial-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.06);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-card:hover {
+  background: #FFFFFF;
+  border-color: #0284C7;
+  box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0284C7;
+}
+
+/* Vertical Line Pulse */
+@keyframes vertical-line-pulse {
+  0%, 100% {
+    transform: scaleY(0.4);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.animate-line-pulse {
+  animation: vertical-line-pulse 2s ease-in-out infinite;
+}
