@@ -39,6 +39,7 @@ export const FleetVisualizationSection: React.FC = () => {
 
   return (
     <section id="vessels" className="py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+      <div id="fleet" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-10 mb-16 gap-8">

@@ -30,12 +30,20 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
     e.preventDefault();
     setMobileOpen(false);
 
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.location.hash = href;
-    }
+    setTimeout(() => {
+      if (href === "#" || !href) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+
+      const target = document.querySelector(href);
+      if (target) {
+        const topOffset = target.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top: topOffset, behavior: "smooth" });
+      } else {
+        window.location.hash = href;
+      }
+    }, 150);
   };
 
   return (
@@ -73,7 +81,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className="relative py-1 hover:text-[#176B87] transition-colors duration-300"
+              className="relative py-1 hover:text-[#176B87] transition-colors duration-300 cursor-pointer"
             >
               {item.name}
             </a>
@@ -103,7 +111,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden bg-white border-b border-[rgba(7,26,43,0.12)] overflow-hidden shadow-2xl"
           >
             <div className="px-8 py-8 flex flex-col gap-6">
@@ -112,9 +120,10 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-base font-mono font-bold tracking-[0.2em] text-[#071A2B] hover:text-[#176B87] transition-colors py-1.5 border-b border-slate-100"
+                  className="text-base font-mono font-bold tracking-[0.2em] text-[#071A2B] hover:text-[#176B87] transition-colors py-2 border-b border-slate-100 cursor-pointer flex items-center justify-between"
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  <span className="text-xs text-[#176B87]">→</span>
                 </a>
               ))}
               {onOpenQuote && (
@@ -122,12 +131,15 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
                   onClick={() => {
                     setMobileOpen(false);
                     onOpenQuote();
-                    const contactSection = document.querySelector("#contact");
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: "smooth" });
-                    }
+                    setTimeout(() => {
+                      const contactSection = document.querySelector("#contact");
+                      if (contactSection) {
+                        const topOffset = contactSection.getBoundingClientRect().top + window.scrollY - 70;
+                        window.scrollTo({ top: topOffset, behavior: "smooth" });
+                      }
+                    }, 150);
                   }}
-                  className="mt-2 text-left text-sm font-mono font-bold tracking-[0.2em] text-[#176B87] hover:text-[#071A2B] transition-colors py-2 flex items-center gap-2"
+                  className="mt-2 text-left text-sm font-mono font-bold tracking-[0.2em] text-[#176B87] hover:text-[#071A2B] transition-colors py-2 flex items-center gap-2 cursor-pointer"
                   data-cursor
                   data-cursor-text="OPEN"
                 >

@@ -186,6 +186,7 @@ export const GlobalPresenceMap: React.FC = () => {
 
   return (
     <section id="presence" className="py-20 sm:py-32 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+      <div id="global" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="mb-8">
