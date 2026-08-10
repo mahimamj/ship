@@ -12,6 +12,7 @@ import {
 import { VIDEOS } from "@/lib/content/videos";
 
 interface HeroProps {
+  onOpenVideoModal?: () => void;
   onOpenQuote?: () => void;
 }
 
@@ -66,7 +67,7 @@ function HeroWord({
   );
 }
 
-export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenQuote }) => {
+export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal, onOpenQuote }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -177,16 +178,28 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenQuote }) =
             maritime operations across Dubai, Mumbai, and Colombo.
           </p>
 
-          {onOpenQuote && (
-            <button
-              onClick={onOpenQuote}
-              className="hidden md:flex items-center gap-3 text-[11px] font-mono tracking-[0.2em] text-white border border-white/30 px-8 py-4 hover:bg-white hover:text-[#071A2B] transition-all duration-500"
-              data-cursor
-              data-cursor-text="OPEN"
-            >
-              START A CONVERSATION →
-            </button>
-          )}
+          <div className="hidden md:flex items-center gap-4">
+            {onOpenVideoModal && (
+              <button
+                onClick={onOpenVideoModal}
+                className="flex items-center gap-3 text-[11px] font-mono tracking-[0.2em] text-white/90 bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 hover:bg-white/20 hover:text-white transition-all duration-300"
+                data-cursor
+                data-cursor-text="WATCH"
+              >
+                ▶ WATCH SHOWREEL
+              </button>
+            )}
+            {onOpenQuote && (
+              <button
+                onClick={onOpenQuote}
+                className="flex items-center gap-3 text-[11px] font-mono tracking-[0.2em] text-white border border-white/30 px-8 py-4 hover:bg-white hover:text-[#071A2B] transition-all duration-500"
+                data-cursor
+                data-cursor-text="OPEN"
+              >
+                START A CONVERSATION →
+              </button>
+            )}
+          </div>
         </div>
       </motion.div>
 
