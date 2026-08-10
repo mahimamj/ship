@@ -8,8 +8,8 @@
   --color-ocean: #176B87;
   --color-muted: #667783;
   --color-border-subtle: rgba(7, 26, 43, 0.12);
-  --font-display: var(--font-bebas);
-  --font-editorial: var(--font-syne);
+  --font-display: var(--font-syne);
+  --font-editorial: var(--font-outfit);
   --font-body: var(--font-inter);
   --font-alt: var(--font-manrope);
 }
@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #F5F5F2;
 }
 
 body {
@@ -47,12 +48,14 @@ body {
   }
 }
 
-.font-bebas {
-  font-family: var(--font-bebas), sans-serif;
-}
-
+.font-bebas,
 .font-syne {
   font-family: var(--font-syne), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-outfit {
+  font-family: var(--font-outfit), sans-serif;
 }
 
 .font-manrope {
@@ -61,8 +64,8 @@ body {
 
 /* Premium editorial utilities */
 .section-padding {
-  padding-top: clamp(5rem, 12vw, 9rem);
-  padding-bottom: clamp(5rem, 12vw, 9rem);
+  padding-top: clamp(4.5rem, 10vw, 8rem);
+  padding-bottom: clamp(4.5rem, 10vw, 8rem);
 }
 
 .border-subtle {
@@ -76,7 +79,7 @@ body {
 .label-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.6875rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 600;
   color: #667783;
@@ -93,7 +96,7 @@ body {
 }
 
 .animate-marquee {
-  animation: marquee-scroll 40s linear infinite;
+  animation: marquee-scroll 35s linear infinite;
 }
 
 .animate-marquee:hover {
@@ -114,24 +117,6 @@ body {
 
 .animate-scroll-line {
   animation: scroll-line-pulse 2.4s ease-in-out infinite;
-}
-
-/* Route dot travel */
-@keyframes route-travel {
-  0% {
-    offset-distance: 0%;
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    offset-distance: 100%;
-    opacity: 0;
-  }
 }
 
 /* Custom scrollbar */

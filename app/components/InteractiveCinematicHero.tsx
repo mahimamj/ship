@@ -22,19 +22,21 @@ function HeroWord({
   mouseY,
   parallaxFactor = 1,
   className = "",
+  highlight = false,
 }: {
   text: string;
   mouseX: MotionValue<number>;
   mouseY: MotionValue<number>;
   parallaxFactor?: number;
   className?: string;
+  highlight?: boolean;
 }) {
-  const x = useTransform(mouseX, [-400, 400], [-12 * parallaxFactor, 12 * parallaxFactor]);
-  const y = useTransform(mouseY, [-300, 300], [-6 * parallaxFactor, 6 * parallaxFactor]);
+  const x = useTransform(mouseX, [-500, 500], [-16 * parallaxFactor, 16 * parallaxFactor]);
+  const y = useTransform(mouseY, [-400, 400], [-8 * parallaxFactor, 8 * parallaxFactor]);
   const scale = useTransform(
     mouseX,
     [-400, 0, 400],
-    [1 + 0.01 * parallaxFactor, 1, 1 + 0.01 * parallaxFactor]
+    [1 + 0.015 * parallaxFactor, 1, 1 + 0.015 * parallaxFactor]
   );
 
   return (
@@ -46,18 +48,20 @@ function HeroWord({
     >
       {text.split("").map((char, i) => {
         if (char === " ") {
-          return <span key={i} className="w-[0.3em]" />;
+          return <span key={i} className="w-[0.28em]" />;
         }
         const letterX = useTransform(
           mouseX,
           [-400, 400],
-          [(-2 + i * 0.3) * parallaxFactor, (2 - i * 0.3) * parallaxFactor]
+          [(-2.5 + i * 0.35) * parallaxFactor, (2.5 - i * 0.35) * parallaxFactor]
         );
         return (
           <motion.span
             key={i}
             style={{ x: letterX }}
-            className="inline-block font-bebas leading-[0.9] tracking-[-0.01em] text-white"
+            className={`inline-block font-syne font-extrabold leading-[0.88] tracking-[-0.03em] ${
+              highlight ? "text-[#176B87]" : "text-white"
+            }`}
           >
             {char}
           </motion.span>
@@ -72,15 +76,13 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
   const videoRef = useRef<HTMLVideoElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 80, damping: 22 });
-  const springY = useSpring(mouseY, { stiffness: 80, damping: 22 });
+  const springX = useSpring(mouseX, { stiffness: 70, damping: 25 });
+  const springY = useSpring(mouseY, { stiffness: 70, damping: 25 });
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = true;
-      videoRef.current.play().catch((err) => {
-        console.warn("Autoplay prevented:", err);
-      });
+      videoRef.current.play().catch((err) => console.warn("Autoplay prevented:", err));
     }
   }, []);
 
@@ -90,11 +92,11 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
   });
 
   const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
-  const line1Y = useTransform(scrollYProgress, [0, 1], [0, -30]);
-  const line2Y = useTransform(scrollYProgress, [0, 1], [0, -45]);
-  const line3Y = useTransform(scrollYProgress, [0, 1], [0, -25]);
-  const line4Y = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const line1Y = useTransform(scrollYProgress, [0, 1], [0, -35]);
+  const line2Y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const line3Y = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const line4Y = useTransform(scrollYProgress, [0, 1], [0, -45]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
@@ -115,7 +117,7 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
       onMouseLeave={handleMouseLeave}
       className="relative min-h-screen w-full overflow-hidden bg-[#071A2B] flex flex-col justify-between"
     >
-      {/* Cinematic video background with fallbacks */}
+      {/* Real moving ocean video background */}
       <motion.div
         style={{ scale: videoScale }}
         className="absolute inset-0 origin-center will-change-transform z-0"
@@ -132,12 +134,12 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
           <source src={VIDEOS.hero} type="video/mp4" />
           <source src={VIDEOS.heroSecondary} type="video/mp4" />
         </video>
-        {/* Subtle dark cinematic overlays for contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#071A2B]/60 via-transparent to-[#071A2B]/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071A2B]/50 via-transparent to-transparent" />
+        {/* Subtle white/transparent gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#071A2B]/60 via-transparent to-[#071A2B]/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071A2B]/40 via-transparent to-transparent" />
       </motion.div>
 
-      {/* Hero content - centered and padded to prevent cutoffs */}
+      {/* Hero content - Syne architectural typography */}
       <motion.div
         style={{ opacity: heroOpacity }}
         className="relative z-10 w-full flex flex-col justify-center flex-grow px-6 md:px-12 pt-28 pb-12 max-w-[1400px] mx-auto"
@@ -152,8 +154,8 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
               text="THE OCEAN"
               mouseX={springX}
               mouseY={springY}
-              parallaxFactor={1.2}
-              className="text-[clamp(2.2rem,6.5vw,5.2rem)]"
+              parallaxFactor={1.1}
+              className="text-[clamp(2.2rem,6.2vw,5rem)]"
             />
           </motion.div>
           <motion.div style={{ y: line2Y }}>
@@ -161,8 +163,8 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
               text="IS OUR"
               mouseX={springX}
               mouseY={springY}
-              parallaxFactor={0.9}
-              className="text-[clamp(2.2rem,6.5vw,5.2rem)] text-white/95"
+              parallaxFactor={0.85}
+              className="text-[clamp(2.2rem,6.2vw,5rem)] text-white/95"
             />
           </motion.div>
           <motion.div style={{ y: line3Y }}>
@@ -170,8 +172,8 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
               text="OPERATING"
               mouseX={springX}
               mouseY={springY}
-              parallaxFactor={1.1}
-              className="text-[clamp(2.2rem,6.5vw,5.2rem)]"
+              parallaxFactor={1.05}
+              className="text-[clamp(2.2rem,6.2vw,5rem)]"
             />
           </motion.div>
           <motion.div style={{ y: line4Y }}>
@@ -180,7 +182,8 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
               mouseX={springX}
               mouseY={springY}
               parallaxFactor={0.8}
-              className="text-[clamp(2.2rem,6.5vw,5.2rem)] text-[#176B87]"
+              highlight
+              className="text-[clamp(2.2rem,6.2vw,5rem)]"
             />
           </motion.div>
         </div>
@@ -219,12 +222,12 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
       {/* Scroll indicator */}
       <motion.div
         style={{ opacity: heroOpacity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-[10px] font-mono tracking-[0.25em] text-white/50 uppercase">
           Scroll
         </span>
-        <div className="w-px h-12 bg-white/20 relative overflow-hidden">
+        <div className="w-px h-10 bg-white/20 relative overflow-hidden">
           <div className="absolute inset-0 bg-white animate-scroll-line origin-top" />
         </div>
       </motion.div>

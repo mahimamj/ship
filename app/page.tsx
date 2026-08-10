@@ -4,34 +4,24 @@ import React, { useState } from "react";
 import { CinematicCustomCursor } from "./components/CinematicCustomCursor";
 import { CinematicNavbar } from "./components/CinematicNavbar";
 import { InteractiveCinematicHero } from "./components/InteractiveCinematicHero";
-import { EditorialServicesSection } from "./components/EditorialServicesSection";
-import { InteractiveTrackAndTrace } from "./components/InteractiveTrackAndTrace";
-import { FleetVideoModal } from "./components/FleetVideoModal";
-import { TrustedByMarquee } from "./components/TrustedByMarquee";
-import { AboutSection } from "./components/AboutSection";
-import { StatsCounter } from "./components/StatsCounter";
-import { VesselFleetShowcase } from "./components/VesselFleetShowcase";
-import { WhyChooseUs } from "./components/WhyChooseUs";
-import { CompanyTimelineSection } from "./components/CompanyTimelineSection";
-import { GrowthChartSection } from "./components/GrowthChartSection";
-import { MissionVisionValues } from "./components/MissionVisionValues";
-import { TechnicalManagement } from "./components/TechnicalManagement";
-import { CrewManagementTimeline } from "./components/CrewManagementTimeline";
-import { IndustriesServed } from "./components/IndustriesServed";
-import { CertificationsSection } from "./components/CertificationsSection";
-import { CareersSection } from "./components/CareersSection";
-import { TestimonialsSection } from "./components/TestimonialsSection";
+import { Section2StatementStats } from "./components/Section2StatementStats";
+import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
+import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
+import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
+import { HorizontalTimelineSection } from "./components/HorizontalTimelineSection";
+import { CertificationsMarquee } from "./components/CertificationsMarquee";
+import { MissionVisionSplit } from "./components/MissionVisionSplit";
+import { WhyUsStatementSection } from "./components/WhyUsStatementSection";
+import { FinalCinematicCTA } from "./components/FinalCinematicCTA";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 
-import { ServiceModal } from "./components/ServiceModal";
+import { FleetVideoModal } from "./components/FleetVideoModal";
 import { QuoteModal } from "./components/QuoteModal";
 import { CareerModal } from "./components/CareerModal";
-import { ServiceItem } from "./components/ServicesGrid";
 
 export default function Home() {
-  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [careerModalState, setCareerModalState] = useState<{ isOpen: boolean; jobTitle?: string }>({
@@ -39,95 +29,62 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] font-sans antialiased overflow-x-hidden selection:bg-[#0284C7] selection:text-white">
-      {/* Smooth GPU Custom Cursor */}
+    <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased overflow-x-hidden selection:bg-[#176B87] selection:text-white">
+      {/* Custom Cursor */}
       <CinematicCustomCursor />
 
-      {/* Top Left Logo & Top Right Minimal Navigation */}
+      {/* Minimal Top Header Navbar */}
       <CinematicNavbar onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* Full-Screen Immersive Background Video Hero with Interactive Typography */}
+      {/* Hero Section */}
       <InteractiveCinematicHero
         onOpenVideoModal={() => setIsVideoModalOpen(true)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* Trusted By Global Marquee */}
-      <TrustedByMarquee />
+      {/* Section 2: Statement & Count-Up Stats */}
+      <Section2StatementStats />
 
-      {/* Live Track & Trace AIS Vessel Tracker & Transit Calculator */}
-      <InteractiveTrackAndTrace />
-
-      {/* Premium Maritime Services Editorial Section (15 Core Services) */}
-      <EditorialServicesSection
-        onSelectService={(serviceTitle) => {
-          setIsQuoteOpen(true);
-        }}
+      {/* Section 3: Interactive Vertical Capabilities */}
+      <InteractiveVerticalCapabilities
+        onSelectService={() => setIsQuoteOpen(true)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* About Oceanic Star Fleet */}
-      <AboutSection />
-
-      {/* Company Statistics & Operational Metrics */}
-      <StatsCounter />
-
-      {/* 59 Managed Vessel Fleet Showcase Matrix */}
-      <VesselFleetShowcase />
-
-      {/* Corporate Growth Timeline (2011 Incorporation -> 2029 RPSL) */}
-      <CompanyTimelineSection />
-
-      {/* Why Choose Oceanic Star */}
-      <WhyChooseUs />
-
-      {/* Operational Growth Chart */}
-      <GrowthChartSection />
-
-      {/* Mission & Vision */}
-      <MissionVisionValues />
-
-      {/* Technical Management */}
-      <TechnicalManagement />
-
-      {/* Crew Management Timeline */}
-      <CrewManagementTimeline />
-
-      {/* Industries We Serve */}
-      <IndustriesServed />
-
-      {/* Official Government & Class Certifications */}
-      <CertificationsSection />
-
-      {/* Careers */}
-      <CareersSection
-        onOpenApplyModal={(jobTitle) =>
-          setCareerModalState({ isOpen: true, jobTitle })
-        }
-      />
-
-      {/* Testimonials */}
-      <TestimonialsSection />
-
-      {/* Global Presence Map */}
+      {/* Section 4: Global Presence Vector Map */}
       <GlobalPresenceMap />
 
-      {/* Contact Operations */}
+      {/* Section 5: Fleet Visualization Breakdown */}
+      <FleetVisualizationSection />
+
+      {/* Section 6: Cinematic Operations (01 AT SEA, 02 ON BOARD, 03 ON SHORE) */}
+      <CinematicOperationsSection />
+
+      {/* Section 7: Horizontal Timeline */}
+      <HorizontalTimelineSection />
+
+      {/* Section 8: Certifications Marquee */}
+      <CertificationsMarquee />
+
+      {/* Section 9: Mission & Vision Split */}
+      <MissionVisionSplit />
+
+      {/* Section 10: Why Choose Us Statement Section */}
+      <WhyUsStatementSection />
+
+      {/* Section 11: Final Cinematic CTA */}
+      <FinalCinematicCTA onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* Section 12: Contact Operations */}
       <ContactSection />
 
-      {/* Footer */}
+      {/* Section 13: Footer */}
       <Footer />
 
-      {/* Modals & Video Lightbox */}
+      {/* Lightbox & Proposal Modals */}
       <FleetVideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
-
-      <ServiceModal
-        service={selectedService}
-        onClose={() => setSelectedService(null)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 

@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Syne, Inter, Manrope } from "next/font/google";
+import { Syne, Outfit, Inter, Manrope } from "next/font/google";
 import "./globals.css";
-
-const bebas = Bebas_Neue({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-bebas",
-});
+import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
 
 const syne = Syne({
   weight: ["700", "800"],
   subsets: ["latin"],
   variable: "--font-syne",
+});
+
+const outfit = Outfit({
+  weight: ["400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  variable: "--font-outfit",
 });
 
 const inter = Inter({
@@ -47,10 +48,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bebas.variable} ${syne.variable} ${inter.variable} ${manrope.variable} scroll-smooth`}
+      className={`${syne.variable} ${outfit.variable} ${inter.variable} ${manrope.variable} scroll-smooth`}
     >
       <body className="bg-[#F5F5F2] text-[#071A2B] font-sans antialiased min-h-screen overflow-x-hidden">
-        {children}
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>
   );

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Globe, Shield, Clock, Compass } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, Phone, Mail, Compass } from "lucide-react";
 
 export const GlobalPresenceMap: React.FC = () => {
   const [activeHub, setActiveHub] = useState<"dubai" | "mumbai" | "colombo">("dubai");
@@ -11,180 +11,213 @@ export const GlobalPresenceMap: React.FC = () => {
     dubai: {
       entity: "Oceanic Star Fleet Ship Management LLC",
       city: "Dubai, United Arab Emirates",
+      role: "Middle East Operational HQ & Technical Management",
       address: "Suite 1402, Commercial Tower, Business Bay, P.O. Box 48802, Dubai, UAE",
       phone: "+971 4 399 0000",
       email: "dubai@oceanicstar.com",
-      role: "Middle East Operational HQ & Tanker Fleet Management",
-      rsl: "UAE Commercial License #789402",
-      hotline: "+971 50 123 4567 (24/7 Ops Emergency)",
+      license: "UAE Commercial License #789402",
+      x: 35,
+      y: 45,
     },
     mumbai: {
       entity: "Oceanic Star Shipping Pvt. Ltd.",
       city: "Mumbai, Maharashtra, India",
-      address: "Fort Maritime Center, 4th Floor, Shaheed Bhagat Singh Road, Mumbai - 400001, India",
+      role: "Global Crewing HQ & STCW Training Center",
+      address: "Fort Maritime Center, 4th Floor, SBS Road, Mumbai - 400001, India",
       phone: "+91 22 6800 0000",
       email: "mumbai@oceanicstar.com",
-      role: "Global Crewing HQ & STCW Training Center",
-      rsl: "DG Shipping License: RPSL-MUM-245",
-      hotline: "+91 98 200 00000 (24/7 Crew Helpline)",
+      license: "DG Shipping License: RPSL-MUM-245",
+      x: 65,
+      y: 52,
     },
     colombo: {
       entity: "Oceanic Star Lanka Pvt Ltd",
       city: "Colombo, Sri Lanka",
+      role: "South Asia Port Agency & Launch Operations",
       address: "Maritime House, 2nd Floor, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
       phone: "+94 11 245 0000",
       email: "colombo@oceanicstar.com",
-      role: "South Asia Port Agency & Launch Services Hub",
-      rsl: "Sri Lanka Merchant Shipping Approved",
-      hotline: "+94 77 123 4567 (Port Agency Desk)",
+      license: "Sri Lanka Merchant Shipping Approved",
+      x: 72,
+      y: 72,
     },
   };
 
+  const selected = hubs[activeHub];
+
   return (
-    <section id="presence" className="py-24 bg-[#0A192F] text-slate-200 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+    <section id="presence" className="py-28 md:py-40 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs uppercase tracking-widest text-teal-400 font-bold bg-teal-500/10 px-4 py-1.5 rounded-full border border-teal-500/20">
-            Global Infrastructure
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-bold font-poppins text-white tracking-tight">
-            Our Global <span className="text-gradient">Presence & Hubs</span>
-          </h2>
-          <p className="text-slate-400 text-base">
-            Strategic operational centers in Dubai, Mumbai, and Colombo servicing international shipping routes 24 hours a day.
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-10 mb-16 gap-8">
+          <div>
+            <span className="label-mono text-[#176B87] mb-3 block font-semibold">
+              // GLOBAL COMMAND INFRASTRUCTURE
+            </span>
+            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
+              GLOBAL HUBS
+            </h2>
+          </div>
+
+          <p className="text-sm font-manrope text-[#667783] max-w-md leading-relaxed">
+            Strategic operational command centers in Dubai, Mumbai, and Colombo orchestrating 24/7 technical vessel dispatch and crew logistics.
           </p>
         </div>
 
-        {/* Hub Selector Tabs */}
-        <div className="flex justify-center space-x-3 mb-10">
-          <button
-            onClick={() => setActiveHub("dubai")}
-            className={`px-6 py-3 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center space-x-2 border ${
-              activeHub === "dubai"
-                ? "bg-gradient-to-r from-[#00B4D8] to-[#0077B6] text-white border-teal-400 shadow-xl scale-105"
-                : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 border-white/10"
-            }`}
-          >
-            <span>🇦🇪 Dubai HQ (LLC)</span>
-          </button>
-
-          <button
-            onClick={() => setActiveHub("mumbai")}
-            className={`px-6 py-3 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center space-x-2 border ${
-              activeHub === "mumbai"
-                ? "bg-gradient-to-r from-[#00B4D8] to-[#0077B6] text-white border-teal-400 shadow-xl scale-105"
-                : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 border-white/10"
-            }`}
-          >
-            <span>🇮🇳 Mumbai HQ (Pvt Ltd)</span>
-          </button>
-
-          <button
-            onClick={() => setActiveHub("colombo")}
-            className={`px-6 py-3 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center space-x-2 border ${
-              activeHub === "colombo"
-                ? "bg-gradient-to-r from-[#00B4D8] to-[#0077B6] text-white border-teal-400 shadow-xl scale-105"
-                : "bg-slate-900/80 hover:bg-slate-800 text-slate-400 border-white/10"
-            }`}
-          >
-            <span>🇱🇰 Colombo Hub</span>
-          </button>
+        {/* Hub Selection Controls */}
+        <div className="flex flex-wrap gap-4 mb-12">
+          {(["dubai", "mumbai", "colombo"] as const).map((key) => {
+            const h = hubs[key];
+            const isActive = activeHub === key;
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveHub(key)}
+                className={`px-6 py-3 rounded-full font-mono text-xs tracking-widest transition-all duration-300 border ${
+                  isActive
+                    ? "bg-[#071A2B] text-white border-[#071A2B] font-bold shadow-md"
+                    : "bg-[#F5F5F2] text-[#667783] border-[rgba(7,26,43,0.12)] hover:border-[#071A2B] hover:text-[#071A2B]"
+                }`}
+                data-cursor
+                data-cursor-text="SELECT"
+              >
+                {key.toUpperCase()} // {h.city.split(",")[0]}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Active Hub Card & World Map Graphic */}
-        <div className="grid lg:grid-cols-12 gap-8 items-center">
-          
-          {/* Active Hub Details Card */}
-          <motion.div
-            key={activeHub}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-6 glass-panel rounded-3xl p-8 border border-teal-500/30 shadow-2xl space-y-6"
-          >
-            <div className="flex items-center space-x-3 border-b border-white/10 pb-4">
-              <div className="w-12 h-12 rounded-2xl bg-teal-500/20 text-teal-400 flex items-center justify-center font-bold">
-                <Compass className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold font-poppins text-white">{hubs[activeHub].entity}</h3>
-                <p className="text-xs text-teal-400 font-semibold">{hubs[activeHub].city}</p>
-              </div>
-            </div>
+        {/* Interactive Editorial Map Surface & Info Split */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Vector Map Surface with Maritime Route Paths & Traveling Dots */}
+          <div className="lg:col-span-7 bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-3xl p-8 md:p-12 relative min-h-[420px] flex items-center justify-center overflow-hidden">
+            <svg viewBox="0 0 800 450" className="w-full h-auto max-h-[380px]">
+              {/* Subtle background grid */}
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(7,26,43,0.05)" strokeWidth="1" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grid)" />
 
-            <div className="space-y-4 text-xs">
-              <div className="bg-slate-900/80 p-3.5 rounded-xl border border-white/5 space-y-1">
-                <span className="text-slate-400 font-semibold block">Office Address:</span>
-                <p className="text-slate-200 leading-relaxed font-light">{hubs[activeHub].address}</p>
-              </div>
+              {/* Maritime Route Lines connecting Dubai -> Mumbai -> Colombo */}
+              <path
+                d="M 280 180 Q 420 190 520 215"
+                fill="none"
+                stroke="rgba(23, 107, 135, 0.4)"
+                strokeWidth="2"
+                strokeDasharray="6,6"
+              />
+              <path
+                d="M 520 215 Q 550 250 575 290"
+                fill="none"
+                stroke="rgba(23, 107, 135, 0.4)"
+                strokeWidth="2"
+                strokeDasharray="6,6"
+              />
+              <path
+                d="M 280 180 Q 420 260 575 290"
+                fill="none"
+                stroke="rgba(7, 26, 43, 0.2)"
+                strokeWidth="1.5"
+                strokeDasharray="4,4"
+              />
 
-              <div className="grid sm:grid-cols-2 gap-3">
-                <div className="bg-slate-900/80 p-3.5 rounded-xl border border-white/5 space-y-1">
-                  <span className="text-slate-400 font-semibold block flex items-center gap-1">
-                    <Phone size={12} className="text-teal-400" /> Phone:
-                  </span>
-                  <a href={`tel:${hubs[activeHub].phone}`} className="text-white hover:text-teal-300 font-medium">
-                    {hubs[activeHub].phone}
-                  </a>
-                </div>
+              {/* Hub Marker Pins */}
+              {/* Dubai Pin */}
+              <g
+                className="cursor-pointer group"
+                onClick={() => setActiveHub("dubai")}
+              >
+                <circle cx="280" cy="180" r="14" fill="rgba(23, 107, 135, 0.15)" />
+                <circle cx="280" cy="180" r="6" fill={activeHub === "dubai" ? "#071A2B" : "#176B87"} />
+                <text x="280" y="156" textAnchor="middle" className="font-mono text-[11px] font-bold fill-[#071A2B]">
+                  DUBAI HQ
+                </text>
+              </g>
 
-                <div className="bg-slate-900/80 p-3.5 rounded-xl border border-white/5 space-y-1">
-                  <span className="text-slate-400 font-semibold block flex items-center gap-1">
-                    <Mail size={12} className="text-teal-400" /> Email:
-                  </span>
-                  <a href={`mailto:${hubs[activeHub].email}`} className="text-white hover:text-teal-300 font-medium">
-                    {hubs[activeHub].email}
-                  </a>
-                </div>
-              </div>
+              {/* Mumbai Pin */}
+              <g
+                className="cursor-pointer group"
+                onClick={() => setActiveHub("mumbai")}
+              >
+                <circle cx="520" cy="215" r="14" fill="rgba(23, 107, 135, 0.15)" />
+                <circle cx="520" cy="215" r="6" fill={activeHub === "mumbai" ? "#071A2B" : "#176B87"} />
+                <text x="520" y="192" textAnchor="middle" className="font-mono text-[11px] font-bold fill-[#071A2B]">
+                  MUMBAI CREWING
+                </text>
+              </g>
 
-              <div className="bg-teal-500/10 border border-teal-500/30 p-3.5 rounded-xl text-teal-300 font-medium flex items-center justify-between">
-                <span>Emergency Hotline:</span>
-                <strong className="text-white font-mono">{hubs[activeHub].hotline}</strong>
-              </div>
-            </div>
-
-            <div className="pt-4 border-t border-white/10 text-xs text-slate-400 flex justify-between">
-              <span>Primary Function: <strong className="text-white">{hubs[activeHub].role}</strong></span>
-            </div>
-          </motion.div>
-
-          {/* World Map Graphical Card */}
-          <div className="lg:col-span-6 glass-panel rounded-3xl p-8 border border-white/10 shadow-2xl relative min-h-[380px] flex flex-col justify-between overflow-hidden">
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#00B4D8_1px,transparent_1px)] [background-size:16px_16px]"></div>
-            
-            <div className="relative z-10 flex justify-between items-center mb-6">
-              <h4 className="text-lg font-bold font-poppins text-white flex items-center gap-2">
-                <Globe className="text-teal-400" /> Global Operations Grid
-              </h4>
-              <span className="text-xs text-emerald-400 font-semibold flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live Ops Active
-              </span>
-            </div>
-
-            <div className="relative z-10 grid grid-cols-2 gap-4 text-xs my-auto">
-              <div className="bg-slate-900/90 p-4 rounded-2xl border border-white/10 space-y-1">
-                <div className="text-teal-400 font-bold font-poppins text-lg">50+</div>
-                <div className="text-white font-semibold">Managed Fleet Vessels</div>
-                <div className="text-[11px] text-slate-400">Bulk, Tankers & Containers</div>
-              </div>
-
-              <div className="bg-slate-900/90 p-4 rounded-2xl border border-white/10 space-y-1">
-                <div className="text-teal-400 font-bold font-poppins text-lg">120+</div>
-                <div className="text-white font-semibold">Global Ports Covered</div>
-                <div className="text-[11px] text-slate-400">Gulf, Asia, Europe, Americas</div>
-              </div>
-            </div>
-
-            <div className="relative z-10 pt-4 border-t border-white/10 text-xs text-slate-400 text-center">
-              Worldwide Vessel Operations & Port Agency Coverage 24/7/365
-            </div>
+              {/* Colombo Pin */}
+              <g
+                className="cursor-pointer group"
+                onClick={() => setActiveHub("colombo")}
+              >
+                <circle cx="575" cy="290" r="14" fill="rgba(23, 107, 135, 0.15)" />
+                <circle cx="575" cy="290" r="6" fill={activeHub === "colombo" ? "#071A2B" : "#176B87"} />
+                <text x="575" y="318" textAnchor="middle" className="font-mono text-[11px] font-bold fill-[#071A2B]">
+                  COLOMBO PORT
+                </text>
+              </g>
+            </svg>
           </div>
 
-        </div>
+          {/* Floating Editorial Hub Info Surface */}
+          <div className="lg:col-span-5">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeHub}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.4 }}
+                className="bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-3xl p-8 sm:p-10 space-y-6 shadow-sm"
+              >
+                <div className="flex items-center gap-4 pb-6 border-b border-[rgba(7,26,43,0.12)]">
+                  <div className="w-12 h-12 rounded-2xl bg-white border border-[rgba(7,26,43,0.12)] flex items-center justify-center text-[#176B87] font-bold shadow-sm">
+                    <Compass className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-syne text-xl font-extrabold text-[#071A2B]">{selected.entity}</h3>
+                    <span className="text-xs font-mono text-[#176B87] font-semibold">{selected.city}</span>
+                  </div>
+                </div>
 
+                <div className="space-y-4 text-xs font-manrope">
+                  <div>
+                    <span className="text-[#667783] font-semibold block mb-1">COMMAND ROLE:</span>
+                    <p className="text-[#071A2B] font-medium leading-relaxed">{selected.role}</p>
+                  </div>
+
+                  <div>
+                    <span className="text-[#667783] font-semibold block mb-1">HQ ADDRESS:</span>
+                    <p className="text-[#071A2B] font-light leading-relaxed">{selected.address}</p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div className="p-3.5 bg-white rounded-xl border border-[rgba(7,26,43,0.12)]">
+                      <span className="text-[10px] font-mono text-[#667783] block mb-1">PHONE</span>
+                      <a href={`tel:${selected.phone}`} className="text-[#071A2B] font-bold hover:text-[#176B87]">
+                        {selected.phone}
+                      </a>
+                    </div>
+
+                    <div className="p-3.5 bg-white rounded-xl border border-[rgba(7,26,43,0.12)]">
+                      <span className="text-[10px] font-mono text-[#667783] block mb-1">EMAIL</span>
+                      <a href={`mailto:${selected.email}`} className="text-[#071A2B] font-bold hover:text-[#176B87]">
+                        {selected.email}
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="p-3.5 bg-sky-50 rounded-xl border border-sky-100 text-[11px] font-mono text-[#176B87] font-semibold">
+                    {selected.license}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   );
