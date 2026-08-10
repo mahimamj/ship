@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Syne, Outfit, Inter, Manrope } from "next/font/google";
+import { Plus_Jakarta_Sans, Cinzel, Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
 
-const syne = Syne({
-  weight: ["700", "800"],
+const jakarta = Plus_Jakarta_Sans({
+  weight: ["600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-syne",
+  variable: "--font-jakarta",
 });
 
-const outfit = Outfit({
-  weight: ["400", "500", "600", "700", "800"],
+const cinzel = Cinzel({
+  weight: ["600", "700", "800", "900"],
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-cinzel",
 });
 
 const inter = Inter({
@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${outfit.variable} ${inter.variable} ${manrope.variable} scroll-smooth`}
+      className={`${jakarta.variable} ${cinzel.variable} ${inter.variable} ${manrope.variable} scroll-smooth`}
     >
       <body className="bg-[#F5F5F2] text-[#071A2B] font-sans antialiased min-h-screen overflow-x-hidden">
         <SmoothScrollProvider>{children}</SmoothScrollProvider>

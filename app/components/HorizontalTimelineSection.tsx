@@ -48,47 +48,47 @@ export const HorizontalTimelineSection: React.FC = () => {
   const current = timelineData[activeIdx];
 
   return (
-    <section className="py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+    <section className="py-20 md:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-10 mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-8 mb-12 gap-6">
           <div>
-            <span className="label-mono text-[#176B87] mb-3 block font-semibold">
+            <span className="label-mono text-[#176B87] mb-2.5 block font-semibold">
               // HISTORICAL PROGRESSION & MILESTONES
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
+            <h2 className="font-jakarta text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#071A2B] leading-none">
               COMPANY TIMELINE
             </h2>
           </div>
 
-          <p className="text-sm font-manrope text-[#667783] max-w-md leading-relaxed">
+          <p className="text-xs sm:text-sm font-manrope text-[#667783] max-w-md leading-relaxed">
             Two decades of disciplined growth from a regional ship agency into an international ship management powerhouse.
           </p>
         </div>
 
         {/* Horizontal Year Selector Navigation */}
-        <div className="flex items-center justify-between border-b border-[rgba(7,26,43,0.12)] pb-8 mb-12 overflow-x-auto gap-4">
+        <div className="flex items-center justify-between border-b border-[rgba(7,26,43,0.12)] pb-6 mb-10 overflow-x-auto gap-4 scrollbar-none">
           {timelineData.map((item, idx) => {
             const isActive = activeIdx === idx;
             return (
               <button
                 key={item.year}
                 onClick={() => setActiveIdx(idx)}
-                className={`flex flex-col items-start transition-all duration-300 ${
-                  isActive ? "scale-110" : "opacity-50 hover:opacity-100"
+                className={`flex flex-col items-start transition-all duration-300 shrink-0 ${
+                  isActive ? "scale-105" : "opacity-50 hover:opacity-100"
                 }`}
                 data-cursor
                 data-cursor-text="YEAR"
               >
                 <span
-                  className={`font-syne text-3xl sm:text-5xl font-extrabold transition-colors ${
+                  className={`font-jakarta text-2xl sm:text-4xl font-extrabold transition-colors ${
                     isActive ? "text-[#071A2B]" : "text-[#667783]"
                   }`}
                 >
                   {item.year}
                 </span>
                 <div
-                  className={`h-1 w-full mt-2 rounded-full transition-all ${
+                  className={`h-1 w-full mt-1.5 rounded-full transition-all ${
                     isActive ? "bg-[#176B87]" : "bg-transparent"
                   }`}
                 />
@@ -98,24 +98,24 @@ export const HorizontalTimelineSection: React.FC = () => {
         </div>
 
         {/* Milestone Detail Surface */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-6 space-y-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.year}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.4 }}
-                className="space-y-4"
+                exit={{ opacity: 0, x: 15 }}
+                transition={{ duration: 0.35 }}
+                className="space-y-3"
               >
                 <span className="font-mono text-xs font-bold text-[#176B87] tracking-widest">
                   MILESTONE // {current.year}
                 </span>
-                <h3 className="font-syne text-2xl sm:text-4xl font-extrabold text-[#071A2B]">
+                <h3 className="font-jakarta text-xl sm:text-3xl font-extrabold text-[#071A2B] leading-tight break-words">
                   {current.title}
                 </h3>
-                <p className="text-sm font-manrope font-light text-[#667783] leading-relaxed max-w-xl">
+                <p className="text-xs sm:text-sm font-manrope font-light text-[#667783] leading-relaxed max-w-xl">
                   {current.desc}
                 </p>
               </motion.div>
@@ -123,7 +123,7 @@ export const HorizontalTimelineSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-6">
-            <div className="h-[320px] sm:h-[400px] rounded-3xl overflow-hidden relative bg-[#071A2B] border border-[rgba(7,26,43,0.12)] shadow-xl">
+            <div className="h-[280px] sm:h-[380px] rounded-3xl overflow-hidden relative bg-[#071A2B] border border-[rgba(7,26,43,0.12)] shadow-lg">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={current.year}
@@ -132,7 +132,7 @@ export const HorizontalTimelineSection: React.FC = () => {
                   initial={{ opacity: 0, scale: 1.05 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.4 }}
                   className="w-full h-full object-cover"
                 />
               </AnimatePresence>

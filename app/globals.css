@@ -8,8 +8,8 @@
   --color-ocean: #176B87;
   --color-muted: #667783;
   --color-border-subtle: rgba(7, 26, 43, 0.12);
-  --font-display: var(--font-syne);
-  --font-editorial: var(--font-outfit);
+  --font-display: var(--font-jakarta);
+  --font-editorial: var(--font-cinzel);
   --font-body: var(--font-inter);
   --font-alt: var(--font-manrope);
 }
@@ -48,14 +48,16 @@ body {
   }
 }
 
+.font-syne,
 .font-bebas,
-.font-syne {
-  font-family: var(--font-syne), sans-serif;
+.font-jakarta {
+  font-family: var(--font-jakarta), sans-serif;
   letter-spacing: -0.02em;
 }
 
-.font-outfit {
-  font-family: var(--font-outfit), sans-serif;
+.font-cinzel {
+  font-family: var(--font-cinzel), serif;
+  letter-spacing: 0.02em;
 }
 
 .font-manrope {
