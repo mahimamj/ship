@@ -85,10 +85,14 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-[#667783] space-y-4 sm:space-y-0 font-mono">
+        {/* Bottom Copyright, Credits & Back to Top */}
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-[#667783] gap-4 font-mono">
           <div>
             © {new Date().getFullYear()} <strong className="text-[#071A2B] font-bold">Oceanic Star Group</strong>. All rights reserved.
+          </div>
+
+          <div className="text-[11px] text-[#667783]">
+            Created by <strong className="text-[#071A2B] font-bold">Mahima Joshi</strong> | Team <strong className="text-[#176B87] font-bold">Social Tusk</strong>
           </div>
 
           <button
