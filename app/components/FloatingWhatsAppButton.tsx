@@ -6,7 +6,7 @@ import { MessageSquare } from "lucide-react";
 export const FloatingWhatsAppButton: React.FC = () => {
   return (
     <a
-      href="https://wa.me/919004390041"
+      href="https://wa.me/919004390041?text=Hello%20Oceanic%20Star%20Fleet%2C%20I%20would%20like%20to%20inquire%20about%20your%20maritime%20services."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white px-4 py-3 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 group border border-white/20"

@@ -114,7 +114,7 @@ export const ContactSection: React.FC = () => {
 
             {/* Direct WhatsApp Quick Contact */}
             <a
-              href="https://wa.me/919004390041"
+              href="https://wa.me/919004390041?text=Hello%20Oceanic%20Star%20Fleet%2C%20I%20would%20like%20to%20inquire%20about%20your%20maritime%20services."
               target="_blank"
               rel="noopener noreferrer"
               className="bg-emerald-50 border border-emerald-200 rounded-3xl p-6 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100"
