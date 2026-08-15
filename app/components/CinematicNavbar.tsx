@@ -22,7 +22,6 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
   const navItems = [
     { name: "ABOUT", href: "#about" },
     { name: "CAPABILITIES", href: "#capabilities" },
-    { name: "CALCULATOR", href: "#freight-calculator" },
     { name: "FLEET", href: "#vessels" },
     { name: "GLOBAL", href: "#presence" },
     { name: "CONTACT", href: "#contact" },

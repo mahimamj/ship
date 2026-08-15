@@ -6,7 +6,6 @@ import { CinematicNavbar } from "./components/CinematicNavbar";
 import { InteractiveCinematicHero } from "./components/InteractiveCinematicHero";
 import { Section2StatementStats } from "./components/Section2StatementStats";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
-import { InteractiveFreightCalculator } from "./components/InteractiveFreightCalculator";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
 import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
 import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
@@ -57,11 +56,6 @@ export default function Home() {
       {/* Section 3: Interactive Vertical Capabilities */}
       <InteractiveVerticalCapabilities
         onSelectService={() => setIsQuoteOpen(true)}
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
-
-      {/* Solarpanti-Style Live Freight & TEU Logistics Engineering Calculator */}
-      <InteractiveFreightCalculator
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
