@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search, FileText } from "lucide-react";
 
 interface CinematicNavbarProps {
   onOpenQuote?: () => void;
+  onOpenCommandPalette?: () => void;
 }
 
-export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote }) => {
+export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, onOpenCommandPalette }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -21,6 +22,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
   const navItems = [
     { name: "ABOUT", href: "#about" },
     { name: "CAPABILITIES", href: "#capabilities" },
+    { name: "CALCULATOR", href: "#freight-calculator" },
     { name: "FLEET", href: "#vessels" },
     { name: "GLOBAL", href: "#presence" },
     { name: "CONTACT", href: "#contact" },
@@ -50,7 +52,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-[rgba(7,26,43,0.12)] py-4"
+          ? "bg-[#071A2B]/95 backdrop-blur-md border-b border-[#176B87]/30 py-4 shadow-2xl"
           : "bg-transparent py-6 md:py-8"
       }`}
     >
@@ -61,44 +63,54 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
             alt="Oceanic Star Fleet"
             className="h-9 w-auto object-contain"
           />
-          <span
-            className={`hidden sm:block font-syne text-sm font-bold tracking-[0.15em] transition-colors duration-500 ${
-              scrolled ? "text-[#071A2B]" : "text-white"
-            }`}
-          >
+          <span className="hidden sm:block font-syne text-sm font-bold tracking-[0.15em] text-white">
             OCEANIC STAR
           </span>
         </a>
 
         {/* Desktop Nav Links */}
-        <nav
-          className={`hidden lg:flex items-center gap-10 text-[11px] font-mono tracking-[0.2em] ${
-            scrolled ? "text-[#071A2B]" : "text-white/90"
-          }`}
-        >
+        <nav className="hidden lg:flex items-center gap-8 text-[11px] font-mono tracking-[0.2em] text-white/90">
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className="relative py-1 hover:text-[#176B87] transition-colors duration-300 cursor-pointer"
+              className="relative py-1 hover:text-[#00D26A] transition-colors duration-300 cursor-pointer"
             >
               {item.name}
             </a>
           ))}
         </nav>
 
+        {/* Solarpanti-Style Actions: Command Search & Quote Trigger */}
+        <div className="hidden sm:flex items-center gap-3">
+          {onOpenCommandPalette && (
+            <button
+              onClick={onOpenCommandPalette}
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs transition-all"
+            >
+              <Search className="w-3.5 h-3.5 text-[#00D26A]" />
+              <span className="text-[11px] font-mono">Search</span>
+              <kbd className="px-1.5 py-0.5 rounded bg-black/40 text-[9px] font-mono text-slate-300 border border-white/10">⌘K</kbd>
+            </button>
+          )}
+
+          {onOpenQuote && (
+            <button
+              onClick={onOpenQuote}
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#176B87] to-[#00D26A] text-white text-xs font-bold font-mono tracking-wider shadow-lg hover:opacity-90 transition-all"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>GET PROPOSAL</span>
+            </button>
+          )}
+        </div>
+
         {/* Mobile Menu Toggle Button */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`lg:hidden p-2.5 rounded-xl border transition-all ${
-            scrolled
-              ? "text-[#071A2B] bg-[#F5F5F2] border-[rgba(7,26,43,0.12)]"
-              : "text-white bg-white/10 border-white/20"
-          }`}
+          className="lg:hidden p-2.5 rounded-xl border text-white bg-white/10 border-white/20"
           aria-label="Toggle menu"
-          data-cursor
-          data-cursor-text="MENU"
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -112,38 +124,45 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote })
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden bg-white border-b border-[rgba(7,26,43,0.12)] overflow-hidden shadow-2xl"
+            className="lg:hidden bg-[#071A2B] border-b border-[#176B87]/30 overflow-hidden shadow-2xl"
           >
-            <div className="px-8 py-8 flex flex-col gap-6">
+            <div className="px-8 py-8 flex flex-col gap-5 text-white">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-base font-mono font-bold tracking-[0.2em] text-[#071A2B] hover:text-[#176B87] transition-colors py-2 border-b border-slate-100 cursor-pointer flex items-center justify-between"
+                  className="text-sm font-mono font-bold tracking-[0.2em] text-white hover:text-[#00D26A] transition-colors py-2 border-b border-white/10 cursor-pointer flex items-center justify-between"
                 >
                   <span>{item.name}</span>
-                  <span className="text-xs text-[#176B87]">→</span>
+                  <span className="text-xs text-[#00D26A]">→</span>
                 </a>
               ))}
+
+              {onOpenCommandPalette && (
+                <button
+                  onClick={() => {
+                    setMobileOpen(false);
+                    onOpenCommandPalette();
+                  }}
+                  className="py-2.5 px-4 rounded-xl bg-white/10 border border-white/20 text-xs font-mono font-bold flex items-center justify-between text-white"
+                >
+                  <span className="flex items-center gap-2">
+                    <Search className="w-4 h-4 text-[#00D26A]" /> Search Command Palette
+                  </span>
+                  <span className="text-[10px] bg-black/40 px-2 py-0.5 rounded font-mono">Ctrl+K</span>
+                </button>
+              )}
+
               {onOpenQuote && (
                 <button
                   onClick={() => {
                     setMobileOpen(false);
                     onOpenQuote();
-                    setTimeout(() => {
-                      const contactSection = document.querySelector("#contact");
-                      if (contactSection) {
-                        const topOffset = contactSection.getBoundingClientRect().top + window.scrollY - 70;
-                        window.scrollTo({ top: topOffset, behavior: "smooth" });
-                      }
-                    }, 150);
                   }}
-                  className="mt-2 text-left text-sm font-mono font-bold tracking-[0.2em] text-[#176B87] hover:text-[#071A2B] transition-colors py-2 flex items-center gap-2 cursor-pointer"
-                  data-cursor
-                  data-cursor-text="OPEN"
+                  className="py-3 px-4 rounded-xl bg-gradient-to-r from-[#176B87] to-[#00D26A] text-white font-mono font-bold text-xs flex items-center justify-center gap-2 shadow-lg"
                 >
-                  <span>START A CONVERSATION →</span>
+                  <FileText className="w-4 h-4" /> START 4-STEP PROPOSAL WIZARD
                 </button>
               )}
             </div>
