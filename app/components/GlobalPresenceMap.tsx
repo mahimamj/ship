@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Compass, Globe, Ship, Clock, Users, Phone, Mail, Plus, Minus, Navigation } from "lucide-react";
+import { Compass, Globe, Ship, Clock, Users, Plus, Minus, Navigation } from "lucide-react";
+import { initGSAP } from "@/lib/gsapHelper";
 
-type HubKey = "dubai" | "mumbai" | "colombo";
+type HubKey = "dubai" | "mumbai" | "colombo" | "turkey";
 
 interface HubInfo {
   id: HubKey;
@@ -23,9 +24,36 @@ interface HubInfo {
 
 export const GlobalPresenceMap: React.FC = () => {
   const [activeHub, setActiveHub] = useState<HubKey>("colombo");
+  const sectionRef = useRef<HTMLDivElement>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const leafletMapRef = useRef<any>(null);
   const markersRef = useRef<Record<string, any>>({});
+
+  const hubOrder: HubKey[] = ["dubai", "mumbai", "colombo", "turkey"];
+
+  useEffect(() => {
+    const { ScrollTrigger, gsap } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 30%",
+        end: "bottom 70%",
+        onUpdate: (self) => {
+          const index = Math.min(
+            hubOrder.length - 1,
+            Math.floor(self.progress * hubOrder.length)
+          );
+          const targetKey = hubOrder[index];
+          if (targetKey && targetKey !== activeHub) {
+            handleSelectHub(targetKey);
+          }
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [activeHub]);
 
   const hubs: Record<HubKey, HubInfo> = {
     dubai: {
@@ -70,6 +98,20 @@ export const GlobalPresenceMap: React.FC = () => {
       email: "colombo@oceanicstar.com",
       licenseBadge: "Sri Lanka Merchant Shipping Approved",
     },
+    turkey: {
+      id: "turkey",
+      pillLabel: "ISTANBUL // TURKEY",
+      badgeLabel: "ISTANBUL\nTURKEY",
+      city: "Istanbul (Çekmeköy)",
+      country: "Turkey",
+      entity: "Oceanic Star Shipping Turkey",
+      coords: [41.0336, 29.1763],
+      roles: ["Eurasia Maritime Operations", "Bosphorus Transit & Port Agency", "Technical Support & Logistics"],
+      address: "Mimar Sinan Mah. Bosna Cad. Çolpan Sok. No.2, Uzunlar Apt. A Blok D.4, 34782 Çekmeköy - İstanbul / TURKEY",
+      phone: "+91 90043 90041",
+      email: "info@oceanicstarshipping.com",
+      licenseBadge: "Turkish Maritime Administration Approved",
+    },
   };
 
   const selected = hubs[activeHub];
@@ -86,10 +128,10 @@ export const GlobalPresenceMap: React.FC = () => {
       if (mapContainerRef.current.dataset.leafletInitialized) return;
       mapContainerRef.current.dataset.leafletInitialized = "true";
 
-      // Initial center over Indian Ocean / Middle East
+      // Initial center over Eurasia / Middle East
       mapInstance = L.map(mapContainerRef.current, {
-        center: [16.5, 67.5],
-        zoom: 4,
+        center: [24.0, 56.0],
+        zoom: 3.5,
         zoomControl: false,
         attributionControl: false,
       });
@@ -132,6 +174,7 @@ export const GlobalPresenceMap: React.FC = () => {
       const dubaiCoords = hubs.dubai.coords;
       const mumbaiCoords = hubs.mumbai.coords;
       const colomboCoords = hubs.colombo.coords;
+      const turkeyCoords = hubs.turkey.coords;
 
       // Curved routes
       L.polyline([dubaiCoords, mumbaiCoords], {
@@ -142,6 +185,13 @@ export const GlobalPresenceMap: React.FC = () => {
       }).addTo(mapInstance);
 
       L.polyline([mumbaiCoords, colomboCoords], {
+        color: "#176B87",
+        weight: 2.5,
+        dashArray: "6, 8",
+        opacity: 0.8,
+      }).addTo(mapInstance);
+
+      L.polyline([dubaiCoords, turkeyCoords], {
         color: "#176B87",
         weight: 2.5,
         dashArray: "6, 8",
@@ -185,7 +235,7 @@ export const GlobalPresenceMap: React.FC = () => {
   };
 
   return (
-    <section id="presence" className="py-20 sm:py-32 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+    <section id="presence" ref={sectionRef} className="py-20 sm:py-32 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
       <div id="global" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
@@ -194,7 +244,7 @@ export const GlobalPresenceMap: React.FC = () => {
             GLOBAL PRESENCE
           </span>
           <h2 className="font-jakarta text-3xl sm:text-5xl font-extrabold text-[#071A2B] tracking-tight">
-            Three Hubs. One Connected Network.
+            Global Network. Four Strategic Hubs.
           </h2>
           <p className="text-sm font-manrope text-[#667783] mt-2 font-light max-w-xl">
             Strategically located across key maritime regions to deliver seamless support and global reach.
@@ -203,7 +253,7 @@ export const GlobalPresenceMap: React.FC = () => {
 
         {/* Location Selection Controls (Pill Buttons) */}
         <div className="flex flex-wrap items-center gap-3 mb-8">
-          {(["dubai", "mumbai", "colombo"] as const).map((key) => {
+          {(["dubai", "mumbai", "colombo", "turkey"] as const).map((key) => {
             const hub = hubs[key];
             const isActive = activeHub === key;
             return (
@@ -237,8 +287,8 @@ export const GlobalPresenceMap: React.FC = () => {
                 <Navigation className="w-4 h-4 text-[#071A2B] transform -rotate-45" />
               </div>
 
-              {/* Bottom Right Zoom Controls */}
-              <div className="absolute bottom-6 right-6 z-10 flex flex-col bg-white border border-[rgba(7,26,43,0.12)] rounded-xl shadow-md overflow-hidden">
+              {/* Top Right Zoom Controls */}
+              <div className="absolute top-6 right-6 z-10 flex flex-col bg-white border border-[rgba(7,26,43,0.12)] rounded-xl shadow-md overflow-hidden">
                 <button
                   onClick={handleZoomIn}
                   className="p-2.5 text-[#071A2B] hover:bg-slate-100 border-b border-slate-100 transition"
@@ -263,7 +313,7 @@ export const GlobalPresenceMap: React.FC = () => {
                   <Globe className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="font-jakarta font-extrabold text-lg text-[#071A2B] block leading-none">3</span>
+                  <span className="font-jakarta font-extrabold text-lg text-[#071A2B] block leading-none">4</span>
                   <span className="text-[10px] font-mono tracking-wider text-[#667783] uppercase">STRATEGIC HUBS</span>
                 </div>
               </div>

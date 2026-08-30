@@ -36,7 +36,7 @@ export function MaritimeCommandPalette({ isOpen, onClose, onOpenQuote, onOpenCal
   const actions = [
     {
       id: "quote",
-      title: "Request Instant Freight & Vessel Quote",
+      title: "Request Instant Commercial Vessel Quote",
       category: "Tools & Forms",
       icon: FileText,
       action: () => {
@@ -46,7 +46,7 @@ export function MaritimeCommandPalette({ isOpen, onClose, onOpenQuote, onOpenCal
     },
     {
       id: "calculator",
-      title: "Launch Freight & TEU Logistics Calculator",
+      title: "Launch TEU & Voyage Calculator",
       category: "Tools & Forms",
       icon: Calculator,
       action: () => {

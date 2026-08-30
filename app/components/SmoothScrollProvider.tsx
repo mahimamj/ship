@@ -1,15 +1,18 @@
 "use client";
 
 import React, { useEffect } from "react";
+import { initGSAP } from "@/lib/gsapHelper";
 
 export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
     let lenis: any;
-    let rafId: number;
+    let tickerFn: (time: number) => void;
 
-    const initLenis = async () => {
+    const initSmoothScroll = async () => {
       try {
+        const { gsap, ScrollTrigger } = initGSAP();
         const LenisModule = (await import("lenis")).default;
+
         lenis = new LenisModule({
           duration: 1.2,
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -17,23 +20,28 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
           infinite: false,
         });
 
-        function raf(time: number) {
-          lenis.raf(time);
-          rafId = requestAnimationFrame(raf);
-        }
-        rafId = requestAnimationFrame(raf);
+        lenis.on("scroll", ScrollTrigger.update);
+
+        tickerFn = (time: number) => {
+          lenis.raf(time * 1000);
+        };
+
+        gsap.ticker.add(tickerFn);
+        gsap.ticker.lagSmoothing(0);
       } catch (e) {
         console.warn("Lenis smooth scroll fallback", e);
       }
     };
 
-    initLenis();
+    initSmoothScroll();
 
     return () => {
-      if (rafId) cancelAnimationFrame(rafId);
-      if (lenis) lenis.destroy();
+      if (lenis) {
+        lenis.destroy();
+      }
     };
   }, []);
 
   return <>{children}</>;
 };
+

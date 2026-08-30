@@ -31,10 +31,10 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   const steps = [
-    { num: 1, label: "Service" },
-    { num: 2, label: "Cargo Specs" },
-    { num: 3, label: "Route & Date" },
-    { num: 4, label: "Proposal Summary" },
+    { num: 1, title: "Step 1", label: "Service" },
+    { num: 2, title: "Step 2", label: "Cargo Specs" },
+    { num: 3, title: "Step 3", label: "Route & Date" },
+    { num: 4, title: "Step 4", label: "Proposal Summary" },
   ];
 
   // Dynamic estimate calculation based on state
@@ -84,7 +84,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
               <Calculator size={24} />
             </div>
             <div>
-              <h3 className="text-xl sm:text-2xl font-bold font-jakarta text-white">4-Step Freight &amp; Vessel Quote Wizard</h3>
+              <h3 className="text-xl sm:text-2xl font-bold font-jakarta text-white">4-Step Instant Vessel Quote Wizard</h3>
               <p className="text-xs text-[#00D26A] font-mono font-semibold">Instant Commercial Proposal Engine</p>
             </div>
           </div>
@@ -104,7 +104,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       : "bg-[#071A2B]/40 border-white/10 text-slate-400"
                   }`}
                 >
-                  <div className="text-[10px] font-mono uppercase font-bold text-slate-300">Step {s.num}</div>
+                  <div className="text-[10px] font-mono uppercase font-bold text-slate-300">{s.title}</div>
                   <div className="text-xs font-bold truncate">{s.label}</div>
                 </div>
               ))}

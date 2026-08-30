@@ -1,108 +1,137 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
-
-function CountUpNumber({ end, suffix = "", duration = 2 }: { end: number; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
-
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const increment = end / (duration * 60);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 1000 / 60);
-
-    return () => clearInterval(timer);
-  }, [inView, end, duration]);
-
-  return (
-    <span ref={ref}>
-      {count}
-      {suffix}
-    </span>
-  );
-}
+import React, { useRef, useEffect } from "react";
+import { initGSAP } from "@/lib/gsapHelper";
 
 export const Section2StatementStats: React.FC = () => {
-  const headlineRef = useRef<HTMLDivElement>(null);
-  const isHeadlineInView = useInView(headlineRef, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const num1Ref = useRef<HTMLSpanElement>(null);
+  const num2Ref = useRef<HTMLSpanElement>(null);
+  const num3Ref = useRef<HTMLSpanElement>(null);
+  const num4Ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const { gsap } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      // Headline word reveal
+      if (headlineRef.current) {
+        gsap.fromTo(
+          headlineRef.current.children,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: headlineRef.current,
+              start: "top 85%",
+            },
+          }
+        );
+      }
+
+      // Count up helper
+      const animateValue = (targetRef: React.RefObject<HTMLSpanElement | null>, endVal: number, padZero = false) => {
+        if (!targetRef.current) return;
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: endVal,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: targetRef.current,
+            start: "top 90%",
+          },
+          onUpdate: () => {
+            if (targetRef.current) {
+              const currentInt = Math.floor(obj.val);
+              targetRef.current.innerText = padZero && currentInt < 10 ? `0${currentInt}` : `${currentInt}`;
+            }
+          },
+        });
+      };
+
+      animateValue(num1Ref, 24);
+      animateValue(num2Ref, 59);
+      animateValue(num3Ref, 3, true);
+      animateValue(num4Ref, 24);
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const headlineText = "24+ YEARS OF MOVING WHAT MATTERS.";
   const words = headlineText.split(" ");
 
-  const stats = [
-    { value: 24, suffix: "+", label: "YEARS IN MARITIME OPERATIONS" },
-    { value: 59, suffix: "", label: "VESSELS UNDER TECHNICAL MANAGEMENT" },
-    { value: 3, suffix: " HUBS", label: "GLOBAL OPERATIONAL COMMAND HUBS" },
-    { value: 24, suffix: "/7", label: "ROUND-THE-CLOCK FLEET DISPATCH" },
-  ];
-
   return (
-    <section id="about" className="relative py-28 md:py-40 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+    <section id="about" ref={sectionRef} className="relative py-28 md:py-40 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        {/* Monospace label */}
-        <p className="label-mono text-[#667783] mb-8 font-semibold tracking-widest text-xs">
+        <p className="label-mono text-[#176B87] mb-8 font-semibold tracking-widest text-xs">
           // HERITAGE & OPERATIONAL SCALE
         </p>
 
-        {/* Word-by-word animated headline */}
-        <div ref={headlineRef} className="max-w-5xl mb-24 md:mb-36">
-          <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-[#071A2B]">
+        {/* Headline */}
+        <div className="max-w-5xl mb-24 md:mb-36">
+          <h2 ref={headlineRef} className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-[#071A2B]">
             {words.map((word, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isHeadlineInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="inline-block mr-[0.3em] last:mr-0"
-              >
+              <span key={i} className="inline-block mr-[0.3em] last:mr-0">
                 {word}
-              </motion.span>
+              </span>
             ))}
           </h2>
         </div>
 
-        {/* Massive statistics with generous whitespace - NO CARDS */}
+        {/* Statistics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 pt-12 border-t border-[rgba(7,26,43,0.12)]">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="flex flex-col justify-between"
-            >
-              <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
-                {stat.value === 3 ? (
-                  <>
-                    0<CountUpNumber end={stat.value} />
-                    <span className="text-3xl sm:text-4xl text-[#176B87] font-semibold">{stat.suffix}</span>
-                  </>
-                ) : (
-                  <>
-                    <CountUpNumber end={stat.value} />
-                    <span className="text-[#176B87]">{stat.suffix}</span>
-                  </>
-                )}
-              </div>
-              <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
+          {/* Stat 1 */}
+          <div className="flex flex-col justify-between">
+            <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
+              <span ref={num1Ref}>0</span>
+              <span className="text-[#176B87]">+</span>
+            </div>
+            <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
+              YEARS IN MARITIME OPERATIONS
+            </p>
+          </div>
+
+          {/* Stat 2 */}
+          <div className="flex flex-col justify-between">
+            <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
+              <span ref={num2Ref}>0</span>
+            </div>
+            <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
+              VESSELS UNDER TECHNICAL MANAGEMENT
+            </p>
+          </div>
+
+          {/* Stat 3 */}
+          <div className="flex flex-col justify-between">
+            <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
+              <span ref={num3Ref}>00</span>
+              <span className="text-3xl sm:text-4xl text-[#176B87] font-semibold"> HUBS</span>
+            </div>
+            <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
+              GLOBAL OPERATIONAL COMMAND HUBS
+            </p>
+          </div>
+
+          {/* Stat 4 */}
+          <div className="flex flex-col justify-between">
+            <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
+              <span ref={num4Ref}>0</span>
+              <span className="text-[#176B87]">/7</span>
+            </div>
+            <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
+              ROUND-THE-CLOCK FLEET DISPATCH
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+

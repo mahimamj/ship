@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { CAPABILITIES } from "@/lib/content/capabilities";
+import { initGSAP } from "@/lib/gsapHelper";
 
 interface CapabilitiesProps {
   onSelectService?: (title: string) => void;
@@ -15,18 +15,49 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
   onOpenQuote,
 }) => {
   const [activeIdx, setActiveIdx] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const { gsap, ScrollTrigger } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      // Desktop: ScrollTrigger updates activeIdx progressively as user scrolls through section
+      mm.add("(min-width: 1024px)", () => {
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top 20%",
+          end: "bottom 80%",
+          onUpdate: (self) => {
+            const index = Math.min(
+              CAPABILITIES.length - 1,
+              Math.floor(self.progress * CAPABILITIES.length)
+            );
+            setActiveIdx(index);
+          },
+        });
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const activeCap = CAPABILITIES[activeIdx];
 
   return (
-    <section id="capabilities" className="relative py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+    <section
+      id="capabilities"
+      ref={sectionRef}
+      className="relative py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]"
+    >
       <div id="services" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-10 mb-16 gap-8">
           <div>
             <span className="label-mono text-[#176B87] mb-3 block font-semibold">
-              // CORE CAPABILITIES & MARITIME SERVICES
+              // CORE CAPABILITIES &amp; MARITIME SERVICES
             </span>
             <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
               OUR CAPABILITIES
@@ -45,10 +76,11 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
             {CAPABILITIES.map((cap, idx) => {
               const isActive = activeIdx === idx;
               return (
-                <motion.div
+                <div
                   key={cap.id}
                   onMouseEnter={() => setActiveIdx(idx)}
                   onClick={() => {
+                    setActiveIdx(idx);
                     if (onSelectService) onSelectService(cap.title);
                     else if (onOpenQuote) onOpenQuote();
                   }}
@@ -88,48 +120,41 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
 
                   <div
                     className={`w-10 h-10 rounded-full border border-[rgba(7,26,43,0.12)] flex items-center justify-center transition-all duration-500 ${
-                      isActive ? "bg-[#071A2B] text-white border-[#071A2B] rotate-45 scale-110" : "text-[#071A2B] group-hover:border-[#071A2B]"
+                      isActive
+                        ? "bg-[#071A2B] text-white border-[#071A2B] rotate-45 scale-110"
+                        : "text-[#071A2B] group-hover:border-[#071A2B]"
                     }`}
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
 
-          {/* Right Image/Video Dynamic Preview Surface */}
+          {/* Right Image Dynamic Preview Surface */}
           <div className="lg:col-span-5 lg:sticky lg:top-32">
             <div className="relative h-[480px] sm:h-[540px] w-full rounded-2xl overflow-hidden bg-[#071A2B] border border-[rgba(7,26,43,0.12)] shadow-2xl">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCap.id}
-                  initial={{ opacity: 0, scale: 1.08 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0"
-                >
-                  <img
-                    src={activeCap.image}
-                    alt={activeCap.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B]/90 via-[#071A2B]/20 to-transparent" />
+              <div className="absolute inset-0 transition-opacity duration-500">
+                <img
+                  src={activeCap.image}
+                  alt={activeCap.title}
+                  className="w-full h-full object-cover transition-transform duration-700 scale-100 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B]/90 via-[#071A2B]/20 to-transparent" />
 
-                  <div className="absolute bottom-8 left-8 right-8 text-white">
-                    <span className="font-mono text-xs tracking-widest text-[#176B87] uppercase font-bold block mb-2">
-                      CAPABILITY // {activeCap.number}
-                    </span>
-                    <h4 className="font-syne text-2xl sm:text-3xl font-extrabold mb-2">
-                      {activeCap.title}
-                    </h4>
-                    <p className="text-xs text-white/80 font-manrope font-light leading-relaxed">
-                      {activeCap.description}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                <div className="absolute bottom-8 left-8 right-8 text-white">
+                  <span className="font-mono text-xs tracking-widest text-[#00D26A] uppercase font-bold block mb-2">
+                    CAPABILITY // {activeCap.number}
+                  </span>
+                  <h4 className="font-syne text-2xl sm:text-3xl font-extrabold mb-2">
+                    {activeCap.title}
+                  </h4>
+                  <p className="text-xs text-white/80 font-manrope font-light leading-relaxed">
+                    {activeCap.description}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -137,3 +162,4 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
     </section>
   );
 };
+

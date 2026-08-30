@@ -27,11 +27,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
 
   const navLinks = [
     { name: "About Us", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Fleet Vessels", href: "#vessels" },
-    { name: "Technical Mgmt", href: "#technical" },
-    { name: "Crewing", href: "#crew" },
-    { name: "Careers", href: "#careers" },
+    { name: "Capabilities", href: "#capabilities" },
+    { name: "Careers (Shore & Sea)", href: "#careers" },
     { name: "Global Hubs", href: "#presence" },
     { name: "Contact", href: "#contact" },
   ];

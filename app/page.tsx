@@ -2,8 +2,16 @@
 
 import React, { useState } from "react";
 import { CinematicCustomCursor } from "./components/CinematicCustomCursor";
+import { ScrollProgressBar } from "./components/ScrollProgressBar";
 import { CinematicNavbar } from "./components/CinematicNavbar";
-import { InteractiveCinematicHero } from "./components/InteractiveCinematicHero";
+import { FullPageLayerStack } from "./components/FullPageLayerStack";
+import {
+  CinematicHeroLayer,
+  CinematicVisionLayer,
+  CinematicMissionLayer,
+} from "./components/CinematicScrollStory";
+import { SplitScreenStory } from "./components/SplitScreenStory";
+import { FleetSilhouetteStats } from "./components/FleetSilhouetteStats";
 import { Section2StatementStats } from "./components/Section2StatementStats";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
@@ -12,8 +20,8 @@ import { CinematicOperationsSection } from "./components/CinematicOperationsSect
 import { HorizontalTimelineSection } from "./components/HorizontalTimelineSection";
 import { CertificationsMarquee } from "./components/CertificationsMarquee";
 import { CertificationsSection } from "./components/CertificationsSection";
-import { MissionVisionSplit } from "./components/MissionVisionSplit";
 import { WhyUsStatementSection } from "./components/WhyUsStatementSection";
+import { CareersSection } from "./components/CareersSection";
 import { FinalCinematicCTA } from "./components/FinalCinematicCTA";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
@@ -34,9 +42,10 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased overflow-x-hidden selection:bg-[#176B87] selection:text-white">
-      {/* Custom Cursor */}
+    <div className="min-h-screen bg-[#071A2B] text-white font-sans antialiased overflow-x-hidden selection:bg-[#176B87] selection:text-white">
+      {/* Custom Cursor & Scroll Progress Indicator Bar */}
       <CinematicCustomCursor />
+      <ScrollProgressBar />
 
       {/* Minimal Top Header Navbar */}
       <CinematicNavbar
@@ -44,51 +53,61 @@ export default function Home() {
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
-      {/* Hero Section with Live Port & Tracking Search */}
-      <InteractiveCinematicHero
+      {/* 01: Hero Space */}
+      <CinematicHeroLayer
         onOpenVideoModal={() => setIsVideoModalOpen(true)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* Section 2: Statement & Count-Up Stats */}
+      {/* 02: Pinned Split-Screen Story (Screenshot 2: Our Vision & Our Mission) */}
+      <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* 03: Blue Fleet Silhouette Statistics (Screenshot 3: 59 Vessels & 29 Ships) */}
+      <FleetSilhouetteStats onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* 04: Heritage & Scale Statistics */}
       <Section2StatementStats />
 
-      {/* Section 3: Interactive Vertical Capabilities */}
+      {/* 05: Core Capabilities */}
       <InteractiveVerticalCapabilities
         onSelectService={() => setIsQuoteOpen(true)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* Section 4: Global Presence Vector Map */}
+      {/* 06: Global Presence Network Map */}
       <GlobalPresenceMap />
 
-      {/* Section 5: Fleet Visualization Breakdown */}
+      {/* 07: Fleet Matrix & AIS Telemetry */}
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* Section 6: Cinematic Operations (01 AT SEA, 02 ON BOARD, 03 ON SHORE) */}
+      {/* 08: Cinematic Operations (01 AT SEA, 02 ON BOARD, 03 ON SHORE) */}
       <CinematicOperationsSection />
 
-      {/* Section 7: Horizontal Timeline */}
+      {/* 09: Company Timeline */}
       <HorizontalTimelineSection />
 
-      {/* Section 8: Certifications Marquee & Full Accreditation Grid */}
-      <CertificationsMarquee />
-      <CertificationsSection />
+      {/* 10: Certifications & Accreditations */}
+      <div className="bg-[#F5F5F2] text-[#071A2B]">
+        <CertificationsMarquee />
+        <CertificationsSection />
+      </div>
 
-      {/* Section 9: Mission & Vision Split */}
-      <MissionVisionSplit />
-
-      {/* Section 10: Why Choose Us Statement Section */}
+      {/* 11: Why Choose Us */}
       <WhyUsStatementSection />
 
-      {/* Section 11: Final Cinematic CTA */}
+      {/* 12: Careers Section (At Shore & At Sea) */}
+      <CareersSection
+        onOpenApplyModal={(jobTitle) => setCareerModalState({ isOpen: true, jobTitle })}
+      />
+
+      {/* 13: Final Commercial CTA */}
       <FinalCinematicCTA onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* Section 12: Contact Operations */}
-      <ContactSection />
-
-      {/* Section 13: Footer */}
-      <Footer />
+      {/* 14: Contact Operations & Footer */}
+      <div className="bg-[#F5F5F2] text-[#071A2B]">
+        <ContactSection />
+        <Footer />
+      </div>
 
       {/* Lightbox & Proposal Modals */}
       <FleetVideoModal
@@ -125,3 +144,4 @@ export default function Home() {
     </div>
   );
 }
+

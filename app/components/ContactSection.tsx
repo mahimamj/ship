@@ -112,6 +112,32 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
+            {/* Turkey Office Card */}
+            <div className="bg-white rounded-3xl p-8 border border-[rgba(7,26,43,0.12)] shadow-sm space-y-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#176B87] flex items-center justify-center font-bold">
+                  🇹🇷
+                </div>
+                <div>
+                  <h3 className="font-syne text-lg font-bold text-[#071A2B]">
+                    Oceanic Star Shipping Turkey
+                  </h3>
+                  <p className="text-xs font-mono text-[#176B87] font-semibold">Istanbul Branch Office</p>
+                </div>
+              </div>
+
+              <div className="text-xs font-manrope text-[#667783] space-y-2.5 pt-4 border-t border-[rgba(7,26,43,0.12)]">
+                <p className="flex items-start space-x-2">
+                  <MapPin className="w-4 h-4 text-[#176B87] shrink-0 mt-0.5" />
+                  <span>Mimar Sinan Mah. Bosna Cad. Çolpan Sok. No.2, Uzunlar Apt. A Blok D.4, 34782 Çekmeköy - İstanbul / TURKEY</span>
+                </p>
+                <p className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4 text-[#176B87] shrink-0" />
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#071A2B] transition font-bold">info@oceanicstarshipping.com</a>
+                </p>
+              </div>
+            </div>
+
             {/* Direct WhatsApp Quick Contact */}
             <a
               href="https://wa.me/919004390041?text=Hello%20Oceanic%20Star%20Fleet%2C%20I%20would%20like%20to%20inquire%20about%20your%20maritime%20services."

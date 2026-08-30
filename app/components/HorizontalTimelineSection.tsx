@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { initGSAP } from "@/lib/gsapHelper";
 
 export const HorizontalTimelineSection: React.FC = () => {
   const [activeIdx, setActiveIdx] = useState(0);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const timelineData = [
     {
@@ -45,18 +46,39 @@ export const HorizontalTimelineSection: React.FC = () => {
     },
   ];
 
+  useEffect(() => {
+    const { ScrollTrigger, gsap } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 30%",
+        end: "bottom 70%",
+        onUpdate: (self) => {
+          const index = Math.min(
+            timelineData.length - 1,
+            Math.floor(self.progress * timelineData.length)
+          );
+          setActiveIdx(index);
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [timelineData.length]);
+
   const current = timelineData[activeIdx];
 
   return (
-    <section className="py-20 md:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
+    <section ref={sectionRef} className="py-20 md:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-8 mb-12 gap-6">
           <div>
             <span className="label-mono text-[#176B87] mb-2.5 block font-semibold">
-              // HISTORICAL PROGRESSION & MILESTONES
+              // HISTORICAL PROGRESSION &amp; MILESTONES
             </span>
-            <h2 className="font-jakarta text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#071A2B] leading-none">
+            <h2 className="font-syne text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#071A2B] leading-none">
               COMPANY TIMELINE
             </h2>
           </div>
@@ -81,15 +103,15 @@ export const HorizontalTimelineSection: React.FC = () => {
                 data-cursor-text="YEAR"
               >
                 <span
-                  className={`font-jakarta text-2xl sm:text-4xl font-extrabold transition-colors ${
+                  className={`font-syne text-2xl sm:text-4xl font-extrabold transition-colors ${
                     isActive ? "text-[#071A2B]" : "text-[#667783]"
                   }`}
                 >
                   {item.year}
                 </span>
                 <div
-                  className={`h-1 w-full mt-1.5 rounded-full transition-all ${
-                    isActive ? "bg-[#176B87]" : "bg-transparent"
+                  className={`h-1 w-full mt-1.5 rounded-full transition-all duration-300 ${
+                    isActive ? "bg-[#00D26A]" : "bg-transparent"
                   }`}
                 />
               </button>
@@ -100,42 +122,27 @@ export const HorizontalTimelineSection: React.FC = () => {
         {/* Milestone Detail Surface */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-6 space-y-4">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.year}
-                initial={{ opacity: 0, x: -15 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 15 }}
-                transition={{ duration: 0.35 }}
-                className="space-y-3"
-              >
-                <span className="font-mono text-xs font-bold text-[#176B87] tracking-widest">
-                  MILESTONE // {current.year}
-                </span>
-                <h3 className="font-jakarta text-xl sm:text-3xl font-extrabold text-[#071A2B] leading-tight break-words">
-                  {current.title}
-                </h3>
-                <p className="text-xs sm:text-sm font-manrope font-light text-[#667783] leading-relaxed max-w-xl">
-                  {current.desc}
-                </p>
-              </motion.div>
-            </AnimatePresence>
+            <div className="space-y-3 transition-all duration-500">
+              <span className="font-mono text-xs font-bold text-[#00D26A] tracking-widest uppercase">
+                MILESTONE // {current.year}
+              </span>
+              <h3 className="font-syne text-xl sm:text-3xl font-extrabold text-[#071A2B] leading-tight break-words">
+                {current.title}
+              </h3>
+              <p className="text-xs sm:text-sm font-manrope font-light text-[#667783] leading-relaxed max-w-xl">
+                {current.desc}
+              </p>
+            </div>
           </div>
 
           <div className="lg:col-span-6">
             <div className="h-[280px] sm:h-[380px] rounded-3xl overflow-hidden relative bg-[#071A2B] border border-[rgba(7,26,43,0.12)] shadow-lg">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={current.year}
-                  src={current.image}
-                  alt={current.title}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full h-full object-cover"
-                />
-              </AnimatePresence>
+              <img
+                key={current.year}
+                src={current.image}
+                alt={current.title}
+                className="w-full h-full object-cover transition-opacity duration-500 scale-100 hover:scale-105"
+              />
             </div>
           </div>
         </div>
@@ -143,3 +150,4 @@ export const HorizontalTimelineSection: React.FC = () => {
     </section>
   );
 };
+

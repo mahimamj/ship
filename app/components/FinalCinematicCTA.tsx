@@ -1,15 +1,18 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import { VIDEOS } from "@/lib/content/videos";
+import { initGSAP } from "@/lib/gsapHelper";
 
 interface FinalCTAProps {
   onOpenQuote?: () => void;
 }
 
 export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -18,10 +21,53 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
     }
   }, []);
 
+  useEffect(() => {
+    const { gsap } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      // Zoom background on scroll
+      if (bgRef.current) {
+        gsap.fromTo(
+          bgRef.current,
+          { scale: 1 },
+          {
+            scale: 1.12,
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 0.5,
+            },
+          }
+        );
+      }
+
+      // Fade up content
+      if (contentRef.current) {
+        gsap.fromTo(
+          contentRef.current,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 75%",
+            },
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative min-h-[85vh] w-full overflow-hidden bg-[#071A2B] text-white flex flex-col justify-center items-center text-center px-6 py-28">
+    <section ref={sectionRef} className="relative min-h-[85vh] w-full overflow-hidden bg-[#071A2B] text-white flex flex-col justify-center items-center text-center px-6 py-28">
       {/* Real ocean video background */}
-      <div className="absolute inset-0 z-0">
+      <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform">
         <video
           ref={videoRef}
           autoPlay
@@ -38,14 +84,8 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
       </div>
 
       {/* Content */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 max-w-4xl space-y-8"
-      >
-        <span className="label-mono text-white/70 font-semibold tracking-widest text-xs">
+      <div ref={contentRef} className="relative z-10 max-w-4xl space-y-8">
+        <span className="label-mono text-[#00D26A] font-bold tracking-widest text-xs">
           // INITIATE MARITIME PARTNERSHIP
         </span>
 
@@ -61,7 +101,7 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
           <div className="pt-4">
             <button
               onClick={onOpenQuote}
-              className="inline-flex items-center gap-4 text-xs font-mono tracking-[0.25em] text-[#071A2B] bg-white hover:bg-[#176B87] hover:text-white px-10 py-5 font-bold transition-all duration-500 shadow-2xl rounded-full"
+              className="inline-flex items-center gap-4 text-xs font-mono tracking-[0.25em] text-[#071A2B] bg-white hover:bg-[#00D26A] hover:text-[#071A2B] px-10 py-5 font-bold transition-all duration-500 shadow-2xl rounded-full"
               data-cursor
               data-cursor-text="OPEN"
             >
@@ -69,7 +109,8 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
             </button>
           </div>
         )}
-      </motion.div>
+      </div>
     </section>
   );
 };
+

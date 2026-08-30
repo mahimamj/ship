@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-[#667783]">
               <li><a href="#about" className="hover:text-[#176B87] transition">About Oceanic Star</a></li>
               <li><a href="#capabilities" className="hover:text-[#176B87] transition">Capabilities & Services</a></li>
-              <li><a href="#vessels" className="hover:text-[#176B87] transition">Vessel Fleet Matrix</a></li>
+              <li><a href="#careers" className="hover:text-[#176B87] transition">Careers (At Shore & At Sea)</a></li>
               <li><a href="#presence" className="hover:text-[#176B87] transition">Global Hubs</a></li>
               <li><a href="#contact" className="hover:text-[#176B87] transition">Contact Operations</a></li>
             </ul>
@@ -79,7 +79,11 @@ export const Footer: React.FC = () => {
                 <strong className="text-[#071A2B] block font-semibold">India HQ (Navi Mumbai):</strong>
                 <span>Real Tech Park, Sector 30A, Vashi, Navi Mumbai</span>
                 <span className="block text-[#176B87] font-mono mt-0.5">+91 22 2781 7171 / 72</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">Mob: +91 90043 90041</span>
+              </div>
+              <div>
+                <strong className="text-[#071A2B] block font-semibold">Turkey Office (Istanbul):</strong>
+                <span>Mimar Sinan Mah. Bosna Cad. Çolpan Sok. No.2, Çekmeköy, İstanbul</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarshipping.com</span>
               </div>
             </div>
           </div>

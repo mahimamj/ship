@@ -12,7 +12,7 @@ export function OceanicAIChatbotWidget({ onOpenQuote }: OceanicAIChatbotWidgetPr
   const [messages, setMessages] = useState<{ sender: "ai" | "user"; text: string }[]>([
     {
       sender: "ai",
-      text: "Hello! I am your Oceanic AI Maritime Assistant. How can I help you today with vessel management, freight rates, container tracking, or RPSL crew logistics?",
+      text: "Hello! I am your Oceanic AI Maritime Assistant. How can I help you today with vessel management, charter rates, container tracking, or RPSL crew management?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -30,9 +30,9 @@ export function OceanicAIChatbotWidget({ onOpenQuote }: OceanicAIChatbotWidgetPr
       let aiReply = "Thank you for reaching out! Our operations team in Dubai, India, and Sri Lanka can handle this custom request. You can also generate an instant proposal quote.";
       const queryLower = textToSend.toLowerCase();
 
-      if (queryLower.includes("freight") || queryLower.includes("rate") || queryLower.includes("quote") || queryLower.includes("cost")) {
-        aiReply = "Our freight rates depend on cargo volume (TEU/CBM) and route distance. You can use our interactive Freight Calculator or open the 4-step Instant Quote Wizard to get an automated cost proposal preview right now!";
-      } else if (queryLower.includes("crew") || queryLower.includes("rpsl") || queryLower.includes("logistics")) {
+      if (queryLower.includes("rate") || queryLower.includes("quote") || queryLower.includes("cost")) {
+        aiReply = "Our charter rates depend on vessel specs and route distance. You can open the 4-step Instant Quote Wizard to get an automated cost proposal preview right now!";
+      } else if (queryLower.includes("crew") || queryLower.includes("rpsl")) {
         aiReply = "Oceanic Star Fleet operates DG Shipping approved RPSL recruitment agencies in India and Sri Lanka, managing over 1,200+ certified officers, marine engineers, and ratings with 99.8% compliance.";
       } else if (queryLower.includes("track") || queryLower.includes("vessel") || queryLower.includes("location") || queryLower.includes("eta")) {
         aiReply = "You can track live vessel coordinates and container Bill of Lading (BL) status using our interactive Track & Trace tool directly on the homepage hero section.";
@@ -45,7 +45,7 @@ export function OceanicAIChatbotWidget({ onOpenQuote }: OceanicAIChatbotWidgetPr
   };
 
   const quickPrompts = [
-    "Calculate Freight Rates",
+    "Calculate Charter Rates",
     "RPSL Crew Verification",
     "Track Container Location",
     "Vessel Management Specs",
@@ -56,7 +56,7 @@ export function OceanicAIChatbotWidget({ onOpenQuote }: OceanicAIChatbotWidgetPr
       {/* Floating Launcher Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-[999] flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-[#0F2C59] to-[#176B87] text-white shadow-2xl hover:shadow-[#176B87]/50 border border-[#176B87]/50 hover:scale-105 active:scale-95 transition-all group"
+        className="fixed bottom-6 right-4 sm:right-6 z-40 flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-[#0F2C59] to-[#176B87] text-white shadow-2xl hover:shadow-[#176B87]/50 border border-[#176B87]/50 hover:scale-105 active:scale-95 transition-all group"
         aria-label="Open AI Maritime Assistant"
       >
         <div className="relative">
@@ -68,7 +68,7 @@ export function OceanicAIChatbotWidget({ onOpenQuote }: OceanicAIChatbotWidgetPr
 
       {/* Drawer Overlay */}
       {isOpen && (
-        <div className="fixed bottom-20 right-6 z-[999] w-96 max-w-[calc(100vw-2rem)] bg-[#071A2B] border border-[#176B87]/40 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[520px] animate-in slide-in-from-bottom-5 duration-200 text-white">
+        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[360px] sm:w-96 max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6.5rem)] bg-[#071A2B] border border-[#176B87]/40 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[520px] animate-in slide-in-from-bottom-5 duration-200 text-white">
           {/* Header */}
           <div className="flex items-center justify-between p-4 bg-[#0F2C59] border-b border-[#176B87]/30">
             <div className="flex items-center gap-2.5">
@@ -137,7 +137,7 @@ export function OceanicAIChatbotWidget({ onOpenQuote }: OceanicAIChatbotWidgetPr
               }}
               className="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-[#176B87] to-[#00D26A] text-white text-xs font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-md"
             >
-              <Ship className="w-3.5 h-3.5" /> Launch 4-Step Freight Quote Wizard <ArrowRight className="w-3.5 h-3.5" />
+              <Ship className="w-3.5 h-3.5" /> Launch 4-Step Instant Quote Wizard <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <div className="flex items-center gap-2">
               <input

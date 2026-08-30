@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Radar, Radio, Shield, X, Ship, FileText } from "lucide-react";
+import { initGSAP } from "@/lib/gsapHelper";
 
 interface FleetVisualizationSectionProps {
   onOpenQuote?: () => void;
@@ -53,6 +54,31 @@ interface LiveVessel {
 export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps> = ({ onOpenQuote }) => {
   const [activeFilter, setActiveFilter] = useState<"ALL" | "AT SEA" | "IN PORT" | "DRY DOCK">("ALL");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const { gsap } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".fleet-card",
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".fleet-cards-container",
+            start: "top 80%",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   // Live Telemetry Ticker state
   const [liveMetrics, setLiveMetrics] = useState({
@@ -135,7 +161,7 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
   const selectedCategoryObj = fleetData.find((f) => f.type === selectedCategory);
 
   return (
-    <section id="vessels" className="py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] relative">
+    <section id="vessels" ref={sectionRef} className="py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] relative">
       <div id="fleet" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Live Telemetry Ticker Header Bar */}
@@ -215,17 +241,13 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
         </div>
 
         {/* Horizontal Animated Fleet Bars with Automatic Count-Up & Progress Fill on Scroll */}
-        <div className="space-y-6 max-w-5xl">
+        <div className="fleet-cards-container space-y-6 max-w-5xl">
           {fleetData.map((item, index) => {
             return (
-              <motion.div
+              <div
                 key={item.type}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ amount: 0.2 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 onClick={() => setSelectedCategory(item.type)}
-                className="group p-5 rounded-2xl bg-white border border-[rgba(7,26,43,0.12)] hover:border-[#176B87] shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden space-y-3"
+                className="fleet-card group p-5 rounded-2xl bg-white border border-[rgba(7,26,43,0.12)] hover:border-[#176B87] shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden space-y-3"
               >
                 {/* Glowing top accent line on hover */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#176B87] via-[#00D26A] to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -263,7 +285,7 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
                     className="h-full bg-gradient-to-r from-[#071A2B] via-[#176B87] to-[#00D26A] rounded-full"
                   />
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
