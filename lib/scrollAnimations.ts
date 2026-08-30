@@ -173,30 +173,9 @@ export function initSectionStack(container: HTMLElement) {
     const layers = gsap.utils.toArray<HTMLElement>(".cinematic-stack-layer", container);
 
     layers.forEach((layer, i) => {
+      layer.style.position = "sticky";
+      layer.style.top = "0px";
       layer.style.zIndex = String(10 + i);
-
-      if (i === 0) return;
-
-      const prevLayer = layers[i - 1];
-
-      gsap.fromTo(
-        layer,
-        { yPercent: 100 },
-        {
-          yPercent: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: layer,
-            start: "top bottom",
-            end: "top top",
-            scrub: 0.5,
-            pin: prevLayer,
-            pinSpacing: false,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
     });
   });
 
@@ -228,10 +207,87 @@ export function initHeroScrollExit(
   return tl;
 }
 
+export function initSvgPathDraw(scope: Element | Document = document) {
+  const { gsap } = initGSAP();
+  const paths = scope.querySelectorAll<SVGPathElement>("[data-scroll-svg-path]");
+
+  paths.forEach((path) => {
+    const pathLength = path.getTotalLength ? path.getTotalLength() : 1000;
+    gsap.set(path, {
+      strokeDasharray: pathLength,
+      strokeDashoffset: pathLength,
+    });
+
+    gsap.to(path, {
+      strokeDashoffset: 0,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: path.parentElement || path,
+        start: "top 80%",
+        end: "bottom 30%",
+        scrub: 1,
+      },
+    });
+  });
+}
+
+export function initHorizontalScrollGallery(container: HTMLElement) {
+  const { gsap } = initGSAP();
+  const mm = gsap.matchMedia();
+
+  mm.add("(min-width: 1024px)", (context) => {
+    const track = container.querySelector<HTMLElement>(".gsap-horizontal-track");
+    if (!track) return;
+
+    const cards = gsap.utils.toArray<HTMLElement>(".gsap-horizontal-card", track);
+    const amountToScroll = track.scrollWidth - container.clientWidth;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container,
+        pin: true,
+        scrub: 1,
+        start: "top top",
+        end: () => `+=${amountToScroll + 400}`,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    tl.to(track, {
+      x: -amountToScroll,
+      ease: "none",
+    });
+
+    // Parallax & scale effects on individual cards as they scroll past
+    cards.forEach((card, idx) => {
+      gsap.fromTo(
+        card,
+        { scale: 0.9, opacity: 0.8 },
+        {
+          scale: 1,
+          opacity: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: tl,
+            start: "left 90%",
+            end: "left 40%",
+            scrub: true,
+          },
+        }
+      );
+    });
+  });
+
+  return () => mm.revert();
+}
+
 export function initAllScrollAnimations(scope: Element | Document = document) {
   initScrollReveals(scope);
   initSplitTextReveals(scope);
   initParallaxElements(scope);
   initScrollCounters(scope);
   initStaggerGroups(scope);
+  initSvgPathDraw(scope);
 }
+

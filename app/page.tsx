@@ -7,7 +7,10 @@ import { ScrollOrchestrator } from "./components/ScrollOrchestrator";
 import { ScrollSection } from "./components/ScrollSection";
 import { CinematicNavbar } from "./components/CinematicNavbar";
 import { CinematicHeroLayer } from "./components/CinematicScrollStory";
+import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
 import { SplitScreenStory } from "./components/SplitScreenStory";
+import { FigmaDesignCanvas } from "./components/FigmaDesignCanvas";
+import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
 import { FleetSilhouetteStats } from "./components/FleetSilhouetteStats";
 import { Section2StatementStats } from "./components/Section2StatementStats";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
@@ -49,23 +52,28 @@ export default function Home() {
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
-      {/* Cinematic stack: hero slides under pinned sections (Angelicoussis-style) */}
-      <div id="cinematic-stack" className="relative w-full overflow-hidden">
+      {/* Cinematic stack: sticky layers, no empty navy gap */}
+      <div id="cinematic-stack" className="relative w-full">
         <ScrollSection stack>
           <CinematicHeroLayer
             onOpenVideoModal={() => setIsVideoModalOpen(true)}
             onOpenQuote={() => setIsQuoteOpen(true)}
           />
         </ScrollSection>
-
-        <ScrollSection stack>
-          <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
-        </ScrollSection>
-
-        <ScrollSection stack>
-          <FleetSilhouetteStats onOpenQuote={() => setIsQuoteOpen(true)} />
-        </ScrollSection>
       </div>
+
+      <VoyageTheatreSection />
+
+      <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* Figma Interactive Studio Showcase & Design Tokens */}
+      <FigmaDesignCanvas />
+
+      {/* GSAP Scroll Horizontal Pin Gallery & SVG Route Draw */}
+      <GsapHorizontalScrollGallery onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      <FleetSilhouetteStats onOpenQuote={() => setIsQuoteOpen(true)} />
+
 
       <Section2StatementStats />
 

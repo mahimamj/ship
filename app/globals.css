@@ -98,6 +98,13 @@ body {
   box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.15);
 }
 
+@media (min-width: 1024px) {
+  .cinematic-stack-layer {
+    position: sticky;
+    top: 0;
+  }
+}
+
 @keyframes marquee-scroll {
   0% {
     transform: translateX(0);
