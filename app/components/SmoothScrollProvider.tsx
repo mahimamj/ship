@@ -39,6 +39,10 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
       if (lenis) {
         lenis.destroy();
       }
+      if (tickerFn) {
+        const { gsap } = initGSAP();
+        gsap.ticker.remove(tickerFn);
+      }
     };
   }, []);
 

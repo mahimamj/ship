@@ -45,11 +45,11 @@ export const CareersSection: React.FC<CareersProps> = ({ onOpenApplyModal, activ
         <div id="careers-sea" className="absolute -top-24 left-0"></div>
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4" data-scroll-reveal="fade-up">
           <span className="text-xs uppercase tracking-widest text-[#00D26A] font-bold bg-[#00D26A]/10 px-4 py-1.5 rounded-full border border-[#00D26A]/20">
             CAREERS AT OCEANIC STAR
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold font-poppins text-white tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-bold font-poppins text-white tracking-tight" data-scroll-split>
             Build Your Maritime <span className="text-gradient">Career</span>
           </h2>
           <p className="text-slate-400 text-base">

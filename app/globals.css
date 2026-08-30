@@ -87,7 +87,17 @@ body {
   color: #667783;
 }
 
-/* Marquee */
+/* Scroll animation helpers */
+[data-scroll-reveal],
+[data-scroll-split] .split-inner,
+[data-scroll-stagger-item] {
+  will-change: transform, opacity;
+}
+
+.cinematic-stack-layer {
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.15);
+}
+
 @keyframes marquee-scroll {
   0% {
     transform: translateX(0);

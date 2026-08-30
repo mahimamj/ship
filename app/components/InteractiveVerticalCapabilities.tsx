@@ -55,16 +55,16 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-10 mb-16 gap-8">
-          <div>
+          <div data-scroll-reveal="fade-up">
             <span className="label-mono text-[#176B87] mb-3 block font-semibold">
               // CORE CAPABILITIES &amp; MARITIME SERVICES
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
+            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none" data-scroll-split>
               OUR CAPABILITIES
             </h2>
           </div>
 
-          <p className="text-sm font-manrope text-[#667783] max-w-md leading-relaxed">
+          <p className="text-sm font-manrope text-[#667783] max-w-md leading-relaxed" data-scroll-reveal="fade-left" data-scroll-delay="0.2">
             Engineered technical management, certified crew logistics, commercial chartering, and compliance solutions delivered with international precision.
           </p>
         </div>
@@ -72,12 +72,13 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
         {/* Split Layout: Left Vertical List, Right Image/Video Reveal */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Vertical Interactive List */}
-          <div className="lg:col-span-7 space-y-0 border-t border-[rgba(7,26,43,0.12)]">
+          <div className="lg:col-span-7 space-y-0 border-t border-[rgba(7,26,43,0.12)]" data-scroll-stagger>
             {CAPABILITIES.map((cap, idx) => {
               const isActive = activeIdx === idx;
               return (
                 <div
                   key={cap.id}
+                  data-scroll-stagger-item
                   onMouseEnter={() => setActiveIdx(idx)}
                   onClick={() => {
                     setActiveIdx(idx);

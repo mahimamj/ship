@@ -22,6 +22,9 @@ export const CinematicScrollStory: React.FC<StoryProps> = (props) => {
 
 // LAYER 1: HERO SPACE
 export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onOpenQuote }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeResult, setActiveResult] = useState<{
@@ -37,6 +40,29 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
       videoRef.current.muted = true;
       videoRef.current.play().catch((err) => console.warn("Autoplay prevented:", err));
     }
+  }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current || !bgRef.current || !contentRef.current) return;
+
+    const { gsap } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=100%",
+          scrub: 0.6,
+        },
+      });
+
+      tl.to(bgRef.current, { scale: 1.15, ease: "none" }, 0)
+        .to(contentRef.current, { y: -100, opacity: 0, ease: "power2.in" }, 0)
+        .to(sectionRef.current, { backgroundColor: "#FFFFFF", ease: "none" }, 0.5);
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -58,9 +84,9 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
   };
 
   return (
-    <section className="relative min-h-screen w-full bg-[#071A2B] text-white overflow-hidden flex flex-col justify-center">
+    <section ref={sectionRef} className="relative min-h-screen w-full bg-[#071A2B] text-white overflow-hidden flex flex-col justify-center">
       {/* Background Ocean Video & Fallback Vignette */}
-      <div className="absolute inset-0 z-0 bg-[#071A2B]">
+      <div ref={bgRef} className="absolute inset-0 z-0 bg-[#071A2B] origin-center will-change-transform">
         <img
           src="/images/hero_vessel.png"
           alt="Oceanic Star Hero Vessel"
@@ -82,14 +108,14 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
       </div>
 
       {/* Main Hero Content */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex flex-col justify-center min-h-screen">
+      <div ref={contentRef} className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex flex-col justify-center min-h-screen will-change-transform">
         <div className="space-y-6 max-w-4xl">
-          <p className="label-mono text-[#00D26A] font-bold tracking-widest text-xs flex items-center gap-2">
+          <p className="label-mono text-[#00D26A] font-bold tracking-widest text-xs flex items-center gap-2" data-scroll-reveal="fade-up">
             <span className="w-2 h-2 rounded-full bg-[#00D26A] animate-ping" />
             OCEANIC STAR FLEET — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
           </p>
 
-          <h1 className="font-syne font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-white">
+          <h1 className="font-syne font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-white" data-scroll-split>
             THE OCEAN <br />
             IS OUR <br />
             OPERATING <br />

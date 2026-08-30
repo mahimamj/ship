@@ -21,16 +21,14 @@ export const SplitScreenStory: React.FC<SplitScreenStoryProps> = ({ onOpenQuote 
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop: Pinned Split-Screen Story (Left Text Pinned, Right Image Transforms)
+      // Desktop: Scroll-driven Split-Screen Story (no pin — stack layer handles cover)
       mm.add("(min-width: 1024px)", () => {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top top",
-            end: "+=1800",
-            pin: true,
+            start: "top 20%",
+            end: "bottom 60%",
             scrub: 0.8,
-            anticipatePin: 1,
             onUpdate: (self) => {
               if (self.progress > 0.45) {
                 setActiveTab("mission");
@@ -131,7 +129,7 @@ export const SplitScreenStory: React.FC<SplitScreenStoryProps> = ({ onOpenQuote 
               activeTab === "vision" ? "block" : "lg:block"
             }`}
           >
-            <h2 className="font-syne font-extrabold text-5xl sm:text-7xl lg:text-8xl text-[#0A5C96] tracking-tight leading-[0.95]">
+            <h2 className="font-syne font-extrabold text-5xl sm:text-7xl lg:text-8xl text-[#0A5C96] tracking-tight leading-[0.95]" data-scroll-split>
               OUR <br />
               VISION
             </h2>
@@ -165,7 +163,7 @@ export const SplitScreenStory: React.FC<SplitScreenStoryProps> = ({ onOpenQuote 
               activeTab === "mission" ? "block" : "hidden lg:block lg:opacity-0"
             }`}
           >
-            <h2 className="font-syne font-extrabold text-5xl sm:text-7xl lg:text-8xl text-[#0A5C96] tracking-tight leading-[0.95]">
+            <h2 className="font-syne font-extrabold text-5xl sm:text-7xl lg:text-8xl text-[#0A5C96] tracking-tight leading-[0.95]" data-scroll-split>
               OUR <br />
               MISSION
             </h2>
@@ -199,6 +197,7 @@ export const SplitScreenStory: React.FC<SplitScreenStoryProps> = ({ onOpenQuote 
           <div
             ref={visionImgRef}
             className="absolute inset-0 z-10 w-full h-full will-change-transform"
+            data-scroll-parallax="0.2"
           >
             <img
               src="/images/hero_vessel.png"

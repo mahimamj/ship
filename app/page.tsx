@@ -3,13 +3,10 @@
 import React, { useState } from "react";
 import { CinematicCustomCursor } from "./components/CinematicCustomCursor";
 import { ScrollProgressBar } from "./components/ScrollProgressBar";
+import { ScrollOrchestrator } from "./components/ScrollOrchestrator";
+import { ScrollSection } from "./components/ScrollSection";
 import { CinematicNavbar } from "./components/CinematicNavbar";
-import { FullPageLayerStack } from "./components/FullPageLayerStack";
-import {
-  CinematicHeroLayer,
-  CinematicVisionLayer,
-  CinematicMissionLayer,
-} from "./components/CinematicScrollStory";
+import { CinematicHeroLayer } from "./components/CinematicScrollStory";
 import { SplitScreenStory } from "./components/SplitScreenStory";
 import { FleetSilhouetteStats } from "./components/FleetSilhouetteStats";
 import { Section2StatementStats } from "./components/Section2StatementStats";
@@ -43,73 +40,66 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#071A2B] text-white font-sans antialiased overflow-x-hidden selection:bg-[#176B87] selection:text-white">
-      {/* Custom Cursor & Scroll Progress Indicator Bar */}
+      <ScrollOrchestrator />
       <CinematicCustomCursor />
       <ScrollProgressBar />
 
-      {/* Minimal Top Header Navbar */}
       <CinematicNavbar
         onOpenQuote={() => setIsQuoteOpen(true)}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
-      {/* 01: Hero Space */}
-      <CinematicHeroLayer
-        onOpenVideoModal={() => setIsVideoModalOpen(true)}
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
+      {/* Cinematic stack: hero slides under pinned sections (Angelicoussis-style) */}
+      <div id="cinematic-stack" className="relative w-full overflow-hidden">
+        <ScrollSection stack>
+          <CinematicHeroLayer
+            onOpenVideoModal={() => setIsVideoModalOpen(true)}
+            onOpenQuote={() => setIsQuoteOpen(true)}
+          />
+        </ScrollSection>
 
-      {/* 02: Pinned Split-Screen Story (Screenshot 2: Our Vision & Our Mission) */}
-      <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
+        <ScrollSection stack>
+          <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
+        </ScrollSection>
 
-      {/* 03: Blue Fleet Silhouette Statistics (Screenshot 3: 59 Vessels & 29 Ships) */}
-      <FleetSilhouetteStats onOpenQuote={() => setIsQuoteOpen(true)} />
+        <ScrollSection stack>
+          <FleetSilhouetteStats onOpenQuote={() => setIsQuoteOpen(true)} />
+        </ScrollSection>
+      </div>
 
-      {/* 04: Heritage & Scale Statistics */}
       <Section2StatementStats />
 
-      {/* 05: Core Capabilities */}
       <InteractiveVerticalCapabilities
         onSelectService={() => setIsQuoteOpen(true)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* 06: Global Presence Network Map */}
       <GlobalPresenceMap />
 
-      {/* 07: Fleet Matrix & AIS Telemetry */}
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* 08: Cinematic Operations (01 AT SEA, 02 ON BOARD, 03 ON SHORE) */}
       <CinematicOperationsSection />
 
-      {/* 09: Company Timeline */}
       <HorizontalTimelineSection />
 
-      {/* 10: Certifications & Accreditations */}
       <div className="bg-[#F5F5F2] text-[#071A2B]">
         <CertificationsMarquee />
         <CertificationsSection />
       </div>
 
-      {/* 11: Why Choose Us */}
       <WhyUsStatementSection />
 
-      {/* 12: Careers Section (At Shore & At Sea) */}
       <CareersSection
         onOpenApplyModal={(jobTitle) => setCareerModalState({ isOpen: true, jobTitle })}
       />
 
-      {/* 13: Final Commercial CTA */}
       <FinalCinematicCTA onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* 14: Contact Operations & Footer */}
       <div className="bg-[#F5F5F2] text-[#071A2B]">
         <ContactSection />
         <Footer />
       </div>
 
-      {/* Lightbox & Proposal Modals */}
       <FleetVideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}
@@ -127,21 +117,17 @@ export default function Home() {
         onClose={() => setCareerModalState({ isOpen: false })}
       />
 
-      {/* Solarpanti-Style Maritime Command Palette Modal (Ctrl + K) */}
       <MaritimeCommandPalette
         isOpen={isCommandPaletteOpen}
         onClose={() => setIsCommandPaletteOpen(false)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* Solarpanti-Style Floating AI Assistant Widget Drawer */}
       <OceanicAIChatbotWidget
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-      {/* Persistent Floating WhatsApp Chat Button */}
       <FloatingWhatsAppButton />
     </div>
   );
 }
-
