@@ -64,26 +64,32 @@ export const CinematicOperationsSection: React.FC = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop & Tablet: Pinned stage with animated water wheel & spectrum step activation
+      // Desktop & Tablet: Pinned stage with enlarged water wheel & 2-scroll step spectrum transitions
       mm.add("(min-width: 768px)", () => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=2000",
+          end: "+=3000", // Extended 2-scroll distance for distinct step feel
           pin: true,
-          scrub: 0.5,
+          scrub: 0.6,
+          snap: {
+            snapTo: [0, 0.5, 1], // Smooth snap points for Spectrum 01, 02, and 03
+            duration: { min: 0.2, max: 0.5 },
+            delay: 0.1,
+            ease: "power1.inOut",
+          },
           onUpdate: (self) => {
             const p = self.progress;
 
-            // Rotate water wheel ring & needle arm fast (0deg to 720deg) for instant visible motion
+            // Rotate water wheel ring & needle arm fast (0deg to 1080deg) for prominent dynamic motion
             if (wheelRingRef.current) {
-              gsap.set(wheelRingRef.current, { rotation: p * 720 });
+              gsap.set(wheelRingRef.current, { rotation: p * 1080 });
             }
             if (needleRef.current) {
-              gsap.set(needleRef.current, { rotation: p * 720 });
+              gsap.set(needleRef.current, { rotation: p * 1080 });
             }
 
-            // Step activation: 3 spectrum states
+            // Step activation across 2-scroll steps: 3 spectrum states
             if (p > 0.66) {
               setActiveIndex(2);
             } else if (p > 0.33) {
@@ -100,7 +106,6 @@ export const CinematicOperationsSection: React.FC = () => {
   }, []);
 
   const activeOp = SPECTRUM_DATA[activeIndex];
-  const IconComp = activeOp.icon;
 
   return (
     <section
@@ -141,49 +146,49 @@ export const CinematicOperationsSection: React.FC = () => {
                     : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
                 }`}
               >
-                <span className={`w-2 h-2 rounded-full ${isActive ? "bg-[#00D9E8] animate-pulse" : "bg-slate-300"}`} />
+                <span className={`w-2.5 h-2.5 rounded-full ${isActive ? "bg-[#00D9E8] animate-pulse" : "bg-slate-300"}`} />
                 <span>{item.number} {item.title}</span>
               </button>
             );
           })}
         </div>
 
-        {/* 3-COLUMN MAIN STAGE (FOCUSED ACTIVE CARD VIEWPORT - 100% VISIBLE & UNCLIPPED) */}
+        {/* 3-COLUMN MAIN STAGE (ENLARGED 320px WATER WHEEL + FOCUSED ACTIVE SPECTRUM CARD) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
           
-          {/* COLUMN 1: ROTATING WATER WHEEL DIAL */}
-          <div className="hidden md:flex md:col-span-3 flex-col items-center justify-center">
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full flex items-center justify-center border-4 border-[#082F49]/20 bg-[#061B2A] shadow-2xl overflow-hidden">
+          {/* COLUMN 1: ENLARGED WATER WHEEL DIAL (w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 / 320px) */}
+          <div className="hidden md:flex md:col-span-4 flex-col items-center justify-center">
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full flex items-center justify-center border-4 border-[#082F49]/30 bg-[#061B2A] shadow-2xl overflow-hidden">
               
               {/* Radial Gridlines */}
-              <div className="absolute inset-0 bg-[radial-gradient(#00D9E8_1px,transparent_1px)] [background-size:16px_16px] opacity-20 pointer-events-none" />
+              <div className="absolute inset-0 bg-[radial-gradient(#00D9E8_1px,transparent_1px)] [background-size:20px_20px] opacity-25 pointer-events-none" />
 
-              {/* 12 Radial Notch Ticks */}
+              {/* 12 Radial Notch Ticks (30deg increment) */}
               {Array.from({ length: 12 }).map((_, i) => (
                 <div
                   key={i}
                   className="absolute w-full h-full flex justify-center pointer-events-none"
                   style={{ transform: `rotate(${i * 30}deg)` }}
                 >
-                  <div className="w-1 h-3.5 bg-[#00D9E8]/70 mt-1 rounded-full" />
+                  <div className="w-1.5 h-5 bg-[#00D9E8] mt-1.5 rounded-full shadow-[0_0_8px_#00D9E8]" />
                 </div>
               ))}
 
               {/* Rotating outer dash ring & compass text */}
               <div
                 ref={wheelRingRef}
-                className="absolute inset-3 rounded-full border-2 border-dashed border-[#00D9E8] pointer-events-none will-change-transform flex items-center justify-center"
+                className="absolute inset-4 rounded-full border-2 border-dashed border-[#00D9E8] pointer-events-none will-change-transform flex items-center justify-center"
               >
-                <div className="absolute top-2 text-[8px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
+                <div className="absolute top-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
                   N &bull; 01
                 </div>
-                <div className="absolute right-2 text-[8px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
+                <div className="absolute right-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
                   E &bull; 02
                 </div>
-                <div className="absolute bottom-2 text-[8px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
+                <div className="absolute bottom-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
                   S &bull; 03
                 </div>
-                <div className="absolute left-2 text-[8px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
+                <div className="absolute left-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
                   W &bull; 04
                 </div>
               </div>
@@ -193,30 +198,30 @@ export const CinematicOperationsSection: React.FC = () => {
                 ref={needleRef}
                 className="absolute inset-0 pointer-events-none flex items-center justify-center will-change-transform z-20"
               >
-                <div className="w-0.5 h-20 bg-gradient-to-t from-transparent via-[#00D9E8] to-[#00D9E8] origin-bottom -translate-y-10 relative">
-                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#00D9E8] shadow-[0_0_12px_#00D9E8]" />
+                <div className="w-1 h-28 bg-gradient-to-t from-transparent via-[#00D9E8] to-[#00D9E8] origin-bottom -translate-y-14 relative rounded-full">
+                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#00D9E8] shadow-[0_0_16px_#00D9E8]" />
                 </div>
               </div>
 
               {/* Center Compass Indicator */}
-              <div className="relative z-30 flex flex-col items-center justify-center gap-1 p-3 rounded-full bg-[#082F49] text-white shadow-xl border-2 border-[#00D9E8]">
-                <div className="w-10 h-10 rounded-full bg-[#061B2A] flex items-center justify-center text-[#00D9E8]">
-                  <Navigation className="w-5 h-5 animate-pulse text-[#00D9E8]" />
+              <div className="relative z-30 flex flex-col items-center justify-center gap-1.5 p-4 rounded-full bg-[#082F49] text-white shadow-2xl border-2 border-[#00D9E8]">
+                <div className="w-12 h-12 rounded-full bg-[#061B2A] flex items-center justify-center text-[#00D9E8]">
+                  <Navigation className="w-6 h-6 animate-pulse text-[#00D9E8]" />
                 </div>
-                <span className="text-[9px] font-mono font-bold tracking-wider text-[#00D9E8]">
+                <span className="text-[10px] font-mono font-bold tracking-wider text-[#00D9E8]">
                   SPECTRUM {activeOp.number}
                 </span>
               </div>
             </div>
 
-            <p className="mt-3 text-[10px] font-mono text-slate-700 font-bold tracking-widest text-center flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00D9E8] animate-ping" />
-              <span>SCROLL TO ROTATE WHEEL</span>
+            <p className="mt-4 text-[11px] font-mono text-slate-700 font-bold tracking-widest text-center flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#00D9E8] animate-ping" />
+              <span>2-SCROLL STEP TO ROTATE WHEEL</span>
             </p>
           </div>
 
           {/* COLUMN 2: FOCUSED ACTIVE SPECTRUM CARD (100% CENTERED & FULLY VISIBLE) */}
-          <div className="md:col-span-5 relative min-h-[300px] sm:min-h-[340px] flex items-center">
+          <div className="md:col-span-4 relative min-h-[300px] sm:min-h-[340px] flex items-center">
             {SPECTRUM_DATA.map((item, idx) => {
               const isActive = idx === activeIndex;
               const ItemIcon = item.icon;
