@@ -12,6 +12,7 @@ interface SpectrumItem {
   desc: string;
   badge: string;
   highlights: string[];
+  clockZone: string; // e.g. "1-4 O'CLOCK"
   image: string;
   icon: React.ElementType;
 }
@@ -25,6 +26,7 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     desc: "Real-time vessel position tracking, weather routing, speed, fuel optimization, and continuous ocean passage monitoring across international trade lanes.",
     badge: "LIVE AIS DISPATCH",
     highlights: ["24/7 AIS Telemetry", "Weather Passage Routing", "Fuel Optimization"],
+    clockZone: "1 - 4 O'CLOCK",
     image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80",
     icon: Compass,
   },
@@ -36,6 +38,7 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     desc: "MLC 2006 compliant seafarer logistics, welfare management, emergency response protocols, and STCW 2010 qualified officers maintaining 100% safety standards.",
     badge: "DG RPSL AUDITED",
     highlights: ["MLC 2006 Compliant", "STCW 2010 Crewing", "Zero Incident Record"],
+    clockZone: "5 - 8 O'CLOCK",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
     icon: ShieldCheck,
   },
@@ -47,9 +50,26 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     desc: "Class-1 superintendents overseeing planned maintenance systems (PMS), drydock engineering, class renewals, and emergency technical dispatch from Dubai HQ.",
     badge: "CLASS-1 SUPERINTENDENCY",
     highlights: ["Dubai HQ Command", "PMS Engineering", "Drydock Overhauls"],
+    clockZone: "9 - 12 O'CLOCK",
     image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&w=1200&q=80",
     icon: Wrench,
   },
+];
+
+// 12 clock numbers & position angles (12 at top = 0deg, 3 = 90deg, 6 = 180deg, 9 = 270deg)
+const CLOCK_HOURS = [
+  { hour: 12, angle: 0, spectrumIdx: 2 },
+  { hour: 1, angle: 30, spectrumIdx: 0 },
+  { hour: 2, angle: 60, spectrumIdx: 0 },
+  { hour: 3, angle: 90, spectrumIdx: 0 },
+  { hour: 4, angle: 120, spectrumIdx: 0 },
+  { hour: 5, angle: 150, spectrumIdx: 1 },
+  { hour: 6, angle: 180, spectrumIdx: 1 },
+  { hour: 7, angle: 210, spectrumIdx: 1 },
+  { hour: 8, angle: 240, spectrumIdx: 1 },
+  { hour: 9, angle: 270, spectrumIdx: 2 },
+  { hour: 10, angle: 300, spectrumIdx: 2 },
+  { hour: 11, angle: 330, spectrumIdx: 2 },
 ];
 
 export const CinematicOperationsSection: React.FC = () => {
@@ -64,32 +84,29 @@ export const CinematicOperationsSection: React.FC = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop & Tablet: Pinned stage with enlarged water wheel & 2-scroll step spectrum transitions
+      // Desktop & Tablet: Pinned stage with 12-hour clock dial & snappy 1-turn rotation
       mm.add("(min-width: 768px)", () => {
         ScrollTrigger.create({
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=3000", // Extended 2-scroll distance for distinct step feel
+          end: "+=1200", // Fast, responsive scrub distance (no sticking!)
           pin: true,
-          scrub: 0.6,
-          snap: {
-            snapTo: [0, 0.5, 1], // Smooth snap points for Spectrum 01, 02, and 03
-            duration: { min: 0.2, max: 0.5 },
-            delay: 0.1,
-            ease: "power1.inOut",
-          },
+          scrub: 0.2, // Snappy response
           onUpdate: (self) => {
             const p = self.progress;
 
-            // Rotate water wheel ring & needle arm fast (0deg to 1080deg) for prominent dynamic motion
-            if (wheelRingRef.current) {
-              gsap.set(wheelRingRef.current, { rotation: p * 1080 });
-            }
+            // Rotate needle arm 1 full clock circle (0deg -> 360deg)
             if (needleRef.current) {
-              gsap.set(needleRef.current, { rotation: p * 1080 });
+              gsap.set(needleRef.current, { rotation: p * 360 });
+            }
+            if (wheelRingRef.current) {
+              gsap.set(wheelRingRef.current, { rotation: p * 180 });
             }
 
-            // Step activation across 2-scroll steps: 3 spectrum states
+            // Precise Clock Hour Spectrum Zones:
+            // 1-4 o'clock (p: 0 -> 0.33) -> Spectrum 01 (AT SEA)
+            // 5-8 o'clock (p: 0.33 -> 0.66) -> Spectrum 02 (ON BOARD)
+            // 9-12 o'clock (p: 0.66 -> 1.0) -> Spectrum 03 (ON SHORE)
             if (p > 0.66) {
               setActiveIndex(2);
             } else if (p > 0.33) {
@@ -119,7 +136,7 @@ export const CinematicOperationsSection: React.FC = () => {
         <div className="border-b border-[#082F49]/15 pb-3 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
           <div>
             <span className="font-mono text-[10px] sm:text-xs font-bold text-[#0068B7] tracking-[0.25em] uppercase block mb-0.5">
-              // OPERATIONAL REVEAL
+              // CLOCK DIAL OPERATIONAL REVEAL
             </span>
             <h2 className="font-syne text-2xl sm:text-4xl lg:text-5xl font-black text-[#061B2A] tracking-tight leading-none">
               CINEMATIC OPERATIONS
@@ -128,11 +145,11 @@ export const CinematicOperationsSection: React.FC = () => {
 
           <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm font-bold w-fit">
             <span className="w-2 h-2 rounded-full bg-[#00D9E8] animate-ping" />
-            <span className="text-[#061B2A]">INTERACTIVE SPECTRUM REVEAL</span>
+            <span className="text-[#061B2A]">12-HOUR CLOCK DIAL ACTIVE</span>
           </div>
         </div>
 
-        {/* TOP TAB SELECTOR BAR FOR QUICK NAVIGATION */}
+        {/* TOP TAB SELECTOR BAR */}
         <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto pb-1">
           {SPECTRUM_DATA.map((item, idx) => {
             const isActive = idx === activeIndex;
@@ -140,73 +157,75 @@ export const CinematicOperationsSection: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => setActiveIndex(idx)}
-                className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wider transition-all duration-300 flex items-center gap-2 whitespace-nowrap border ${
+                className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wider transition-all duration-300 flex items-center gap-2.5 whitespace-nowrap border ${
                   isActive
                     ? "bg-[#061B2A] text-white border-[#00D9E8] shadow-lg scale-[1.02]"
                     : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
                 }`}
               >
                 <span className={`w-2.5 h-2.5 rounded-full ${isActive ? "bg-[#00D9E8] animate-pulse" : "bg-slate-300"}`} />
-                <span>{item.number} {item.title}</span>
+                <span>{item.number} {item.title} ({item.clockZone})</span>
               </button>
             );
           })}
         </div>
 
-        {/* 3-COLUMN MAIN STAGE (ENLARGED 320px WATER WHEEL + FOCUSED ACTIVE SPECTRUM CARD) */}
+        {/* 3-COLUMN MAIN STAGE (12-HOUR CLOCK DIAL + ACTIVE SPECTRUM CARD) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
           
-          {/* COLUMN 1: ENLARGED WATER WHEEL DIAL (w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 / 320px) */}
+          {/* COLUMN 1: 12-HOUR CLOCK DIAL WATER WHEEL */}
           <div className="hidden md:flex md:col-span-4 flex-col items-center justify-center">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full flex items-center justify-center border-4 border-[#082F49]/30 bg-[#061B2A] shadow-2xl overflow-hidden">
               
-              {/* Radial Gridlines */}
-              <div className="absolute inset-0 bg-[radial-gradient(#00D9E8_1px,transparent_1px)] [background-size:20px_20px] opacity-25 pointer-events-none" />
+              {/* Clock Face Grid Mesh */}
+              <div className="absolute inset-0 bg-[radial-gradient(#00D9E8_1.2px,transparent_1.2px)] [background-size:20px_20px] opacity-25 pointer-events-none" />
 
-              {/* 12 Radial Notch Ticks (30deg increment) */}
-              {Array.from({ length: 12 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-full h-full flex justify-center pointer-events-none"
-                  style={{ transform: `rotate(${i * 30}deg)` }}
-                >
-                  <div className="w-1.5 h-5 bg-[#00D9E8] mt-1.5 rounded-full shadow-[0_0_8px_#00D9E8]" />
-                </div>
-              ))}
-
-              {/* Rotating outer dash ring & compass text */}
+              {/* Outer Dash Ring */}
               <div
                 ref={wheelRingRef}
-                className="absolute inset-4 rounded-full border-2 border-dashed border-[#00D9E8] pointer-events-none will-change-transform flex items-center justify-center"
-              >
-                <div className="absolute top-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
-                  N &bull; 01
-                </div>
-                <div className="absolute right-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
-                  E &bull; 02
-                </div>
-                <div className="absolute bottom-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
-                  S &bull; 03
-                </div>
-                <div className="absolute left-3 text-[10px] font-mono font-bold text-[#00D9E8] tracking-widest uppercase">
-                  W &bull; 04
-                </div>
-              </div>
+                className="absolute inset-3 rounded-full border-2 border-dashed border-[#00D9E8]/40 pointer-events-none will-change-transform"
+              />
 
-              {/* ROTATING LOGO CYAN NEEDLE ARM */}
+              {/* 12 CLOCK NUMBERS & TICK MARKS AROUND PERIMETER */}
+              {CLOCK_HOURS.map((c) => {
+                const isCurrentSpectrum = c.spectrumIdx === activeIndex;
+                return (
+                  <div
+                    key={c.hour}
+                    className="absolute w-full h-full flex justify-center pointer-events-none"
+                    style={{ transform: `rotate(${c.angle}deg)` }}
+                  >
+                    <div className="flex flex-col items-center mt-2.5">
+                      <div className={`w-1.5 h-3 rounded-full transition-all duration-300 ${
+                        isCurrentSpectrum ? "bg-[#00D9E8] shadow-[0_0_8px_#00D9E8]" : "bg-slate-600"
+                      }`} />
+                      <span
+                        className={`text-xs font-mono font-bold transition-all duration-300 ${
+                          isCurrentSpectrum ? "text-[#00D9E8] scale-110" : "text-slate-400"
+                        }`}
+                        style={{ transform: `rotate(-${c.angle}deg)` }}
+                      >
+                        {c.hour}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* ROTATING CLOCK NEEDLE HAND (0deg to 360deg) */}
               <div
                 ref={needleRef}
                 className="absolute inset-0 pointer-events-none flex items-center justify-center will-change-transform z-20"
               >
-                <div className="w-1 h-28 bg-gradient-to-t from-transparent via-[#00D9E8] to-[#00D9E8] origin-bottom -translate-y-14 relative rounded-full">
-                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#00D9E8] shadow-[0_0_16px_#00D9E8]" />
+                <div className="w-1.5 h-32 bg-gradient-to-t from-transparent via-[#00D9E8] to-[#00D9E8] origin-bottom -translate-y-16 relative rounded-full shadow-[0_0_12px_rgba(0,217,232,0.8)]">
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-[#00D9E8] shadow-[0_0_16px_#00D9E8] border-2 border-[#061B2A]" />
                 </div>
               </div>
 
-              {/* Center Compass Indicator */}
-              <div className="relative z-30 flex flex-col items-center justify-center gap-1.5 p-4 rounded-full bg-[#082F49] text-white shadow-2xl border-2 border-[#00D9E8]">
-                <div className="w-12 h-12 rounded-full bg-[#061B2A] flex items-center justify-center text-[#00D9E8]">
-                  <Navigation className="w-6 h-6 animate-pulse text-[#00D9E8]" />
+              {/* Center Clock Badge */}
+              <div className="relative z-30 flex flex-col items-center justify-center gap-1 p-3.5 rounded-full bg-[#082F49] text-white shadow-2xl border-2 border-[#00D9E8]">
+                <div className="w-11 h-11 rounded-full bg-[#061B2A] flex items-center justify-center text-[#00D9E8]">
+                  <Navigation className="w-5 h-5 animate-pulse text-[#00D9E8]" />
                 </div>
                 <span className="text-[10px] font-mono font-bold tracking-wider text-[#00D9E8]">
                   SPECTRUM {activeOp.number}
@@ -214,10 +233,18 @@ export const CinematicOperationsSection: React.FC = () => {
               </div>
             </div>
 
-            <p className="mt-4 text-[11px] font-mono text-slate-700 font-bold tracking-widest text-center flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#00D9E8] animate-ping" />
-              <span>2-SCROLL STEP TO ROTATE WHEEL</span>
-            </p>
+            {/* Clock Zone Legend Indicator */}
+            <div className="mt-3.5 flex items-center gap-3 text-[10px] font-mono font-bold text-slate-700">
+              <span className={`px-2 py-0.5 rounded border ${activeIndex === 0 ? "bg-[#061B2A] text-[#00D9E8] border-[#00D9E8]" : "bg-white text-slate-500"}`}>
+                1-4: AT SEA
+              </span>
+              <span className={`px-2 py-0.5 rounded border ${activeIndex === 1 ? "bg-[#061B2A] text-[#00D9E8] border-[#00D9E8]" : "bg-white text-slate-500"}`}>
+                5-8: ON BOARD
+              </span>
+              <span className={`px-2 py-0.5 rounded border ${activeIndex === 2 ? "bg-[#061B2A] text-[#00D9E8] border-[#00D9E8]" : "bg-white text-slate-500"}`}>
+                9-12: ON SHORE
+              </span>
+            </div>
           </div>
 
           {/* COLUMN 2: FOCUSED ACTIVE SPECTRUM CARD (100% CENTERED & FULLY VISIBLE) */}
@@ -237,7 +264,7 @@ export const CinematicOperationsSection: React.FC = () => {
                 >
                   <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
                     <span className="text-xs font-mono font-bold tracking-wider text-[#0068B7]">
-                      SPECTRUM // {item.number}
+                      SPECTRUM // {item.number} ({item.clockZone})
                     </span>
                     <span className="text-xs font-mono px-3 py-1 rounded-full border font-bold bg-[#0068B7] text-white border-[#0068B7] shadow-sm">
                       {item.badge}
@@ -303,7 +330,7 @@ export const CinematicOperationsSection: React.FC = () => {
                   <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-center justify-between text-white font-mono">
                     <div>
                       <span className="text-[10px] sm:text-xs font-bold block text-[#00D9E8]">SPECTRUM {item.number}</span>
-                      <span className="font-syne text-base sm:text-xl font-bold">{item.title}</span>
+                      <span className="font-syne text-base sm:text-xl font-bold">{item.title} ({item.clockZone})</span>
                     </div>
                     <div className="p-2 bg-[#061B2A]/80 border border-[#00D9E8]/40 backdrop-blur-md rounded-full text-[#00D9E8]">
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
