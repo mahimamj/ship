@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Award, ShieldCheck, Building2, Anchor, CheckCircle2, ArrowRight } from "lucide-react";
+import { Calendar, Award, ShieldCheck, Building2, Anchor, CheckCircle2, ArrowRight, Ship, Compass } from "lucide-react";
+import { initGSAP } from "@/lib/gsapHelper";
 
 export interface TimelineMilestone {
   year: string;
@@ -65,48 +66,81 @@ export const MILESTONES: TimelineMilestone[] = [
 ];
 
 export const CompanyTimelineSection: React.FC = () => {
-  const [selectedMilestone, setSelectedMilestone] = useState<TimelineMilestone>(MILESTONES[4]); // Default to 2024 RPSL
+  const [selectedMilestone, setSelectedMilestone] = useState<TimelineMilestone>(MILESTONES[4]);
+  const shipIconRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const selectedIdx = MILESTONES.findIndex((m) => m.year === selectedMilestone.year);
+  const progressPct = ((selectedIdx + 1) / MILESTONES.length) * 100;
 
   return (
-    <section className="py-28 md:py-36 bg-white border-t border-slate-200 text-[#0F172A] relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#F5F5F2] text-[#071A2B] relative overflow-hidden border-t border-[#071A2B]/10 font-sans">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-10 mb-16 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#071A2B]/10 pb-8 mb-12 gap-8">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-100 text-xs font-mono text-[#0284C7] font-semibold mb-4">
-              <Calendar className="w-3.5 h-3.5 text-[#0284C7]" />
-              <span>CORPORATE HERITAGE & GROWTH MILESTONES</span>
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#176B87]/15 border border-[#176B87]/30 text-xs font-mono text-[#176B87] font-bold mb-4">
+              <Compass className="w-4 h-4 text-[#176B87] animate-spin" />
+              <span>MARITIME SHIP VOYAGE TIMELINE</span>
             </div>
-            <h2 className="font-bebas text-5xl sm:text-7xl md:text-8xl tracking-tight text-[#0F172A] font-extrabold leading-none">
-              OUR GROWTH TIMELINE
+            <h2 className="font-syne text-5xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] font-extrabold leading-none">
+              OUR HISTORICAL VOYAGE
             </h2>
           </div>
 
-          <p className="text-sm font-light text-[#64748B] max-w-md leading-relaxed">
-            Over a decade of continuous maritime expansion from incorporation to managing 59 commercial fleet vessels worldwide.
+          <p className="text-sm font-light text-[#667783] max-w-md leading-relaxed font-manrope">
+            A continuous decade of maritime expansion—sailing from initial incorporation in 2011 to managing 59 commercial fleet vessels across Dubai, Mumbai, and Colombo hubs.
           </p>
         </div>
 
-        {/* Timeline Year Slider Buttons */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mb-12">
-          {MILESTONES.map((item) => {
-            const isSelected = selectedMilestone.year === item.year;
-            return (
-              <button
-                key={item.year}
-                onClick={() => setSelectedMilestone(item)}
-                className={`p-4 rounded-2xl border text-center transition duration-300 flex flex-col items-center justify-center space-y-1 ${
-                  isSelected
-                    ? "bg-[#0284C7] border-[#0284C7] text-white shadow-md scale-105"
-                    : "bg-slate-50 border-slate-200 text-[#64748B] hover:border-[#0284C7] hover:text-[#0F172A]"
-                }`}
-              >
-                <span className={`font-bebas text-2xl font-bold ${isSelected ? "text-white" : "text-[#0F172A]"}`}>{item.year}</span>
-                <span className={`text-[10px] font-mono block truncate max-w-full ${isSelected ? "text-sky-100" : "text-[#64748B]"}`}>{item.title.split(" ")[0]}</span>
-              </button>
-            );
-          })}
+        {/* SHIP VOYAGE ANIMATED TRACKER */}
+        <div ref={trackRef} className="relative w-full bg-white p-6 rounded-3xl border border-[#071A2B]/10 shadow-lg mb-12 overflow-hidden">
+          {/* Animated Vessel Wave Line Path */}
+          <div className="relative w-full h-12 flex items-center justify-between px-4">
+            <div className="absolute left-6 right-6 h-1.5 bg-[#071A2B]/10 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#176B87] transition-all duration-700 ease-out"
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+
+            {/* Sailing Vessel Icon moving along line */}
+            <div
+              ref={shipIconRef}
+              className="absolute top-1/2 -translate-y-1/2 transition-all duration-700 ease-out z-20"
+              style={{ left: `calc(${progressPct}% - 24px)` }}
+            >
+              <div className="w-12 h-12 rounded-2xl bg-[#071A2B] text-[#00F0FF] flex items-center justify-center shadow-xl border border-[#176B87]">
+                <Ship className="w-6 h-6 animate-bounce" />
+              </div>
+            </div>
+          </div>
+
+          {/* Timeline Year Buttons */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-6">
+            {MILESTONES.map((item, idx) => {
+              const isSelected = selectedMilestone.year === item.year;
+              return (
+                <button
+                  key={item.year}
+                  onClick={() => setSelectedMilestone(item)}
+                  className={`p-4 rounded-2xl border text-center transition duration-300 flex flex-col items-center justify-center space-y-1 ${
+                    isSelected
+                      ? "bg-[#071A2B] border-[#071A2B] text-white shadow-xl scale-105"
+                      : "bg-[#F5F5F2] border-[#071A2B]/10 text-[#667783] hover:border-[#176B87] hover:text-[#071A2B]"
+                  }`}
+                >
+                  <span className={`font-syne text-2xl font-black ${isSelected ? "text-[#00F0FF]" : "text-[#071A2B]"}`}>
+                    {item.year}
+                  </span>
+                  <span className={`text-[10px] font-mono block truncate max-w-full ${isSelected ? "text-slate-200" : "text-[#667783]"}`}>
+                    {item.title.split(" ")[0]}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Selected Milestone Feature Display Card */}
@@ -115,30 +149,30 @@ export const CompanyTimelineSection: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="editorial-card rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm bg-slate-50 grid lg:grid-cols-12 gap-8 items-center"
+          className="editorial-card rounded-3xl p-8 sm:p-12 border border-[#071A2B]/10 shadow-xl bg-white grid lg:grid-cols-12 gap-8 items-center"
         >
           <div className="lg:col-span-8 space-y-4">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="font-bebas text-5xl text-[#0284C7] font-bold">{selectedMilestone.year}</span>
-              <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200">
+              <span className="font-syne text-5xl text-[#176B87] font-black">{selectedMilestone.year}</span>
+              <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200">
                 {selectedMilestone.badge}
               </span>
             </div>
 
-            <h3 className="font-syne text-2xl sm:text-3xl font-bold text-[#0F172A]">
+            <h3 className="font-syne text-2xl sm:text-3xl font-extrabold text-[#071A2B]">
               {selectedMilestone.title}
             </h3>
 
-            <p className="text-sm font-light text-[#64748B] leading-relaxed">
+            <p className="text-sm font-light text-[#667783] leading-relaxed font-manrope">
               {selectedMilestone.description}
             </p>
 
             <div className="space-y-2 pt-2">
-              <span className="text-xs font-mono text-[#0F172A] uppercase font-bold block">VERIFIED AUDIT MILESTONES:</span>
+              <span className="text-xs font-mono text-[#071A2B] uppercase font-bold block">VERIFIED AUDIT MILESTONES:</span>
               <div className="grid sm:grid-cols-2 gap-2">
                 {selectedMilestone.details.map((detail, idx) => (
-                  <div key={idx} className="flex items-center space-x-2 text-xs font-mono text-[#64748B]">
-                    <CheckCircle2 className="w-4 h-4 text-[#0284C7] shrink-0" />
+                  <div key={idx} className="flex items-center space-x-2 text-xs font-mono text-[#667783]">
+                    <CheckCircle2 className="w-4 h-4 text-[#176B87] shrink-0" />
                     <span>{detail}</span>
                   </div>
                 ))}
@@ -146,17 +180,17 @@ export const CompanyTimelineSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-4 bg-white p-8 rounded-2xl border border-slate-200 text-center space-y-4 shadow-sm">
-            <div className="w-16 h-16 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0284C7] mx-auto">
+          <div className="lg:col-span-4 bg-[#071A2B] text-white p-8 rounded-2xl border border-white/10 text-center space-y-4 shadow-xl">
+            <div className="w-16 h-16 rounded-2xl bg-[#176B87]/30 border border-[#176B87] flex items-center justify-center text-[#00F0FF] mx-auto">
               <selectedMilestone.icon className="w-8 h-8" />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-[#64748B] uppercase block">ORGANIZATION MILESTONE</span>
-              <h4 className="font-syne text-lg font-bold text-[#0F172A]">{selectedMilestone.title}</h4>
+              <span className="text-[10px] font-mono text-slate-300 uppercase block">MARITIME MILESTONE</span>
+              <h4 className="font-syne text-lg font-bold text-white">{selectedMilestone.title}</h4>
             </div>
             <a
               href="#certifications"
-              className="inline-flex items-center space-x-2 text-xs font-mono text-[#0284C7] font-bold hover:underline"
+              className="inline-flex items-center space-x-2 text-xs font-mono text-[#00F0FF] font-bold hover:underline"
             >
               <span>Inspect Certifications</span>
               <ArrowRight className="w-3.5 h-3.5" />

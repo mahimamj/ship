@@ -1,0 +1,218 @@
+"use client";
+
+import React, { useRef, useEffect } from "react";
+import { initGSAP } from "@/lib/gsapHelper";
+import { Eye, Target, ShieldCheck, Globe, Activity } from "lucide-react";
+
+export const MissionVisionCutoutSection: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const visionCardRef = useRef<HTMLDivElement>(null);
+  const missionCardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const { gsap } = initGSAP();
+
+    const ctx = gsap.context(() => {
+      // 1. Header fade & slide up
+      if (headerRef.current) {
+        gsap.fromTo(
+          headerRef.current,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 90%",
+              end: "top 65%",
+              scrub: 0.5,
+            },
+          }
+        );
+      }
+
+      // 2. Video background parallax shift
+      if (videoRef.current) {
+        gsap.fromTo(
+          videoRef.current,
+          { yPercent: -8, scale: 1.1 },
+          {
+            yPercent: 8,
+            scale: 1.02,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      }
+
+      // 3. OUR VISION Card scrubbed 3D slide-in from LEFT
+      if (visionCardRef.current) {
+        gsap.fromTo(
+          visionCardRef.current,
+          { x: -160, opacity: 0, scale: 0.9, rotateY: -10 },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            rotateY: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%",
+              end: "top 30%",
+              scrub: 1,
+            },
+          }
+        );
+      }
+
+      // 4. OUR MISSION Card scrubbed 3D slide-in from RIGHT
+      if (missionCardRef.current) {
+        gsap.fromTo(
+          missionCardRef.current,
+          { x: 160, opacity: 0, scale: 0.9, rotateY: 10 },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            rotateY: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top 85%",
+              end: "top 30%",
+              scrub: 1,
+            },
+          }
+        );
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={containerRef}
+      id="mission-vision-split"
+      className="relative w-full min-h-screen bg-[#05121F] text-white py-20 md:py-28 px-6 md:px-12 font-sans select-none overflow-hidden border-t border-white/10 [perspective:1200px]"
+    >
+      {/* FULL-BLEED CINEMATIC /ship.mp4 VIDEO BACKDROP WITH PARALLAX */}
+      <div className="absolute inset-0 z-0 bg-[#071A2B] overflow-hidden">
+        <video
+          ref={videoRef}
+          src="/ship.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero_vessel.png"
+          className="w-full h-full object-cover opacity-75 will-change-transform"
+        >
+          <source src="/ship.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05121F] via-[#05121F]/70 to-[#05121F]/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(#176B87_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-20 pointer-events-none" />
+      </div>
+
+      <div className="max-w-[1400px] mx-auto space-y-12 relative z-10">
+        {/* Top Header */}
+        <div
+          ref={headerRef}
+          className="flex flex-wrap items-center justify-between gap-4 border-b border-white/20 pb-4"
+        >
+          <div className="flex items-center gap-3">
+            <span className="px-3 py-1 bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/40 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
+              PURPOSE // 01
+            </span>
+            <span className="text-xs text-white/90 font-mono tracking-wider font-semibold">
+              STRATEGIC VISION &amp; OPERATIONAL MISSION
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 bg-[#071A2B]/80 border border-[#00F0FF]/30 px-4 py-2 rounded-xl text-xs font-mono">
+            <Activity className="w-4 h-4 text-[#00F0FF] animate-spin" />
+            <span className="text-[#00F0FF] font-bold">MARITIME LEADERSHIP ACTIVE</span>
+          </div>
+        </div>
+
+        {/* 2-COLUMN GLASSMORPHIC CARDS GRID: GSAP SCRUBBED SLIDE-IN FROM LEFT & RIGHT */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch pt-4">
+          {/* OUR VISION CARD (GSAP SCRUBBED FROM LEFT) */}
+          <div
+            ref={visionCardRef}
+            className="p-8 sm:p-10 rounded-3xl bg-[#071A2B]/85 border-2 border-[#00F0FF]/50 backdrop-blur-2xl text-white space-y-6 shadow-2xl flex flex-col justify-between will-change-transform transform-gpu hover:border-[#00F0FF] transition-colors duration-500"
+          >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <span className="px-3.5 py-1.5 bg-[#00F0FF]/20 text-[#00F0FF] text-xs font-mono font-bold rounded-lg flex items-center gap-2 uppercase tracking-wider">
+                  <Eye className="w-4 h-4" /> OUR VISION
+                </span>
+                <span className="text-[10px] font-mono text-slate-300 font-bold">CII GRADE A+ ECO FLEET</span>
+              </div>
+
+              <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+                LEADER IN <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-emerald-400 to-white">
+                  SEABORNE SOLUTIONS
+                </span>
+              </h3>
+
+              <p className="font-manrope text-base text-slate-200 leading-relaxed">
+                To pioneer zero-emission dual-fuel vessel fleets and Class-1 superintendency across key international ocean trade passages, setting the standard for sustainable global shipping.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[#00F0FF]">
+              <span className="flex items-center gap-2 font-bold">
+                <Globe className="w-4 h-4" /> 29 SHIPS ON ORDER
+              </span>
+              <span className="text-slate-300 font-bold">DUAL-FUEL EXPANSION</span>
+            </div>
+          </div>
+
+          {/* OUR MISSION CARD (GSAP SCRUBBED FROM RIGHT) */}
+          <div
+            ref={missionCardRef}
+            className="p-8 sm:p-10 rounded-3xl bg-[#071A2B]/85 border-2 border-emerald-400/50 backdrop-blur-2xl text-white space-y-6 shadow-2xl flex flex-col justify-between will-change-transform transform-gpu hover:border-emerald-400 transition-colors duration-500"
+          >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                <span className="px-3.5 py-1.5 bg-emerald-400/20 text-emerald-400 text-xs font-mono font-bold rounded-lg flex items-center gap-2 uppercase tracking-wider">
+                  <Target className="w-4 h-4" /> OUR MISSION
+                </span>
+                <span className="text-[10px] font-mono text-slate-300 font-bold">DG RPSL APPROVED</span>
+              </div>
+
+              <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+                SAFE, RELIABLE &amp; <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-white">
+                  SUSTAINABLE SHIPPING
+                </span>
+              </h3>
+
+              <p className="font-manrope text-base text-slate-200 leading-relaxed">
+                To provide world-class shipping services to our clients across the LNG, tanker, and dry bulk markets, in a safe, reliable, and sustainable manner, whilst embracing the energy transition.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-emerald-400">
+              <span className="flex items-center gap-2 font-bold">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" /> STCW 2010 CERTIFIED
+              </span>
+              <span className="text-slate-300 font-bold">MLC 2006 COMPLIANT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

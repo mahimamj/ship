@@ -9,19 +9,18 @@ import { CinematicNavbar } from "./components/CinematicNavbar";
 import { CinematicHeroLayer } from "./components/CinematicScrollStory";
 import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
 import { SplitScreenStory } from "./components/SplitScreenStory";
-import { FigmaDesignCanvas } from "./components/FigmaDesignCanvas";
 import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
-import { FleetSilhouetteStats } from "./components/FleetSilhouetteStats";
 import { Section2StatementStats } from "./components/Section2StatementStats";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
+import { MissionVisionCutoutSection } from "./components/MissionVisionCutoutSection";
+import { CareersCutoutSection } from "./components/CareersCutoutSection";
 import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
-import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
+import { InteractiveFleetExplosion } from "./components/InteractiveFleetExplosion";
 import { HorizontalTimelineSection } from "./components/HorizontalTimelineSection";
 import { CertificationsMarquee } from "./components/CertificationsMarquee";
 import { CertificationsSection } from "./components/CertificationsSection";
 import { WhyUsStatementSection } from "./components/WhyUsStatementSection";
-import { CareersSection } from "./components/CareersSection";
 import { FinalCinematicCTA } from "./components/FinalCinematicCTA";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
@@ -66,13 +65,10 @@ export default function Home() {
 
       <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* Figma Interactive Studio Showcase & Design Tokens */}
-      <FigmaDesignCanvas />
-
       {/* GSAP Scroll Horizontal Pin Gallery & SVG Route Draw */}
       <GsapHorizontalScrollGallery onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      <FleetSilhouetteStats onOpenQuote={() => setIsQuoteOpen(true)} />
+
 
 
       <Section2StatementStats />
@@ -82,13 +78,25 @@ export default function Home() {
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
+
+
       <GlobalPresenceMap />
+
+      {/* 🚢 MISSION & VISION CLEAN SPLIT SECTION */}
+      <MissionVisionCutoutSection />
+
+      {/* 💼 CAREERS AT SEA & ON SHORE RECTANGULAR CUTOUT REVEAL */}
+      <CareersCutoutSection
+        onOpenApplyModal={(jobTitle) => setCareerModalState({ isOpen: true, jobTitle })}
+      />
+
+      {/* 💥 "59 VESSELS" EXPLODING FLEET MATRIX */}
+      <InteractiveFleetExplosion />
 
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      <CinematicOperationsSection />
-
       <HorizontalTimelineSection />
+
 
       <div className="bg-[#F5F5F2] text-[#071A2B]">
         <CertificationsMarquee />
@@ -96,10 +104,6 @@ export default function Home() {
       </div>
 
       <WhyUsStatementSection />
-
-      <CareersSection
-        onOpenApplyModal={(jobTitle) => setCareerModalState({ isOpen: true, jobTitle })}
-      />
 
       <FinalCinematicCTA onOpenQuote={() => setIsQuoteOpen(true)} />
 

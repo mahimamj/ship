@@ -8,11 +8,10 @@ import {
   Navigation,
   Globe,
   ArrowRight,
-  TrendingUp,
   ShieldCheck,
-  Cpu,
+  Zap,
+  Activity,
   Layers,
-  Sparkles,
 } from "lucide-react";
 import { initGSAP } from "@/lib/gsapHelper";
 
@@ -88,171 +87,237 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
   onOpenQuote,
 }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const shipRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
 
-  // 3D Card tilt effect on mouse move
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, cardId: string) => {
-    const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -8;
-    const rotateY = ((x - centerX) / centerX) * 8;
+  useEffect(() => {
+    const { gsap, ScrollTrigger } = initGSAP();
 
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-  };
+    const ctx = gsap.context(() => {
+      // 1. GSAP ScrollTrigger animating the Ship along vertical scroll progress
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.5,
+        onUpdate: (self) => {
+          const progress = self.progress;
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.currentTarget.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)";
-  };
+          // Calculate vertical position down the section
+          const totalY = (sectionRef.current?.offsetHeight || 2000) - 250;
+          const currentY = progress * totalY;
+
+          // Calculate horizontal sine wave motion: x = sin(progress * 3.5pi) * amplitude
+          const waveX = Math.sin(progress * Math.PI * 3.5) * 160;
+          const rotationAngle = Math.cos(progress * Math.PI * 3.5) * 22;
+
+          if (shipRef.current) {
+            gsap.set(shipRef.current, {
+              y: currentY,
+              x: waveX,
+              rotation: rotationAngle,
+            });
+          }
+
+          // Active card index highlight
+          const index = Math.min(
+            Math.floor(progress * GALLERY_CARDS.length),
+            GALLERY_CARDS.length - 1
+          );
+          setActiveCardIndex(index);
+        },
+      });
+
+      // 2. Card Entrance Animations on Scroll
+      cardRefs.current.forEach((card, idx) => {
+        if (card) {
+          gsap.fromTo(
+            card,
+            { opacity: 0, y: 60, scale: 0.93 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 80%",
+              },
+            }
+          );
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      id="gsap-horizontal-gallery"
-      className="relative w-full bg-[#051320] text-white overflow-hidden py-24 border-t border-b border-white/10"
+      id="gsap-vertical-fleet-gallery"
+      className="relative w-full bg-[#051320] text-white py-24 md:py-32 px-6 md:px-12 font-sans select-none overflow-hidden border-t border-b border-white/10"
     >
-      {/* Background SVG Animated Trade Corridors Path */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
+      {/* BACKGROUND CONTINUOUS VERTICAL SVG SINE WAVE PATH */}
+      <div className="absolute inset-0 pointer-events-none opacity-30 flex justify-center z-0">
         <svg
-          className="w-full h-full min-w-[1200px]"
-          viewBox="0 0 1440 600"
+          className="w-full h-full max-w-[800px]"
+          viewBox="0 0 800 2200"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            data-scroll-svg-path
-            d="M -100 300 Q 300 100, 720 300 T 1540 300"
+            d="M 400 100 Q 580 350, 400 650 T 400 1200 T 400 1750 T 400 2100"
             stroke="#00F0FF"
             strokeWidth="3"
-            strokeDasharray="8 8"
+            strokeDasharray="10 8"
             fill="none"
           />
-          <circle cx="360" cy="200" r="6" fill="#00F0FF" className="animate-ping" />
-          <circle cx="720" cy="300" r="6" fill="#00F0FF" className="animate-ping" />
-          <circle cx="1100" cy="220" r="6" fill="#00F0FF" className="animate-ping" />
         </svg>
       </div>
 
-      {/* Section Section Header */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 relative z-10">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#176B87]/30 text-[#00F0FF] border border-[#00F0FF]/30 rounded-full text-xs font-mono tracking-widest uppercase mb-4">
-            <Compass className="w-3.5 h-3.5 animate-spin" />
-            <span>GSAP Pinned Timeline Showcase</span>
-          </div>
-
-          <h2
-            className="text-4xl sm:text-6xl font-extrabold text-white font-syne tracking-tight leading-tight"
-            data-scroll-split
-          >
-            GSAP SCROLL <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-[#176B87] to-white">
-              HORIZONTAL FLEET GALLERY
-            </span>
-          </h2>
-        </div>
-
-        <div className="flex items-center gap-4 text-xs font-mono text-[#667783]">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#00F0FF] animate-pulse" />
-            <span>Scroll Down to Scrub Timeline</span>
-          </div>
-          <ArrowRight className="w-4 h-4 text-[#00F0FF]" />
+      {/* FLOATING SAILING VESSEL SHIP RIDING ABOVE THE WAVE */}
+      <div
+        ref={shipRef}
+        className="absolute top-36 left-1/2 -translate-x-1/2 z-30 pointer-events-none will-change-transform"
+      >
+        <div className="relative p-3.5 bg-[#071A2B] border-2 border-[#00F0FF] rounded-full shadow-[0_0_25px_rgba(0,240,255,0.6)] backdrop-blur-xl flex items-center justify-center">
+          <Ship className="w-8 h-8 text-[#00F0FF] animate-pulse" />
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full animate-ping" />
         </div>
       </div>
 
-      {/* HORIZONTAL TRACK CONTAINER FOR GSAP SCRUBBING */}
-      <div className="w-full overflow-hidden relative z-10 px-6 md:px-12">
-        <div
-          ref={trackRef}
-          className="gsap-horizontal-track flex items-stretch gap-8 w-max transition-transform ease-out"
-        >
-          {GALLERY_CARDS.map((card) => (
-            <div
-              key={card.id}
-              onMouseMove={(e) => handleMouseMove(e, card.id)}
-              onMouseLeave={handleMouseLeave}
-              onMouseEnter={() => setHoveredCard(card.id)}
-              className="gsap-horizontal-card w-[340px] sm:w-[420px] lg:w-[460px] bg-gradient-to-b from-[#071A2B]/90 via-[#0A243C]/80 to-[#051320]/95 border border-white/10 rounded-2xl p-6 flex flex-col justify-between shadow-2xl backdrop-blur-xl relative transition-all duration-300 group cursor-pointer will-change-transform"
-            >
-              {/* Top Card Badge & Number */}
-              <div>
-                <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-                  <span className="text-3xl font-extrabold text-[#00F0FF] font-syne opacity-80">
-                    {card.number}
-                  </span>
-                  <span className="px-3 py-1 bg-[#176B87]/30 text-white text-[10px] font-mono rounded-full border border-[#176B87]/50">
-                    {card.category}
-                  </span>
-                </div>
-
-                {/* Card Visual Image Frame */}
-                <div className="relative h-52 w-full rounded-xl overflow-hidden mb-6 border border-white/10 shadow-lg">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B] via-transparent to-transparent opacity-80" />
-
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs font-mono">
-                    <span className="text-white font-bold tracking-wide">{card.subtitle}</span>
-                    <Navigation className="w-3.5 h-3.5 text-[#00F0FF]" />
-                  </div>
-                </div>
-
-                {/* Card Title & Description */}
-                <h3 className="text-2xl font-bold text-white font-syne mb-2 group-hover:text-[#00F0FF] transition-colors">
-                  {card.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-[#667783] font-light leading-relaxed mb-6">
-                  {card.description}
-                </p>
-
-                {/* Features List */}
-                <div className="space-y-2 mb-6">
-                  {card.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs font-mono text-white/80">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#00F0FF]" />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom Card Stat & Action */}
-              <div className="border-t border-white/10 pt-4 flex items-center justify-between">
-                <div>
-                  <div className="flex items-baseline gap-1">
-                    <span
-                      className="text-2xl font-extrabold text-[#00F0FF] font-mono"
-                      data-scroll-counter={card.statValue}
-                    >
-                      {card.statValue}
-                    </span>
-                  </div>
-                  <span className="text-[10px] text-[#667783] font-mono block">
-                    {card.statLabel}
-                  </span>
-                </div>
-
-                {onOpenQuote && (
-                  <button
-                    onClick={onOpenQuote}
-                    className="px-4 py-2 bg-[#176B87] hover:bg-[#00F0FF] hover:text-[#071A2B] text-white text-xs font-mono font-bold rounded-lg transition-all flex items-center gap-1.5 shadow-md"
-                  >
-                    <span>Request Specs</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                )}
-              </div>
+      <div className="max-w-[1400px] mx-auto relative z-10 space-y-16">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/15 pb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#176B87]/30 text-[#00F0FF] border border-[#00F0FF]/30 rounded-full text-xs font-mono tracking-widest uppercase mb-4">
+              <Compass className="w-3.5 h-3.5 animate-spin" />
+              <span>GLOBAL OCEAN TRADE ROUTES &amp; FLEET TELEMETRY</span>
             </div>
-          ))}
+
+            <h2
+              className="text-4xl sm:text-6xl font-extrabold text-white font-syne tracking-tight leading-tight"
+              data-scroll-split
+            >
+              STRATEGIC FLEET <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-emerald-400 to-white">
+                NAVIGATION &amp; CORRIDORS
+              </span>
+            </h2>
+          </div>
+
+          <div className="flex items-center gap-4 text-xs font-mono text-slate-300 bg-[#071A2B]/80 border border-white/10 px-4 py-2.5 rounded-xl">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#00F0FF] animate-pulse" />
+              <span>Scroll Down to Sail Vessel Along Wave</span>
+            </div>
+            <ArrowRight className="w-4 h-4 text-[#00F0FF]" />
+          </div>
         </div>
+
+        {/* VERTICAL CARDS TOP-TO-BOTTOM LAYOUT */}
+        <div className="space-y-16 sm:space-y-24 max-w-5xl mx-auto">
+          {GALLERY_CARDS.map((card, idx) => {
+            const isLeft = idx % 2 === 0;
+            const isActive = idx === activeCardIndex;
+
+            return (
+              <div
+                key={card.id}
+                ref={(el) => {
+                  cardRefs.current[idx] = el;
+                }}
+                className={`flex flex-col md:flex-row items-center gap-8 lg:gap-12 ${
+                  isLeft ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
+              >
+                {/* Card Container */}
+                <div
+                  className={`w-full md:w-1/2 bg-gradient-to-b from-[#071A2B]/95 via-[#0A243C]/90 to-[#051320]/95 border-2 ${
+                    isActive ? "border-[#00F0FF] shadow-[0_0_30px_rgba(0,240,255,0.25)]" : "border-white/10"
+                  } rounded-3xl p-7 sm:p-9 flex flex-col justify-between shadow-2xl backdrop-blur-2xl relative transition-all duration-500 group`}
+                >
+                  {/* Top Card Badge & Number */}
+                  <div>
+                    <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                      <span className="text-4xl font-black text-[#00F0FF] font-syne tracking-tight">
+                        {card.number}
+                      </span>
+                      <span className="px-3.5 py-1 bg-[#176B87]/30 text-[#00F0FF] text-xs font-mono rounded-full border border-[#00F0FF]/30 font-bold">
+                        {card.category}
+                      </span>
+                    </div>
+
+                    {/* Card Visual Image Frame */}
+                    <div className="relative h-56 w-full rounded-2xl overflow-hidden mb-6 border border-white/10 shadow-xl">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B] via-transparent to-transparent opacity-85" />
+
+                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs font-mono">
+                        <span className="text-white font-bold tracking-wide">{card.subtitle}</span>
+                        <Navigation className="w-4 h-4 text-[#00F0FF]" />
+                      </div>
+                    </div>
+
+                    {/* Card Title & Description */}
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-syne mb-3 group-hover:text-[#00F0FF] transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm text-slate-300 font-manrope leading-relaxed mb-6">
+                      {card.description}
+                    </p>
+
+                    {/* Features List */}
+                    <div className="space-y-2 mb-6">
+                      {card.features.map((feature, fIdx) => (
+                        <div key={fIdx} className="flex items-center gap-2 text-xs font-mono text-slate-200">
+                          <ShieldCheck className="w-4 h-4 text-[#00F0FF]" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom Card Stat & Action */}
+                  <div className="border-t border-white/10 pt-4 flex items-center justify-between">
+                    <div>
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-3xl font-black text-[#00F0FF] font-mono">
+                          {card.statValue}
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-slate-400 font-mono block">
+                        {card.statLabel}
+                      </span>
+                    </div>
+
+                    {onOpenQuote && (
+                      <button
+                        onClick={onOpenQuote}
+                        className="px-5 py-2.5 bg-[#176B87] hover:bg-[#00F0FF] hover:text-[#071A2B] text-white text-xs font-mono font-bold rounded-xl transition-all duration-300 flex items-center gap-2 shadow-lg group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)]"
+                      >
+                        <span>Request Specs</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* Empty Spacer Column for Alternating Balance */}
+                <div className="hidden md:block w-1/2" />
+              </div>
+            );
+          })}
+        </div>
+
       </div>
     </section>
   );

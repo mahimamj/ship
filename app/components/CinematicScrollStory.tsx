@@ -52,14 +52,14 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=100%",
+          end: "+=80%",
           scrub: 0.6,
         },
       });
 
-      tl.to(bgRef.current, { scale: 1.15, ease: "none" }, 0)
-        .to(contentRef.current, { y: -100, opacity: 0, ease: "power2.in" }, 0)
-        .to(sectionRef.current, { backgroundColor: "#FFFFFF", ease: "none" }, 0.5);
+      tl.to(bgRef.current, { scale: 1.08, ease: "none" }, 0)
+        .to(contentRef.current, { y: -50, opacity: 0.85, ease: "none" }, 0);
+
     }, sectionRef);
 
     return () => ctx.revert();

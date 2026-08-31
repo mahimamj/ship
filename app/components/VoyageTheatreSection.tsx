@@ -100,12 +100,11 @@ export const VoyageTheatreSection: React.FC = () => {
         if (headlineRef.current) {
           gsap.fromTo(
             headlineRef.current,
-            { y: 40, opacity: 0 },
+            { y: 20 },
             {
               y: 0,
-              opacity: 1,
-              duration: 1,
-              ease: "power3.out",
+              duration: 0.8,
+              ease: "power2.out",
               scrollTrigger: { trigger: wrap, start: "top 80%" },
             }
           );
@@ -129,7 +128,7 @@ export const VoyageTheatreSection: React.FC = () => {
     <section
       id="voyage"
       ref={wrapRef}
-      className="relative min-h-screen bg-[#071A2B] text-white md:h-[420vh]"
+      className="relative min-h-screen bg-[#071A2B] text-white md:h-[130vh]"
     >
       <div className="relative min-h-screen w-full overflow-hidden md:sticky md:top-0 md:h-screen">
         <div
@@ -145,7 +144,7 @@ export const VoyageTheatreSection: React.FC = () => {
         <div className="pointer-events-none absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[conic-gradient(from_180deg,transparent_0%,rgba(0,210,106,0.12)_12%,transparent_28%)] animate-radar" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#071A2B] via-transparent to-[#071A2B]" />
 
-        <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col px-6 py-24 md:px-12">
+        <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-between px-6 py-6 md:px-12 md:py-10">
           <div className="flex items-start justify-between gap-6">
             <p className="label-mono flex items-center gap-2 text-xs font-bold tracking-widest text-[#00D26A]">
               <span className="h-2 w-2 animate-ping rounded-full bg-[#00D26A]" />
@@ -161,7 +160,7 @@ export const VoyageTheatreSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-8 grid flex-1 grid-cols-1 items-center gap-6 lg:grid-cols-12">
+          <div className="mt-4 grid my-auto grid-cols-1 items-center gap-6 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <p className="font-mono text-xs tracking-[0.28em] text-[#176B87]">SCENE {active.code} / 04</p>
               <h2
@@ -268,8 +267,8 @@ export const VoyageTheatreSection: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-auto pt-6">
-            <div className="mb-3 flex justify-between font-mono text-[10px] tracking-[0.22em] text-[#7BA3B8]">
+          <div className="mt-auto pt-4">
+            <div className="mb-2 flex justify-between font-mono text-[10px] tracking-[0.22em] text-[#7BA3B8]">
               <span>DEPARTURE</span>
               <span>VOYAGE COMPLETE {progress}%</span>
             </div>
@@ -279,7 +278,7 @@ export const VoyageTheatreSection: React.FC = () => {
                 style={{ width: `${progress}%` }}
               />
             </div>
-            <div className="mt-4 hidden gap-2 sm:flex">
+            <div className="mt-3 hidden gap-2 sm:flex">
               {SCENES.map((s, i) => (
                 <div
                   key={s.code}
