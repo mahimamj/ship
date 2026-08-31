@@ -10,18 +10,15 @@ import { CinematicHeroLayer } from "./components/CinematicScrollStory";
 import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
 import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
 import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
-import { Section2StatementStats } from "./components/Section2StatementStats";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
 import { MissionVisionCutoutSection } from "./components/MissionVisionCutoutSection";
 import { CareerJobBoardSection } from "./components/CareerJobBoardSection";
-import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
 import { InteractiveFleetExplosion } from "./components/InteractiveFleetExplosion";
+import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
 import { HorizontalTimelineSection } from "./components/HorizontalTimelineSection";
 import { CertificationsMarquee } from "./components/CertificationsMarquee";
 import { CertificationsSection } from "./components/CertificationsSection";
-import { WhyUsStatementSection } from "./components/WhyUsStatementSection";
-import { FinalCinematicCTA } from "./components/FinalCinematicCTA";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { FloatingWhatsAppButton } from "./components/FloatingWhatsAppButton";
@@ -41,7 +38,7 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased overflow-x-hidden selection:bg-[#176B87] selection:text-white">
+    <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased overflow-x-hidden selection:bg-[#0077B6] selection:text-white">
       <ScrollOrchestrator />
       <CinematicCustomCursor />
       <ScrollProgressBar />
@@ -51,7 +48,7 @@ export default function Home() {
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
-      {/* Hero layer */}
+      {/* 1. HERO LAYER */}
       <div id="cinematic-stack" className="relative w-full">
         <ScrollSection stack>
           <CinematicHeroLayer
@@ -61,52 +58,54 @@ export default function Home() {
         </ScrollSection>
       </div>
 
+      {/* 2. LIVE VOYAGE THEATRE */}
       <VoyageTheatreSection />
 
-      {/* GSAP Scroll Horizontal Pin Gallery */}
+      {/* 3. GSAP FLEET GALLERY & CORRIDORS */}
       <GsapHorizontalScrollGallery onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* 🌊 CINEMATIC OPERATIONS WATER WHEEL SPECTRUM SECTION */}
+      {/* 4. CINEMATIC OPERATIONS WATER WHEEL SPECTRUM */}
       <CinematicOperationsSection />
 
-      <Section2StatementStats />
-
+      {/* 5. CAPABILITIES & WHY US PRINCIPLES */}
       <InteractiveVerticalCapabilities
         onSelectService={() => setIsQuoteOpen(true)}
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
+      {/* 6. GLOBAL NETWORK MAP */}
       <GlobalPresenceMap />
 
-      {/* 🚢 MISSION & VISION CLEAN SPLIT SECTION */}
+      {/* 7. VISION & MISSION UNIFIED SECTION */}
       <MissionVisionCutoutSection />
 
-      {/* 📋 WANT TO BE A PART OF OCEANIC STAR TEAM? - CAREER JOB BOARD */}
+      {/* 8. CAREERS JOB BOARD */}
       <CareerJobBoardSection
         onOpenApplyModal={(jobTitle) => setCareerModalState({ isOpen: true, jobTitle })}
       />
 
-      {/* 💥 "59 VESSELS" EXPLODING FLEET MATRIX */}
+      {/* 💥 RESTORED 59 VESSELS PARTICLE MORPHING FLEET MATRIX */}
       <InteractiveFleetExplosion />
 
+      {/* 9. FLEET VISUALIZATION SPECS */}
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
+      {/* 10. COMPANY TIMELINE & HERITAGE STATS */}
       <HorizontalTimelineSection />
 
+      {/* 11. COMPACT CERTIFICATIONS */}
       <div className="bg-[#F5F5F2] text-[#071A2B]">
         <CertificationsMarquee />
         <CertificationsSection />
       </div>
 
-      <WhyUsStatementSection />
-
-      <FinalCinematicCTA onOpenQuote={() => setIsQuoteOpen(true)} />
-
+      {/* 12. CONTACT, PROPOSAL REQUEST & PARTNERSHIP CTA */}
       <div className="bg-[#FFFFFF] text-[#071A2B]">
         <ContactSection />
         <Footer />
       </div>
 
+      {/* MODALS & OVERLAYS */}
       <FleetVideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}

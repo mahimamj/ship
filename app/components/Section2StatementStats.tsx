@@ -34,7 +34,7 @@ export const Section2StatementStats: React.FC = () => {
         );
       }
 
-      // Count up helper
+      // Count up helper: starts from 0 on client mount & animates up to endVal
       const animateValue = (targetRef: React.RefObject<HTMLSpanElement | null>, endVal: number, padZero = false) => {
         if (!targetRef.current) return;
         const obj = { val: 0 };
@@ -87,10 +87,10 @@ export const Section2StatementStats: React.FC = () => {
 
         {/* Statistics Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 pt-12 border-t border-[rgba(7,26,43,0.12)]">
-          {/* Stat 1 */}
+          {/* Stat 1: Initial SSR renders 24+ for SEO crawlers */}
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
-              <span ref={num1Ref}>0</span>
+              <span ref={num1Ref}>24</span>
               <span className="text-[#176B87]">+</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
@@ -98,20 +98,20 @@ export const Section2StatementStats: React.FC = () => {
             </p>
           </div>
 
-          {/* Stat 2 */}
+          {/* Stat 2: Initial SSR renders 59 for SEO crawlers */}
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
-              <span ref={num2Ref}>0</span>
+              <span ref={num2Ref}>59</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
               VESSELS UNDER TECHNICAL MANAGEMENT
             </p>
           </div>
 
-          {/* Stat 3 */}
+          {/* Stat 3: Initial SSR renders 03 HUBS for SEO crawlers */}
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
-              <span ref={num3Ref}>00</span>
+              <span ref={num3Ref}>03</span>
               <span className="text-3xl sm:text-4xl text-[#176B87] font-semibold"> HUBS</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
@@ -119,10 +119,10 @@ export const Section2StatementStats: React.FC = () => {
             </p>
           </div>
 
-          {/* Stat 4 */}
+          {/* Stat 4: Initial SSR renders 24/7 for SEO crawlers */}
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
-              <span ref={num4Ref}>0</span>
+              <span ref={num4Ref}>24</span>
               <span className="text-[#176B87]">/7</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
@@ -134,4 +134,3 @@ export const Section2StatementStats: React.FC = () => {
     </section>
   );
 };
-

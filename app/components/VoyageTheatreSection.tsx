@@ -46,8 +46,8 @@ export const VoyageTheatreSection: React.FC = () => {
   const drawRef = useRef<SVGPathElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const [scene, setScene] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [nm, setNm] = useState(0);
+  const [progress, setProgress] = useState(100);
+  const [nm, setNm] = useState(2140);
 
   useEffect(() => {
     const wrap = wrapRef.current;

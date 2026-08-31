@@ -28,9 +28,9 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     badge: "LIVE AIS DISPATCH",
     image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80",
     icon: Compass,
-    accentColor: "text-[#0077B6]",
-    badgeBg: "bg-[#0077B6]/10 text-[#0077B6] border-[#0077B6]/30",
-    borderActive: "border-2 border-[#0077B6] shadow-[0_10px_30px_rgba(0,119,182,0.15)]",
+    accentColor: "text-[#0068B7]",
+    badgeBg: "bg-[#0068B7]/10 text-[#0068B7] border-[#0068B7]/30",
+    borderActive: "border-2 border-[#0068B7] shadow-[0_10px_30px_rgba(0,104,183,0.15)]",
   },
   {
     id: "on-board",
@@ -41,9 +41,9 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     badge: "DG RPSL AUDITED",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
     icon: ShieldCheck,
-    accentColor: "text-[#059669]",
-    badgeBg: "bg-emerald-500/10 text-[#059669] border-emerald-500/30",
-    borderActive: "border-2 border-[#059669] shadow-[0_10px_30px_rgba(5,150,105,0.15)]",
+    accentColor: "text-[#0068B7]",
+    badgeBg: "bg-[#0068B7]/10 text-[#0068B7] border-[#0068B7]/30",
+    borderActive: "border-2 border-[#0068B7] shadow-[0_10px_30px_rgba(0,104,183,0.15)]",
   },
   {
     id: "on-shore",
@@ -54,9 +54,9 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     badge: "CLASS-1 SUPERINTENDENCY",
     image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&w=1200&q=80",
     icon: Wrench,
-    accentColor: "text-[#D97706]",
-    badgeBg: "bg-amber-500/10 text-[#D97706] border-amber-500/30",
-    borderActive: "border-2 border-[#D97706] shadow-[0_10px_30px_rgba(217,119,6,0.15)]",
+    accentColor: "text-[#0068B7]",
+    badgeBg: "bg-[#0068B7]/10 text-[#0068B7] border-[#0068B7]/30",
+    borderActive: "border-2 border-[#0068B7] shadow-[0_10px_30px_rgba(0,104,183,0.15)]",
   },
 ];
 
@@ -109,65 +109,81 @@ export const CinematicOperationsSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="cinematic-operations"
-      className="relative w-full min-h-screen bg-[#F5F5F2] text-[#071A2B] py-16 md:py-24 px-6 md:px-12 font-sans select-none overflow-hidden border-t border-b border-slate-200"
+      className="relative w-full min-h-screen bg-[#EDF5F5] text-[#061B2A] py-12 md:py-24 px-4 sm:px-6 md:px-12 font-sans select-none overflow-hidden border-t border-b border-[#082F49]/15"
     >
-      <div className="max-w-[1400px] mx-auto flex flex-col justify-between min-h-[85vh] relative z-10 space-y-8">
+      <div className="max-w-[1400px] mx-auto flex flex-col justify-between min-h-[85vh] relative z-10 space-y-6 md:space-y-8">
         
         {/* Top Header */}
-        <div className="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="border-b border-[#082F49]/15 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
           <div>
-            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-[0.25em] uppercase block mb-1">
+            <span className="font-mono text-[10px] sm:text-xs font-bold text-[#0068B7] tracking-[0.25em] uppercase block mb-1">
               // OPERATIONAL REVEAL
             </span>
-            <h2 className="font-syne text-3xl sm:text-5xl lg:text-6xl font-black text-[#071A2B] tracking-tight leading-none">
+            <h2 className="font-syne text-2xl sm:text-5xl lg:text-6xl font-black text-[#061B2A] tracking-tight leading-none">
               CINEMATIC OPERATIONS
             </h2>
           </div>
 
-          <div className="flex items-center gap-3 text-xs font-mono text-slate-600 bg-white border border-slate-200 px-4 py-2 rounded-xl shadow-sm font-bold">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#0077B6] animate-pulse" />
-            <span>INTERACTIVE SPECTRUM REVEAL</span>
+          <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-xl shadow-sm font-bold w-fit">
+            <span className="w-2 h-2 rounded-full bg-[#00D9E8] animate-ping" />
+            <span className="text-[#061B2A]">INTERACTIVE SPECTRUM REVEAL</span>
           </div>
         </div>
 
         {/* 3-COLUMN MAIN STAGE */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center my-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-12 items-center my-auto">
           
-          {/* COLUMN 1: ROTATING WATER WHEEL / MOUSE SCROLL DIAL */}
-          <div className="md:col-span-3 flex flex-col items-center justify-center">
-            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full flex items-center justify-center border-2 border-dashed border-[#0077B6]/30 bg-white shadow-xl backdrop-blur-md">
+          {/* COLUMN 1: ROTATING WATER WHEEL WITH LOGO CYAN ACCENT */}
+          <div className="hidden md:flex md:col-span-3 flex-col items-center justify-center">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full flex items-center justify-center border-2 border-dashed border-[#0068B7]/30 bg-white shadow-xl backdrop-blur-md">
               
               {/* Rotating outer dash ring */}
               <div
                 ref={wheelRingRef}
-                className="absolute inset-2 rounded-full border-2 border-dashed border-[#0077B6]/60 pointer-events-none will-change-transform flex items-center justify-center"
+                className="absolute inset-2 rounded-full border-2 border-dashed border-[#00D9E8] pointer-events-none will-change-transform flex items-center justify-center"
               >
-                <div className="absolute top-1 text-[9px] font-mono font-bold text-[#0077B6] tracking-widest uppercase">
+                <div className="absolute top-1 text-[9px] font-mono font-bold text-[#0068B7] tracking-widest uppercase">
                   SCROLL DOWN
                 </div>
-                <div className="absolute bottom-1 text-[9px] font-mono font-bold text-[#0077B6] tracking-widest uppercase">
+                <div className="absolute bottom-1 text-[9px] font-mono font-bold text-[#0068B7] tracking-widest uppercase">
                   TO EXPLORE
                 </div>
               </div>
 
               {/* Center Mouse Indicator */}
-              <div className="relative z-10 flex flex-col items-center justify-center gap-1.5 p-4 rounded-full bg-slate-50 border border-slate-200 shadow-md">
-                <div className={`w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200 ${activeOp.accentColor}`}>
-                  <Mouse className="w-6 h-6 animate-bounce" />
+              <div className="relative z-10 flex flex-col items-center justify-center gap-1.5 p-4 rounded-full bg-[#061B2A] text-white shadow-lg border border-[#00D9E8]/40">
+                <div className="w-12 h-12 rounded-full bg-[#082F49] flex items-center justify-center text-[#00D9E8]">
+                  <Mouse className="w-6 h-6 animate-bounce text-[#00D9E8]" />
                 </div>
-                <span className={`text-[10px] font-mono font-bold tracking-wider ${activeOp.accentColor}`}>
+                <span className="text-[10px] font-mono font-bold tracking-wider text-[#00D9E8]">
                   SPECTRUM {activeOp.number}
                 </span>
               </div>
             </div>
 
-            <p className="mt-4 text-[11px] font-mono text-slate-500 font-bold tracking-widest text-center hidden sm:block">
+            <p className="mt-4 text-[11px] font-mono text-slate-600 font-bold tracking-widest text-center">
               SCROLL TO ROTATE WHEEL &amp; REVEAL
             </p>
           </div>
 
           {/* COLUMN 2: SPECTRUM SELECTION LIST */}
-          <div className="md:col-span-4 space-y-4">
+          <div className="md:col-span-4 space-y-3 sm:space-y-4">
+            <div className="flex items-center gap-2 md:hidden mb-2 overflow-x-auto pb-1">
+              {SPECTRUM_DATA.map((item, idx) => (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold tracking-wider whitespace-nowrap transition-all border ${
+                    activeIndex === idx
+                      ? "bg-[#061B2A] text-white border-[#00D9E8] shadow-md"
+                      : "bg-white text-slate-600 border-slate-200"
+                  }`}
+                >
+                  {item.number} {item.title}
+                </button>
+              ))}
+            </div>
+
             {SPECTRUM_DATA.map((item, idx) => {
               const isActive = idx === activeIndex;
               const IconComp = item.icon;
@@ -176,27 +192,27 @@ export const CinematicOperationsSection: React.FC = () => {
                 <div
                   key={item.id}
                   onClick={() => setActiveIndex(idx)}
-                  className={`p-5 sm:p-6 rounded-2xl transition-all duration-500 cursor-pointer ${
+                  className={`p-4 sm:p-6 rounded-2xl transition-all duration-500 cursor-pointer ${
                     isActive
-                      ? `bg-white ${item.borderActive} scale-[1.03] text-[#071A2B]`
-                      : "bg-white/70 border border-slate-200 text-[#071A2B]/60 hover:bg-white hover:opacity-100 scale-95"
+                      ? `bg-white border-2 border-[#0068B7] shadow-xl scale-[1.01] text-[#061B2A]`
+                      : "bg-white/70 border border-slate-200 text-[#061B2A]/60 hover:bg-white hover:opacity-100"
                   }`}
                 >
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
-                    <span className={`text-xs font-mono font-bold tracking-wider ${item.accentColor}`}>
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-2 sm:mb-3">
+                    <span className="text-xs font-mono font-bold tracking-wider text-[#0068B7]">
                       SPECTRUM // {item.number}
                     </span>
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border font-bold ${item.badgeBg}`}>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full border font-bold bg-[#0068B7]/10 text-[#0068B7] border-[#0068B7]/20">
                       {item.badge}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-3 mb-1">
-                    <IconComp className={`w-5 h-5 ${isActive ? item.accentColor : "text-slate-400"}`} />
-                    <h3 className="font-syne text-2xl font-black tracking-tight">{item.title}</h3>
+                  <div className="flex items-center gap-2.5 mb-1">
+                    <IconComp className={`w-4 h-4 sm:w-5 sm:h-5 ${isActive ? "text-[#0068B7]" : "text-slate-400"}`} />
+                    <h3 className="font-syne text-xl sm:text-2xl font-black tracking-tight">{item.title}</h3>
                   </div>
 
-                  <p className={`font-mono text-[10px] font-bold tracking-wider mb-2 ${item.accentColor}`}>
+                  <p className="font-mono text-[10px] font-bold tracking-wider mb-2 text-[#0068B7]">
                     {item.subtitle}
                   </p>
 
@@ -208,8 +224,8 @@ export const CinematicOperationsSection: React.FC = () => {
             })}
           </div>
 
-          {/* COLUMN 3: OCEAN IMAGE VIEWPORT (CROSSFADE & SLIDE INTO PLACE) */}
-          <div className="md:col-span-5 relative h-[320px] sm:h-[400px] lg:h-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 bg-white">
+          {/* COLUMN 3: OCEAN IMAGE VIEWPORT */}
+          <div className="md:col-span-5 relative h-[240px] sm:h-[360px] lg:h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 border-slate-200 bg-white">
             {SPECTRUM_DATA.map((item, idx) => {
               const isActive = idx === activeIndex;
 
@@ -227,15 +243,15 @@ export const CinematicOperationsSection: React.FC = () => {
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B]/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061B2A]/85 via-transparent to-transparent" />
 
-                  <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white font-mono">
+                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-center justify-between text-white font-mono">
                     <div>
-                      <span className={`text-xs font-bold block ${item.accentColor}`}>SPECTRUM {item.number}</span>
-                      <span className="font-syne text-xl font-bold">{item.title}</span>
+                      <span className="text-[10px] sm:text-xs font-bold block text-[#00D9E8]">SPECTRUM {item.number}</span>
+                      <span className="font-syne text-base sm:text-xl font-bold">{item.title}</span>
                     </div>
-                    <div className="p-2.5 bg-white/20 backdrop-blur-md rounded-full text-white">
-                      <ArrowRight className="w-5 h-5" />
+                    <div className="p-2 bg-[#061B2A]/80 border border-[#00D9E8]/40 backdrop-blur-md rounded-full text-[#00D9E8]">
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                     </div>
                   </div>
                 </div>
@@ -246,14 +262,14 @@ export const CinematicOperationsSection: React.FC = () => {
         </div>
 
         {/* Bottom Status Bar */}
-        <div className="border-t border-slate-200 pt-4 flex items-center justify-between text-xs font-mono text-slate-500">
+        <div className="border-t border-[#082F49]/15 pt-4 flex items-center justify-between text-[10px] sm:text-xs font-mono text-slate-500">
           <span>HOME / CINEMATIC OPERATIONS</span>
           <div className="flex items-center gap-2 font-bold">
             {SPECTRUM_DATA.map((s, idx) => (
               <span
                 key={s.id}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  activeIndex === idx ? `w-8 ${s.badgeBg.split(" ")[0]} bg-current` : "w-2 bg-slate-300"
+                className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
+                  activeIndex === idx ? "w-6 sm:w-8 bg-[#0068B7]" : "w-2 bg-slate-300"
                 }`}
               />
             ))}

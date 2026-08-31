@@ -73,7 +73,8 @@ export const InteractiveFleetExplosion: React.FC = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const vesselContainerRef = useRef<HTMLDivElement>(null);
 
-  const [counterVal, setCounterVal] = useState(0);
+  // Initial SSR state is 59 so crawlers see "59 VESSELS" in static HTML
+  const [counterVal, setCounterVal] = useState(59);
 
   useEffect(() => {
     const { gsap, ScrollTrigger } = initGSAP();
@@ -163,7 +164,7 @@ export const InteractiveFleetExplosion: React.FC = () => {
         .to(
           counterObj,
           {
-            val: 0,
+            val: 59,
             duration: 0.4,
             onUpdate: () => setCounterVal(Math.round(counterObj.val)),
           },
@@ -178,88 +179,91 @@ export const InteractiveFleetExplosion: React.FC = () => {
     <section
       ref={sectionRef}
       id="fleet-matrix-explosion"
-      className="relative w-full min-h-screen bg-[#F5F5F2] text-[#071A2B] py-20 md:py-28 px-6 md:px-12 overflow-hidden font-sans select-none border-t border-b border-slate-200"
+      className="relative w-full min-h-screen bg-[#061B2A] text-white py-16 md:py-28 px-4 sm:px-6 md:px-12 overflow-hidden font-sans select-none border-t border-b border-[#00D9E8]/20"
     >
-      {/* Background Radar Mesh */}
-      <div className="absolute inset-0 bg-[radial-gradient(#176B87_1.2px,transparent_1.2px)] [background-size:32px_32px] opacity-15 pointer-events-none" />
+      {/* Background Radar Mesh & Signature Cyan Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(#00D9E8_1px,transparent_1px)] [background-size:36px_36px] opacity-15 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#00D9E8]/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Main Container */}
-      <div className="max-w-[1400px] mx-auto flex flex-col justify-between min-h-[80vh] relative z-10 space-y-12">
+      <div className="max-w-[1400px] mx-auto flex flex-col justify-between min-h-[80vh] relative z-10 space-y-8 sm:space-y-12">
         {/* Top Header Bar */}
-        <div ref={headerRef} className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
+        <div ref={headerRef} className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 bg-[#176B87]/10 text-[#176B87] border border-[#176B87]/30 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
+            <span className="px-3 py-1 bg-[#00D9E8]/15 text-[#00D9E8] border border-[#00D9E8]/40 rounded-full font-mono text-[10px] sm:text-xs font-bold tracking-widest uppercase">
               FLEET // 01
             </span>
-            <span className="text-xs text-slate-600 font-mono tracking-wider font-bold">
+            <span className="text-[11px] sm:text-xs text-slate-300 font-mono tracking-wider font-bold">
               MANAGED FLEET MATRIX
             </span>
           </div>
 
-          <div className="flex items-center gap-3 bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-mono shadow-sm">
-            <Activity className="w-4 h-4 text-[#176B87] animate-spin" />
-            <span className="text-[#176B87] font-bold">AUTOMATED FLEET LOOP ACTIVE</span>
+          <div className="flex items-center gap-2 sm:gap-3 bg-[#082F49]/80 border border-[#00D9E8]/30 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-[10px] sm:text-xs font-mono shadow-lg backdrop-blur-md">
+            <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00D9E8] animate-spin" />
+            <span className="text-[#00D9E8] font-bold">AUTOMATED FLEET LOOP ACTIVE</span>
           </div>
         </div>
 
-        {/* Center Canvas Stage: Number Counter & Synchronized 59 Vessel Particle Morph */}
-        <div className="my-auto flex flex-col items-center justify-center text-center space-y-6">
+        {/* Center Canvas Stage: Number Counter & Signature Cyan Morphing Vessels */}
+        <div className="my-auto flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6">
           {/* Big Number Reveal Counter */}
           <div ref={counterRef} className="relative inline-flex flex-col items-center">
-            <div className="flex items-baseline gap-4">
-              <span className="font-syne text-8xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#071A2B] via-[#123047] to-[#176B87] tracking-tight leading-none min-w-[180px]">
+            <div className="flex items-baseline gap-2 sm:gap-4">
+              <span className="font-syne text-6xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-sky-100 to-[#00D9E8] tracking-tight leading-none min-w-[120px] sm:min-w-[180px]">
                 {counterVal}
               </span>
-              <span className="font-syne text-3xl sm:text-5xl font-black text-[#176B87] tracking-wider uppercase">
+              <span className="font-syne text-2xl sm:text-5xl font-black text-[#00D9E8] tracking-wider uppercase">
                 VESSELS
               </span>
             </div>
 
-            <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#176B87] to-transparent my-2" />
-            <span className="font-mono text-xs text-slate-600 font-bold tracking-[0.3em] uppercase">
+            <div className="h-0.5 w-24 sm:w-32 bg-gradient-to-r from-transparent via-[#00D9E8] to-transparent my-2" />
+            <span className="font-mono text-[10px] sm:text-xs text-slate-300 font-bold tracking-[0.25em] uppercase">
               MANAGED FLEET IN OPERATION
             </span>
           </div>
 
-          {/* 59 VESSEL PARTICLE MORPH CONTAINER STAGE */}
-          <div
-            ref={vesselContainerRef}
-            className="relative w-full max-w-4xl h-[300px] sm:h-[360px] flex items-center justify-center overflow-visible"
-          >
-            {Array.from({ length: 59 }).map((_, i) => (
-              <div
-                key={i}
-                className="vessel-particle absolute w-8 h-8 rounded-xl bg-white border border-[#176B87]/40 flex items-center justify-center shadow-md text-[#176B87] hover:scale-125 transition-transform"
-                style={{
-                  left: "50%",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                <Ship className="w-4 h-4" />
-              </div>
-            ))}
+          {/* 59 VESSEL PARTICLE MORPH CONTAINER STAGE WITH SIGNATURE CYAN GLOW */}
+          <div className="relative w-full max-w-4xl h-[260px] sm:h-[360px] flex items-center justify-center overflow-hidden">
+            <div
+              ref={vesselContainerRef}
+              className="relative w-full h-full flex items-center justify-center transform scale-[0.68] sm:scale-100 origin-center transition-transform"
+            >
+              {Array.from({ length: 59 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="vessel-particle absolute w-8 h-8 rounded-xl bg-[#082F49] border border-[#00D9E8]/60 flex items-center justify-center shadow-[0_0_15px_rgba(0,217,232,0.3)] text-[#00D9E8]"
+                  style={{
+                    left: "50%",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  <Ship className="w-4 h-4" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Bottom Banner Stats */}
-        <div ref={statsRef} className="border-t border-slate-200 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        <div ref={statsRef} className="border-t border-white/10 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
           <div className="space-y-1">
-            <span className="font-syne text-3xl font-extrabold text-[#176B87]">29</span>
-            <p className="font-mono text-xs text-slate-700 font-bold tracking-wider">SHIPS ON ORDER</p>
-            <span className="font-mono text-[10px] text-slate-500 font-bold">DUAL FUEL &amp; ECO EXPANSION</span>
+            <span className="font-syne text-2xl sm:text-3xl font-extrabold text-[#00D9E8]">29</span>
+            <p className="font-mono text-[11px] sm:text-xs text-slate-200 font-bold tracking-wider">SHIPS ON ORDER</p>
+            <span className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-bold block">DUAL FUEL &amp; ECO EXPANSION</span>
           </div>
 
-          <div className="space-y-1 border-x border-slate-200 px-4">
-            <span className="font-syne text-3xl font-extrabold text-emerald-700">03</span>
-            <p className="font-mono text-xs text-slate-700 font-bold tracking-wider">GLOBAL HUBS</p>
-            <span className="font-mono text-[10px] text-slate-500 font-bold">DUBAI &bull; MUMBAI &bull; COLOMBO</span>
+          <div className="space-y-1 sm:border-x border-white/10 px-4">
+            <span className="font-syne text-2xl sm:text-3xl font-extrabold text-[#00D9E8]">03</span>
+            <p className="font-mono text-[11px] sm:text-xs text-slate-200 font-bold tracking-wider">GLOBAL HUBS</p>
+            <span className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-bold block">DUBAI &bull; MUMBAI &bull; COLOMBO</span>
           </div>
 
           <div className="space-y-1">
-            <span className="font-syne text-3xl font-extrabold text-amber-700">24+</span>
-            <p className="font-mono text-xs text-slate-700 font-bold tracking-wider">YEARS OF EXCELLENCE</p>
-            <span className="font-mono text-[10px] text-slate-500 font-bold">ESTABLISHED 2002</span>
+            <span className="font-syne text-2xl sm:text-3xl font-extrabold text-[#00D9E8]">24+</span>
+            <p className="font-mono text-[11px] sm:text-xs text-slate-200 font-bold tracking-wider">YEARS OF EXCELLENCE</p>
+            <span className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-bold block">ESTABLISHED 2002</span>
           </div>
         </div>
       </div>

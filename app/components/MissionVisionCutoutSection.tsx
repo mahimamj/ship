@@ -57,12 +57,11 @@ export const MissionVisionCutoutSection: React.FC = () => {
       if (visionCardRef.current) {
         gsap.fromTo(
           visionCardRef.current,
-          { x: -160, opacity: 0, scale: 0.9, rotateY: -10 },
+          { x: -160, opacity: 0, scale: 0.9 },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            rotateY: 0,
             ease: "power2.out",
             scrollTrigger: {
               trigger: containerRef.current,
@@ -78,12 +77,11 @@ export const MissionVisionCutoutSection: React.FC = () => {
       if (missionCardRef.current) {
         gsap.fromTo(
           missionCardRef.current,
-          { x: 160, opacity: 0, scale: 0.9, rotateY: 10 },
+          { x: 160, opacity: 0, scale: 0.9 },
           {
             x: 0,
             opacity: 1,
             scale: 1,
-            rotateY: 0,
             ease: "power2.out",
             scrollTrigger: {
               trigger: containerRef.current,
@@ -103,10 +101,10 @@ export const MissionVisionCutoutSection: React.FC = () => {
     <section
       ref={containerRef}
       id="mission-vision-split"
-      className="relative w-full min-h-screen bg-[#F5F5F2] text-[#071A2B] py-20 md:py-28 px-6 md:px-12 font-sans select-none overflow-hidden border-t border-slate-200 [perspective:1200px]"
+      className="relative w-full min-h-screen bg-[#FAFAF7] text-[#061B2A] py-20 md:py-28 px-6 md:px-12 font-sans select-none overflow-hidden border-t border-slate-200"
     >
       {/* FULL-BLEED CINEMATIC /ship.mp4 VIDEO BACKDROP WITH PARALLAX */}
-      <div className="absolute inset-0 z-0 bg-[#F5F5F2] overflow-hidden">
+      <div className="absolute inset-0 z-0 bg-[#FAFAF7] overflow-hidden">
         <video
           ref={videoRef}
           src="/ship.mp4"
@@ -115,12 +113,12 @@ export const MissionVisionCutoutSection: React.FC = () => {
           loop
           playsInline
           poster="/images/hero_vessel.png"
-          className="w-full h-full object-cover opacity-35 will-change-transform"
+          className="w-full h-full object-cover opacity-30 will-change-transform"
         >
           <source src="/ship.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#F5F5F2] via-[#F5F5F2]/80 to-[#F5F5F2]/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(#0077B6_1.2px,transparent_1.2px)] [background-size:32px_32px] opacity-15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAF7] via-[#FAFAF7]/80 to-[#FAFAF7]/90" />
+        <div className="absolute inset-0 bg-[radial-gradient(#0068B7_1.2px,transparent_1.2px)] [background-size:32px_32px] opacity-15 pointer-events-none" />
       </div>
 
       <div className="max-w-[1400px] mx-auto space-y-12 relative z-10">
@@ -130,7 +128,7 @@ export const MissionVisionCutoutSection: React.FC = () => {
           className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4"
         >
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 bg-[#0077B6]/10 text-[#0077B6] border border-[#0077B6]/30 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
+            <span className="px-3 py-1 bg-[#0068B7]/10 text-[#0068B7] border border-[#0068B7]/30 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
               PURPOSE // 01
             </span>
             <span className="text-xs text-slate-700 font-mono tracking-wider font-bold">
@@ -139,29 +137,29 @@ export const MissionVisionCutoutSection: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3 bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-mono shadow-sm">
-            <Activity className="w-4 h-4 text-[#0077B6] animate-spin" />
-            <span className="text-[#0077B6] font-bold">MARITIME LEADERSHIP ACTIVE</span>
+            <Activity className="w-4 h-4 text-[#0068B7] animate-spin" />
+            <span className="text-[#0068B7] font-bold">MARITIME LEADERSHIP ACTIVE</span>
           </div>
         </div>
 
-        {/* 2-COLUMN GLASSMORPHIC CARDS GRID: GSAP SCRUBBED SLIDE-IN FROM LEFT & RIGHT */}
+        {/* 2-COLUMN GLASSMORPHIC CARDS GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch pt-4">
-          {/* OUR VISION CARD (GSAP SCRUBBED FROM LEFT) */}
+          {/* OUR VISION CARD */}
           <div
             ref={visionCardRef}
-            className="p-8 sm:p-10 rounded-3xl bg-white/95 border-2 border-[#0077B6]/30 backdrop-blur-2xl text-[#071A2B] space-y-6 shadow-[0_10px_30px_rgba(0,119,182,0.08)] flex flex-col justify-between will-change-transform transform-gpu hover:border-[#0077B6] hover:shadow-[0_20px_40px_rgba(0,119,182,0.18)] transition-all duration-500"
+            className="p-8 sm:p-10 rounded-3xl bg-white/95 border-2 border-[#0068B7]/30 backdrop-blur-2xl text-[#061B2A] space-y-6 shadow-xl flex flex-col justify-between hover:border-[#0068B7] transition-all duration-500"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-                <span className="px-3.5 py-1.5 bg-[#0077B6]/15 text-[#0077B6] border border-[#0077B6]/30 text-xs font-mono font-bold rounded-lg flex items-center gap-2 uppercase tracking-wider">
+                <span className="px-3.5 py-1.5 bg-[#0068B7]/10 text-[#0068B7] border border-[#0068B7]/30 text-xs font-mono font-bold rounded-lg flex items-center gap-2 uppercase tracking-wider">
                   <Eye className="w-4 h-4" /> OUR VISION
                 </span>
-                <span className="text-[10px] font-mono text-[#0077B6] bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200 font-bold">CII GRADE A+ ECO FLEET</span>
+                <span className="text-[10px] font-mono text-[#0068B7] bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200 font-bold">CII GRADE A+ ECO FLEET</span>
               </div>
 
-              <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A2B] leading-tight">
+              <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#061B2A] leading-tight">
                 LEADER IN <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0077B6] via-[#0284C7] to-[#071A2B]">
+                <span className="text-[#0068B7]">
                   SEABORNE SOLUTIONS
                 </span>
               </h3>
@@ -171,30 +169,30 @@ export const MissionVisionCutoutSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-[#0077B6]">
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-[#0068B7]">
               <span className="flex items-center gap-2 font-bold">
-                <Globe className="w-4 h-4 text-[#0077B6]" /> 29 SHIPS ON ORDER
+                <Globe className="w-4 h-4 text-[#0068B7]" /> 29 SHIPS ON ORDER
               </span>
               <span className="text-slate-600 font-bold">DUAL-FUEL EXPANSION</span>
             </div>
           </div>
 
-          {/* OUR MISSION CARD (GSAP SCRUBBED FROM RIGHT) */}
+          {/* OUR MISSION CARD */}
           <div
             ref={missionCardRef}
-            className="p-8 sm:p-10 rounded-3xl bg-white/95 border-2 border-[#059669]/30 backdrop-blur-2xl text-[#071A2B] space-y-6 shadow-[0_10px_30px_rgba(5,150,105,0.08)] flex flex-col justify-between will-change-transform transform-gpu hover:border-[#059669] hover:shadow-[0_20px_40px_rgba(5,150,105,0.18)] transition-all duration-500"
+            className="p-8 sm:p-10 rounded-3xl bg-white/95 border-2 border-[#0068B7]/30 backdrop-blur-2xl text-[#061B2A] space-y-6 shadow-xl flex flex-col justify-between hover:border-[#0068B7] transition-all duration-500"
           >
             <div className="space-y-4">
               <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-                <span className="px-3.5 py-1.5 bg-[#059669]/15 text-[#059669] border border-[#059669]/30 text-xs font-mono font-bold rounded-lg flex items-center gap-2 uppercase tracking-wider">
+                <span className="px-3.5 py-1.5 bg-[#0068B7]/10 text-[#0068B7] border border-[#0068B7]/30 text-xs font-mono font-bold rounded-lg flex items-center gap-2 uppercase tracking-wider">
                   <Target className="w-4 h-4" /> OUR MISSION
                 </span>
-                <span className="text-[10px] font-mono text-[#059669] bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 font-bold">DG RPSL APPROVED</span>
+                <span className="text-[10px] font-mono text-[#0068B7] bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200 font-bold">DG RPSL APPROVED</span>
               </div>
 
-              <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A2B] leading-tight">
+              <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#061B2A] leading-tight">
                 SAFE, RELIABLE &amp; <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#059669] via-[#0D9488] to-[#071A2B]">
+                <span className="text-[#0068B7]">
                   SUSTAINABLE SHIPPING
                 </span>
               </h3>
@@ -204,9 +202,9 @@ export const MissionVisionCutoutSection: React.FC = () => {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-[#059669]">
+            <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-mono text-[#0068B7]">
               <span className="flex items-center gap-2 font-bold">
-                <ShieldCheck className="w-4 h-4 text-[#059669]" /> STCW 2010 CERTIFIED
+                <ShieldCheck className="w-4 h-4 text-[#0068B7]" /> STCW 2010 CERTIFIED
               </span>
               <span className="text-slate-600 font-bold">MLC 2006 COMPLIANT</span>
             </div>

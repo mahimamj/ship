@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, MessageSquare, Send, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Mail, MessageSquare, Send, CheckCircle2, FileText, Anchor } from "lucide-react";
 
 interface FormData {
   fullName: string;
@@ -31,109 +31,136 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-10 mb-16 gap-8">
-          <div data-scroll-reveal="fade-up">
-            <span className="label-mono text-[#176B87] mb-3 block font-semibold">
-              // DISPATCH & INQUIRIES
+    <section id="contact" className="py-20 md:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-slate-200">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-16">
+        
+        {/* COMBINED HIGH-CONVERSION PARTNERSHIP CTA BANNER */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#071A2B] via-[#0A243C] to-[#0077B6] text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-700">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#0077B6]/20 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="space-y-3 max-w-2xl relative z-10">
+            <span className="px-3.5 py-1 bg-white/10 text-sky-300 border border-white/20 rounded-full font-mono text-xs font-bold tracking-widest uppercase inline-flex items-center gap-2">
+              <Anchor className="w-3.5 h-3.5 text-sky-400" /> MARITIME PARTNERSHIP CTA
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none" data-scroll-split>
+            <h3 className="font-syne text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+              READY TO ELEVATE YOUR FLEET OPERATIONS?
+            </h3>
+            <p className="font-manrope text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+              Connect with our Class-1 superintendents and RPSL crewing experts today. Receive a custom technical management proposal within 2 hours.
+            </p>
+          </div>
+
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
+            <a
+              href="#contact-form"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#0077B6] hover:bg-white hover:text-[#071A2B] text-white font-mono font-bold text-xs tracking-wider uppercase transition-all shadow-lg text-center flex items-center justify-center gap-2"
+            >
+              <FileText className="w-4 h-4" /> REQUEST PROPOSAL NOW
+            </a>
+          </div>
+        </div>
+
+        {/* Section Header */}
+        <div id="contact-form" className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
+          <div>
+            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-2">
+              // DISPATCH &amp; COMMERCIAL INQUIRIES
+            </span>
+            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
               CONTACT OPERATIONS
             </h2>
           </div>
 
-          <p className="text-sm font-manrope text-[#667783] max-w-md leading-relaxed" data-scroll-reveal="fade-left" data-scroll-delay="0.15">
+          <p className="text-sm font-manrope text-slate-600 max-w-md leading-relaxed">
             Reach out directly for technical vessel proposals, RPSL crewing assessments, drydock planning, or port agency dispatch.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start" data-scroll-stagger>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Office Contacts */}
-          <div className="lg:col-span-5 space-y-6" data-scroll-stagger-item>
+          <div className="lg:col-span-5 space-y-6">
             {/* Dubai HQ Card */}
-            <div className="bg-white rounded-3xl p-8 border border-[rgba(7,26,43,0.12)] shadow-sm space-y-4">
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#176B87] flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold">
                   🇦🇪
                 </div>
                 <div>
                   <h3 className="font-syne text-lg font-bold text-[#071A2B]">
                     Oceanic Star Fleet Ship Management LLC
                   </h3>
-                  <p className="text-xs font-mono text-[#176B87] font-semibold">Dubai Operations HQ</p>
+                  <p className="text-xs font-mono text-[#0077B6] font-semibold">Dubai Operations HQ</p>
                 </div>
               </div>
 
-              <div className="text-xs font-manrope text-[#667783] space-y-2.5 pt-4 border-t border-[rgba(7,26,43,0.12)]">
+              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
-                  <MapPin className="w-4 h-4 text-[#176B87] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Office No. 601, 6th Floor, Al Jawharah Building, Bur Dubai, UAE</span>
                 </p>
                 <p className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4 text-[#176B87] shrink-0" />
-                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#071A2B] transition font-bold">info@oceanicstarshipping.com</a>
+                  <Mail className="w-4 h-4 text-[#0077B6] shrink-0" />
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#0077B6] transition font-bold">info@oceanicstarshipping.com</a>
                 </p>
               </div>
             </div>
 
             {/* India HQ Card */}
-            <div className="bg-white rounded-3xl p-8 border border-[rgba(7,26,43,0.12)] shadow-sm space-y-4">
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#176B87] flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold">
                   🇮🇳
                 </div>
                 <div>
                   <h3 className="font-syne text-lg font-bold text-[#071A2B]">
                     Oceanic Star Shipping Pvt. Ltd.
                   </h3>
-                  <p className="text-xs font-mono text-[#176B87] font-semibold">Navi Mumbai HQ & Crewing Center</p>
+                  <p className="text-xs font-mono text-[#0077B6] font-semibold">Navi Mumbai HQ &amp; Crewing Center</p>
                 </div>
               </div>
 
-              <div className="text-xs font-manrope text-[#667783] space-y-2.5 pt-4 border-t border-[rgba(7,26,43,0.12)]">
+              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
-                  <MapPin className="w-4 h-4 text-[#176B87] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Real Tech Park, Office No. 602–603, Sector 30A, Vashi, Navi Mumbai – 400 703, India</span>
                 </p>
                 <p className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-[#176B87] shrink-0" />
+                  <Phone className="w-4 h-4 text-[#0077B6] shrink-0" />
                   <span>+91 22 2781 7171 / 72</span>
                 </p>
                 <p className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-[#176B87] shrink-0" />
+                  <Phone className="w-4 h-4 text-[#0077B6] shrink-0" />
                   <span>Mob: +91 90043 90041 / +91 90043 90141</span>
                 </p>
                 <p className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4 text-[#176B87] shrink-0" />
-                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#071A2B] transition font-bold">info@oceanicstarshipping.com</a>
+                  <Mail className="w-4 h-4 text-[#0077B6] shrink-0" />
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#0077B6] transition font-bold">info@oceanicstarshipping.com</a>
                 </p>
               </div>
             </div>
 
             {/* Turkey Office Card */}
-            <div className="bg-white rounded-3xl p-8 border border-[rgba(7,26,43,0.12)] shadow-sm space-y-4">
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#176B87] flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold">
                   🇹🇷
                 </div>
                 <div>
                   <h3 className="font-syne text-lg font-bold text-[#071A2B]">
                     Oceanic Star Shipping Turkey
                   </h3>
-                  <p className="text-xs font-mono text-[#176B87] font-semibold">Istanbul Branch Office</p>
+                  <p className="text-xs font-mono text-[#0077B6] font-semibold">Istanbul Branch Office</p>
                 </div>
               </div>
 
-              <div className="text-xs font-manrope text-[#667783] space-y-2.5 pt-4 border-t border-[rgba(7,26,43,0.12)]">
+              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
-                  <MapPin className="w-4 h-4 text-[#176B87] shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Mimar Sinan Mah. Bosna Cad. Çolpan Sok. No.2, Uzunlar Apt. A Blok D.4, 34782 Çekmeköy - İstanbul / TURKEY</span>
                 </p>
                 <p className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4 text-[#176B87] shrink-0" />
-                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#071A2B] transition font-bold">info@oceanicstarshipping.com</a>
+                  <Mail className="w-4 h-4 text-[#0077B6] shrink-0" />
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#0077B6] transition font-bold">info@oceanicstarshipping.com</a>
                 </p>
               </div>
             </div>
@@ -143,7 +170,7 @@ export const ContactSection: React.FC = () => {
               href="https://wa.me/919004390041?text=Hello%20Oceanic%20Star%20Fleet%2C%20I%20would%20like%20to%20inquire%20about%20your%20maritime%20services."
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-emerald-50 border border-emerald-200 rounded-3xl p-6 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100"
+              className="bg-emerald-50 border border-emerald-200 rounded-3xl p-6 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100 shadow-sm"
             >
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700">
@@ -160,12 +187,12 @@ export const ContactSection: React.FC = () => {
             </a>
           </div>
 
-          {/* Right Column: React Hook Form Inquiry */}
-          <div className="lg:col-span-7" data-scroll-stagger-item>
-            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-[rgba(7,26,43,0.12)] shadow-sm space-y-6">
-              <div className="border-b border-[rgba(7,26,43,0.12)] pb-4">
+          {/* Right Column: Commercial Proposal Form */}
+          <div className="lg:col-span-7">
+            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl space-y-6">
+              <div className="border-b border-slate-100 pb-4">
                 <h3 className="font-syne text-2xl font-extrabold text-[#071A2B]">COMMERCIAL PROPOSAL REQUEST</h3>
-                <p className="text-xs font-manrope text-[#667783] mt-1">Submit your specifications for a response within 2 business hours.</p>
+                <p className="text-xs font-manrope text-slate-500 mt-1">Submit your specifications for a response within 2 business hours.</p>
               </div>
 
               {submitted ? (
@@ -174,16 +201,16 @@ export const ContactSection: React.FC = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-sky-50 border border-sky-200 rounded-2xl p-8 text-center space-y-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-sky-100 text-[#176B87] flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 rounded-full bg-sky-100 text-[#0077B6] flex items-center justify-center mx-auto">
                     <CheckCircle2 size={36} />
                   </div>
                   <h4 className="font-syne text-xl font-bold text-[#071A2B]">Inquiry Received Successfully</h4>
-                  <p className="text-xs font-manrope text-[#667783] max-w-md mx-auto">
+                  <p className="text-xs font-manrope text-slate-600 max-w-md mx-auto">
                     Thank you for reaching out. Our senior superintendent will review your request and contact you shortly.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="px-6 py-2.5 rounded-full font-mono text-xs font-bold bg-[#071A2B] text-white"
+                    className="px-6 py-2.5 rounded-full font-mono text-xs font-bold bg-[#0077B6] text-white"
                   >
                     Submit Another Inquiry
                   </button>
@@ -197,7 +224,7 @@ export const ContactSection: React.FC = () => {
                         type="text"
                         {...register("fullName", { required: "Full Name is required" })}
                         placeholder="Capt. John Doe"
-                        className="w-full bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#071A2B]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                       {errors.fullName && <span className="text-rose-600 text-[10px]">{errors.fullName.message}</span>}
                     </div>
@@ -211,7 +238,7 @@ export const ContactSection: React.FC = () => {
                           pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
                         })}
                         placeholder="j.doe@shipping-co.com"
-                        className="w-full bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#071A2B]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                       {errors.email && <span className="text-rose-600 text-[10px]">{errors.email.message}</span>}
                     </div>
@@ -224,7 +251,7 @@ export const ContactSection: React.FC = () => {
                         type="tel"
                         {...register("phone", { required: "Phone number is required" })}
                         placeholder="+971 50 123 4567"
-                        className="w-full bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#071A2B]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                       {errors.phone && <span className="text-rose-600 text-[10px]">{errors.phone.message}</span>}
                     </div>
@@ -235,7 +262,7 @@ export const ContactSection: React.FC = () => {
                         type="text"
                         {...register("companyName")}
                         placeholder="Global Maritime Ltd"
-                        className="w-full bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#071A2B]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                     </div>
                   </div>
@@ -245,7 +272,7 @@ export const ContactSection: React.FC = () => {
                       <label className="block text-[#071A2B] font-semibold mb-1">Service Required *</label>
                       <select
                         {...register("serviceCategory", { required: "Please select a service" })}
-                        className="w-full bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#071A2B]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       >
                         <option value="">Select Service Category</option>
                         <option value="Crew Management">Crew Management</option>
@@ -261,7 +288,7 @@ export const ContactSection: React.FC = () => {
                       <label className="block text-[#071A2B] font-semibold mb-1">Preferred Office Entity</label>
                       <select
                         {...register("entityPreference")}
-                        className="w-full bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#071A2B]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       >
                         <option value="Dubai LLC">Dubai LLC (Oceanic Star Fleet)</option>
                         <option value="India Pvt Ltd">India Pvt Ltd (Oceanic Star Shipping)</option>
@@ -276,7 +303,7 @@ export const ContactSection: React.FC = () => {
                       rows={4}
                       {...register("message", { required: "Please describe your request" })}
                       placeholder="Specify vessel type, DWT, port call dates, or crew rank requirements..."
-                      className="w-full bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#071A2B] resize-none"
+                      className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6] resize-none"
                     ></textarea>
                     {errors.message && <span className="text-rose-600 text-[10px]">{errors.message.message}</span>}
                   </div>
@@ -284,9 +311,7 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl font-mono font-bold text-xs bg-[#071A2B] text-white hover:bg-[#176B87] transition flex items-center justify-center space-x-2"
-                    data-cursor
-                    data-cursor-text="SUBMIT"
+                    className="w-full py-4 rounded-xl font-mono font-bold text-xs bg-[#0077B6] hover:bg-[#071A2B] text-white transition flex items-center justify-center space-x-2 shadow-lg"
                   >
                     {isSubmitting ? (
                       <span>Sending Request...</span>
