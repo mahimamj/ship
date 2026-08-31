@@ -1,34 +1,69 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { VIDEOS } from "@/lib/content/videos";
 import { initGSAP } from "@/lib/gsapHelper";
-import { Radio, Compass, Shield, Anchor, Activity, ArrowRight, Play } from "lucide-react";
+import { Mouse, Compass, ShieldCheck, Wrench, ArrowRight } from "lucide-react";
+
+interface SpectrumItem {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+  badge: string;
+  image: string;
+  icon: React.ElementType;
+  accentColor: string;
+  badgeBg: string;
+  borderActive: string;
+}
+
+const SPECTRUM_DATA: SpectrumItem[] = [
+  {
+    id: "at-sea",
+    number: "01",
+    title: "AT SEA",
+    subtitle: "GLOBAL VOYAGE DISPATCH & NAVIGATION",
+    desc: "Real-time vessel position tracking, weather routing, speed, fuel optimization, and continuous ocean passage monitoring across international trade lanes.",
+    badge: "LIVE AIS DISPATCH",
+    image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80",
+    icon: Compass,
+    accentColor: "text-[#0077B6]",
+    badgeBg: "bg-[#0077B6]/10 text-[#0077B6] border-[#0077B6]/30",
+    borderActive: "border-2 border-[#0077B6] shadow-[0_10px_30px_rgba(0,119,182,0.15)]",
+  },
+  {
+    id: "on-board",
+    number: "02",
+    title: "ON BOARD",
+    subtitle: "RPSL CERTIFIED CREW & SEAFARER SAFETY",
+    desc: "MLC 2006 compliant seafarer logistics, welfare management, emergency response protocols, and STCW 2010 qualified officers maintaining 100% safety standards.",
+    badge: "DG RPSL AUDITED",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+    icon: ShieldCheck,
+    accentColor: "text-[#059669]",
+    badgeBg: "bg-emerald-500/10 text-[#059669] border-emerald-500/30",
+    borderActive: "border-2 border-[#059669] shadow-[0_10px_30px_rgba(5,150,105,0.15)]",
+  },
+  {
+    id: "on-shore",
+    number: "03",
+    title: "ON SHORE",
+    subtitle: "TECHNICAL ENGINEERING & DRYDOCK AUDITS",
+    desc: "Class-1 superintendents overseeing planned maintenance systems (PMS), drydock engineering, class renewals, and emergency technical dispatch from Dubai HQ.",
+    badge: "CLASS-1 SUPERINTENDENCY",
+    image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&w=1200&q=80",
+    icon: Wrench,
+    accentColor: "text-[#D97706]",
+    badgeBg: "bg-amber-500/10 text-[#D97706] border-amber-500/30",
+    borderActive: "border-2 border-[#D97706] shadow-[0_10px_30px_rgba(217,119,6,0.15)]",
+  },
+];
 
 export const CinematicOperationsSection: React.FC = () => {
-  const pinContainerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const wheelRingRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // Live telemetry mock simulation for "moving in reality" feel
-  const [telemetry, setTelemetry] = useState({
-    speed: 18.4,
-    heading: 242,
-    lat: "24° 52.4' N",
-    lng: "54° 38.1' E",
-    engineLoad: 86,
-  });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTelemetry((prev) => ({
-        ...prev,
-        speed: parseFloat((18.2 + Math.random() * 0.6).toFixed(1)),
-        heading: Math.floor(240 + Math.random() * 5),
-        engineLoad: Math.floor(84 + Math.random() * 4),
-      }));
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const { gsap, ScrollTrigger } = initGSAP();
@@ -36,18 +71,26 @@ export const CinematicOperationsSection: React.FC = () => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
-      // Desktop: ScrollTrigger updates active operational index dynamically
-      mm.add("(min-width: 1024px)", () => {
+      // Desktop & Tablet: Pinned stage with animated water wheel & spectrum step activation
+      mm.add("(min-width: 768px)", () => {
         ScrollTrigger.create({
-          trigger: pinContainerRef.current,
+          trigger: sectionRef.current,
           start: "top top",
-          end: "+=1800",
+          end: "+=2000",
           pin: true,
           scrub: 0.5,
           onUpdate: (self) => {
-            if (self.progress > 0.65) {
+            const p = self.progress;
+
+            // Rotate water wheel continuously
+            if (wheelRingRef.current) {
+              gsap.set(wheelRingRef.current, { rotation: p * 360 });
+            }
+
+            // Step activation
+            if (p > 0.66) {
               setActiveIndex(2);
-            } else if (self.progress > 0.3) {
+            } else if (p > 0.33) {
               setActiveIndex(1);
             } else {
               setActiveIndex(0);
@@ -55,225 +98,169 @@ export const CinematicOperationsSection: React.FC = () => {
           },
         });
       });
-    }, pinContainerRef);
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const ops = [
-    {
-      number: "01",
-      title: "AT SEA",
-      tagline: "GLOBAL VOYAGE DISPATCH & NAVIGATION",
-      desc: "Real-time vessel position tracking, AI weather routing, speed-fuel optimization, and continuous ocean passage monitoring across international shipping corridors.",
-      image: "/images/hero_vessel.png",
-      video: VIDEOS.atSea,
-      badge: "LIVE AIS DISPATCH",
-      stats: [
-        { label: "VESSELS AT SEA", val: "42 UNITS" },
-        { label: "ON-TIME ARRIVAL", val: "99.4%" },
-        { label: "CII FUEL SAVINGS", val: "14.8%" },
-      ],
-    },
-    {
-      number: "02",
-      title: "ON BOARD",
-      tagline: "RPSL CERTIFIED CREW & SEAFARER SAFETY",
-      desc: "MLC 2006 compliant seafarer logistics, welfare management, emergency response protocols, and STCW 2010 qualified officers maintaining zero-incident safety culture.",
-      image: "/images/crew_training.png",
-      video: VIDEOS.onBoard,
-      badge: "DG SHIPPING RPSL APPROVED",
-      stats: [
-        { label: "ACTIVE CREW", val: "1,450+ SEAFARERS" },
-        { label: "CREW RETENTION", val: "94.2%" },
-        { label: "SAFETY AUDITS", val: "100% COMPLIANT" },
-      ],
-    },
-    {
-      number: "03",
-      title: "ON SHORE",
-      tagline: "TECHNICAL ENGINEERING & DRYDOCK AUDITS",
-      desc: "Class-1 superintendents overseeing planned maintenance systems (PMS), drydock engineering, class renewals, and emergency technical dispatch from Dubai HQ.",
-      image: "/images/cinematic_vessel_bg.png",
-      video: VIDEOS.onShore,
-      badge: "CLASS-1 SUPERINTENDENCY",
-      stats: [
-        { label: "GLOBAL HUBS", val: "04 COMMAND CENTERS" },
-        { label: "DRYDOCK SUCCESS", val: "100% ON TIME" },
-        { label: "RESPONSE TIME", val: "< 15 MINS" },
-      ],
-    },
-  ];
-
-  const activeOp = ops[activeIndex];
+  const activeOp = SPECTRUM_DATA[activeIndex];
 
   return (
-    <div
-      ref={pinContainerRef}
-      className="relative min-h-screen w-full bg-[#071A2B] text-white overflow-hidden flex flex-col justify-between py-12"
+    <section
+      ref={sectionRef}
+      id="cinematic-operations"
+      className="relative w-full min-h-screen bg-[#F5F5F2] text-[#071A2B] py-16 md:py-24 px-6 md:px-12 font-sans select-none overflow-hidden border-t border-b border-slate-200"
     >
-      {/* Background Full-Bleed Imagery & Video with Overlay */}
-      <div className="absolute inset-0 z-0 bg-[#071A2B]">
-        <img
-          src={activeOp.image}
-          alt={activeOp.title}
-          className="absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-1000 brightness-90"
-        />
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          key={activeOp.number}
-          className="absolute inset-0 w-full h-full object-cover scale-105 transition-opacity duration-1000 opacity-60"
-        >
-          <source src={activeOp.video} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071A2B] via-[#071A2B]/85 to-[#071A2B]/40" />
-      </div>
-
-      {/* Top Header & Live Radar Ticker Bar */}
-      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/15 pb-4">
-        <div className="flex items-center gap-3">
-          <div className="p-2 rounded-xl bg-[#00D26A]/20 border border-[#00D26A] text-[#00D26A] animate-pulse">
-            <Radio className="w-5 h-5" />
-          </div>
+      <div className="max-w-[1400px] mx-auto flex flex-col justify-between min-h-[85vh] relative z-10 space-y-8">
+        
+        {/* Top Header */}
+        <div className="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <span className="label-mono text-[#00D26A] font-bold tracking-widest text-xs block">
-              // REAL-TIME OPERATIONAL TELEMETRY
+            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-[0.25em] uppercase block mb-1">
+              // OPERATIONAL REVEAL
             </span>
-            <span className="text-xs text-slate-300 font-mono">
-              AIS TRACKING &bull; DUBAI HUB DISPATCH
-            </span>
-          </div>
-        </div>
-
-        {/* Live Moving Coordinates & Speed Telemetry Box */}
-        <div className="flex items-center gap-4 bg-[#0F2C59]/80 border border-[#176B87]/50 rounded-2xl px-4 py-2 backdrop-blur-xl">
-          <div className="flex items-center gap-2">
-            <Activity className="w-4 h-4 text-[#00D26A] animate-spin" />
-            <span className="text-xs font-mono font-bold text-white">
-              {telemetry.speed} KTS
-            </span>
-          </div>
-          <div className="h-4 w-[1px] bg-white/20" />
-          <div className="text-[11px] font-mono text-slate-300">
-            {telemetry.lat} | {telemetry.lng}
-          </div>
-          <div className="h-4 w-[1px] bg-white/20" />
-          <div className="text-[11px] font-mono text-[#00D26A] font-bold">
-            ENGINE LOAD: {telemetry.engineLoad}%
-          </div>
-        </div>
-      </div>
-
-      {/* Main Interactive Content Area */}
-      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-8 items-center my-auto py-8">
-        {/* Left Side: Active Operational Spectrum Details */}
-        <div className="lg:col-span-7 space-y-6">
-          {/* Category Tabs */}
-          <div className="flex items-center gap-3">
-            {ops.map((op, idx) => (
-              <button
-                key={op.number}
-                onClick={() => setActiveIndex(idx)}
-                className={`px-4 py-2 rounded-xl text-xs font-mono font-bold tracking-widest transition-all border ${
-                  activeIndex === idx
-                    ? "bg-[#00D26A] text-[#071A2B] border-[#00D26A] shadow-lg scale-105"
-                    : "bg-white/10 text-white border-white/20 hover:bg-white/20"
-                }`}
-              >
-                {op.number} {op.title}
-              </button>
-            ))}
-          </div>
-
-          <div className="space-y-3">
-            <span className="px-3 py-1 rounded-full bg-[#176B87]/30 border border-[#176B87] text-[#00D26A] text-[10px] font-mono font-bold tracking-wider uppercase inline-block">
-              {activeOp.badge}
-            </span>
-            <h2 className="font-syne text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-none">
-              {activeOp.title}
+            <h2 className="font-syne text-3xl sm:text-5xl lg:text-6xl font-black text-[#071A2B] tracking-tight leading-none">
+              CINEMATIC OPERATIONS
             </h2>
-            <p className="font-mono text-xs sm:text-sm text-[#00D26A] font-bold tracking-widest">
-              {activeOp.tagline}
+          </div>
+
+          <div className="flex items-center gap-3 text-xs font-mono text-slate-600 bg-white border border-slate-200 px-4 py-2 rounded-xl shadow-sm font-bold">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#0077B6] animate-pulse" />
+            <span>INTERACTIVE SPECTRUM REVEAL</span>
+          </div>
+        </div>
+
+        {/* 3-COLUMN MAIN STAGE */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center my-auto">
+          
+          {/* COLUMN 1: ROTATING WATER WHEEL / MOUSE SCROLL DIAL */}
+          <div className="md:col-span-3 flex flex-col items-center justify-center">
+            <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full flex items-center justify-center border-2 border-dashed border-[#0077B6]/30 bg-white shadow-xl backdrop-blur-md">
+              
+              {/* Rotating outer dash ring */}
+              <div
+                ref={wheelRingRef}
+                className="absolute inset-2 rounded-full border-2 border-dashed border-[#0077B6]/60 pointer-events-none will-change-transform flex items-center justify-center"
+              >
+                <div className="absolute top-1 text-[9px] font-mono font-bold text-[#0077B6] tracking-widest uppercase">
+                  SCROLL DOWN
+                </div>
+                <div className="absolute bottom-1 text-[9px] font-mono font-bold text-[#0077B6] tracking-widest uppercase">
+                  TO EXPLORE
+                </div>
+              </div>
+
+              {/* Center Mouse Indicator */}
+              <div className="relative z-10 flex flex-col items-center justify-center gap-1.5 p-4 rounded-full bg-slate-50 border border-slate-200 shadow-md">
+                <div className={`w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200 ${activeOp.accentColor}`}>
+                  <Mouse className="w-6 h-6 animate-bounce" />
+                </div>
+                <span className={`text-[10px] font-mono font-bold tracking-wider ${activeOp.accentColor}`}>
+                  SPECTRUM {activeOp.number}
+                </span>
+              </div>
+            </div>
+
+            <p className="mt-4 text-[11px] font-mono text-slate-500 font-bold tracking-widest text-center hidden sm:block">
+              SCROLL TO ROTATE WHEEL &amp; REVEAL
             </p>
           </div>
 
-          <p className="font-manrope text-base sm:text-xl text-slate-200 font-light leading-relaxed max-w-2xl">
-            {activeOp.desc}
-          </p>
+          {/* COLUMN 2: SPECTRUM SELECTION LIST */}
+          <div className="md:col-span-4 space-y-4">
+            {SPECTRUM_DATA.map((item, idx) => {
+              const isActive = idx === activeIndex;
+              const IconComp = item.icon;
 
-          {/* Live Metrics Grid for Selected Operation */}
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-white/15 max-w-xl">
-            {activeOp.stats.map((stat, idx) => (
-              <div key={idx} className="p-3.5 rounded-2xl bg-[#0F2C59]/60 border border-white/10 backdrop-blur-md">
-                <span className="text-[9px] font-mono text-slate-400 block uppercase font-semibold">
-                  {stat.label}
-                </span>
-                <span className="font-syne text-base sm:text-xl font-extrabold text-white block mt-0.5">
-                  {stat.val}
-                </span>
-              </div>
+              return (
+                <div
+                  key={item.id}
+                  onClick={() => setActiveIndex(idx)}
+                  className={`p-5 sm:p-6 rounded-2xl transition-all duration-500 cursor-pointer ${
+                    isActive
+                      ? `bg-white ${item.borderActive} scale-[1.03] text-[#071A2B]`
+                      : "bg-white/70 border border-slate-200 text-[#071A2B]/60 hover:bg-white hover:opacity-100 scale-95"
+                  }`}
+                >
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
+                    <span className={`text-xs font-mono font-bold tracking-wider ${item.accentColor}`}>
+                      SPECTRUM // {item.number}
+                    </span>
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border font-bold ${item.badgeBg}`}>
+                      {item.badge}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-3 mb-1">
+                    <IconComp className={`w-5 h-5 ${isActive ? item.accentColor : "text-slate-400"}`} />
+                    <h3 className="font-syne text-2xl font-black tracking-tight">{item.title}</h3>
+                  </div>
+
+                  <p className={`font-mono text-[10px] font-bold tracking-wider mb-2 ${item.accentColor}`}>
+                    {item.subtitle}
+                  </p>
+
+                  <p className="font-manrope text-xs text-slate-600 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* COLUMN 3: OCEAN IMAGE VIEWPORT (CROSSFADE & SLIDE INTO PLACE) */}
+          <div className="md:col-span-5 relative h-[320px] sm:h-[400px] lg:h-[440px] rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 bg-white">
+            {SPECTRUM_DATA.map((item, idx) => {
+              const isActive = idx === activeIndex;
+
+              return (
+                <div
+                  key={item.id}
+                  className={`absolute inset-0 transition-all duration-700 ease-out transform ${
+                    isActive
+                      ? "opacity-100 scale-100 z-10 pointer-events-auto"
+                      : "opacity-0 scale-105 z-0 pointer-events-none"
+                  }`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B]/80 via-transparent to-transparent" />
+
+                  <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white font-mono">
+                    <div>
+                      <span className={`text-xs font-bold block ${item.accentColor}`}>SPECTRUM {item.number}</span>
+                      <span className="font-syne text-xl font-bold">{item.title}</span>
+                    </div>
+                    <div className="p-2.5 bg-white/20 backdrop-blur-md rounded-full text-white">
+                      <ArrowRight className="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+
+        {/* Bottom Status Bar */}
+        <div className="border-t border-slate-200 pt-4 flex items-center justify-between text-xs font-mono text-slate-500">
+          <span>HOME / CINEMATIC OPERATIONS</span>
+          <div className="flex items-center gap-2 font-bold">
+            {SPECTRUM_DATA.map((s, idx) => (
+              <span
+                key={s.id}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  activeIndex === idx ? `w-8 ${s.badgeBg.split(" ")[0]} bg-current` : "w-2 bg-slate-300"
+                }`}
+              />
             ))}
           </div>
         </div>
 
-        {/* Right Side: Animated Vessel Radar Widget */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-full border border-[#176B87]/60 bg-[#071A2B]/80 backdrop-blur-2xl shadow-2xl flex items-center justify-center p-6 overflow-hidden">
-            {/* Animated Scanning Radar Sweep */}
-            <div className="absolute inset-0 rounded-full border-2 border-[#00D26A]/30" />
-            <div className="absolute inset-4 rounded-full border border-white/10" />
-            <div className="absolute inset-16 rounded-full border border-white/10" />
-            <div className="absolute inset-28 rounded-full border border-white/10" />
-
-            {/* Radar Center Crosshairs */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-full h-[1px] bg-white/10" />
-              <div className="h-full w-[1px] bg-white/10 absolute" />
-            </div>
-
-            {/* Rotating Sweep Beam */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-[#00D26A]/20 to-transparent animate-spin origin-center duration-3000" />
-
-            {/* Vessel Radar Blips */}
-            <div className="absolute top-1/4 left-1/3 w-3 h-3 rounded-full bg-[#00D26A] animate-ping" />
-            <div className="absolute top-1/4 left-1/3 w-3 h-3 rounded-full bg-[#00D26A]" />
-
-            <div className="absolute bottom-1/3 right-1/4 w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping" />
-            <div className="absolute bottom-1/3 right-1/4 w-2.5 h-2.5 rounded-full bg-sky-400" />
-
-            {/* Radar Center Badge */}
-            <div className="relative z-10 text-center space-y-1 bg-[#071A2B]/90 p-4 rounded-2xl border border-[#00D26A]/40 shadow-xl">
-              <Compass className="w-8 h-8 text-[#00D26A] mx-auto animate-pulse" />
-              <span className="font-mono text-[10px] text-slate-300 font-bold block uppercase tracking-widest">
-                RADAR SPECTRUM
-              </span>
-              <span className="font-syne font-extrabold text-sm text-white block">
-                {activeOp.title} ACTIVE
-              </span>
-            </div>
-          </div>
-        </div>
       </div>
-
-      {/* Bottom Progress Bar Indicator */}
-      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between pt-4 border-t border-white/15">
-        <span className="font-mono text-xs text-slate-400 font-semibold">
-          SCROLL OR CLICK TABS TO SWITCH OPERATIONAL SPECTRUM
-        </span>
-        <div className="flex items-center gap-2">
-          {ops.map((_, idx) => (
-            <div
-              key={idx}
-              className={`h-1.5 rounded-full transition-all duration-500 ${
-                activeIndex === idx ? "w-10 bg-[#00D26A]" : "w-3 bg-white/20"
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };

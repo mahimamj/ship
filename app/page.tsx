@@ -10,11 +10,12 @@ import { CinematicHeroLayer } from "./components/CinematicScrollStory";
 import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
 import { SplitScreenStory } from "./components/SplitScreenStory";
 import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
+import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
 import { Section2StatementStats } from "./components/Section2StatementStats";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
 import { MissionVisionCutoutSection } from "./components/MissionVisionCutoutSection";
-import { CareersCutoutSection } from "./components/CareersCutoutSection";
+import { CareerJobBoardSection } from "./components/CareerJobBoardSection";
 import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
 import { InteractiveFleetExplosion } from "./components/InteractiveFleetExplosion";
 import { HorizontalTimelineSection } from "./components/HorizontalTimelineSection";
@@ -41,7 +42,7 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-[#071A2B] text-white font-sans antialiased overflow-x-hidden selection:bg-[#176B87] selection:text-white">
+    <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased overflow-x-hidden selection:bg-[#176B87] selection:text-white">
       <ScrollOrchestrator />
       <CinematicCustomCursor />
       <ScrollProgressBar />
@@ -51,7 +52,7 @@ export default function Home() {
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
 
-      {/* Cinematic stack: sticky layers, no empty navy gap */}
+      {/* Hero layer */}
       <div id="cinematic-stack" className="relative w-full">
         <ScrollSection stack>
           <CinematicHeroLayer
@@ -65,11 +66,11 @@ export default function Home() {
 
       <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* GSAP Scroll Horizontal Pin Gallery & SVG Route Draw */}
+      {/* GSAP Scroll Horizontal Pin Gallery */}
       <GsapHorizontalScrollGallery onOpenQuote={() => setIsQuoteOpen(true)} />
 
-
-
+      {/* 🌊 CINEMATIC OPERATIONS WATER WHEEL SPECTRUM SECTION */}
+      <CinematicOperationsSection />
 
       <Section2StatementStats />
 
@@ -78,15 +79,13 @@ export default function Home() {
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
-
-
       <GlobalPresenceMap />
 
       {/* 🚢 MISSION & VISION CLEAN SPLIT SECTION */}
       <MissionVisionCutoutSection />
 
-      {/* 💼 CAREERS AT SEA & ON SHORE RECTANGULAR CUTOUT REVEAL */}
-      <CareersCutoutSection
+      {/* 📋 WANT TO BE A PART OF OCEANIC STAR TEAM? - CAREER JOB BOARD */}
+      <CareerJobBoardSection
         onOpenApplyModal={(jobTitle) => setCareerModalState({ isOpen: true, jobTitle })}
       />
 
@@ -97,7 +96,6 @@ export default function Home() {
 
       <HorizontalTimelineSection />
 
-
       <div className="bg-[#F5F5F2] text-[#071A2B]">
         <CertificationsMarquee />
         <CertificationsSection />
@@ -107,7 +105,7 @@ export default function Home() {
 
       <FinalCinematicCTA onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      <div className="bg-[#F5F5F2] text-[#071A2B]">
+      <div className="bg-[#FFFFFF] text-[#071A2B]">
         <ContactSection />
         <Footer />
       </div>

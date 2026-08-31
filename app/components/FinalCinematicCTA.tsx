@@ -65,7 +65,7 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[85vh] w-full overflow-hidden bg-[#071A2B] text-white flex flex-col justify-center items-center text-center px-6 py-28">
+    <section ref={sectionRef} className="relative min-h-[85vh] w-full overflow-hidden bg-[#F5F5F2] text-[#071A2B] flex flex-col justify-center items-center text-center px-6 py-28 border-t border-slate-200">
       {/* Real ocean video background */}
       <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform">
         <video
@@ -80,12 +80,12 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
           <source src={VIDEOS.cta} type="video/mp4" />
           <source src={VIDEOS.hero} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#071A2B]/70 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-[#071A2B]/60 backdrop-blur-[2px]" />
       </div>
 
       {/* Content */}
       <div ref={contentRef} className="relative z-10 max-w-4xl space-y-8">
-        <span className="label-mono text-[#00D26A] font-bold tracking-widest text-xs">
+        <span className="label-mono text-[#00F0FF] font-bold tracking-widest text-xs uppercase">
           // INITIATE MARITIME PARTNERSHIP
         </span>
 
@@ -93,7 +93,7 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
           MOVE YOUR FLEET WITH CONFIDENCE.
         </h2>
 
-        <p className="text-sm sm:text-base font-manrope font-light text-white/80 max-w-xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-base font-manrope font-normal text-white/90 max-w-xl mx-auto leading-relaxed">
           Request a tailored technical management proposal or RPSL certified crewing assessment from our Dubai operations command center.
         </p>
 
@@ -101,7 +101,7 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
           <div className="pt-4">
             <button
               onClick={onOpenQuote}
-              className="inline-flex items-center gap-4 text-xs font-mono tracking-[0.25em] text-[#071A2B] bg-white hover:bg-[#00D26A] hover:text-[#071A2B] px-10 py-5 font-bold transition-all duration-500 shadow-2xl rounded-full"
+              className="inline-flex items-center gap-4 text-xs font-mono tracking-[0.25em] text-white bg-[#176B87] hover:bg-[#071A2B] px-10 py-5 font-bold transition-all duration-300 shadow-2xl rounded-full"
               data-cursor
               data-cursor-text="OPEN"
             >
@@ -113,4 +113,3 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
     </section>
   );
 };
-

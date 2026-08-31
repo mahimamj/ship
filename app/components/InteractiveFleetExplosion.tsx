@@ -129,7 +129,7 @@ export const InteractiveFleetExplosion: React.FC = () => {
           {
             scale: 1,
             opacity: 1,
-            stagger: 0.04, // 59 * 0.04s = ~2.36s, perfectly matching 2.5s count up!
+            stagger: 0.04,
             ease: "back.out(1.7)",
             duration: 0.3,
           },
@@ -178,27 +178,27 @@ export const InteractiveFleetExplosion: React.FC = () => {
     <section
       ref={sectionRef}
       id="fleet-matrix-explosion"
-      className="relative w-full min-h-screen bg-[#071A2B] text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden font-sans select-none border-t border-white/10"
+      className="relative w-full min-h-screen bg-[#F5F5F2] text-[#071A2B] py-20 md:py-28 px-6 md:px-12 overflow-hidden font-sans select-none border-t border-b border-slate-200"
     >
       {/* Background Radar Mesh */}
-      <div className="absolute inset-0 bg-[radial-gradient(#176B87_1.5px,transparent_1.5px)] [background-size:32px_32px] opacity-25 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#176B87_1.2px,transparent_1.2px)] [background-size:32px_32px] opacity-15 pointer-events-none" />
 
       {/* Main Container */}
       <div className="max-w-[1400px] mx-auto flex flex-col justify-between min-h-[80vh] relative z-10 space-y-12">
         {/* Top Header Bar */}
-        <div ref={headerRef} className="flex flex-wrap items-center justify-between gap-4 border-b border-white/15 pb-4">
+        <div ref={headerRef} className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-4">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 bg-[#00F0FF]/20 text-[#00F0FF] border border-[#00F0FF]/40 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
+            <span className="px-3 py-1 bg-[#176B87]/10 text-[#176B87] border border-[#176B87]/30 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
               FLEET // 01
             </span>
-            <span className="text-xs text-white/80 font-mono tracking-wider">
+            <span className="text-xs text-slate-600 font-mono tracking-wider font-bold">
               MANAGED FLEET MATRIX
             </span>
           </div>
 
-          <div className="flex items-center gap-3 bg-[#051320]/80 border border-[#00F0FF]/30 px-4 py-2 rounded-xl text-xs font-mono">
-            <Activity className="w-4 h-4 text-[#00F0FF] animate-spin" />
-            <span className="text-[#00F0FF] font-bold">AUTOMATED FLEET LOOP ACTIVE</span>
+          <div className="flex items-center gap-3 bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-mono shadow-sm">
+            <Activity className="w-4 h-4 text-[#176B87] animate-spin" />
+            <span className="text-[#176B87] font-bold">AUTOMATED FLEET LOOP ACTIVE</span>
           </div>
         </div>
 
@@ -207,16 +207,16 @@ export const InteractiveFleetExplosion: React.FC = () => {
           {/* Big Number Reveal Counter */}
           <div ref={counterRef} className="relative inline-flex flex-col items-center">
             <div className="flex items-baseline gap-4">
-              <span className="font-syne text-8xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-[#176B87] tracking-tight leading-none min-w-[180px]">
+              <span className="font-syne text-8xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-[#071A2B] via-[#123047] to-[#176B87] tracking-tight leading-none min-w-[180px]">
                 {counterVal}
               </span>
-              <span className="font-syne text-3xl sm:text-5xl font-black text-[#00F0FF] tracking-wider uppercase">
+              <span className="font-syne text-3xl sm:text-5xl font-black text-[#176B87] tracking-wider uppercase">
                 VESSELS
               </span>
             </div>
 
-            <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent my-2" />
-            <span className="font-mono text-xs text-slate-300 tracking-[0.3em] uppercase">
+            <div className="h-0.5 w-32 bg-gradient-to-r from-transparent via-[#176B87] to-transparent my-2" />
+            <span className="font-mono text-xs text-slate-600 font-bold tracking-[0.3em] uppercase">
               MANAGED FLEET IN OPERATION
             </span>
           </div>
@@ -229,7 +229,7 @@ export const InteractiveFleetExplosion: React.FC = () => {
             {Array.from({ length: 59 }).map((_, i) => (
               <div
                 key={i}
-                className="vessel-particle absolute w-8 h-8 rounded-xl bg-[#051320]/90 border border-[#00F0FF]/60 flex items-center justify-center shadow-lg backdrop-blur-md text-[#00F0FF] hover:scale-125 transition-transform"
+                className="vessel-particle absolute w-8 h-8 rounded-xl bg-white border border-[#176B87]/40 flex items-center justify-center shadow-md text-[#176B87] hover:scale-125 transition-transform"
                 style={{
                   left: "50%",
                   top: "50%",
@@ -243,23 +243,23 @@ export const InteractiveFleetExplosion: React.FC = () => {
         </div>
 
         {/* Bottom Banner Stats */}
-        <div ref={statsRef} className="border-t border-white/15 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+        <div ref={statsRef} className="border-t border-slate-200 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
           <div className="space-y-1">
-            <span className="font-syne text-3xl font-extrabold text-[#00F0FF]">29</span>
-            <p className="font-mono text-xs text-slate-300 tracking-wider">SHIPS ON ORDER</p>
-            <span className="font-mono text-[10px] text-slate-500">DUAL FUEL &amp; ECO EXPANSION</span>
+            <span className="font-syne text-3xl font-extrabold text-[#176B87]">29</span>
+            <p className="font-mono text-xs text-slate-700 font-bold tracking-wider">SHIPS ON ORDER</p>
+            <span className="font-mono text-[10px] text-slate-500 font-bold">DUAL FUEL &amp; ECO EXPANSION</span>
           </div>
 
-          <div className="space-y-1 border-x border-white/10 px-4">
-            <span className="font-syne text-3xl font-extrabold text-emerald-400">03</span>
-            <p className="font-mono text-xs text-slate-300 tracking-wider">GLOBAL HUBS</p>
-            <span className="font-mono text-[10px] text-slate-500">DUBAI &bull; MUMBAI &bull; COLOMBO</span>
+          <div className="space-y-1 border-x border-slate-200 px-4">
+            <span className="font-syne text-3xl font-extrabold text-emerald-700">03</span>
+            <p className="font-mono text-xs text-slate-700 font-bold tracking-wider">GLOBAL HUBS</p>
+            <span className="font-mono text-[10px] text-slate-500 font-bold">DUBAI &bull; MUMBAI &bull; COLOMBO</span>
           </div>
 
           <div className="space-y-1">
-            <span className="font-syne text-3xl font-extrabold text-amber-400">24+</span>
-            <p className="font-mono text-xs text-slate-300 tracking-wider">YEARS OF EXCELLENCE</p>
-            <span className="font-mono text-[10px] text-slate-500">ESTABLISHED 2002</span>
+            <span className="font-syne text-3xl font-extrabold text-amber-700">24+</span>
+            <p className="font-mono text-xs text-slate-700 font-bold tracking-wider">YEARS OF EXCELLENCE</p>
+            <span className="font-mono text-[10px] text-slate-500 font-bold">ESTABLISHED 2002</span>
           </div>
         </div>
       </div>

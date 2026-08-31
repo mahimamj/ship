@@ -128,31 +128,31 @@ export const VoyageTheatreSection: React.FC = () => {
     <section
       id="voyage"
       ref={wrapRef}
-      className="relative min-h-screen bg-[#071A2B] text-white md:h-[130vh]"
+      className="relative min-h-screen bg-[#F5F5F2] text-[#071A2B] md:h-[130vh]"
     >
       <div className="relative min-h-screen w-full overflow-hidden md:sticky md:top-0 md:h-screen">
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(0,210,106,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(23,107,135,0.14) 1px, transparent 1px)",
+              "linear-gradient(rgba(23,107,135,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(7,26,43,0.06) 1px, transparent 1px)",
             backgroundSize: "64px 64px",
             maskImage: "radial-gradient(ellipse at center, black 35%, transparent 78%)",
           }}
         />
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-[#00D26A]/15 animate-radar" />
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[conic-gradient(from_180deg,transparent_0%,rgba(0,210,106,0.12)_12%,transparent_28%)] animate-radar" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#071A2B] via-transparent to-[#071A2B]" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-[#176B87]/20 animate-radar" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[conic-gradient(from_180deg,transparent_0%,rgba(23,107,135,0.08)_12%,transparent_28%)] animate-radar" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F5F2] via-transparent to-[#F5F5F2]" />
 
         <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-between px-6 py-6 md:px-12 md:py-10">
           <div className="flex items-start justify-between gap-6">
-            <p className="label-mono flex items-center gap-2 text-xs font-bold tracking-widest text-[#00D26A]">
-              <span className="h-2 w-2 animate-ping rounded-full bg-[#00D26A]" />
+            <p className="label-mono flex items-center gap-2 text-xs font-bold tracking-widest text-[#176B87]">
+              <span className="h-2 w-2 animate-ping rounded-full bg-[#176B87]" />
               LIVE VOYAGE THEATRE — SCROLL TO COMMAND THE FLEET
             </p>
-            <div className="hidden items-center gap-6 font-mono text-[10px] tracking-[0.2em] text-[#7BA3B8] sm:flex">
+            <div className="hidden items-center gap-6 font-mono text-[10px] tracking-[0.2em] text-[#667783] sm:flex font-bold">
               <span className="flex items-center gap-1.5">
-                <Radio className="h-3 w-3 text-[#00D26A]" /> AIS LIVE
+                <Radio className="h-3 w-3 text-[#176B87]" /> AIS LIVE
               </span>
               <span className="flex items-center gap-1.5">
                 <Compass className="h-3 w-3 text-[#176B87]" /> HDG 242°
@@ -162,17 +162,17 @@ export const VoyageTheatreSection: React.FC = () => {
 
           <div className="mt-4 grid my-auto grid-cols-1 items-center gap-6 lg:grid-cols-12">
             <div className="lg:col-span-5">
-              <p className="font-mono text-xs tracking-[0.28em] text-[#176B87]">SCENE {active.code} / 04</p>
+              <p className="font-mono text-xs tracking-[0.28em] text-[#176B87] font-bold">SCENE {active.code} / 04</p>
               <h2
                 ref={headlineRef}
-                className="mt-3 font-syne text-5xl font-extrabold leading-[0.88] tracking-tight sm:text-7xl lg:text-8xl"
+                className="mt-3 font-syne text-5xl font-extrabold leading-[0.88] tracking-tight text-[#071A2B] sm:text-7xl lg:text-8xl"
               >
                 {active.port}
               </h2>
-              <p className="mt-4 font-syne text-lg font-bold tracking-wide text-[#00D26A] sm:text-xl">
+              <p className="mt-4 font-syne text-lg font-bold tracking-wide text-[#176B87] sm:text-xl">
                 {active.ocean}
               </p>
-              <p className="mt-4 max-w-md font-manrope text-sm font-light leading-relaxed text-[#9BB4C4] sm:text-base">
+              <p className="mt-4 max-w-md font-manrope text-sm font-normal leading-relaxed text-[#475569] sm:text-base">
                 {active.line}
               </p>
 
@@ -184,11 +184,11 @@ export const VoyageTheatreSection: React.FC = () => {
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="border border-white/10 bg-white/[0.03] px-4 py-3 backdrop-blur-md"
+                    className="border border-slate-200 bg-white/90 px-4 py-3 shadow-md rounded-xl backdrop-blur-md"
                   >
-                    <stat.icon className="mb-2 h-3.5 w-3.5 text-[#00D26A]" />
-                    <div className="font-syne text-lg font-extrabold leading-none sm:text-xl">{stat.value}</div>
-                    <div className="mt-1 font-mono text-[9px] tracking-[0.2em] text-[#7BA3B8]">{stat.label}</div>
+                    <stat.icon className="mb-2 h-3.5 w-3.5 text-[#176B87]" />
+                    <div className="font-syne text-lg font-extrabold leading-none text-[#071A2B] sm:text-xl">{stat.value}</div>
+                    <div className="mt-1 font-mono text-[9px] tracking-[0.2em] text-[#667783] font-bold">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -197,25 +197,25 @@ export const VoyageTheatreSection: React.FC = () => {
             <div className="relative lg:col-span-7">
               <svg viewBox="0 0 760 420" className="h-auto w-full" aria-hidden>
                 <defs>
-                  <linearGradient id="voyage-stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <linearGradient id="voyage-stroke-light" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#176B87" />
-                    <stop offset="100%" stopColor="#00D26A" />
+                    <stop offset="100%" stopColor="#071A2B" />
                   </linearGradient>
                 </defs>
                 <path
                   d="M40 80 C 90 40, 130 110, 180 95"
                   fill="none"
-                  stroke="rgba(255,255,255,0.06)"
+                  stroke="rgba(7,26,43,0.08)"
                   strokeWidth="1.5"
                 />
                 <path
                   d="M520 300 C 600 250, 680 340, 730 280"
                   fill="none"
-                  stroke="rgba(255,255,255,0.06)"
+                  stroke="rgba(7,26,43,0.08)"
                   strokeWidth="1.5"
                 />
                 <circle cx="92" cy="118" r="46" fill="none" stroke="rgba(23,107,135,0.25)" strokeDasharray="3 6" />
-                <circle cx="318" cy="210" r="28" fill="none" stroke="rgba(0,210,106,0.18)" strokeDasharray="2 5" />
+                <circle cx="318" cy="210" r="28" fill="none" stroke="rgba(23,107,135,0.2)" strokeDasharray="2 5" />
                 <circle cx="548" cy="268" r="38" fill="none" stroke="rgba(23,107,135,0.25)" strokeDasharray="3 6" />
 
                 <path
@@ -223,7 +223,7 @@ export const VoyageTheatreSection: React.FC = () => {
                   id="voyage-lane"
                   d="M70 140 C 160 80, 240 200, 330 188 S 470 120, 560 250 S 680 330, 710 300"
                   fill="none"
-                  stroke="rgba(255,255,255,0.12)"
+                  stroke="rgba(7,26,43,0.15)"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                 />
@@ -231,7 +231,7 @@ export const VoyageTheatreSection: React.FC = () => {
                   ref={drawRef}
                   d="M70 140 C 160 80, 240 200, 330 188 S 470 120, 560 250 S 680 330, 710 300"
                   fill="none"
-                  stroke="url(#voyage-stroke)"
+                  stroke="url(#voyage-stroke-light)"
                   strokeWidth="3.5"
                   strokeLinecap="round"
                 />
@@ -243,13 +243,14 @@ export const VoyageTheatreSection: React.FC = () => {
                   { x: 710, y: 300, label: "CMB" },
                 ].map((port) => (
                   <g key={port.label}>
-                    <circle cx={port.x} cy={port.y} r="6" fill="#071A2B" stroke="#00D26A" strokeWidth="2" />
+                    <circle cx={port.x} cy={port.y} r="6" fill="#FFFFFF" stroke="#176B87" strokeWidth="2.5" />
                     <text
                       x={port.x}
                       y={port.y - 16}
                       textAnchor="middle"
-                      fill="#9BB4C4"
+                      fill="#071A2B"
                       fontSize="11"
+                      fontWeight="bold"
                       letterSpacing="2"
                       fontFamily="ui-monospace, monospace"
                     >
@@ -259,22 +260,22 @@ export const VoyageTheatreSection: React.FC = () => {
                 ))}
 
                 <g ref={shipRef} className="will-change-transform">
-                  <circle r="16" fill="#00D26A" opacity="0.22" />
-                  <circle r="9" fill="#00D26A" />
-                  <polygon points="4,-3 12,0 4,3" fill="#071A2B" />
+                  <circle r="16" fill="#176B87" opacity="0.22" />
+                  <circle r="9" fill="#176B87" />
+                  <polygon points="4,-3 12,0 4,3" fill="#FFFFFF" />
                 </g>
               </svg>
             </div>
           </div>
 
           <div className="mt-auto pt-4">
-            <div className="mb-2 flex justify-between font-mono text-[10px] tracking-[0.22em] text-[#7BA3B8]">
+            <div className="mb-2 flex justify-between font-mono text-[10px] tracking-[0.22em] text-[#667783] font-bold">
               <span>DEPARTURE</span>
               <span>VOYAGE COMPLETE {progress}%</span>
             </div>
-            <div className="h-[2px] w-full bg-white/10">
+            <div className="h-[3px] w-full bg-slate-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-[#176B87] to-[#00D26A] transition-[width] duration-150"
+                className="h-full bg-gradient-to-r from-[#176B87] to-[#071A2B] transition-[width] duration-150 rounded-full"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -282,10 +283,10 @@ export const VoyageTheatreSection: React.FC = () => {
               {SCENES.map((s, i) => (
                 <div
                   key={s.code}
-                  className={`flex-1 border px-3 py-2 font-mono text-[10px] tracking-[0.18em] transition-colors ${
+                  className={`flex-1 border px-3 py-2 font-mono text-[10px] tracking-[0.18em] transition-colors rounded-lg font-bold ${
                     i === scene
-                      ? "border-[#00D26A]/50 bg-[#00D26A]/10 text-white"
-                      : "border-white/10 text-[#667783]"
+                      ? "border-[#176B87] bg-[#176B87] text-white shadow-sm"
+                      : "border-slate-200 bg-white text-[#667783]"
                   }`}
                 >
                   {s.code} {s.port}
