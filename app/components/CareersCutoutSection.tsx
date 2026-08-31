@@ -20,14 +20,14 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
     const { gsap, ScrollTrigger } = initGSAP();
 
     const ctx = gsap.context(() => {
-      // 1. CONTINUOUS TOP-TO-DOWN PARALLAX MOVEMENT ON THE SINGLE PINNED STICKY RIGHT IMAGE
+      // 1. CONTINUOUS TOP-TO-DOWN PARALLAX MOVEMENT ON THE SINGLE PINNED STICKY RIGHT IMAGE ACROSS ENTIRE SECTION
       if (rightImageRef.current && containerRef.current) {
         gsap.fromTo(
           rightImageRef.current,
-          { yPercent: -20, scale: 1.05 },
+          { yPercent: -15, scale: 1.15 },
           {
-            yPercent: 20,
-            scale: 1.0,
+            yPercent: 15,
+            scale: 1.05,
             ease: "none",
             scrollTrigger: {
               trigger: containerRef.current,
@@ -68,9 +68,9 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
     <section
       ref={containerRef}
       id="home-mission-careers"
-      className="relative w-full bg-white text-[#071A2B] font-sans select-none overflow-hidden border-t border-slate-200 z-10"
+      className="relative w-full bg-white text-[#071A2B] font-sans select-none border-t border-slate-200 z-10"
     >
-      {/* 50/50 DESKTOP SPLIT-SCREEN CONTAINER */}
+      {/* 50/50 DESKTOP SPLIT-SCREEN CONTAINER (items-stretch ENSURES BOTH COLUMNS SHARE EXACT TOTAL HEIGHT) */}
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch w-full relative">
         
         {/* ========================================================================= */}
@@ -78,7 +78,7 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
         {/* ========================================================================= */}
         <div
           id="home-mission-left"
-          className="lg:col-span-6 col-md-6 bg-white text-[#071A2B] px-6 sm:px-10 lg:px-12 py-16 md:py-24 space-y-24 z-10 relative"
+          className="lg:col-span-6 col-md-6 bg-white text-[#071A2B] px-6 sm:px-10 lg:px-12 pt-28 md:pt-36 pb-16 md:pb-24 space-y-28 z-10 relative"
         >
           {/* TOP HEADER TAG */}
           <div className="flex items-center justify-between border-b border-slate-200 pb-4">
@@ -225,11 +225,11 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
         </div>
 
         {/* ========================================================================= */}
-        {/* RIGHT COLUMN: 100vh STICKY VIEWPORT WITH ONE SINGLE TALL VESSEL IMAGE     */}
+        {/* RIGHT COLUMN: 100vh STICKY VIEWPORT WITH FULL SECTION SPANNING          */}
         {/* ========================================================================= */}
-        <div id="home-mission-right" className="lg:col-span-6 relative w-full h-full min-h-[500px]">
-          {/* DESKTOP STICKY VIEWPORT (DISABLED ON MOBILE) */}
-          <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#071A2B] rounded-none [clip-path:polygon(6%_0%,100%_0%,100%_100%,0%_100%)]">
+        <div id="home-mission-right" className="lg:col-span-6 relative w-full h-full min-h-full">
+          {/* DESKTOP STICKY VIEWPORT (STAYS PINNED FOR 100% OF SECTION HEIGHT) */}
+          <div className="sticky top-0 h-screen w-full overflow-hidden bg-[#071A2B] rounded-none [clip-path:polygon(14%_0%,100%_0%,100%_100%,0%_100%)] shadow-2xl">
             
             {/* SINGLE TALL VESSEL IMAGE ANIMATING CONTINUOUSLY TOP-TO-DOWN ON SCROLL */}
             <div className="relative w-full h-full overflow-hidden">
@@ -237,8 +237,8 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
                 ref={rightImageRef}
                 src="/images/tall_ship_passage.jpg"
                 alt="Oceanic Star Commercial Vessel Passage"
-                className="absolute top-[-20%] left-0 w-full h-[140%] object-cover brightness-95 will-change-transform"
-                style={{ transform: "translateY(-20%) scale(1.05)" }}
+                className="absolute top-[-40%] left-0 w-full h-[180%] object-cover brightness-95 will-change-transform"
+                style={{ transform: "translateY(-15%) scale(1.15)" }}
               />
               {/* Subtle dark overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B]/40 via-transparent to-[#071A2B]/20 pointer-events-none" />
