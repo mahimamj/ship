@@ -8,7 +8,6 @@ import { ScrollSection } from "./components/ScrollSection";
 import { CinematicNavbar } from "./components/CinematicNavbar";
 import { CinematicHeroLayer } from "./components/CinematicScrollStory";
 import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
-import { SplitScreenStory } from "./components/SplitScreenStory";
 import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
 import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
 import { Section2StatementStats } from "./components/Section2StatementStats";
@@ -63,8 +62,6 @@ export default function Home() {
       </div>
 
       <VoyageTheatreSection />
-
-      <SplitScreenStory onOpenQuote={() => setIsQuoteOpen(true)} />
 
       {/* GSAP Scroll Horizontal Pin Gallery */}
       <GsapHorizontalScrollGallery onOpenQuote={() => setIsQuoteOpen(true)} />
