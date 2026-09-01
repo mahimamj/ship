@@ -156,7 +156,7 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
           muted
           loop
           playsInline
-          poster={VIDEOS.heroPoster}
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src={VIDEOS.hero} type="video/mp4" />

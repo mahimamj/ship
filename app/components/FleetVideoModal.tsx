@@ -142,11 +142,11 @@ export const FleetVideoModal: React.FC<FleetVideoModalProps> = ({
                 ref={videoRef}
                 key={currentTrack.src}
                 src={currentTrack.src}
-                poster={currentTrack.thumbnail}
                 autoPlay
                 loop
                 muted={isMuted}
                 playsInline
+                preload="auto"
                 className="w-full h-full object-cover"
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}

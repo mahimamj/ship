@@ -74,7 +74,7 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
           muted
           loop
           playsInline
-          poster={VIDEOS.heroPoster}
+          preload="auto"
           className="w-full h-full object-cover"
         >
           <source src={VIDEOS.cta} type="video/mp4" />

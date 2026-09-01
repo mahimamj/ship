@@ -359,7 +359,7 @@ export const OperationalRevealSection: React.FC = () => {
             autoPlay
             muted
             playsInline
-            poster="/images/hero_vessel.png"
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-95 scale-105"
           >
             <source src="/ship.mp4" type="video/mp4" />

@@ -112,7 +112,7 @@ export const MissionVisionCutoutSection: React.FC = () => {
           muted
           loop
           playsInline
-          poster="/images/hero_vessel.png"
+          preload="auto"
           className="w-full h-full object-cover opacity-30 will-change-transform"
         >
           <source src="/ship.mp4" type="video/mp4" />

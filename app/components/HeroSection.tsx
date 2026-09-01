@@ -56,11 +56,11 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenQuote, onOpenVideoModal
         <video
           ref={videoRef}
           src="https://assets.mixkit.co/videos/preview/mixkit-cargo-ship-sailing-in-the-sea-41616-large.mp4"
-          poster="/images/hero_vessel.png"
           autoPlay
           loop
           muted={isMuted}
           playsInline
+          preload="auto"
           className="w-full h-full object-cover opacity-25 mix-blend-luminosity scale-105 transform filter contrast-125 brightness-90 transition-all duration-700"
         />
         {/* Deep Ocean Gradient Overlays */}

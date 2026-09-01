@@ -98,7 +98,7 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
           muted
           loop
           playsInline
-          poster="/images/hero_vessel.png"
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover scale-105"
         >
           <source src={VIDEOS.hero} type="video/mp4" />
