@@ -29,7 +29,7 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     highlights: ["24/7 AIS Telemetry", "Weather Passage Routing", "Fuel Optimization"],
     compassZone: "045° - 165° (EAST / SE)",
     heading: "090° E",
-    image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/spectrum_at_sea.jpg",
     icon: Compass,
   },
   {
@@ -42,7 +42,7 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     highlights: ["MLC 2006 Compliant", "STCW 2010 Crewing", "Zero Incident Record"],
     compassZone: "165° - 285° (SOUTH / SW)",
     heading: "180° S",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/spectrum_on_board.jpg",
     icon: ShieldCheck,
   },
   {
@@ -55,7 +55,7 @@ const SPECTRUM_DATA: SpectrumItem[] = [
     highlights: ["Dubai HQ Command", "PMS Engineering", "Drydock Overhauls"],
     compassZone: "285° - 045° (NORTH / NW)",
     heading: "315° NW",
-    image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/spectrum_on_shore.jpg",
     icon: Wrench,
   },
 ];
