@@ -148,7 +148,7 @@ export const VoyageTheatreSection: React.FC = () => {
         <div className="flex items-start justify-between gap-6 border-b border-slate-200 pb-4">
           <p className="label-mono flex items-center gap-2 text-xs font-bold tracking-widest text-[#0068B7]">
             <span className="h-2.5 w-2.5 animate-ping rounded-full bg-[#00D9E8]" />
-            LIVE VOYAGE THEATRE — AUTOMATED FLEET TRANSIT (6s LOOP)
+            LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION
           </p>
           <div className="flex items-center gap-3 sm:gap-6 font-mono text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] text-[#17252D] font-bold">
             <span className="flex items-center gap-1.5 text-[#0068B7]">
