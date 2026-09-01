@@ -1,35 +1,26 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 
 export const CinematicCustomCursor: React.FC = () => {
   const [cursorText, setCursorText] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(true);
 
-  const mouseX = useSpring(0, { damping: 32, stiffness: 280 });
-  const mouseY = useSpring(0, { damping: 32, stiffness: 280 });
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
 
   useEffect(() => {
-    if (isMobile) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+    const handleMove = (x: number, y: number, target: HTMLElement | null) => {
+      mouseX.set(x);
+      mouseY.set(y);
       if (!isVisible) setIsVisible(true);
 
-      const target = e.target as HTMLElement | null;
       if (target) {
-        const interactiveEl = target.closest("[data-cursor]");
+        const interactiveEl = target.closest(
+          "[data-cursor], button, a, [role='button'], input, select, textarea"
+        );
         if (interactiveEl) {
           const text =
             interactiveEl.getAttribute("data-cursor-text") ||
@@ -46,18 +37,36 @@ export const CinematicCustomCursor: React.FC = () => {
       setCursorText("");
     };
 
-    const handleMouseLeave = () => setIsVisible(false);
+    const handleMouseMove = (e: MouseEvent) => {
+      handleMove(e.clientX, e.clientY, e.target as HTMLElement | null);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches && e.touches[0]) {
+        const touch = e.touches[0];
+        const el = document.elementFromPoint(touch.clientX, touch.clientY) as HTMLElement | null;
+        handleMove(touch.clientX, touch.clientY, el);
+      }
+    };
+
+    const handleHide = () => setIsVisible(false);
 
     window.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    document.addEventListener("mouseleave", handleHide);
+    window.addEventListener("touchend", handleHide);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+      document.removeEventListener("mouseleave", handleHide);
+      window.removeEventListener("touchend", handleHide);
     };
-  }, [mouseX, mouseY, isVisible, isMobile]);
+  }, [mouseX, mouseY, isVisible]);
 
-  if (isMobile || !isVisible) return null;
+  if (!isVisible) return null;
 
   return (
     <motion.div
@@ -66,17 +75,17 @@ export const CinematicCustomCursor: React.FC = () => {
     >
       <motion.div
         animate={{
-          width: isHovered ? 88 : 14,
-          height: isHovered ? 88 : 14,
+          width: isHovered ? 76 : 16,
+          height: isHovered ? 76 : 16,
           backgroundColor: isHovered
-            ? "rgba(23, 107, 135, 0.12)"
+            ? "rgba(23, 107, 135, 0.15)"
             : "rgba(7, 26, 43, 0.85)",
           borderColor: isHovered
-            ? "rgba(23, 107, 135, 0.5)"
+            ? "rgba(23, 107, 135, 0.6)"
             : "rgba(7, 26, 43, 0.85)",
         }}
-        transition={{ type: "spring", stiffness: 400, damping: 28 }}
-        className="rounded-full border flex items-center justify-center"
+        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        className="rounded-full border flex items-center justify-center shadow-lg"
       >
         {isHovered && cursorText && (
           <motion.span
@@ -91,3 +100,5 @@ export const CinematicCustomCursor: React.FC = () => {
     </motion.div>
   );
 };
+
+
