@@ -1,177 +1,175 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import {
-  Briefcase,
-  ShieldCheck,
-  Headphones,
   Award,
+  ShieldCheck,
+  Ship,
+  Layers,
   Users,
-  Globe2,
-  UserCheck,
+  Utensils,
+  CheckCircle2,
   HeartHandshake,
   Clock,
-  Eye,
+  Sliders,
+  Globe,
+  ArrowRight,
 } from "lucide-react";
 
+interface ReasonItem {
+  number: string;
+  title: string;
+  desc: string;
+  badge: string;
+  icon: React.ElementType;
+}
+
+const REASONS: ReasonItem[] = [
+  {
+    number: "01",
+    title: "Established Since 2002",
+    desc: "Over two decades of trusted experience in maritime crewing and ship management.",
+    badge: "24+ Years",
+    icon: Award,
+  },
+  {
+    number: "02",
+    title: "RPSL Licensed",
+    desc: "Fully certified and compliant recruitment practices, ensuring credibility and adherence to global maritime standards.",
+    badge: "DG Shipping Audit",
+    icon: ShieldCheck,
+  },
+  {
+    number: "03",
+    title: "All-Vessel Expertise",
+    desc: "Unlike niche-focused agencies, we recruit and manage crew across all vessel types, offering versatility and one-stop solutions.",
+    badge: "Versatile Fleet",
+    icon: Ship,
+  },
+  {
+    number: "04",
+    title: "59 Vessels Under Management",
+    desc: "A robust, growing fleet portfolio that reflects our operational scale and reliability.",
+    badge: "59 Managed Ships",
+    icon: Layers,
+  },
+  {
+    number: "05",
+    title: "Extensive Seafarer Database",
+    desc: "A vast, continuously updated pool of qualified seafarers ready for deployment across roles and vessel types.",
+    badge: "Active Talent Pool",
+    icon: Users,
+  },
+  {
+    number: "06",
+    title: "Authentic Indian Cuisine Onboard",
+    desc: "Thoughtful attention to crew welfare with quality Indian meals at sea, supporting comfort and morale.",
+    badge: "Crew Welfare",
+    icon: Utensils,
+  },
+  {
+    number: "07",
+    title: "Safety-First Culture",
+    desc: "Uncompromising focus on onboard safety protocols and crew well-being.",
+    badge: "SOLAS & ISM Standard",
+    icon: CheckCircle2,
+  },
+  {
+    number: "08",
+    title: "Fairness & Inclusion",
+    desc: "Equal opportunity for all seafarers, irrespective of background, region, or community.",
+    badge: "Equal Opportunity",
+    icon: HeartHandshake,
+  },
+  {
+    number: "09",
+    title: "Structured Rotational Placements",
+    desc: "Well-planned rotation cycles that support work-life balance and career sustainability for seafarers.",
+    badge: "Work-Life Balance",
+    icon: Clock,
+  },
+  {
+    number: "10",
+    title: "Preference-Based Vessel Matching",
+    desc: "Seafarers get a say — we factor in individual preference when assigning vessel types, boosting satisfaction and retention.",
+    badge: "High Satisfaction",
+    icon: Sliders,
+  },
+  {
+    number: "11",
+    title: "Expanding International Footprint",
+    desc: "Growing presence across multiple countries, connecting global shipping demand with skilled talent.",
+    badge: "4 Global Hubs",
+    icon: Globe,
+  },
+];
+
 export const WhyChooseUs: React.FC = () => {
-  const threePillars = [
-    {
-      title: "CAREER DEVELOPMENT",
-      icon: Briefcase,
-      desc: "We don't just provide jobs, we offer career paths. With access to a variety of vessel and routes, our crew members enjoy a dynamic and enriching career at sea.",
-      badge: "Growth Paths",
-    },
-    {
-      title: "HEALTH & SAFETY FOCUS",
-      icon: ShieldCheck,
-      desc: "Crew safety is our priority. Our rigorous health and safety standards ensure that every crew member is protected, from comprehensive insurance to mental health support.",
-      badge: "100% Protected",
-    },
-    {
-      title: "RESPONSIVE SUPPORT",
-      icon: Headphones,
-      desc: "Our dedicated support teams are always a call away, providing assistance and guidance to our crews, ensuring their concerns are addressed promptly.",
-      badge: "24/7 Assistance",
-    },
-  ];
-
-  const reasons = [
-    {
-      title: "20+ Years Experience",
-      desc: "Inception in 2002 with proven track record across international shipping corridors.",
-      icon: Award,
-      stat: "24+ Yrs",
-    },
-    {
-      title: "Professional Team",
-      desc: "Led by veteran Class 1 Chief Engineers, Master Mariners, and STCW instructors.",
-      icon: Users,
-      stat: "100% Expert",
-    },
-    {
-      title: "Global Network",
-      desc: "Operating hubs in Dubai (UAE), Mumbai (India), and Colombo (Sri Lanka).",
-      icon: Globe2,
-      stat: "3 Global Hubs",
-    },
-    {
-      title: "High Crew Retention",
-      desc: "96.8% seafarer retention rate ensuring experienced stability on board.",
-      icon: UserCheck,
-      stat: "96.8% Retention",
-    },
-    {
-      title: "Client-Centric Approach",
-      desc: "Tailored vessel management solutions customized for each ship owner's OPEX.",
-      icon: HeartHandshake,
-      stat: "Bespoke OPEX",
-    },
-    {
-      title: "Compliance & Transparency",
-      desc: "Real-time PMS portal, open accounting, and complete financial auditability.",
-      icon: Eye,
-      stat: "100% Audit",
-    },
-  ];
-
   return (
-    <section className="py-24 bg-[#0A192F] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="why-choose-us" className="w-full bg-[#FAFAF7] text-[#061B2A] py-16 sm:py-24 px-6 sm:px-12 border-t border-slate-200 select-none">
+      <div className="max-w-[1400px] mx-auto space-y-12">
         
-        {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16 space-y-4">
-          <span className="text-xs uppercase tracking-widest text-teal-400 font-bold bg-teal-500/10 px-4 py-1.5 rounded-full border border-teal-500/20">
-            Why Choose Us
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-bold font-poppins text-white tracking-tight">
-            Why Choose <span className="text-gradient">Oceanic Star Fleet Ship Management LLC</span>
-          </h2>
-          
-          {/* Seafarers Mission Banner */}
-          <div className="bg-gradient-to-r from-teal-500/20 via-cyan-500/10 to-teal-500/20 border border-teal-500/30 rounded-2xl p-6 mt-6 shadow-xl">
-            <p className="text-base sm:text-lg font-bold font-poppins text-amber-300 tracking-wide uppercase leading-relaxed">
-              "OUR MISSION IS NOT ONLY TO MANAGE BUT TO INSPIRE, DEVELOP AND SUPPORT THE BACKBONE OF MARITIME INDUSTRY - OUR SEAFARERS."
-            </p>
+        {/* Top Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
+          <div className="space-y-1.5 max-w-2xl">
+            <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block">
+              WHY CHOOSE US
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2545] tracking-tight">
+              Why Choose Oceanic Star Fleet
+            </h2>
           </div>
+
+          <p className="font-manrope text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed">
+            Over two decades of excellence, seafarer welfare, and compliant global vessel management across international trade corridors.
+          </p>
         </div>
 
-        {/* 3 Core Highlight Pillars (Career, Health/Safety, Responsive Support) */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {threePillars.map((pillar, idx) => {
-            const Icon = pillar.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="glass-panel rounded-3xl p-8 border border-teal-500/30 shadow-2xl relative overflow-hidden flex flex-col justify-between group hover:border-teal-400 transition-all duration-300"
-              >
-                {/* Wave Accent Top Bar */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#00B4D8] to-[#00F5D4]"></div>
-
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-teal-300 group-hover:scale-110 transition duration-300 shadow-lg">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <span className="text-xs font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-3 py-1 rounded-full font-poppins">
-                      {pillar.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold font-poppins text-white mb-3 tracking-wide">
-                    {pillar.title}
-                  </h3>
-
-                  <p className="text-slate-300 text-sm leading-relaxed font-light">
-                    {pillar.desc}
-                  </p>
-                </div>
-
-                <div className="pt-6 mt-6 border-t border-white/10 text-xs font-semibold text-teal-400 flex items-center space-x-1">
-                  <span>Core Operational Commitment</span>
-                </div>
-              </motion.div>
-            );
-          })}
+        {/* Mission Quote Banner */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-[#061B2A] text-white shadow-xl border border-[#00D9E8]/30 relative overflow-hidden">
+          <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-[#00D9E8]/10 rounded-full blur-2xl pointer-events-none" />
+          <p className="font-syne text-sm sm:text-base md:text-lg font-bold text-[#00D9E8] tracking-wide uppercase leading-relaxed text-center sm:text-left">
+            &ldquo;OUR MISSION IS NOT ONLY TO MANAGE BUT TO INSPIRE, DEVELOP AND SUPPORT THE BACKBONE OF MARITIME INDUSTRY — OUR SEAFARERS.&rdquo;
+          </p>
         </div>
 
-        {/* Supplementary Grid of Value Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((item, index) => {
+        {/* 11 Cards Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {REASONS.map((item) => {
             const Icon = item.icon;
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/10 flex flex-col justify-between group relative overflow-hidden"
+              <div
+                key={item.number}
+                className="group relative p-6 sm:p-7 rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0068B7] transition-all duration-300 flex flex-col justify-between"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-teal-400 group-hover:scale-110 group-hover:bg-teal-500/20 transition duration-300">
-                      <Icon className="w-6 h-6" />
+                <div className="space-y-4">
+                  {/* Card Header: Icon & Badge */}
+                  <div className="flex items-center justify-between">
+                    <div className="p-3 rounded-2xl bg-sky-50 text-[#0068B7] border border-sky-100 group-hover:bg-[#0068B7] group-hover:text-white transition-colors duration-300">
+                      <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[11px] font-bold text-teal-300 bg-teal-500/10 border border-teal-500/20 px-2.5 py-1 rounded-full">
-                      {item.stat}
+                    <span className="font-mono text-[10px] font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200 uppercase tracking-wider group-hover:bg-sky-50 group-hover:text-[#0068B7] group-hover:border-sky-200 transition-all duration-300">
+                      {item.badge}
                     </span>
                   </div>
 
-                  <h4 className="text-base font-bold font-poppins text-white mb-2 group-hover:text-teal-300 transition">
-                    {item.title}
-                  </h4>
-
-                  <p className="text-slate-300 text-xs leading-relaxed font-light">
-                    {item.desc}
-                  </p>
+                  {/* Title & Description */}
+                  <div>
+                    <h3 className="font-serif text-lg sm:text-xl font-bold text-[#0B2545] tracking-tight group-hover:text-[#0068B7] transition-colors duration-300 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="font-manrope text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
-              </motion.div>
+
+                {/* Card Footer Number */}
+                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between font-mono text-xs text-slate-400 font-bold">
+                  <span>POINT {item.number}</span>
+                  <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-[#0068B7] group-hover:translate-x-1 transition-all duration-300" />
+                </div>
+              </div>
             );
           })}
         </div>

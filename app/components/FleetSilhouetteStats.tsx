@@ -124,14 +124,14 @@ export const FleetSilhouetteStats: React.FC<FleetSilhouetteStatsProps> = ({ onOp
 
               <div className="flex items-baseline gap-3 pt-4 border-t border-white/15">
                 <span className="font-syne text-4xl sm:text-5xl font-extrabold text-white">
-                  03
+                  04
                 </span>
                 <div>
                   <span className="font-syne font-bold text-lg text-white block uppercase leading-tight">
                     GLOBAL HUBS
                   </span>
                   <span className="font-mono text-[10px] text-sky-200 uppercase font-semibold">
-                    DUBAI &bull; MUMBAI &bull; COLOMBO
+                    DUBAI &bull; MUMBAI &bull; COLOMBO &bull; ISTANBUL
                   </span>
                 </div>
               </div>

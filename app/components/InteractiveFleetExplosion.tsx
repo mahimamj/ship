@@ -255,9 +255,9 @@ export const InteractiveFleetExplosion: React.FC = () => {
           </div>
 
           <div className="space-y-1 sm:border-x border-white/10 px-4">
-            <span className="font-syne text-2xl sm:text-3xl font-extrabold text-[#00D9E8]">03</span>
+            <span className="font-syne text-2xl sm:text-3xl font-extrabold text-[#00D9E8]">04</span>
             <p className="font-mono text-[11px] sm:text-xs text-slate-200 font-bold tracking-wider">GLOBAL HUBS</p>
-            <span className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-bold block">DUBAI &bull; MUMBAI &bull; COLOMBO</span>
+            <span className="font-mono text-[9px] sm:text-[10px] text-slate-400 font-bold block">DUBAI &bull; MUMBAI &bull; COLOMBO &bull; ISTANBUL</span>
           </div>
 
           <div className="space-y-1">

@@ -31,30 +31,6 @@ export const GlobalPresenceMap: React.FC = () => {
 
   const hubOrder: HubKey[] = ["dubai", "mumbai", "colombo", "turkey"];
 
-  useEffect(() => {
-    const { ScrollTrigger, gsap } = initGSAP();
-
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top 30%",
-        end: "bottom 70%",
-        onUpdate: (self) => {
-          const index = Math.min(
-            hubOrder.length - 1,
-            Math.floor(self.progress * hubOrder.length)
-          );
-          const targetKey = hubOrder[index];
-          if (targetKey && targetKey !== activeHub) {
-            handleSelectHub(targetKey);
-          }
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [activeHub]);
-
   const hubs: Record<HubKey, HubInfo> = {
     dubai: {
       id: "dubai",

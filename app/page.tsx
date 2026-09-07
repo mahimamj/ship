@@ -11,14 +11,16 @@ import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
 import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
 import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
+import { WhyChooseUs } from "./components/WhyChooseUs";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
 import { MissionVisionCutoutSection } from "./components/MissionVisionCutoutSection";
 import { CareerJobBoardSection } from "./components/CareerJobBoardSection";
 import { InteractiveFleetExplosion } from "./components/InteractiveFleetExplosion";
 import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
-import { HorizontalTimelineSection } from "./components/HorizontalTimelineSection";
 import { CertificationsMarquee } from "./components/CertificationsMarquee";
 import { CertificationsSection } from "./components/CertificationsSection";
+import { FollowTheJourneySection } from "./components/FollowTheJourneySection";
+import { CareerJourneyMilestones } from "./components/CareerJourneyMilestones";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { FloatingWhatsAppButton } from "./components/FloatingWhatsAppButton";
@@ -73,6 +75,9 @@ export default function Home() {
         onOpenQuote={() => setIsQuoteOpen(true)}
       />
 
+      {/* WHY CHOOSE US 11-POINT ADVANTAGE GRID */}
+      <WhyChooseUs />
+
       {/* 6. GLOBAL NETWORK MAP */}
       <GlobalPresenceMap />
 
@@ -90,8 +95,8 @@ export default function Home() {
       {/* 9. FLEET VISUALIZATION SPECS */}
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* 10. COMPANY TIMELINE & HERITAGE STATS */}
-      <HorizontalTimelineSection />
+      {/* 10. CAREER JOURNEY MILESTONES */}
+      <CareerJourneyMilestones />
 
       {/* 11. COMPACT CERTIFICATIONS */}
       <div className="bg-[#F5F5F2] text-[#071A2B]">
@@ -99,7 +104,10 @@ export default function Home() {
         <CertificationsSection />
       </div>
 
-      {/* 12. CONTACT, PROPOSAL REQUEST & PARTNERSHIP CTA */}
+      {/* 13. FOLLOW THE JOURNEY & SOCIAL CHANNELS */}
+      <FollowTheJourneySection />
+
+      {/* 13. CONTACT, PROPOSAL REQUEST & PARTNERSHIP CTA */}
       <div className="bg-[#FFFFFF] text-[#071A2B]">
         <ContactSection />
         <Footer />

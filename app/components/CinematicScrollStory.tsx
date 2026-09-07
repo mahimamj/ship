@@ -163,7 +163,7 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-4">
             <p className="max-w-md text-xs sm:text-sm font-manrope font-light text-slate-300 leading-relaxed">
-              Global provider of technical vessel management, RPSL approved crew logistics, and maritime operations across Dubai, Mumbai, and Colombo.
+              Global provider of technical vessel management, RPSL approved crew logistics, and maritime operations across Dubai, Mumbai, Colombo, and Istanbul.
             </p>
 
             <div className="flex items-center gap-3">

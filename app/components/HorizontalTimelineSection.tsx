@@ -95,11 +95,11 @@ export const HorizontalTimelineSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
           <div>
-            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-2">
-              // HERITAGE &amp; HISTORICAL PROGRESSION
+            <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block mb-1.5">
+              CAREER JOURNEY
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
-              COMPANY TIMELINE
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#0B2545]">
+              Milestones
             </h2>
           </div>
 
