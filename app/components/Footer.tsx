@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { ArrowUp, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { ArrowUp, ShieldCheck, Cookie } from "lucide-react";
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -47,6 +48,12 @@ export const Footer: React.FC = () => {
               <li><a href="#careers" className="hover:text-[#176B87] transition">Careers (At Shore & At Sea)</a></li>
               <li><a href="#presence" className="hover:text-[#176B87] transition">Global Hubs</a></li>
               <li><a href="#contact" className="hover:text-[#176B87] transition">Contact Operations</a></li>
+              <li>
+                <Link href="/cookie-policy" className="hover:text-[#176B87] transition flex items-center space-x-1.5 text-[#176B87] font-semibold">
+                  <Cookie className="w-3.5 h-3.5" />
+                  <span>Cookie Policy</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -91,8 +98,12 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Copyright, Credits & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-[#667783] gap-4 font-mono">
-          <div>
-            © {new Date().getFullYear()} <strong className="text-[#071A2B] font-bold">Oceanic Star Group</strong>. All rights reserved.
+          <div className="flex flex-wrap items-center gap-3">
+            <span>© {new Date().getFullYear()} <strong className="text-[#071A2B] font-bold">Oceanic Star Group</strong>. All rights reserved.</span>
+            <span>•</span>
+            <Link href="/cookie-policy" className="hover:text-[#176B87] transition underline underline-offset-2">
+              Cookie Policy
+            </Link>
           </div>
 
           <div className="text-[11px] text-[#667783]">

@@ -34,14 +34,14 @@ export const FollowTheJourneySection: React.FC = () => {
     },
     {
       name: "Instagram (Personal)",
-      url: "https://instagram.com",
+      url: "https://www.instagram.com/keshariramb?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
       Icon: InstagramIcon,
       subtitle: "Personal Page",
       brandColor: "#E4405F",
     },
     {
       name: "Facebook (Personal)",
-      url: "https://facebook.com",
+      url: "https://www.facebook.com/keshari.ramb",
       Icon: FacebookIcon,
       subtitle: "Personal Page",
       brandColor: "#1877F2",

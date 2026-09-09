@@ -24,6 +24,7 @@ import { CareerJourneyMilestones } from "./components/CareerJourneyMilestones";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { FloatingWhatsAppButton } from "./components/FloatingWhatsAppButton";
+import { CookieConsentBanner } from "./components/CookieConsentBanner";
 
 import { FleetVideoModal } from "./components/FleetVideoModal";
 import { QuoteModal } from "./components/QuoteModal";
@@ -142,6 +143,7 @@ export default function Home() {
       />
 
       <FloatingWhatsAppButton />
+      <CookieConsentBanner />
     </div>
   );
 }
