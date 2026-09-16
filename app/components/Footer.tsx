@@ -44,6 +44,7 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-[#667783]">
               <li><a href="#about" className="hover:text-[#176B87] transition">About Oceanic Star</a></li>
+              <li><Link href="/founder" className="hover:text-[#176B87] transition">Founder &amp; MD (Leadership)</Link></li>
               <li><a href="#capabilities" className="hover:text-[#176B87] transition">Capabilities & Services</a></li>
               <li><a href="#careers" className="hover:text-[#176B87] transition">Careers (At Shore & At Sea)</a></li>
               <li><a href="#presence" className="hover:text-[#176B87] transition">Global Hubs</a></li>
