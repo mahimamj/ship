@@ -113,11 +113,11 @@ export const MissionVisionCutoutSection: React.FC = () => {
           loop
           playsInline
           preload="auto"
-          className="w-full h-full object-cover opacity-30 will-change-transform"
+          className="w-full h-full object-cover opacity-75 filter brightness-110 contrast-105 saturate-125 will-change-transform transition-all duration-700"
         >
           <source src="/ship.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAF7] via-[#FAFAF7]/80 to-[#FAFAF7]/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAF7]/90 via-[#FAFAF7]/40 to-[#FAFAF7]/60" />
         <div className="absolute inset-0 bg-[radial-gradient(#0068B7_1.2px,transparent_1.2px)] [background-size:32px_32px] opacity-15 pointer-events-none" />
       </div>
 

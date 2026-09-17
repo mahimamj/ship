@@ -99,46 +99,51 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
           loop
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
+          className="absolute inset-0 w-full h-full object-cover scale-105 filter brightness-110 contrast-105 saturate-125 transition-all duration-700"
         >
           <source src={VIDEOS.hero} type="video/mp4" />
           <source src={VIDEOS.heroSecondary} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#071A2B]/75 via-[#071A2B]/45 to-[#071A2B]/90" />
+
+        {/* Dual Gradient Overlay: Left dark vignette for 100% text contrast, right side open for bright video */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061B2A]/90 via-[#061B2A]/70 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#061B2A]/60 via-transparent to-[#061B2A]/90 pointer-events-none" />
       </div>
 
       {/* Main Hero Content */}
       <div ref={contentRef} className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex flex-col justify-center min-h-screen will-change-transform">
         <div className="space-y-6 max-w-4xl">
-          <p className="label-mono text-[#00D26A] font-bold tracking-widest text-xs flex items-center gap-2" data-scroll-reveal="fade-up">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#061B2A]/80 border border-[#00D26A]/50 backdrop-blur-md w-fit">
             <span className="w-2 h-2 rounded-full bg-[#00D26A] animate-ping" />
-            OCEANIC STAR FLEET — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
-          </p>
+            <span className="label-mono text-[#00D26A] font-bold tracking-widest text-xs uppercase">
+              OCEANIC STAR FLEET — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
+            </span>
+          </div>
 
-          <h1 className="font-syne font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-white" data-scroll-split>
-            THE OCEAN <br />
-            IS OUR <br />
-            OPERATING <br />
-            <span className="text-[#00D26A]">GROUND.</span>
+          <h1 className="font-syne font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[0.95] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+            <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">THE OCEAN</span> <br />
+            <span className="text-[#00D9E8] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] font-black">IS OUR</span> <br />
+            <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">OPERATING</span> <br />
+            <span className="text-[#00D26A] drop-shadow-[0_0_25px_rgba(0,210,106,0.6)]">GROUND.</span>
           </h1>
 
           {/* Live Port & Container Search Bar */}
           <div className="pt-2 max-w-xl">
             <form
               onSubmit={handleSearchSubmit}
-              className="relative flex items-center rounded-2xl bg-[#0F2C59]/90 border border-[#176B87]/50 shadow-2xl p-1.5 backdrop-blur-xl"
+              className="relative flex items-center rounded-2xl bg-[#061B2A]/95 border-2 border-[#00D9E8]/60 shadow-2xl p-2 backdrop-blur-2xl"
             >
-              <MapPin className="w-5 h-5 text-[#176B87] ml-3 shrink-0" />
+              <MapPin className="w-5 h-5 text-[#00D9E8] ml-3 shrink-0" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Enter Port Name or Container BL (e.g. Dubai, JNPT, OSF-9821)..."
-                className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none"
+                className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-300 focus:outline-none font-medium"
               />
               <button
                 type="submit"
-                className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#176B87] to-[#00D26A] text-white text-xs font-bold whitespace-nowrap hover:opacity-90 flex items-center gap-1.5 transition-all shadow-md"
+                className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#0077B6] to-[#00D26A] text-white text-xs font-bold whitespace-nowrap hover:opacity-90 flex items-center gap-1.5 transition-all shadow-lg shrink-0"
               >
                 <span>Track Live Port</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -146,7 +151,7 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
             </form>
 
             {activeResult && (
-              <div className="mt-3 p-3.5 rounded-2xl bg-[#071A2B]/95 border border-[#00D26A]/40 text-xs text-white space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
+              <div className="mt-3 p-3.5 rounded-2xl bg-[#071A2B]/95 border border-[#00D26A]/40 text-xs text-white space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl">
                 <div className="flex items-center justify-between font-bold">
                   <span className="text-[#00D26A] flex items-center gap-1">
                     <CheckCircle2 className="w-4 h-4" /> {activeResult.code} ({activeResult.status})
@@ -161,31 +166,10 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-4">
-            <p className="max-w-md text-xs sm:text-sm font-manrope font-light text-slate-300 leading-relaxed">
+          <div className="pt-2 max-w-xl">
+            <p className="text-xs sm:text-sm font-manrope font-normal text-slate-100 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               Global provider of technical vessel management, RPSL approved crew logistics, and maritime operations across Dubai, Mumbai, Colombo, and Istanbul.
             </p>
-
-            <div className="flex items-center gap-3">
-              {onOpenVideoModal && (
-                <button
-                  onClick={onOpenVideoModal}
-                  className="flex items-center gap-2.5 text-xs font-mono tracking-wider text-white bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3.5 hover:bg-white/20 transition-all rounded-xl shadow-lg"
-                >
-                  <Play className="w-4 h-4 text-[#00D26A]" />
-                  <span>SHOWREEL</span>
-                </button>
-              )}
-              {onOpenQuote && (
-                <button
-                  onClick={onOpenQuote}
-                  className="flex items-center gap-2.5 text-xs font-mono font-bold tracking-wider text-white bg-gradient-to-r from-[#176B87] to-[#00D26A] px-6 py-3.5 hover:opacity-90 transition-all rounded-xl shadow-xl"
-                >
-                  <FileText className="w-4 h-4" />
-                  <span>GET PROPOSAL</span>
-                </button>
-              )}
-            </div>
           </div>
         </div>
       </div>

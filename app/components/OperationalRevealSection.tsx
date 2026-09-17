@@ -360,11 +360,11 @@ export const OperationalRevealSection: React.FC = () => {
             muted
             playsInline
             preload="auto"
-            className="absolute inset-0 w-full h-full object-cover opacity-95 scale-105"
+            className="absolute inset-0 w-full h-full object-cover opacity-95 scale-105 filter brightness-110 contrast-105 saturate-125 transition-all duration-700"
           >
             <source src="/ship.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B] via-[#071A2B]/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B]/85 via-[#071A2B]/20 to-transparent" />
         </div>
 
         {/* Top Header Bar */}

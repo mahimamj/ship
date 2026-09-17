@@ -1,9 +1,9 @@
 export const VIDEOS = {
-  hero: "https://vjs.zencdn.net/v/oceans.mp4",
-  heroSecondary: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-cargo-ship-in-the-sea-41617-large.mp4",
+  hero: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-cargo-ship-in-the-sea-41617-large.mp4",
+  heroSecondary: "/ship.mp4",
   heroPoster: "/images/cinematic_vessel_bg.png",
-  atSea: "/ship.mp4",
-  onBoard: "https://vjs.zencdn.net/v/oceans.mp4",
-  onShore: "https://vjs.zencdn.net/v/oceans.mp4",
-  cta: "https://vjs.zencdn.net/v/oceans.mp4",
+  atSea: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-cargo-ship-in-the-sea-41617-large.mp4",
+  onBoard: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-cargo-ship-in-the-sea-41617-large.mp4",
+  onShore: "/ship.mp4",
+  cta: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-cargo-ship-in-the-sea-41617-large.mp4",
 } as const;

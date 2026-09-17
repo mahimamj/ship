@@ -7,6 +7,7 @@ import { ScrollOrchestrator } from "./components/ScrollOrchestrator";
 import { ScrollSection } from "./components/ScrollSection";
 import { CinematicNavbar } from "./components/CinematicNavbar";
 import { CinematicHeroLayer } from "./components/CinematicScrollStory";
+import { AboutOceanicOverview } from "./components/AboutOceanicOverview";
 import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
 import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
 import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
@@ -61,8 +62,11 @@ export default function Home() {
         </ScrollSection>
       </div>
 
-      {/* 2. LIVE VOYAGE THEATRE */}
-      <VoyageTheatreSection />
+      {/* 2. ABOUT OCEANIC STAR OVERVIEW (WHAT IS OCEANIC / WHAT WE DO) */}
+      <AboutOceanicOverview onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* 2B. VISION & MISSION UNIFIED SECTION */}
+      <MissionVisionCutoutSection />
 
       {/* 3. GSAP FLEET GALLERY & CORRIDORS */}
       <GsapHorizontalScrollGallery onOpenQuote={() => setIsQuoteOpen(true)} />
@@ -82,8 +86,11 @@ export default function Home() {
       {/* 6. GLOBAL NETWORK MAP */}
       <GlobalPresenceMap />
 
-      {/* 7. VISION & MISSION UNIFIED SECTION */}
+      {/* 6B. VISION & MISSION UNIFIED SECTION */}
       <MissionVisionCutoutSection />
+
+      {/* 6C. LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION */}
+      <VoyageTheatreSection />
 
       {/* 8. CAREERS JOB BOARD */}
       <CareerJobBoardSection

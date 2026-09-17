@@ -31,9 +31,29 @@ export const Footer: React.FC = () => {
               Providing premier Ship Management, Crewing, Marine Engineering, Chartering & Commercial Port Services across international shipping corridors. Servicing fleet owners through Oceanic Star Fleet Ship Management LLC (Dubai) and Oceanic Star Shipping Pvt. Ltd. (India).
             </p>
 
-            <div className="flex items-center space-x-2 bg-white border border-[rgba(7,26,43,0.12)] rounded-xl px-3.5 py-2 text-[11px] text-[#071A2B] font-mono font-semibold w-fit">
-              <ShieldCheck className="w-4 h-4 text-[#176B87]" />
-              <span>ISO 9001:2015 & DG SHIPPING RPSL-MUM-506</span>
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              <div className="flex items-center space-x-2 bg-white border border-[rgba(7,26,43,0.12)] rounded-xl px-3.5 py-2 text-[11px] text-[#071A2B] font-mono font-semibold w-fit">
+                <ShieldCheck className="w-4 h-4 text-[#176B87]" />
+                <span>ISO 9001:2015 &amp; DG SHIPPING RPSL-MUM-506</span>
+              </div>
+              <a
+                href="https://www.linkedin.com/company/oceanic-star-shipping-private-limited/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 bg-[#0A66C2] text-white rounded-xl font-mono text-[11px] font-bold hover:opacity-90 transition flex items-center space-x-1.5"
+                title="Company LinkedIn"
+              >
+                <span>LinkedIn</span>
+              </a>
+              <a
+                href="https://www.instagram.com/oceanicstarshippingpvtltd?stkn=MTUyY2N3amU5bjcyNQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-2 bg-[#E4405F] text-white rounded-xl font-mono text-[11px] font-bold hover:opacity-90 transition flex items-center space-x-1.5"
+                title="Company Instagram"
+              >
+                <span>Instagram</span>
+              </a>
             </div>
           </div>
 

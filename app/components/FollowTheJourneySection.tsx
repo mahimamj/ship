@@ -24,77 +24,70 @@ const FacebookIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" 
 );
 
 export const FollowTheJourneySection: React.FC = () => {
-  const channels = [
+  const companyChannels = [
     {
-      name: "LinkedIn (Personal)",
-      url: "https://www.linkedin.com/in/ram-b-keshari-73969954/",
+      name: "LinkedIn (Company)",
+      url: "https://www.linkedin.com/company/oceanic-star-shipping-private-limited/",
       Icon: LinkedinIcon,
-      subtitle: "Ram B Keshari",
+      subtitle: "Oceanic Star Shipping Pvt. Ltd.",
       brandColor: "#0A66C2",
     },
     {
-      name: "Instagram (Personal)",
-      url: "https://www.instagram.com/keshariramb?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
+      name: "Instagram (Company)",
+      url: "https://www.instagram.com/oceanicstarshippingpvtltd?stkn=MTUyY2N3amU5bjcyNQ==",
       Icon: InstagramIcon,
-      subtitle: "Personal Page",
+      subtitle: "Official Instagram Page",
       brandColor: "#E4405F",
-    },
-    {
-      name: "Facebook (Personal)",
-      url: "https://www.facebook.com/keshari.ramb",
-      Icon: FacebookIcon,
-      subtitle: "Personal Page",
-      brandColor: "#1877F2",
     },
   ];
 
   return (
     <section className="w-full bg-[#FAFAF7] text-[#061B2A] py-16 sm:py-20 px-6 sm:px-12 border-t border-slate-200 select-none">
-      <div className="max-w-[1200px] mx-auto text-center space-y-4">
+      <div className="max-w-[1200px] mx-auto text-center space-y-8">
         
-        {/* Top Label */}
-        <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block">
-          CONNECT
-        </span>
+        {/* Top Header */}
+        <div className="space-y-3">
+          <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block">
+            CONNECT &amp; FOLLOW
+          </span>
 
-        {/* Heading matching screenshot serif styling */}
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2545] tracking-tight leading-tight">
-          Follow the Journey
-        </h2>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2545] tracking-tight leading-tight">
+            Follow Oceanic Star Group
+          </h2>
 
-        {/* Subtitle */}
-        <p className="font-manrope text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Personal and professional channels — separate from the company&apos;s official pages.
-        </p>
+          <p className="font-manrope text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Stay updated with our official company updates, fleet dispatches, seafarer recruitment notices, and operational announcements.
+          </p>
+        </div>
 
-        {/* Pill Buttons Row */}
-        <div className="pt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          {channels.map((channel, idx) => {
-            const Icon = channel.Icon;
-            const isExternal = channel.url.startsWith("http");
+        {/* Official Company Channels Row */}
+        <div className="pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            {companyChannels.map((channel, idx) => {
+              const Icon = channel.Icon;
+              return (
+                <a
+                  key={idx}
+                  href={channel.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex items-center gap-3.5 px-6 py-3.5 rounded-full bg-white border-2 border-[#0068B7]/30 shadow-md hover:shadow-xl hover:border-[#0068B7] transition-all duration-300 hover:scale-[1.03] cursor-pointer"
+                >
+                  <div className="p-2 rounded-full bg-sky-50 group-hover:bg-[#0068B7] text-[#0068B7] group-hover:text-white transition-colors duration-300">
+                    <Icon className="w-4 h-4" />
+                  </div>
 
-            return (
-              <a
-                key={idx}
-                href={channel.url}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className="group relative flex items-center gap-3.5 px-6 py-3.5 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-[#0068B7] transition-all duration-300 hover:scale-[1.03] cursor-pointer"
-              >
-                <div className="p-2 rounded-full bg-slate-100 group-hover:bg-[#0068B7] text-[#0B2545] group-hover:text-white transition-colors duration-300">
-                  <Icon className="w-4 h-4" />
-                </div>
+                  <div className="text-left">
+                    <span className="font-sans text-xs sm:text-sm font-bold text-[#0B2545] tracking-wide block">
+                      {channel.name}
+                    </span>
+                  </div>
 
-                <div className="text-left">
-                  <span className="font-sans text-xs sm:text-sm font-semibold text-[#0B2545] tracking-wide block">
-                    {channel.name}
-                  </span>
-                </div>
-
-                <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#0068B7] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </a>
-            );
-          })}
+                  <ArrowUpRight className="w-4 h-4 text-[#0068B7] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+                </a>
+              );
+            })}
+          </div>
         </div>
 
       </div>
