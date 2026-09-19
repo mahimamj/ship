@@ -86,10 +86,13 @@ export default function Home() {
       {/* 6. GLOBAL NETWORK MAP */}
       <GlobalPresenceMap />
 
-      {/* 6B. VISION & MISSION UNIFIED SECTION */}
+      {/* 6B. PROVEN MARITIME MILESTONES & MARKETING SHOWCASE */}
+      <CareerJourneyMilestones onOpenQuote={() => setIsQuoteOpen(true)} />
+
+      {/* 6C. VISION & MISSION UNIFIED SECTION */}
       <MissionVisionCutoutSection />
 
-      {/* 6C. LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION */}
+      {/* 6D. LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION */}
       <VoyageTheatreSection />
 
       {/* 8. CAREERS JOB BOARD */}
@@ -102,9 +105,6 @@ export default function Home() {
 
       {/* 9. FLEET VISUALIZATION SPECS */}
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
-
-      {/* 10. CAREER JOURNEY MILESTONES */}
-      <CareerJourneyMilestones />
 
       {/* 11. COMPACT CERTIFICATIONS */}
       <div className="bg-[#F5F5F2] text-[#071A2B]">
