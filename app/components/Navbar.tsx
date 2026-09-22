@@ -42,13 +42,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
             <div className="flex items-center space-x-2">
               <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
               <span className="font-semibold text-teal-400">24/7 Ops Center:</span>
-              <a href="tel:+97143990000" className="hover:text-white transition">+971 4 399 0000 (Dubai)</a>
+              <a href="tel:+97143889981" className="hover:text-white transition">+971 43889981 (Dubai)</a>
               <span>|</span>
-              <a href="tel:+912268000000" className="hover:text-white transition">+91 22 6800 0000 (Mumbai)</a>
+              <a href="tel:+912227817171" className="hover:text-white transition">+91 22 27817171/72 (Mumbai)</a>
             </div>
             <div className="flex items-center space-x-1 text-slate-400">
               <Mail size={12} className="text-teal-400" />
-              <a href="mailto:ops@oceanicstar.com" className="hover:text-white transition">ops@oceanicstar.com</a>
+              <a href="mailto:info@oceanicstarfleet.com" className="hover:text-white transition">info@oceanicstarfleet.com</a>
             </div>
           </div>
 

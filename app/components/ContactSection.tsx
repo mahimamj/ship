@@ -82,7 +82,7 @@ export const ContactSection: React.FC = () => {
             {/* Dubai HQ Card */}
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
                   🇦🇪
                 </div>
                 <div>
@@ -99,8 +99,12 @@ export const ContactSection: React.FC = () => {
                   <span>Office No. 601, 6th Floor, Al Jawharah Building, Bur Dubai, UAE</span>
                 </p>
                 <p className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-[#0077B6] shrink-0" />
+                  <a href="tel:+97143889981" className="hover:text-[#0077B6] transition font-bold">+971 43889981</a>
+                </p>
+                <p className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#0077B6] shrink-0" />
-                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#0077B6] transition font-bold">info@oceanicstarshipping.com</a>
+                  <a href="mailto:info@oceanicstarfleet.com" className="hover:text-[#0077B6] transition font-bold">info@oceanicstarfleet.com</a>
                 </p>
               </div>
             </div>
@@ -108,7 +112,7 @@ export const ContactSection: React.FC = () => {
             {/* India HQ Card */}
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
                   🇮🇳
                 </div>
                 <div>
@@ -126,11 +130,7 @@ export const ContactSection: React.FC = () => {
                 </p>
                 <p className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-[#0077B6] shrink-0" />
-                  <span>+91 22 2781 7171 / 72</span>
-                </p>
-                <p className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4 text-[#0077B6] shrink-0" />
-                  <span>Mob: +91 90043 90041 / +91 90043 90141</span>
+                  <a href="tel:+912227817171" className="hover:text-[#0077B6] transition font-bold">+91 22 27817171/72</a>
                 </p>
                 <p className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#0077B6] shrink-0" />
@@ -139,10 +139,40 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
+            {/* Sri Lanka Office Card */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
+                  🇱🇰
+                </div>
+                <div>
+                  <h3 className="font-syne text-lg font-bold text-[#071A2B]">
+                    Oceanic Star Lanka Pvt Ltd
+                  </h3>
+                  <p className="text-xs font-mono text-[#0077B6] font-semibold">Colombo Operations &amp; Husbandry</p>
+                </div>
+              </div>
+
+              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
+                <p className="flex items-start space-x-2">
+                  <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
+                  <span>Maritime House, 2nd Floor, Janadhipathi Mawatha, Colombo 01, Sri Lanka</span>
+                </p>
+                <p className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-[#0077B6] shrink-0" />
+                  <a href="tel:+971561581941" className="hover:text-[#0077B6] transition font-bold">+971 5615-81941</a>
+                </p>
+                <p className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4 text-[#0077B6] shrink-0" />
+                  <a href="mailto:operations@oceanicstarfleet.com" className="hover:text-[#0077B6] transition font-bold">operations@oceanicstarfleet.com</a>
+                </p>
+              </div>
+            </div>
+
             {/* Turkey Office Card */}
             <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
                   🇹🇷
                 </div>
                 <div>
@@ -159,8 +189,12 @@ export const ContactSection: React.FC = () => {
                   <span>Mimar Sinan Mah. Bosna Cad. Çolpan Sok. No.2, Uzunlar Apt. A Blok D.4, 34782 Çekmeköy - İstanbul / TURKEY</span>
                 </p>
                 <p className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-[#0077B6] shrink-0" />
+                  <a href="tel:+97143889981" className="hover:text-[#0077B6] transition font-bold">+971 43889981</a>
+                </p>
+                <p className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#0077B6] shrink-0" />
-                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#0077B6] transition font-bold">info@oceanicstarshipping.com</a>
+                  <a href="mailto:operations@oceanicstarfleet.com" className="hover:text-[#0077B6] transition font-bold">operations@oceanicstarfleet.com</a>
                 </p>
               </div>
             </div>

@@ -100,18 +100,23 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 font-light text-[#667783]">
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Dubai Office (UAE):</strong>
-                <span>Al Jawharah Building, Bur Dubai, UAE</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarshipping.com</span>
+                <span>+971 43889981</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarfleet.com</span>
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">India HQ (Navi Mumbai):</strong>
-                <span>Real Tech Park, Sector 30A, Vashi, Navi Mumbai</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">+91 22 2781 7171 / 72</span>
+                <span>+91 22 27817171/72</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarshipping.com</span>
+              </div>
+              <div>
+                <strong className="text-[#071A2B] block font-semibold">Sri Lanka (Colombo):</strong>
+                <span>+971 5615-81941</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">operations@oceanicstarfleet.com</span>
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Turkey Office (Istanbul):</strong>
-                <span>Mimar Sinan Mah. Bosna Cad. Çolpan Sok. No.2, Çekmeköy, İstanbul</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarshipping.com</span>
+                <span>+971 43889981</span>
+                <span className="block text-[#176B87] font-mono mt-0.5">operations@oceanicstarfleet.com</span>
               </div>
             </div>
           </div>
