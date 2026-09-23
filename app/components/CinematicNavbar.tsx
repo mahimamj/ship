@@ -56,10 +56,10 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
         {/* Desktop Nav Links */}
         <nav className="hidden lg:flex items-center gap-8 text-[11px] font-mono tracking-[0.2em] text-[#061B2A] font-bold">
           <Link
-            href="/#about"
+            href="/"
             className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
           >
-            ABOUT
+            HOME
           </Link>
 
           <Link
@@ -73,7 +73,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
             href="/fleet"
             className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
           >
-            FLEET
+            NEWS &amp; IMPACT
           </Link>
 
           <Link
@@ -202,11 +202,11 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
           >
             <div className="px-8 py-8 flex flex-col gap-4 text-[#061B2A]">
               <Link
-                href="/#about"
+                href="/"
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-mono font-bold tracking-[0.2em] text-[#061B2A] hover:text-[#0068B7] transition-colors py-2 border-b border-slate-200 flex items-center justify-between"
               >
-                <span>ABOUT</span>
+                <span>HOME</span>
                 <span className="text-xs text-[#0068B7]">→</span>
               </Link>
 
@@ -224,7 +224,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-mono font-bold tracking-[0.2em] text-[#061B2A] hover:text-[#0068B7] transition-colors py-2 border-b border-slate-200 flex items-center justify-between"
               >
-                <span>FLEET</span>
+                <span>NEWS &amp; IMPACT</span>
                 <span className="text-xs text-[#0068B7]">→</span>
               </Link>
 
