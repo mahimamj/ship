@@ -89,9 +89,6 @@ export default function Home() {
       {/* 6B. PROVEN MARITIME MILESTONES & MARKETING SHOWCASE */}
       <CareerJourneyMilestones onOpenQuote={() => setIsQuoteOpen(true)} />
 
-      {/* 6C. VISION & MISSION UNIFIED SECTION */}
-      <MissionVisionCutoutSection />
-
       {/* 6D. LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION */}
       <VoyageTheatreSection />
 

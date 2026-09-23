@@ -24,6 +24,7 @@ interface HubInfo {
 
 export const GlobalPresenceMap: React.FC = () => {
   const [activeHub, setActiveHub] = useState<HubKey>("colombo");
+  const [mapViewMode, setMapViewMode] = useState<"tactical" | "google">("tactical");
   const sectionRef = useRef<HTMLDivElement>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const leafletMapRef = useRef<any>(null);
@@ -114,10 +115,10 @@ export const GlobalPresenceMap: React.FC = () => {
 
       leafletMapRef.current = mapInstance;
 
-      // Add CartoDB Positron Light Basemap Tile Layer
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      // Add 100% Free OpenStreetMap Basemap Layer (NO API Key required)
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18,
-        subdomains: "abcd",
+        subdomains: "abc",
       }).addTo(mapInstance);
 
       // Add Markers
@@ -194,7 +195,7 @@ export const GlobalPresenceMap: React.FC = () => {
 
   const handleSelectHub = (key: HubKey) => {
     setActiveHub(key);
-    if (leafletMapRef.current) {
+    if (leafletMapRef.current && mapViewMode === "tactical") {
       const targetCoords = hubs[key].coords;
       leafletMapRef.current.flyTo(targetCoords, 5, {
         duration: 1.2,
@@ -227,27 +228,54 @@ export const GlobalPresenceMap: React.FC = () => {
           </p>
         </div>
 
-        {/* Location Selection Controls (Pill Buttons) */}
-        <div className="flex flex-wrap items-center gap-3 mb-8">
-          {(["dubai", "mumbai", "colombo", "turkey"] as const).map((key) => {
-            const hub = hubs[key];
-            const isActive = activeHub === key;
-            return (
-              <button
-                key={key}
-                onClick={() => handleSelectHub(key)}
-                className={`px-6 py-3 rounded-full font-mono text-xs tracking-widest transition-all duration-300 border ${
-                  isActive
-                    ? "bg-[#071A2B] text-white border-[#071A2B] font-bold shadow-md"
-                    : "bg-[#FFFFFF] text-[#071A2B] border-[rgba(7,26,43,0.12)] hover:border-[#071A2B]"
-                }`}
-                data-cursor
-                data-cursor-text="SELECT"
-              >
-                {hub.pillLabel}
-              </button>
-            );
-          })}
+        {/* Location Selection Controls & Map Type Switcher */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div className="flex flex-wrap items-center gap-3">
+            {(["dubai", "mumbai", "colombo", "turkey"] as const).map((key) => {
+              const hub = hubs[key];
+              const isActive = activeHub === key;
+              return (
+                <button
+                  key={key}
+                  onClick={() => handleSelectHub(key)}
+                  className={`px-6 py-3 rounded-full font-mono text-xs tracking-widest transition-all duration-300 border ${
+                    isActive
+                      ? "bg-[#071A2B] text-white border-[#071A2B] font-bold shadow-md"
+                      : "bg-[#FFFFFF] text-[#071A2B] border-[rgba(7,26,43,0.12)] hover:border-[#071A2B]"
+                  }`}
+                  data-cursor
+                  data-cursor-text="SELECT"
+                >
+                  {hub.pillLabel}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 100% Free Map Engine Mode Selector */}
+          <div className="flex items-center bg-white border border-[rgba(7,26,43,0.12)] rounded-full p-1 text-xs font-mono shrink-0 shadow-sm">
+            <button
+              onClick={() => setMapViewMode("tactical")}
+              className={`px-4 py-2 rounded-full transition-all ${
+                mapViewMode === "tactical"
+                  ? "bg-[#071A2B] text-white font-bold shadow-sm"
+                  : "text-[#667783] hover:text-[#071A2B]"
+              }`}
+            >
+              Interactive Map
+            </button>
+            <button
+              onClick={() => setMapViewMode("google")}
+              className={`px-4 py-2 rounded-full transition-all flex items-center gap-1.5 ${
+                mapViewMode === "google"
+                  ? "bg-[#176B87] text-white font-bold shadow-sm"
+                  : "text-[#667783] hover:text-[#071A2B]"
+              }`}
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>Google Maps View</span>
+            </button>
+          </div>
         </div>
 
         {/* Desktop Side-by-Side: Map (65%) | Info Panel (35%) */}
@@ -255,31 +283,51 @@ export const GlobalPresenceMap: React.FC = () => {
           {/* Map Surface Container */}
           <div className="lg:col-span-8 flex flex-col justify-between">
             <div className="relative bg-[#FFFFFF] border border-[rgba(7,26,43,0.12)] rounded-3xl h-[460px] sm:h-[540px] lg:h-[580px] overflow-hidden shadow-sm">
-              {/* Leaflet Tile Map Surface */}
-              <div ref={mapContainerRef} className="w-full h-full z-0" />
+              {/* Interactive Tactical Map View */}
+              <div
+                ref={mapContainerRef}
+                className={`w-full h-full z-0 ${mapViewMode === "tactical" ? "block" : "hidden"}`}
+              />
+
+              {/* Free Google Maps Embed View (NO API key required, 100% free) */}
+              {mapViewMode === "google" && (
+                <iframe
+                  title={`${selected.city} Location Google Map`}
+                  src={`https://maps.google.com/maps?q=${encodeURIComponent(
+                    selected.city + ", " + selected.country
+                  )}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                  className="w-full h-full border-0 z-0"
+                  loading="lazy"
+                  allowFullScreen
+                />
+              )}
 
               {/* Bottom Left Compass Widget */}
-              <div className="absolute bottom-6 left-6 z-10 w-9 h-9 rounded-full bg-white border border-[rgba(7,26,43,0.12)] shadow-md flex items-center justify-center text-[#071A2B] font-bold text-xs font-mono">
-                <Navigation className="w-4 h-4 text-[#071A2B] transform -rotate-45" />
-              </div>
+              {mapViewMode === "tactical" && (
+                <div className="absolute bottom-6 left-6 z-10 w-9 h-9 rounded-full bg-white border border-[rgba(7,26,43,0.12)] shadow-md flex items-center justify-center text-[#071A2B] font-bold text-xs font-mono">
+                  <Navigation className="w-4 h-4 text-[#071A2B] transform -rotate-45" />
+                </div>
+              )}
 
               {/* Top Right Zoom Controls */}
-              <div className="absolute top-6 right-6 z-10 flex flex-col bg-white border border-[rgba(7,26,43,0.12)] rounded-xl shadow-md overflow-hidden">
-                <button
-                  onClick={handleZoomIn}
-                  className="p-2.5 text-[#071A2B] hover:bg-slate-100 border-b border-slate-100 transition"
-                  aria-label="Zoom in"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={handleZoomOut}
-                  className="p-2.5 text-[#071A2B] hover:bg-slate-100 transition"
-                  aria-label="Zoom out"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-              </div>
+              {mapViewMode === "tactical" && (
+                <div className="absolute top-6 right-6 z-10 flex flex-col bg-white border border-[rgba(7,26,43,0.12)] rounded-xl shadow-md overflow-hidden">
+                  <button
+                    onClick={handleZoomIn}
+                    className="p-2.5 text-[#071A2B] hover:bg-slate-100 border-b border-slate-100 transition"
+                    aria-label="Zoom in"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={handleZoomOut}
+                    className="p-2.5 text-[#071A2B] hover:bg-slate-100 transition"
+                    aria-label="Zoom out"
+                  >
+                    <Minus className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
             </div>
 
             {/* 4 Quick Operational Metrics Bar Underneath Map */}

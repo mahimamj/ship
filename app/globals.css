@@ -209,3 +209,9 @@ input[type="range"] {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(0, 217, 232, 0.2);
 }
+
+/* Hide any Leaflet tile attribution text or API key warning overlays */
+.leaflet-control-attribution,
+.leaflet-bottom.leaflet-right {
+  display: none !important;
+}
