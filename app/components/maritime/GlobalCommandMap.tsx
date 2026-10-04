@@ -35,7 +35,7 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
   }, [projection]);
 
   // 2. Extract and precompute Real Country Features from TopoJSON
-  const countryPaths = useMemo(() => {
+  const countryPaths: Array<{ id: string | number; d: string }> = useMemo(() => {
     const geojson = topojson.feature(
       worldData as any,
       worldData.objects.countries as any
@@ -148,7 +148,7 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
 
         {/* Real World Countries Polygon Paths (#E8DDC4 / #8791A0) */}
         <g className="countries-layer">
-          {countryPaths.map((country) => (
+          {countryPaths.map((country: { id: string | number; d: string }) => (
             <path
               key={country.id}
               d={country.d}
