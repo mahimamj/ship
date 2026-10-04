@@ -225,7 +225,7 @@ export const ServicesGrid: React.FC<ServicesGridProps> = ({ onSelectService }) =
           <span className="text-xs uppercase tracking-widest text-teal-400 font-bold bg-teal-500/10 px-4 py-1.5 rounded-full border border-teal-500/20">
             Comprehensive Services
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold font-poppins text-white tracking-tight">
+          <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
             Integrated <span className="text-gradient">Marine Solutions</span>
           </h2>
           <p className="text-slate-400 text-base">

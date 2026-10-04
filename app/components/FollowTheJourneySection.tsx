@@ -42,16 +42,16 @@ export const FollowTheJourneySection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-[#FAFAF7] text-[#061B2A] py-16 sm:py-20 px-6 sm:px-12 border-t border-slate-200 select-none">
-      <div className="max-w-[1200px] mx-auto text-center space-y-8">
+    <section className="w-full bg-[#FAFAF7] text-[#061B2A] py-10 sm:py-14 px-6 sm:px-12 border-t border-slate-200 select-none">
+      <div className="max-w-[1200px] mx-auto text-center space-y-6">
         
         {/* Top Header */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block">
             CONNECT &amp; FOLLOW
           </span>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2545] tracking-tight leading-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B2545] tracking-tight leading-tight">
             Follow Oceanic Star Group
           </h2>
 

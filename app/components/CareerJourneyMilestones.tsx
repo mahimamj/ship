@@ -222,7 +222,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               <span className="tracking-widest uppercase">OUR MILESTONES & PROVEN CREDS</span>
             </div>
             
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Two Decades of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D9E8] via-[#0077B6] to-[#C59B27]">Proven Growth</span>
             </h2>
             

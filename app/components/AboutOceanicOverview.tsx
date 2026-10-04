@@ -41,16 +41,16 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
   ];
 
   return (
-    <section id="about" className="w-full bg-[#FAFAF7] text-[#061B2A] py-16 sm:py-24 px-6 sm:px-12 border-b border-slate-200 select-none relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto space-y-12 relative z-10">
+    <section id="about" className="w-full bg-[#FAFAF7] text-[#061B2A] py-10 sm:py-14 px-6 sm:px-12 border-b border-slate-200 select-none relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto space-y-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
-          <div className="space-y-2 max-w-2xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-5 gap-4">
+          <div className="space-y-1.5 max-w-2xl">
             <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block flex items-center gap-2">
               <Award className="w-4 h-4 text-[#C59B27]" /> // WHAT IS OCEANIC STAR
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2545] tracking-tight leading-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B2545] tracking-tight leading-tight">
               World-Class Ship Management &amp; Maritime Solutions
             </h2>
           </div>
@@ -61,7 +61,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
         </div>
 
         {/* Highlight Stats Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-3xl bg-[#061B2A] text-white shadow-xl border border-[#00D9E8]/30">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-2xl bg-[#061B2A] text-white shadow-lg border border-[#00D9E8]/30">
           <div className="space-y-1 text-center md:text-left md:pl-4 border-r border-slate-700/60 last:border-r-0">
             <span className="font-syne text-2xl sm:text-3xl font-black text-[#00D9E8]">24+ YEARS</span>
             <p className="font-mono text-[10px] text-slate-300 uppercase tracking-wider">Trusted Experience</p>

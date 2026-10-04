@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { CinematicCustomCursor } from "./components/CinematicCustomCursor";
 import { ScrollProgressBar } from "./components/ScrollProgressBar";
+import { MaritimeVerticalScrollTracker } from "./components/MaritimeVerticalScrollTracker";
 import { ScrollOrchestrator } from "./components/ScrollOrchestrator";
 import { ScrollSection } from "./components/ScrollSection";
 import { CinematicNavbar } from "./components/CinematicNavbar";
@@ -44,8 +44,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased overflow-x-hidden selection:bg-[#0077B6] selection:text-white">
       <ScrollOrchestrator />
-      <CinematicCustomCursor />
       <ScrollProgressBar />
+      <MaritimeVerticalScrollTracker />
 
       <CinematicNavbar
         onOpenQuote={() => setIsQuoteOpen(true)}

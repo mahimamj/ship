@@ -102,29 +102,29 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
     <section
       id="capabilities"
       ref={sectionRef}
-      className="relative py-20 md:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-slate-200"
+      className="relative py-10 md:py-16 bg-[#F5F5F2] text-[#071A2B] border-b border-slate-200"
     >
       <div id="services" />
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-16">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-5 gap-4">
           <div>
-            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-2">
+            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-1">
               // CORE CAPABILITIES • ALL VESSEL TYPES • FAIRNESS FIRST
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
               OUR CAPABILITIES
             </h2>
           </div>
 
-          <p className="text-sm font-manrope text-slate-600 max-w-md leading-relaxed">
+          <p className="text-xs sm:text-sm font-manrope text-slate-600 max-w-md leading-relaxed">
             Full-spectrum technical management &amp; certified crewing across <strong>all vessel categories</strong> (Bulk, Container, Tanker, Gas, Offshore), built on <strong>100% fair, transparent, and crew-first ethics</strong>.
           </p>
         </div>
 
         {/* Vessel Diversity & Fairness Banner Surface - Luxury Dark Nautical Glassmorphism */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#071A2B] via-[#0B253E] to-[#071A2B] p-6 sm:p-8 md:p-10 border border-sky-500/20 shadow-2xl text-white space-y-8">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#071A2B] via-[#0B253E] to-[#071A2B] p-5 sm:p-7 border border-sky-500/20 shadow-xl text-white space-y-6">
           {/* Ambient Glow Effects */}
           <div className="absolute -top-24 -left-24 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />

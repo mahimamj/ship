@@ -98,7 +98,7 @@ export const HorizontalTimelineSection: React.FC = () => {
             <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block mb-1.5">
               CAREER JOURNEY
             </span>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#0B2545]">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#0B2545]">
               Milestones
             </h2>
           </div>

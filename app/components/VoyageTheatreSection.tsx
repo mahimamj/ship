@@ -140,14 +140,14 @@ export const VoyageTheatreSection: React.FC = () => {
     <section
       id="voyage"
       ref={wrapRef}
-      className="relative w-full bg-[#FAFAF7] text-[#061B2A] py-12 md:py-20 border-b border-slate-200 overflow-hidden"
+      className="relative w-full bg-[#FAFAF7] text-[#061B2A] py-6 sm:py-8 md:py-10 border-b border-slate-200 overflow-hidden"
     >
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-12 flex flex-col justify-between space-y-8">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 md:px-12 flex flex-col justify-between space-y-5">
         
         {/* Top Header */}
-        <div className="flex items-start justify-between gap-6 border-b border-slate-200 pb-4">
+        <div className="flex items-center justify-between gap-4 border-b border-slate-200 pb-3">
           <p className="label-mono flex items-center gap-2 text-xs font-bold tracking-widest text-[#0068B7]">
-            <span className="h-2.5 w-2.5 animate-ping rounded-full bg-[#00D9E8]" />
+            <span className="h-2 w-2 animate-ping rounded-full bg-[#00D9E8]" />
             LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION
           </p>
           <div className="flex items-center gap-3 sm:gap-6 font-mono text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] text-[#17252D] font-bold">
@@ -161,24 +161,24 @@ export const VoyageTheatreSection: React.FC = () => {
         </div>
 
         {/* Main Stage: Scene Info & Interactive Map */}
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 my-auto">
+        <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-12 my-auto">
           {/* Left Column: Active Scene Stats */}
-          <div className="lg:col-span-5 space-y-4">
-            <span className="font-mono text-xs tracking-[0.28em] text-[#0068B7] font-bold block">
+          <div className="lg:col-span-5 space-y-3">
+            <span className="font-mono text-xs tracking-[0.25em] text-[#0068B7] font-bold block">
               SCENE {active.code} / 04
             </span>
-            <h2 className="font-syne text-5xl font-black leading-[0.9] tracking-tight text-[#061B2A] sm:text-6xl lg:text-7xl">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold leading-tight tracking-tight text-[#061B2A]">
               {active.port}
             </h2>
-            <p className="font-syne text-lg font-bold tracking-wide text-[#0068B7] sm:text-xl">
+            <p className="font-syne text-base font-bold tracking-wide text-[#0068B7] sm:text-lg">
               {active.ocean}
             </p>
-            <p className="max-w-md font-manrope text-sm font-normal leading-relaxed text-slate-600 sm:text-base">
+            <p className="max-w-md font-manrope text-xs sm:text-sm font-normal leading-relaxed text-slate-600">
               {active.line}
             </p>
 
             {/* Metrics */}
-            <div className="pt-4 grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="pt-2 grid grid-cols-2 gap-3 sm:grid-cols-3">
               {[
                 { label: "PROGRESS", value: `${progress}%`, icon: Gauge },
                 { label: "DISTANCE", value: `${nm.toLocaleString()} NM`, icon: Navigation },
@@ -186,11 +186,11 @@ export const VoyageTheatreSection: React.FC = () => {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="border border-slate-200 bg-white p-4 shadow-md rounded-2xl"
+                  className="border border-slate-200 bg-white p-3 shadow-sm rounded-xl"
                 >
-                  <stat.icon className="mb-1.5 h-4 w-4 text-[#0068B7]" />
-                  <div className="font-syne text-lg font-extrabold leading-none text-[#061B2A] sm:text-xl">{stat.value}</div>
-                  <div className="mt-1 font-mono text-[9px] tracking-[0.2em] text-[#17252D] font-bold">{stat.label}</div>
+                  <stat.icon className="mb-1 h-3.5 w-3.5 text-[#0068B7]" />
+                  <div className="font-syne text-base font-extrabold leading-none text-[#061B2A] sm:text-lg">{stat.value}</div>
+                  <div className="mt-1 font-mono text-[9px] tracking-[0.15em] text-[#17252D] font-bold">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -198,7 +198,7 @@ export const VoyageTheatreSection: React.FC = () => {
 
           {/* Right Column: Dynamic SVG Map Path */}
           <div className="relative lg:col-span-7 w-full overflow-hidden">
-            <svg viewBox="0 0 760 420" className="h-auto w-full" aria-hidden>
+            <svg viewBox="0 0 760 380" className="h-auto w-full max-h-[280px] sm:max-h-[340px]" aria-hidden>
               <defs>
                 <linearGradient id="voyage-stroke-light" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#0068B7" />
@@ -257,19 +257,19 @@ export const VoyageTheatreSection: React.FC = () => {
                   <circle
                     cx={port.x}
                     cy={port.y}
-                    r={sceneIndex === pIdx ? "9" : "6"}
+                    r={sceneIndex === pIdx ? "8" : "5"}
                     fill={sceneIndex === pIdx ? "#00D9E8" : "#FFFFFF"}
                     stroke="#0068B7"
-                    strokeWidth="3"
+                    strokeWidth="2.5"
                   />
                   <text
                     x={port.x}
-                    y={port.y - 18}
+                    y={port.y - 15}
                     textAnchor="middle"
                     fill={sceneIndex === pIdx ? "#0068B7" : "#061B2A"}
-                    fontSize="13"
+                    fontSize="12"
                     fontWeight="900"
-                    letterSpacing="2"
+                    letterSpacing="1.5"
                     fontFamily="ui-monospace, monospace"
                   >
                     {port.label}
@@ -278,36 +278,36 @@ export const VoyageTheatreSection: React.FC = () => {
               ))}
 
               <g ref={shipRef} className="will-change-transform">
-                <circle r="18" fill="#00D9E8" opacity="0.3" />
-                <circle r="10" fill="#0068B7" />
-                <polygon points="4,-3 12,0 4,3" fill="#FFFFFF" />
+                <circle r="16" fill="#00D9E8" opacity="0.3" />
+                <circle r="9" fill="#0068B7" />
+                <polygon points="3,-2.5 10,0 3,2.5" fill="#FFFFFF" />
               </g>
             </svg>
           </div>
         </div>
 
         {/* Bottom Interactive Progress Bar & Waypoint Selector */}
-        <div className="pt-4 border-t border-slate-200">
-          <div className="mb-2 flex justify-between font-mono text-[10px] tracking-[0.22em] text-[#17252D] font-bold">
+        <div className="pt-3 border-t border-slate-200">
+          <div className="mb-1.5 flex justify-between font-mono text-[10px] tracking-[0.2em] text-[#17252D] font-bold">
             <span>AUTOMATED VOYAGE ROTATION (6s)</span>
             <span className="text-[#0068B7]">VOYAGE PROGRESS {progress}%</span>
           </div>
 
-          <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden mb-4">
+          <div className="h-1.5 w-full bg-slate-200 rounded-full overflow-hidden mb-3">
             <div
               className="h-full bg-gradient-to-r from-[#0068B7] via-[#00D9E8] to-[#061B2A] transition-all duration-500 rounded-full"
               style={{ width: `${progress}%` }}
             />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             {SCENES.map((s, i) => (
               <button
                 key={s.code}
                 onClick={() => handleSelectWaypoint(i)}
-                className={`px-4 py-3 font-mono text-xs tracking-wider transition-all duration-300 rounded-xl font-bold flex items-center justify-between text-left border ${
+                className={`px-3 py-2 font-mono text-xs tracking-wider transition-all duration-300 rounded-xl font-bold flex items-center justify-between text-left border ${
                   i === sceneIndex
-                    ? "border-[#0068B7] bg-[#061B2A] text-white shadow-lg scale-[1.02]"
+                    ? "border-[#0068B7] bg-[#061B2A] text-white shadow-md scale-[1.01]"
                     : "border-slate-200 bg-white text-slate-700 hover:border-[#0068B7] hover:bg-slate-50"
                 }`}
               >

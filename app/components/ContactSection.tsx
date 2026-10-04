@@ -31,21 +31,21 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-36 bg-[#F5F5F2] text-[#071A2B] border-b border-slate-200">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-16">
+    <section id="contact" className="py-10 md:py-16 bg-[#F5F5F2] text-[#071A2B] border-b border-slate-200">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-8">
         
         {/* COMBINED HIGH-CONVERSION PARTNERSHIP CTA BANNER */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#071A2B] via-[#0A243C] to-[#0077B6] text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-700">
+        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#071A2B] via-[#0A243C] to-[#0077B6] text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-700">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#0077B6]/20 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="space-y-3 max-w-2xl relative z-10">
-            <span className="px-3.5 py-1 bg-white/10 text-sky-300 border border-white/20 rounded-full font-mono text-xs font-bold tracking-widest uppercase inline-flex items-center gap-2">
+          <div className="space-y-2 max-w-2xl relative z-10">
+            <span className="px-3 py-1 bg-white/10 text-sky-300 border border-white/20 rounded-full font-mono text-xs font-bold tracking-widest uppercase inline-flex items-center gap-2">
               <Anchor className="w-3.5 h-3.5 text-sky-400" /> MARITIME PARTNERSHIP CTA
             </span>
-            <h3 className="font-syne text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
+            <h3 className="font-syne text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
               READY TO ELEVATE YOUR FLEET OPERATIONS?
             </h3>
-            <p className="font-manrope text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+            <p className="font-manrope text-xs sm:text-sm text-slate-300 font-normal leading-relaxed">
               Connect with our Class-1 superintendents and RPSL crewing experts today. Receive a custom technical management proposal within 2 hours.
             </p>
           </div>
@@ -66,7 +66,7 @@ export const ContactSection: React.FC = () => {
             <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-2">
               // DISPATCH &amp; COMMERCIAL INQUIRIES
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
               CONTACT OPERATIONS
             </h2>
           </div>

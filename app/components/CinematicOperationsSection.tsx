@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { initGSAP } from "@/lib/gsapHelper";
-import { Compass, ShieldCheck, Wrench, ArrowRight, Navigation, CheckCircle2 } from "lucide-react";
+import { Compass, ShieldCheck, Wrench, ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface SpectrumItem {
   id: string;
@@ -80,6 +80,9 @@ const SPECTRUM_DATA: SpectrumItem[] = [
   },
 ];
 
+// Target angles for needle rotation when tabs 01, 02, 03 are selected
+const TAB_ANGLES = [90, 180, 315];
+
 // 16 Compass Bearings & Angles around 360° perimeter
 const COMPASS_BEARINGS = [
   { label: "N", angle: 0, spectrumIdx: 2, isCardinal: true },
@@ -106,49 +109,27 @@ export const CinematicOperationsSection: React.FC = () => {
   const needleRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // Smoothly rotate compass needle and ring when active tab (01, 02, 03) is selected
   useEffect(() => {
-    const { gsap, ScrollTrigger } = initGSAP();
+    const { gsap } = initGSAP();
+    const targetAngle = TAB_ANGLES[activeIndex] || 90;
 
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-
-      // Desktop & Tablet: Pinned stage with 360° Maritime Compass dial & smooth rotation
-      mm.add("(min-width: 768px)", () => {
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "+=1200",
-          pin: true,
-          scrub: 0.2,
-          onUpdate: (self) => {
-            const p = self.progress;
-
-            // Rotate compass needle 1 full 360° rotation
-            if (needleRef.current) {
-              gsap.set(needleRef.current, { rotation: p * 360 });
-            }
-            if (wheelRingRef.current) {
-              gsap.set(wheelRingRef.current, { rotation: p * 180 });
-            }
-
-            // Compass Bearing Zones:
-            // 045° - 165° (p: 0 -> 0.33) -> Spectrum 01 (AT SEA)
-            // 165° - 285° (p: 0.33 -> 0.66) -> Spectrum 02 (ON BOARD)
-            // 285° - 045° (p: 0.66 -> 1.0) -> Spectrum 03 (ON SHORE)
-            if (p > 0.66) {
-              setActiveIndex(2);
-            } else if (p > 0.33) {
-              setActiveIndex(1);
-            } else {
-              setActiveIndex(0);
-            }
-          },
-        });
+    if (needleRef.current) {
+      gsap.to(needleRef.current, {
+        rotation: targetAngle,
+        duration: 0.8,
+        ease: "power2.out",
       });
-    }, sectionRef);
+    }
 
-    return () => ctx.revert();
-  }, []);
+    if (wheelRingRef.current) {
+      gsap.to(wheelRingRef.current, {
+        rotation: targetAngle * 0.5,
+        duration: 0.8,
+        ease: "power2.out",
+      });
+    }
+  }, [activeIndex]);
 
   const activeOp = SPECTRUM_DATA[activeIndex];
 
@@ -156,7 +137,7 @@ export const CinematicOperationsSection: React.FC = () => {
     <section
       ref={sectionRef}
       id="cinematic-operations"
-      className="relative w-full min-h-screen bg-[#EDF5F5] text-[#061B2A] py-8 sm:py-12 px-4 sm:px-6 md:px-12 font-sans select-none overflow-hidden border-t border-b border-[#082F49]/15 flex flex-col justify-center"
+      className="relative w-full bg-[#EDF5F5] text-[#061B2A] py-8 sm:py-12 px-4 sm:px-6 md:px-12 font-sans select-none overflow-hidden border-t border-b border-[#082F49]/15 flex flex-col justify-center"
     >
       <div className="max-w-[1400px] mx-auto w-full space-y-6">
 
@@ -166,7 +147,7 @@ export const CinematicOperationsSection: React.FC = () => {
             <span className="font-mono text-[10px] sm:text-xs font-bold text-[#0068B7] tracking-[0.25em] uppercase block mb-0.5">
               // MARITIME COMPASS OPERATIONAL REVEAL
             </span>
-            <h2 className="font-syne text-2xl sm:text-4xl lg:text-5xl font-black text-[#061B2A] tracking-tight leading-none">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#061B2A] tracking-tight leading-tight">
               CINEMATIC OPERATIONS
             </h2>
           </div>
@@ -194,7 +175,7 @@ export const CinematicOperationsSection: React.FC = () => {
                   borderColor: isActive ? item.themeColor : "#E2E8F0",
                   boxShadow: isActive ? item.glowColor : "none",
                 }}
-                className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wider transition-all duration-500 flex items-center gap-2.5 whitespace-nowrap border ${isActive
+                className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wider transition-all duration-500 flex items-center gap-2.5 whitespace-nowrap border cursor-pointer ${isActive
                     ? "bg-[#061B2A] text-white scale-[1.02]"
                     : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
                   }`}
@@ -439,10 +420,11 @@ export const CinematicOperationsSection: React.FC = () => {
             {SPECTRUM_DATA.map((s, idx) => (
               <span
                 key={s.id}
+                onClick={() => setActiveIndex(idx)}
                 style={{
                   backgroundColor: activeIndex === idx ? s.themeColor : "#CBD5E1",
                 }}
-                className={`h-1.5 sm:h-2 rounded-full transition-all duration-500 ${activeIndex === idx ? "w-6 sm:w-8" : "w-2"
+                className={`h-1.5 sm:h-2 rounded-full transition-all duration-500 cursor-pointer ${activeIndex === idx ? "w-6 sm:w-8" : "w-2 hover:bg-slate-400"
                   }`}
               />
             ))}
@@ -453,5 +435,3 @@ export const CinematicOperationsSection: React.FC = () => {
     </section>
   );
 };
-
-

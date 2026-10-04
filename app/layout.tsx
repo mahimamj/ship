@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Cinzel, Inter, Manrope } from "next/font/google";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
+import { CinematicCustomCursor } from "./components/CinematicCustomCursor";
 
 const jakarta = Plus_Jakarta_Sans({
   weight: ["600", "700", "800"],
@@ -52,6 +53,7 @@ export default function RootLayout({
       className={`${jakarta.variable} ${cinzel.variable} ${inter.variable} ${manrope.variable} scroll-smooth`}
     >
       <body className="bg-[#F5F5F2] text-[#071A2B] font-sans antialiased min-h-screen overflow-x-hidden">
+        <CinematicCustomCursor />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
       </body>
     </html>

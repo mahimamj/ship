@@ -49,7 +49,7 @@ export const CareersSection: React.FC<CareersProps> = ({ onOpenApplyModal, activ
           <span className="text-xs uppercase tracking-widest text-[#00D26A] font-bold bg-[#00D26A]/10 px-4 py-1.5 rounded-full border border-[#00D26A]/20">
             CAREERS AT OCEANIC STAR
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold font-poppins text-white tracking-tight" data-scroll-split>
+          <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight" data-scroll-split>
             Build Your Maritime <span className="text-gradient">Career</span>
           </h2>
           <p className="text-slate-400 text-base">

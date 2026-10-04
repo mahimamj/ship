@@ -19,7 +19,7 @@ export const CinematicCustomCursor: React.FC = () => {
 
       if (target) {
         const interactiveEl = target.closest(
-          "[data-cursor], button, a, [role='button'], input, select, textarea"
+          "[data-cursor], button, a, [role='button'], input, select, textarea, .cursor-pointer"
         );
         if (interactiveEl) {
           const text =

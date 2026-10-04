@@ -36,21 +36,21 @@ export default function FounderPage() {
       />
 
       {/* 1. FOUNDER HERO SECTION */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-[#061B2A] text-white overflow-hidden">
+      <section className="relative pt-24 pb-12 md:pt-28 md:pb-14 bg-[#061B2A] text-white overflow-hidden">
         {/* Ambient Glow Orbs */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0077B6]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#C59B27]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Col: Text & Profile Intro */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#00D9E8]/10 text-[#00D9E8] border border-[#00D9E8]/30 font-mono text-xs font-bold uppercase tracking-widest">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D9E8]/10 text-[#00D9E8] border border-[#00D9E8]/30 font-mono text-xs font-bold uppercase tracking-widest">
                 <User className="w-3.5 h-3.5" /> FOUNDER &amp; MANAGING DIRECTOR
               </div>
 
-              <h1 className="font-syne text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-none">
+              <h1 className="font-syne text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-none">
                 RAM B. KESHARI
               </h1>
 
@@ -58,7 +58,7 @@ export default function FounderPage() {
                 FOUNDER &amp; MANAGING DIRECTOR — OCEANIC STAR GROUP
               </p>
 
-              <p className="font-manrope text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+              <p className="font-manrope text-xs sm:text-sm md:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
                 A seasoned maritime leader with over two decades of hands-on experience across merchant marine operations, vessel chartering, RPSL crew management, and international ship management.
               </p>
 
@@ -78,21 +78,22 @@ export default function FounderPage() {
 
             {/* Right Col: Founder Portrait Card & Personal Social Channels */}
             <div className="lg:col-span-5">
-              <div className="bg-white/5 backdrop-blur-xl border border-white/15 rounded-3xl p-8 sm:p-10 space-y-6 shadow-2xl relative overflow-hidden">
+              <div className="bg-white/5 backdrop-blur-xl border border-white/15 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#C59B27]/20 rounded-full blur-2xl pointer-events-none" />
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#C59B27] to-[#0077B6] p-1 shadow-lg shrink-0">
-                    <div className="w-full h-full rounded-xl bg-[#061B2A] flex items-center justify-center text-white font-syne font-black text-2xl">
-                      RBK
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="font-syne text-xl font-extrabold text-white">Ram B. Keshari</h3>
-                    <p className="font-mono text-xs text-sky-300 font-semibold mt-0.5">Maritime Pioneer &amp; MD</p>
-                    <span className="inline-block font-mono text-[10px] text-slate-400 mt-1">
-                      Navi Mumbai • Dubai • Colombo • Istanbul
-                    </span>
+                {/* Founder Photo */}
+                <div className="relative rounded-2xl overflow-hidden border border-white/20 shadow-xl group">
+                  <img
+                    src="/images/founder.jpg"
+                    alt="Ram B. Keshari - Founder & Managing Director, Oceanic Star Shipping Pvt. Ltd."
+                    className="w-full h-80 sm:h-96 object-cover object-top transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061B2A] via-transparent to-transparent opacity-80" />
+                  
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#061B2A]/90 backdrop-blur-md border border-white/15 space-y-1">
+                    <h3 className="font-syne text-lg sm:text-xl font-extrabold text-white">Ram B. Keshari</h3>
+                    <p className="font-mono text-xs text-[#00D9E8] font-semibold">Founder &amp; Managing Director</p>
+                    <p className="font-mono text-[10px] text-slate-300">Oceanic Star Shipping Pvt. Ltd.</p>
                   </div>
                 </div>
 
@@ -153,13 +154,13 @@ export default function FounderPage() {
       </section>
 
       {/* 2. FOUNDER'S PHILOSOPHY & STATEMENT */}
-      <section className="py-16 md:py-24 px-6 md:px-12 bg-white border-b border-slate-200">
+      <section className="py-10 md:py-14 px-6 md:px-12 bg-white border-b border-slate-200">
         <div className="max-w-[1200px] mx-auto space-y-8">
           
-          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#061B2A] via-[#0A243C] to-[#0077B6] text-white shadow-xl relative overflow-hidden space-y-6">
-            <Quote className="w-12 h-12 text-[#C59B27]/40 pointer-events-none" />
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#061B2A] via-[#0A243C] to-[#0077B6] text-white shadow-lg relative overflow-hidden space-y-4">
+            <Quote className="w-10 h-10 text-[#C59B27]/40 pointer-events-none" />
 
-            <blockquote className="font-serif text-xl sm:text-2xl md:text-3xl font-bold leading-relaxed tracking-tight text-white">
+            <blockquote className="font-serif text-lg sm:text-xl md:text-2xl font-bold leading-relaxed tracking-tight text-white">
               &ldquo;Our mission is not only to manage vessels but to inspire, develop, and support the backbone of the maritime industry — our seafarers. Compliance, crew welfare, and absolute operational integrity are the true drivers of sustainable fleet management.&rdquo;
             </blockquote>
 
@@ -171,6 +172,68 @@ export default function FounderPage() {
               <span className="px-3.5 py-1.5 rounded-full bg-white/10 text-slate-300 border border-white/15 w-fit">
                 ESTABLISHED 2002 // NAVI MUMBAI &amp; DUBAI
               </span>
+            </div>
+          </div>
+
+          {/* Detailed Biography & Leadership Profile */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-7 space-y-6 text-[#071A2B] font-manrope">
+              <div className="space-y-2">
+                <span className="label-mono text-[#0068B7] block font-bold">// EXECUTIVE BIOGRAPHY</span>
+                <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#061B2A] tracking-tight">
+                  Steering Maritime Innovation &amp; Seafarer Excellence
+                </h2>
+              </div>
+
+              <p className="text-base leading-relaxed text-slate-700 font-normal">
+                <strong>Mr. Ram B. Keshari</strong> is the visionary Founder and Managing Director of <strong>Oceanic Star Shipping Pvt. Ltd.</strong> With over two decades of dedicated leadership in international maritime logistics, vessel technical management, and RPSL crew management, he has transformed Oceanic Star into a trusted global ship management enterprise.
+              </p>
+
+              <p className="text-base leading-relaxed text-slate-700 font-normal">
+                Under his leadership, Oceanic Star Shipping expanded its strategic footprint across key maritime hubs—establishing operational command centers in <strong>Navi Mumbai (India), Dubai (UAE), Colombo (Sri Lanka), and Istanbul (Turkey)</strong>. His unwavering commitment to Director General of Shipping (DG Shipping India) compliance, ISO 9001:2015 quality standards, and seafarer welfare has earned the company premier industry accreditations.
+              </p>
+
+              <p className="text-base leading-relaxed text-slate-700 font-normal">
+                Beyond operational management, Mr. Keshari is a passionate advocate for seafarer training, career progression, and transparent crew logistics. He works closely with international ship owners, port authorities, and maritime regulatory bodies to maintain flawless fleet safety, environmental compliance, and vessel availability.
+              </p>
+            </div>
+
+            <div className="lg:col-span-5 bg-[#FAFAF7] p-8 rounded-3xl border border-slate-200 space-y-6 shadow-sm">
+              <h3 className="font-syne text-xl font-bold text-[#061B2A] border-b border-slate-200 pb-4">
+                Leadership Highlights
+              </h3>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-2xl bg-[#0068B7]/10 text-[#0068B7] shrink-0">
+                    <ShieldCheck className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-syne text-sm font-bold text-[#061B2A]">RPSL Approved Manning</h4>
+                    <p className="text-xs text-slate-600 font-manrope mt-1">Full DG Shipping compliance (License: RPSL-MUM-245) for merchant marine crew deployment.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-2xl bg-[#C59B27]/10 text-[#C59B27] shrink-0">
+                    <Building2 className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-syne text-sm font-bold text-[#061B2A]">Global Maritime Reach</h4>
+                    <p className="text-xs text-slate-600 font-manrope mt-1">Connecting vessel owners &amp; seafarers across India, Middle East, Europe, and Asia-Pacific.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-2xl bg-[#00D9E8]/10 text-[#0068B7] shrink-0">
+                    <Anchor className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-syne text-sm font-bold text-[#061B2A]">Technical Vessel Management</h4>
+                    <p className="text-xs text-slate-600 font-manrope mt-1">End-to-end dry dock supervision, ISM/ISPS audits, and marine engineering maintenance.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

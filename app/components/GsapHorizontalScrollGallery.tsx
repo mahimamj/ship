@@ -195,7 +195,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
             </div>
 
             <h2
-              className="text-3xl sm:text-6xl font-extrabold text-[#071A2B] font-syne tracking-tight leading-tight"
+              className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#071A2B] font-syne tracking-tight leading-tight"
               data-scroll-split
             >
               STRATEGIC FLEET <br />

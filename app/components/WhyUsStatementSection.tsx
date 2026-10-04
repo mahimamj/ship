@@ -105,7 +105,7 @@ export const WhyUsStatementSection: React.FC = () => {
             <span className="text-xs font-mono font-bold text-[#0077B6] tracking-widest uppercase flex items-center gap-2">
               <Compass className="w-4 h-4 text-[#0077B6]" /> // OPERATIONAL PRINCIPLES
             </span>
-            <h2 className="font-syne text-3xl sm:text-4xl md:text-5xl font-black text-[#071A2B] tracking-tight">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#071A2B] tracking-tight">
               WHY OCEANIC STAR
             </h2>
           </div>

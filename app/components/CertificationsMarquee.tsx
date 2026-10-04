@@ -42,22 +42,22 @@ export const CertificationsMarquee: React.FC = () => {
   const active = certs.find((c) => c.id === hoveredCert);
 
   return (
-    <section className="py-24 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-10">
-        <span className="label-mono text-[#176B87] block font-semibold">
+    <section className="py-2.5 sm:py-3 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-1">
+        <span className="label-mono text-[#176B87] block font-semibold text-[10px]">
           // ACCREDITATIONS & CLASS CERTIFICATIONS
         </span>
       </div>
 
       {/* Marquee Track */}
-      <div className="relative w-full overflow-hidden flex items-center py-6 border-y border-[rgba(7,26,43,0.12)] bg-[#F5F5F2]">
-        <div className="flex animate-marquee whitespace-nowrap gap-12 sm:gap-20">
+      <div className="relative w-full overflow-hidden flex items-center py-2 sm:py-2.5 border-y border-[rgba(7,26,43,0.12)] bg-[#F5F5F2]">
+        <div className="flex animate-marquee-reverse whitespace-nowrap gap-6 sm:gap-10">
           {[...certs, ...certs].map((cert, idx) => (
             <div
               key={idx}
               onMouseEnter={() => setHoveredCert(cert.id)}
               onMouseLeave={() => setHoveredCert(null)}
-              className="font-syne font-extrabold text-2xl sm:text-4xl text-[#071A2B] hover:text-[#176B87] transition-colors cursor-pointer px-4"
+              className="font-syne font-extrabold text-xs sm:text-sm md:text-base text-[#071A2B] hover:text-[#176B87] transition-colors cursor-pointer px-2 tracking-wide"
               data-cursor
               data-cursor-text="INFO"
             >
@@ -65,35 +65,6 @@ export const CertificationsMarquee: React.FC = () => {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Hover Info Panel */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mt-8 min-h-[60px]">
-        <AnimatePresence mode="wait">
-          {active ? (
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              className="p-6 rounded-2xl bg-[#F5F5F2] border border-[rgba(7,26,43,0.12)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
-            >
-              <div>
-                <span className="font-mono text-xs text-[#176B87] font-bold block mb-1">
-                  CERTIFICATION DETAIL // {active.name}
-                </span>
-                <p className="text-sm font-manrope text-[#071A2B]">{active.desc}</p>
-              </div>
-              <span className="text-xs font-mono text-[#667783] bg-white px-3 py-1.5 rounded-full border border-[rgba(7,26,43,0.12)]">
-                VERIFIED COMPLIANT
-              </span>
-            </motion.div>
-          ) : (
-            <p className="text-xs font-mono text-[#667783] text-center italic">
-              Hover over any certification standard to inspect regulatory accreditation credentials.
-            </p>
-          )}
-        </AnimatePresence>
       </div>
     </section>
   );

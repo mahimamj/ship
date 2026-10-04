@@ -240,16 +240,16 @@ const REASONS: ReasonItem[] = [
 
 export const WhyChooseUs: React.FC = () => {
   return (
-    <section id="why-choose-us" className="w-full bg-[#FAFAF7] text-[#061B2A] py-16 sm:py-24 px-6 sm:px-12 border-t border-slate-200 select-none">
-      <div className="max-w-[1400px] mx-auto space-y-12">
+    <section id="why-choose-us" className="w-full bg-[#FAFAF7] text-[#061B2A] py-8 sm:py-12 px-4 sm:px-6 md:px-12 border-t border-slate-200 select-none">
+      <div className="max-w-[1400px] mx-auto space-y-6">
         
         {/* Top Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
-          <div className="space-y-1.5 max-w-2xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-4 gap-4">
+          <div className="space-y-1 max-w-2xl">
             <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block">
               WHY CHOOSE US
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#0B2545] tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B2545] tracking-tight">
               Why Choose Oceanic Star Fleet
             </h2>
           </div>
@@ -259,58 +259,54 @@ export const WhyChooseUs: React.FC = () => {
           </p>
         </div>
 
-        {/* Mission Quote Banner */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[#061B2A] text-white shadow-xl border border-[#00D9E8]/30 relative overflow-hidden">
-          <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-[#00D9E8]/10 rounded-full blur-2xl pointer-events-none" />
-          <p className="font-syne text-sm sm:text-base md:text-lg font-bold text-[#00D9E8] tracking-wide uppercase leading-relaxed text-center sm:text-left">
+        {/* Compact Mission Quote Ribbon */}
+        <div className="px-5 py-3 rounded-xl bg-[#061B2A] text-white shadow-md border border-[#00D9E8]/30 flex items-center justify-center text-center">
+          <p className="font-syne text-xs sm:text-sm font-bold text-[#00D9E8] tracking-wider uppercase leading-snug">
             &ldquo;OUR MISSION IS NOT ONLY TO MANAGE BUT TO INSPIRE, DEVELOP AND SUPPORT THE BACKBONE OF MARITIME INDUSTRY — OUR SEAFARERS.&rdquo;
           </p>
         </div>
 
-        {/* 11 Cards Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 11 Compact Cards Grid Layout (4-Cols on Desktop) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {REASONS.map((item) => {
             const Icon = item.icon;
             const t = item.theme;
             return (
               <div
                 key={item.number}
-                className={`group relative p-6 sm:p-7 rounded-3xl bg-white border ${t.border} ${t.hoverBorder} ${t.hoverShadow} transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1`}
+                className={`group relative p-4 sm:p-5 rounded-2xl bg-white border ${t.border} ${t.hoverBorder} transition-all duration-300 flex flex-col justify-between overflow-hidden hover:shadow-md hover:-translate-y-0.5`}
               >
-                {/* Top Gradient Accent Bar */}
-                <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${t.topBar}`} />
+                {/* Top Gradient Accent Line */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${t.topBar}`} />
 
-                {/* Background Corner Glow Effect */}
-                <div className={`absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl ${t.glow} to-transparent rounded-full blur-2xl pointer-events-none group-hover:scale-150 transition-transform duration-500`} />
-
-                <div className="space-y-4 relative z-10 pt-1">
+                <div className="space-y-2.5 relative z-10 pt-1">
                   {/* Card Header: Icon & Badge */}
                   <div className="flex items-center justify-between">
-                    <div className={`p-3 rounded-2xl border transition-colors duration-300 ${t.iconBg}`}>
-                      <Icon className="w-5 h-5" />
+                    <div className={`p-2 rounded-xl border transition-colors duration-300 ${t.iconBg}`}>
+                      <Icon className="w-4 h-4" />
                     </div>
-                    <span className={`font-mono text-[10px] font-bold px-3 py-1 rounded-full border uppercase tracking-wider transition-all duration-300 ${t.badgeBg}`}>
+                    <span className={`font-mono text-[9px] font-bold px-2.5 py-0.5 rounded-full border uppercase tracking-wider transition-all duration-300 ${t.badgeBg}`}>
                       {item.badge}
                     </span>
                   </div>
 
                   {/* Title & Description */}
                   <div>
-                    <h3 className={`font-serif text-lg sm:text-xl font-bold text-[#0B2545] tracking-tight transition-colors duration-300 mb-2 ${t.hoverText}`}>
+                    <h3 className={`font-serif text-sm sm:text-base font-bold text-[#0B2545] tracking-tight transition-colors duration-300 mb-1 ${t.hoverText}`}>
                       {item.title}
                     </h3>
-                    <p className="font-manrope text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                    <p className="font-manrope text-xs text-slate-600 leading-relaxed font-normal">
                       {item.desc}
                     </p>
                   </div>
                 </div>
 
                 {/* Card Footer Number */}
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between font-mono text-xs relative z-10">
+                <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between font-mono text-[10px] relative z-10">
                   <span className={`font-bold ${t.accentText}`}>
                     POINT {item.number}
                   </span>
-                  <ArrowRight className={`w-4 h-4 text-slate-300 ${t.hoverText} group-hover:translate-x-1 transition-all duration-300`} />
+                  <ArrowRight className={`w-3.5 h-3.5 text-slate-300 ${t.hoverText} group-hover:translate-x-1 transition-all duration-300`} />
                 </div>
               </div>
             );

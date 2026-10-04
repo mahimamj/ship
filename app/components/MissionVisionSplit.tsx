@@ -19,7 +19,7 @@ export const MissionVisionSplit: React.FC = () => {
             <span className="label-mono text-[#176B87] block font-semibold">
               // 01 ARCHITECTURE
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl font-extrabold tracking-tight text-[#071A2B]">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B]">
               OUR MISSION
             </h2>
             <p className="font-manrope text-base sm:text-lg text-[#071A2B]/80 font-light leading-relaxed">
@@ -38,7 +38,7 @@ export const MissionVisionSplit: React.FC = () => {
             <span className="label-mono text-[#176B87] block font-semibold">
               // 02 HORIZON
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl font-extrabold tracking-tight text-[#071A2B]">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B]">
               OUR VISION
             </h2>
             <p className="font-manrope text-base sm:text-lg text-[#071A2B]/80 font-light leading-relaxed">

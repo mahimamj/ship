@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Award, FileText, Globe, ArrowRight, Zap, CheckCircle2, X, Plus, Minus, Target, Maximize2, Sparkles, Eye, Check } from "lucide-react";
+import { ShieldCheck, Award, FileText, Globe, ArrowRight, X, Plus, Minus, Target, Eye, Check, ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface CertItem {
   id: string;
@@ -231,14 +231,10 @@ export const OFFICIAL_CERTIFICATES: CertItem[] = [
 
 export const CertificationsSection: React.FC = () => {
   const [selectedCert, setSelectedCert] = useState<CertItem | null>(null);
-  const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>("all");
   const [selectedFlag, setSelectedFlag] = useState<FlagStateLocation>(FLAG_STATE_LOCATIONS[0]);
   const flagMapRef = useRef<HTMLDivElement>(null);
+  const certScrollRef = useRef<HTMLDivElement>(null);
   const leafletMapRef = useRef<any>(null);
-
-  const filteredCerts = selectedCategoryFilter === "all"
-    ? OFFICIAL_CERTIFICATES
-    : OFFICIAL_CERTIFICATES.filter((c) => c.category === selectedCategoryFilter);
 
   // Initialize Dark Leaflet Map for Flag State Registries
   useEffect(() => {
@@ -321,155 +317,146 @@ export const CertificationsSection: React.FC = () => {
   };
 
   return (
-    <section id="certifications" className="py-20 sm:py-28 md:py-36 bg-[#F8FAFC] text-[#071A2B] border-b border-slate-200">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 space-y-12 sm:space-y-16">
+    <section id="certifications" className="py-6 sm:py-8 bg-[#F8FAFC] text-[#071A2B] border-b border-slate-200">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 space-y-6 sm:space-y-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
-          <div className="space-y-3">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#176B87]/10 border border-[#176B87]/30 text-xs font-mono text-[#176B87] font-bold">
-              <ShieldCheck className="w-4 h-4 text-[#176B87]" />
+        {/* Compact Section Header */}
+        <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+          <div className="flex items-center gap-3">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#176B87]/10 border border-[#176B87]/30 text-xs font-mono text-[#176B87] font-bold">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#176B87]" />
               <span>MINISTRY &amp; GLOBAL CLASS ACCREDITATIONS</span>
             </div>
-            <h2 className="font-jakarta text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#071A2B]">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
               OFFICIAL CERTIFICATIONS
             </h2>
           </div>
+        </div>
 
-          <div className="space-y-4 max-w-md">
-            <p className="text-xs sm:text-sm font-manrope text-slate-600 leading-relaxed">
-              Fully licensed and accredited by Directorate General of Shipping India (RPSL valid till 2029), Dubai DET, Panama Maritime Authority, UKAS, and American Bureau of Shipping (ABS).
-            </p>
+        {/* Dynamic Animated Ultra-Premium Single Line Left-to-Right Moving Certificate Row */}
+        <div className="relative overflow-hidden group/cert-scroll">
+          {/* Scroll Navigation Buttons */}
+          <button
+            onClick={() => certScrollRef.current?.scrollBy({ left: -400, behavior: "smooth" })}
+            aria-label="Scroll certificates left"
+            className="absolute -left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white shadow-[0_4px_25px_rgba(0,0,0,0.18)] border border-slate-200 text-[#071A2B] hover:bg-[#071A2B] hover:text-white flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 group-hover/cert-scroll:opacity-100 cursor-pointer"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
 
-            {/* Filter Category Chips */}
-            <div className="flex items-center gap-2 flex-wrap">
-              {[
-                { id: "all", label: "All Documents (5)" },
-                { id: "rpsl", label: "DG Shipping RPSL" },
-                { id: "iso", label: "ISO 9001 QMS" },
-                { id: "panama", label: "Panama DOC / ABS" },
-                { id: "inc", label: "Govt. Incorporation" },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setSelectedCategoryFilter(tab.id)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-mono font-bold border transition-all ${
-                    selectedCategoryFilter === tab.id
-                      ? "bg-[#071A2B] text-white border-[#071A2B] shadow-md"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-[#176B87] hover:text-[#071A2B]"
-                  }`}
+          <button
+            onClick={() => certScrollRef.current?.scrollBy({ left: 400, behavior: "smooth" })}
+            aria-label="Scroll certificates right"
+            className="absolute -right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white shadow-[0_4px_25px_rgba(0,0,0,0.18)] border border-slate-200 text-[#071A2B] hover:bg-[#071A2B] hover:text-white flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 group-hover/cert-scroll:opacity-100 cursor-pointer"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Left & Right Gradient Mask Overlays */}
+          <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#F8FAFC] to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#F8FAFC] to-transparent z-20 pointer-events-none" />
+
+          {/* Continuous Left-to-Right Marquee Container */}
+          <div
+            ref={certScrollRef}
+            className="flex items-stretch overflow-x-auto pb-4 pt-1 px-1 scrollbar-none scroll-smooth"
+          >
+            <div className="flex items-stretch gap-5 animate-marquee-reverse shrink-0">
+              {[...OFFICIAL_CERTIFICATES, ...OFFICIAL_CERTIFICATES].map((cert, idx) => (
+                <motion.div
+                  key={`${cert.id}-${idx}`}
+                  layout
+                  whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                  onClick={() => setSelectedCert(cert)}
+                  className="w-[280px] sm:w-[320px] md:w-[350px] shrink-0 bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_15px_35px_rgba(23,107,135,0.16)] hover:border-[#176B87] flex flex-col justify-between group cursor-pointer relative transition-all duration-300"
                 >
-                  {tab.label}
-                </button>
+                  {/* Top Badge Overlay */}
+                  <div className="absolute top-3.5 right-3.5 z-10">
+                    <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-300 shadow-sm flex items-center gap-1">
+                      <Check className="w-3 h-3 text-emerald-600" /> {cert.verifiedBadge}
+                    </span>
+                  </div>
+
+                  {/* Document Frame Stage */}
+                  <div className="relative h-56 sm:h-64 w-full bg-gradient-to-b from-[#F1F5F9] to-[#E2E8F0] p-4 flex items-center justify-center overflow-hidden group">
+                    <div className="relative w-full h-full bg-white rounded-xl p-2 shadow-[0_8px_20px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden flex items-center justify-center group-hover:shadow-[0_12px_28px_rgba(23,107,135,0.18)] transition-all">
+                      <img
+                        src={cert.image}
+                        alt={cert.title}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-[#071A2B]/40 backdrop-blur-xs">
+                      <div className="px-3.5 py-2 rounded-full bg-[#071A2B] border border-white/30 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-2xl">
+                        <Eye className="w-3.5 h-3.5 text-[#00D26A]" /> Inspect High-Res Certificate
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Certificate Meta Details */}
+                  <div className="p-5 space-y-2.5">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-[#176B87]/10 border border-[#176B87]/30 text-[#176B87] flex items-center justify-center shrink-0">
+                        <Award className="w-3.5 h-3.5" />
+                      </div>
+                      <h3 className="font-jakarta text-sm font-bold text-[#071A2B] group-hover:text-[#176B87] transition line-clamp-1">
+                        {cert.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-[11px] font-mono text-[#176B87] font-semibold">{cert.subtitle}</p>
+
+                    <div className="bg-[#F8FAFC] p-2.5 rounded-xl border border-slate-200 text-xs font-mono flex items-center justify-between">
+                      <span className="text-[9px] text-slate-500 uppercase font-semibold">LICENCE CODE:</span>
+                      <span className="text-[#071A2B] font-bold truncate max-w-[160px]">{cert.certNumber}</span>
+                    </div>
+                  </div>
+
+                  {/* Card Action Footer */}
+                  <div className="px-5 py-3 bg-[#F8FAFC] border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-[#071A2B] group-hover:text-[#176B87] font-bold">
+                    <span>VERIFIED OFFICIAL DOCUMENT</span>
+                    <FileText className="w-3.5 h-3.5 text-[#176B87] group-hover:translate-x-1 transition" />
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Dynamic Animated Ultra-Premium Certificate Card Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredCerts.map((cert, idx) => (
-              <motion.div
-                key={cert.id}
-                layout
-                initial={{ opacity: 0, y: 30, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
-                onClick={() => setSelectedCert(cert)}
-                className="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_20px_40px_rgba(23,107,135,0.16)] hover:border-[#176B87] flex flex-col justify-between group cursor-pointer relative transition-all duration-300"
-              >
-                {/* Top Badge Overlay */}
-                <div className="absolute top-4 right-4 z-10">
-                  <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-300 shadow-sm flex items-center gap-1">
-                    <Check className="w-3 h-3 text-emerald-600" /> {cert.verifiedBadge}
-                  </span>
-                </div>
-
-                {/* Parchment Document Frame Stage */}
-                <div className="relative h-72 sm:h-80 w-full bg-gradient-to-b from-[#F1F5F9] to-[#E2E8F0] p-5 flex items-center justify-center overflow-hidden group">
-                  {/* Clean Shadow Document Paper Canvas */}
-                  <div className="relative w-full h-full bg-white rounded-2xl p-2 shadow-[0_10px_25px_rgba(0,0,0,0.12)] border border-slate-200 overflow-hidden flex items-center justify-center group-hover:shadow-[0_15px_35px_rgba(23,107,135,0.2)] transition-all">
-                    <img
-                      src={cert.image}
-                      alt={cert.title}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-
-                  {/* Animated Gloss Sheen Effect on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-
-                  {/* Hover Inspect Glass Badge */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-[#071A2B]/40 backdrop-blur-xs">
-                    <div className="px-4 py-2.5 rounded-full bg-[#071A2B] border border-white/30 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-2xl">
-                      <Eye className="w-4 h-4 text-[#00D26A]" /> Inspect High-Res Certificate
-                    </div>
-                  </div>
-                </div>
-
-                {/* Certificate Meta Details */}
-                <div className="p-6 space-y-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-xl bg-[#176B87]/10 border border-[#176B87]/30 text-[#176B87] flex items-center justify-center shrink-0">
-                      <Award className="w-4 h-4" />
-                    </div>
-                    <h3 className="font-jakarta text-base font-bold text-[#071A2B] group-hover:text-[#176B87] transition line-clamp-1">
-                      {cert.title}
-                    </h3>
-                  </div>
-
-                  <p className="text-xs font-mono text-[#176B87] font-semibold">{cert.subtitle}</p>
-
-                  <div className="bg-[#F8FAFC] p-3 rounded-2xl border border-slate-200 text-xs font-mono flex items-center justify-between">
-                    <span className="text-[10px] text-slate-500 uppercase font-semibold">LICENCE CODE:</span>
-                    <span className="text-[#071A2B] font-bold truncate max-w-[180px]">{cert.certNumber}</span>
-                  </div>
-                </div>
-
-                {/* Card Action Footer */}
-                <div className="px-6 py-4 bg-[#F8FAFC] border-t border-slate-200 flex items-center justify-between text-xs font-mono text-[#071A2B] group-hover:text-[#176B87] font-bold">
-                  <span>VERIFIED OFFICIAL DOCUMENT</span>
-                  <FileText className="w-4 h-4 text-[#176B87] group-hover:translate-x-1 transition" />
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
         {/* Dedicated Flag State World Map Container */}
-        <div className="bg-[#FFFFFF] border border-slate-200 rounded-3xl p-4 sm:p-8 lg:p-10 shadow-sm space-y-6 sm:space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-2 sm:space-y-3">
-            <div className="inline-flex items-center space-x-2 bg-sky-50 border border-sky-100 px-3 py-1.5 rounded-full text-xs font-mono text-[#176B87] font-semibold">
+        <div className="bg-[#FFFFFF] border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm space-y-4 sm:space-y-6">
+          <div className="text-center max-w-3xl mx-auto space-y-2">
+            <div className="inline-flex items-center space-x-2 bg-sky-50 border border-sky-100 px-3 py-1 rounded-full text-xs font-mono text-[#176B87] font-semibold">
               <Globe className="w-3.5 h-3.5 text-[#176B87]" />
               <span>GLOBAL OPEN REGISTRIES WORLD MAP</span>
             </div>
 
-            <h3 className="font-jakarta text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#071A2B] tracking-tight uppercase">
+            <h3 className="font-jakarta text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#071A2B] tracking-tight uppercase">
               FLAG STATE CERTIFICATION &amp; PROCESSING
             </h3>
 
-            <p className="text-xs sm:text-sm font-manrope text-[#667783] leading-relaxed">
+            <p className="text-xs font-manrope text-[#667783] leading-relaxed">
               Our dedicated licensing team handles and coordinates official Flag State Endorsements, Seaman Books (CDC), and officer license verifications across 9 major international open registries.
             </p>
           </div>
 
           {/* Map Surface Container */}
-          <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[540px] bg-[#071A2B] rounded-2xl sm:rounded-3xl border border-slate-200 overflow-hidden shadow-2xl">
+          <div className="relative w-full h-[280px] sm:h-[360px] lg:h-[440px] bg-[#071A2B] rounded-xl sm:rounded-2xl border border-slate-200 overflow-hidden shadow-xl">
             <div ref={flagMapRef} className="w-full h-full z-0" />
 
             {/* Bottom-Left Zoom Controls */}
-            <div className="absolute bottom-4 left-4 z-20 flex items-center bg-[#0A192F]/90 backdrop-blur-md border border-white/10 rounded-xl shadow-lg p-1 space-x-1 text-white">
-              <button onClick={handleZoomOut} className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition" aria-label="Zoom out">
-                <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <div className="absolute bottom-3 left-3 z-20 flex items-center bg-[#0A192F]/90 backdrop-blur-md border border-white/10 rounded-lg shadow-lg p-1 space-x-1 text-white">
+              <button onClick={handleZoomOut} className="p-1.5 hover:bg-white/10 rounded transition" aria-label="Zoom out">
+                <Minus className="w-3.5 h-3.5" />
               </button>
-              <button onClick={handleZoomIn} className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition" aria-label="Zoom in">
-                <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <button onClick={handleZoomIn} className="p-1.5 hover:bg-white/10 rounded transition" aria-label="Zoom in">
+                <Plus className="w-3.5 h-3.5" />
               </button>
-              <button onClick={handleResetZoom} className="p-1.5 sm:p-2 hover:bg-white/10 rounded-lg transition" aria-label="Reset zoom">
-                <Target className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <button onClick={handleResetZoom} className="p-1.5 hover:bg-white/10 rounded transition" aria-label="Reset zoom">
+                <Target className="w-3.5 h-3.5" />
               </button>
             </div>
 
@@ -482,36 +469,36 @@ export const CertificationsSection: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.35 }}
-                  className="hidden lg:flex absolute top-5 right-5 bottom-5 w-96 bg-[#071A2B]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl z-20 text-white flex-col justify-between overflow-y-auto"
+                  className="hidden lg:flex absolute top-4 right-4 bottom-4 w-80 bg-[#071A2B]/95 backdrop-blur-xl border border-white/10 rounded-xl p-5 shadow-2xl z-20 text-white flex-col justify-between overflow-y-auto"
                 >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                      <div className="flex items-center space-x-3">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                      <div className="flex items-center space-x-2.5">
                         <img
                           src={selectedFlag.flagUrl}
                           alt={`${selectedFlag.country} Flag`}
-                          className="w-8 h-5 object-cover rounded shadow border border-white/20"
+                          className="w-7 h-4.5 object-cover rounded shadow border border-white/20"
                         />
                         <div>
-                          <h4 className="font-jakarta text-lg font-bold text-white">
+                          <h4 className="font-jakarta text-base font-bold text-white">
                             {selectedFlag.country} ({selectedFlag.code})
                           </h4>
                           <p className="text-[10px] font-mono text-sky-400 font-semibold">{selectedFlag.registry}</p>
                         </div>
                       </div>
 
-                      <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded-full border border-emerald-500/30 shrink-0">
+                      <span className="text-[9px] font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2 py-0.5 rounded-full border border-emerald-500/30 shrink-0">
                         ● {selectedFlag.turnaround}
                       </span>
                     </div>
 
-                    <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-white/60 uppercase tracking-wider block font-bold">
+                    <div className="space-y-1.5">
+                      <span className="text-[9px] font-mono text-white/60 uppercase tracking-wider block font-bold">
                         SERVICES &amp; ENDORSEMENTS:
                       </span>
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1">
                         {selectedFlag.services.map((s, i) => (
-                          <span key={i} className="px-2.5 py-1 rounded-lg bg-white/10 text-[10px] font-mono text-white/90 border border-white/10">
+                          <span key={i} className="px-2 py-0.5 rounded bg-white/10 text-[9px] font-mono text-white/90 border border-white/10">
                             {s}
                           </span>
                         ))}
@@ -520,11 +507,11 @@ export const CertificationsSection: React.FC = () => {
 
                     <hr className="border-t border-white/10" />
 
-                    <div className="space-y-1.5">
-                      <span className="text-[10px] font-mono text-white/60 uppercase tracking-wider block font-bold">
+                    <div className="space-y-1">
+                      <span className="text-[9px] font-mono text-white/60 uppercase tracking-wider block font-bold">
                         ABOUT {selectedFlag.country.toUpperCase()} REGISTRY:
                       </span>
-                      <p className="text-xs font-manrope text-white/80 font-light leading-relaxed">
+                      <p className="text-[11px] font-manrope text-white/80 font-light leading-relaxed">
                         {selectedFlag.about}
                       </p>
                     </div>
@@ -535,10 +522,10 @@ export const CertificationsSection: React.FC = () => {
                       const matchCert = OFFICIAL_CERTIFICATES.find((c) => c.title.includes("PANAMA")) || OFFICIAL_CERTIFICATES[0];
                       setSelectedCert(matchCert);
                     }}
-                    className="w-full py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs tracking-wider flex items-center justify-center gap-2 transition mt-4"
+                    className="w-full py-2.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs tracking-wider flex items-center justify-center gap-2 transition mt-3"
                   >
                     <span>View Registry Details</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </motion.div>
               )}
@@ -546,14 +533,14 @@ export const CertificationsSection: React.FC = () => {
           </div>
 
           {/* 9 Flag State Country Cards */}
-          <div className="flex sm:grid sm:grid-cols-5 lg:grid-cols-9 gap-2.5 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+          <div className="flex sm:grid sm:grid-cols-5 lg:grid-cols-9 gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             {FLAG_STATE_LOCATIONS.map((loc) => {
               const isSelected = selectedFlag.code === loc.code;
               return (
                 <button
                   key={loc.code}
                   onClick={() => handleSelectFlagCard(loc)}
-                  className={`p-3 rounded-2xl border text-center transition duration-300 flex flex-col items-center justify-center space-y-1.5 shrink-0 w-24 sm:w-auto group ${
+                  className={`p-2.5 rounded-xl border text-center transition duration-300 flex flex-col items-center justify-center space-y-1 shrink-0 w-20 sm:w-auto group ${
                     isSelected
                       ? "bg-[#071A2B] border-[#071A2B] text-white shadow-md scale-105"
                       : "bg-white border-slate-200 text-[#667783] hover:border-[#071A2B] hover:text-[#071A2B]"
@@ -562,11 +549,11 @@ export const CertificationsSection: React.FC = () => {
                   <img
                     src={loc.flagUrl}
                     alt={`${loc.country} National Flag`}
-                    className="w-8 h-5 object-cover rounded shadow-sm border border-slate-200 group-hover:scale-110 transition duration-300"
+                    className="w-7 h-4.5 object-cover rounded shadow-sm border border-slate-200 group-hover:scale-110 transition duration-300"
                   />
                   <div className="text-center">
                     <span className={`text-xs font-mono font-bold block ${isSelected ? "text-white" : "text-[#071A2B]"}`}>{loc.code}</span>
-                    <span className={`text-[9px] font-mono block truncate max-w-[65px] ${isSelected ? "text-sky-200" : "text-[#667783]"}`}>{loc.country}</span>
+                    <span className={`text-[8.5px] font-mono block truncate max-w-[60px] ${isSelected ? "text-sky-200" : "text-[#667783]"}`}>{loc.country}</span>
                   </div>
                 </button>
               );
@@ -584,7 +571,7 @@ export const CertificationsSection: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-3xl p-6 sm:p-8 max-w-3xl w-full border border-slate-200 shadow-2xl relative space-y-5 max-h-[95vh] overflow-y-auto text-[#071A2B]"
+              className="bg-white rounded-3xl p-6 sm:p-8 max-w-3xl w-full border border-slate-200 shadow-2xl relative space-y-4 max-h-[95vh] overflow-y-auto text-[#071A2B]"
             >
               <button
                 onClick={() => setSelectedCert(null)}
@@ -593,18 +580,18 @@ export const CertificationsSection: React.FC = () => {
                 <X size={20} />
               </button>
 
-              <div className="flex items-center space-x-3.5 border-b border-slate-100 pb-4 pr-8">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sky-50 text-[#176B87] border border-sky-100 flex items-center justify-center shrink-0">
-                  <ShieldCheck size={24} />
+              <div className="flex items-center space-x-3.5 border-b border-slate-100 pb-3 pr-8">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#176B87] border border-sky-100 flex items-center justify-center shrink-0">
+                  <ShieldCheck size={22} />
                 </div>
                 <div>
-                  <h3 className="font-jakarta text-xl sm:text-2xl font-bold text-[#071A2B]">{selectedCert.title}</h3>
+                  <h3 className="font-jakarta text-lg sm:text-xl font-bold text-[#071A2B]">{selectedCert.title}</h3>
                   <p className="text-xs font-mono text-[#176B87] font-bold">{selectedCert.subtitle}</p>
                 </div>
               </div>
 
               {/* Full High-Res Document Preview Frame */}
-              <div className="relative w-full h-[400px] sm:h-[500px] bg-[#F1F5F9] rounded-2xl overflow-hidden border border-slate-200 shadow-inner flex items-center justify-center p-3">
+              <div className="relative w-full h-[360px] sm:h-[460px] bg-[#F1F5F9] rounded-2xl overflow-hidden border border-slate-200 shadow-inner flex items-center justify-center p-3">
                 <img
                   src={selectedCert.image}
                   alt={selectedCert.title}
@@ -640,7 +627,7 @@ export const CertificationsSection: React.FC = () => {
 
               <button
                 onClick={() => setSelectedCert(null)}
-                className="w-full py-3.5 rounded-2xl bg-[#071A2B] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#176B87] transition shadow-md"
+                className="w-full py-3 rounded-xl bg-[#071A2B] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#176B87] transition shadow-md"
               >
                 CLOSE DOCUMENT INSPECTOR
               </button>

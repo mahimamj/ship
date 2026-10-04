@@ -217,41 +217,7 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
           </motion.div>
         </div>
 
-        {/* Solarpanti-Style Live Port & Container Intelligence Search Bar */}
-        <div className="pt-2 max-w-xl">
-          <form onSubmit={handleSearchSubmit} className="relative flex items-center rounded-2xl bg-[#0F2C59]/90 border border-[#176B87]/50 shadow-2xl p-1.5 backdrop-blur-xl">
-            <MapPin className="w-5 h-5 text-[#176B87] ml-3 shrink-0" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Enter Port Name or Container BL (e.g. Dubai, JNPT, OSF-9821)..."
-              className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#176B87] to-[#00D26A] text-white text-xs font-bold whitespace-nowrap hover:opacity-90 flex items-center gap-1.5 transition-all shadow-md"
-            >
-              <span>Track Live Port</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </form>
 
-          {/* Active Live Result Badge */}
-          {activeResult && (
-            <div className="mt-3 p-3.5 rounded-2xl bg-[#071A2B]/90 border border-[#00D26A]/40 text-xs text-white space-y-1.5 animate-in fade-in slide-in-from-top-2 duration-200">
-              <div className="flex items-center justify-between font-bold">
-                <span className="text-[#00D26A] flex items-center gap-1">
-                  <CheckCircle2 className="w-4 h-4" /> {activeResult.code} ({activeResult.status})
-                </span>
-                <span className="text-[10px] text-slate-400 font-mono">ETA: {activeResult.eta}</span>
-              </div>
-              <div className="text-slate-300">
-                <span className="font-semibold text-white">Vessel:</span> {activeResult.vessel} &bull; <span className="font-semibold text-white">Port Hub:</span> {activeResult.port}
-              </div>
-            </div>
-          )}
-        </div>
 
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 pt-2">
           <p className="max-w-md text-xs sm:text-sm font-manrope font-light text-white/80 leading-relaxed">

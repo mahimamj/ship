@@ -161,11 +161,11 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
   const selectedCategoryObj = fleetData.find((f) => f.type === selectedCategory);
 
   return (
-    <section id="vessels" ref={sectionRef} className="py-28 md:py-40 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] relative">
+    <section id="vessels" ref={sectionRef} className="py-10 md:py-16 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] relative">
       <div id="fleet" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Live Telemetry Ticker Header Bar */}
-        <div className="mb-10 p-4 rounded-2xl bg-[#071A2B] text-white border border-[#176B87]/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="mb-6 p-3.5 rounded-2xl bg-[#071A2B] text-white border border-[#176B87]/40 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-xl bg-[#176B87]/30 border border-[#176B87] text-[#00D26A] animate-pulse">
               <Radio className="w-5 h-5" />
@@ -202,12 +202,12 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
         </div>
 
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-10 mb-12 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-5 mb-6 gap-6">
           <div>
-            <span className="label-mono text-[#176B87] mb-3 block font-semibold">
+            <span className="label-mono text-[#176B87] mb-1.5 block font-semibold">
               // FLEET BREAKDOWN &amp; LIVE ASSET MATRIX
             </span>
-            <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#071A2B] leading-none">
+            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
               59 VESSELS
             </h2>
             <p className="font-mono text-xs text-[#667783] uppercase tracking-widest mt-2 flex items-center gap-2">
