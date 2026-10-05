@@ -98,13 +98,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
             <div className="h-12 flex items-center group-hover:scale-105 transition duration-300">
               <img
                 src="/images/logo_nobg.png"
-                alt="Oceanic Star Fleet Ship Management LLC Logo"
+                alt="Oceanic Star Shipping Logo"
                 className="h-10 sm:h-12 w-auto object-contain"
               />
             </div>
             <div className="hidden sm:block">
               <div className="text-lg font-bold tracking-tight text-white flex items-center gap-1.5 font-poppins">
-                OCEANIC STAR <span className="text-teal-400 font-light">FLEET</span>
+                OCEANIC STAR <span className="text-teal-400 font-light">SHIPPING</span>
               </div>
               <p className="text-[9px] uppercase tracking-widest text-teal-300 font-semibold">
                 {activeEntity === "dubai"

@@ -45,11 +45,11 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
         <Link href="/" className="flex items-center gap-3 group">
           <img
             src="/images/logo_nobg.png"
-            alt="Oceanic Star Fleet"
+            alt="Oceanic Star Shipping"
             className="h-9 w-auto object-contain"
           />
           <span className="hidden sm:block font-syne text-sm font-black tracking-[0.15em] text-[#061B2A]">
-            OCEANIC STAR <span className="text-[#0068B7]">FLEET</span>
+            OCEANIC STAR <span className="text-[#0068B7]">SHIPPING</span>
           </span>
         </Link>
 

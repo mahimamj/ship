@@ -13,7 +13,6 @@ import {
   Quote,
   Globe,
   Mail,
-  Phone,
 } from "lucide-react";
 import { CinematicNavbar } from "../components/CinematicNavbar";
 import { Footer } from "../components/Footer";
@@ -97,14 +96,10 @@ export default function FounderPage() {
                   </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-4 space-y-3 font-manrope text-xs text-slate-300">
+                <div className="border-t border-white/10 pt-4 font-manrope text-xs text-slate-300">
                   <p className="flex items-center space-x-2">
                     <Mail className="w-4 h-4 text-[#00D9E8] shrink-0" />
-                    <a href="mailto:info@oceanicstarshipping.com" className="hover:text-white transition font-bold">info@oceanicstarshipping.com</a>
-                  </p>
-                  <p className="flex items-center space-x-2">
-                    <Phone className="w-4 h-4 text-[#00D9E8] shrink-0" />
-                    <span>Direct Hotline: +91 90043 90041</span>
+                    <a href="mailto:ceo@oceanicstarfleet.com" className="hover:text-white transition font-bold">ceo@oceanicstarfleet.com</a>
                   </p>
                 </div>
 

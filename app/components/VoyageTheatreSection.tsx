@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { initGSAP } from "@/lib/gsapHelper";
-import { Compass, Radio, Gauge, Navigation } from "lucide-react";
+import { Compass, Gauge, Navigation } from "lucide-react";
 
 const SCENES = [
   {
@@ -144,21 +144,7 @@ export const VoyageTheatreSection: React.FC = () => {
     >
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 md:px-12 flex flex-col justify-between space-y-5">
         
-        {/* Top Header */}
-        <div className="flex items-center justify-between gap-4 border-b border-slate-200 pb-3">
-          <p className="label-mono flex items-center gap-2 text-xs font-bold tracking-widest text-[#0068B7]">
-            <span className="h-2 w-2 animate-ping rounded-full bg-[#00D9E8]" />
-            LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION
-          </p>
-          <div className="flex items-center gap-3 sm:gap-6 font-mono text-[9px] sm:text-[10px] tracking-[0.12em] sm:tracking-[0.2em] text-[#17252D] font-bold">
-            <span className="flex items-center gap-1.5 text-[#0068B7]">
-              <Radio className="h-3.5 w-3.5 text-[#0068B7]" /> AIS LIVE DISPATCH
-            </span>
-            <span className="flex items-center gap-1.5 text-[#061B2A]">
-              <Compass className="h-3.5 w-3.5 text-[#0068B7]" /> HDG 242°
-            </span>
-          </div>
-        </div>
+
 
         {/* Main Stage: Scene Info & Interactive Map */}
         <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-12 my-auto">

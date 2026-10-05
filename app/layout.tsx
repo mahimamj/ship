@@ -29,9 +29,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Oceanic Star Fleet | International Maritime Operations & Ship Management",
+  title: "Oceanic Star Shipping | International Maritime Operations & Ship Management",
   description:
-    "Oceanic Star Fleet Ship Management LLC delivers world-class technical vessel management, crew logistics, and offshore operations from Dubai, India, and Sri Lanka.",
+    "Oceanic Star Shipping Pvt. Ltd. delivers world-class technical vessel management, crew logistics, and offshore operations across India, Dubai, Sri Lanka, Canada, and Turkey.",
   keywords: [
     "International Ship Management",
     "Technical Vessel Management",

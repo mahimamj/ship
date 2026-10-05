@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Radar, Radio, Shield, X, Ship, FileText } from "lucide-react";
+import { Radar, X, Ship, FileText } from "lucide-react";
 import { initGSAP } from "@/lib/gsapHelper";
 
 interface FleetVisualizationSectionProps {
@@ -80,24 +80,7 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
     return () => ctx.revert();
   }, []);
 
-  // Live Telemetry Ticker state
-  const [liveMetrics, setLiveMetrics] = useState({
-    activeSignals: 42,
-    avgSpeed: 14.8,
-    cargoTons: 1849200,
-  });
 
-  // Simulated live telemetry pulses
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLiveMetrics((prev) => ({
-        activeSignals: 42 + Math.floor(Math.random() * 3 - 1),
-        avgSpeed: Number((14.5 + Math.random() * 0.8).toFixed(1)),
-        cargoTons: prev.cargoTons + Math.floor(Math.random() * 50),
-      }));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
 
   const fleetData = [
     {
@@ -164,55 +147,17 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
     <section id="vessels" ref={sectionRef} className="py-10 md:py-16 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] relative">
       <div id="fleet" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        {/* Live Telemetry Ticker Header Bar */}
-        <div className="mb-6 p-3.5 rounded-2xl bg-[#071A2B] text-white border border-[#176B87]/40 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-[#176B87]/30 border border-[#176B87] text-[#00D26A] animate-pulse">
-              <Radio className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-mono font-bold text-[#00D26A] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#00D26A] animate-ping"></span>
-                LIVE AIS SATELLITE TELEMETRY STREAM
-              </div>
-              <div className="text-sm font-bold font-jakarta text-white">
-                {liveMetrics.activeSignals} Vessels Broadcasting Active Coordinates
-              </div>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-6 text-xs font-mono">
-            <div className="text-center">
-              <div className="text-slate-400 text-[10px] uppercase">Avg Fleet Speed</div>
-              <div className="text-[#00D26A] font-bold text-sm">{liveMetrics.avgSpeed} Knots</div>
-            </div>
-            <div className="h-6 w-px bg-white/10"></div>
-            <div className="text-center">
-              <div className="text-slate-400 text-[10px] uppercase">Active Cargo Payload</div>
-              <div className="text-cyan-300 font-bold text-sm">{liveMetrics.cargoTons.toLocaleString()} MT</div>
-            </div>
-            <div className="h-6 w-px bg-white/10"></div>
-            <div className="text-center">
-              <div className="text-slate-400 text-[10px] uppercase">AIS Security Rating</div>
-              <div className="text-[#00D26A] font-bold text-sm flex items-center gap-1">
-                <Shield className="w-3.5 h-3.5" /> IMO Class-A
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-5 mb-6 gap-6">
           <div>
             <span className="label-mono text-[#176B87] mb-1.5 block font-semibold">
-              // FLEET BREAKDOWN &amp; LIVE ASSET MATRIX
+              // FLEET OVERVIEW &amp; VESSEL MATRIX
             </span>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
               59 VESSELS
             </h2>
             <p className="font-mono text-xs text-[#667783] uppercase tracking-widest mt-2 flex items-center gap-2">
               <span>UNDER TECHNICAL &amp; COMMERCIAL MANAGEMENT</span>
-              <span className="px-2 py-0.5 rounded bg-[#176B87]/10 text-[#176B87] font-bold text-[10px]">LIVE TELEMETRY INSIGHTS</span>
             </p>
           </div>
 

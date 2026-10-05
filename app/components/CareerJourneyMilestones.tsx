@@ -73,16 +73,16 @@ const MILESTONES: MilestoneItem[] = [
     year: "2014",
     yearDisplay: "2014",
     category: "ACCREDITATION",
-    title: "ISO 9001:2015 Quality Certification",
-    subtitle: "UKAS Accredited Management System",
-    desc: "Achieved international ISO 9001 quality management system certification, guaranteeing standard operating procedures across crewing, vessel maintenance, and ISM safety compliance.",
-    icon: Award,
-    trustBadge: "UKAS Accredited (8327) • Cert: DAS 50565279/5/Q",
-    marketingMetric: "ISO 9001 Certified",
+    title: "DG Shipping RPSL Authorization",
+    subtitle: "Licence No: RPSL-MUM-506",
+    desc: "Received official Recruitment and Placement Service Licence (RPSL) from the Directorate General of Shipping India, confirming full MLC 2006 maritime compliance.",
+    icon: ShieldCheck,
+    trustBadge: "RPSL-MUM-506 • DG Shipping India",
+    marketingMetric: "100% MLC 2006 Compliant",
     bullets: [
-      "UKAS Management Systems Accredited (UKAS 8327)",
-      "IAF Multilateral Recognition Standard",
-      "Total Quality Management System across all Operations",
+      "Directorate General of Shipping Official Licence",
+      "Merchant Shipping (Recruitment & Placement) Rules Approved",
+      "Seaman Employment & CDC Official Authorization",
     ],
   },
   {
@@ -99,22 +99,6 @@ const MILESTONES: MilestoneItem[] = [
       "24/7 Asian Corridor Crew Transit Operations",
       "Dedicated Sri Lanka Maritime Husbandry Unit",
       "Direct Vessel Support at Colombo & Hambantota Ports",
-    ],
-  },
-  {
-    year: "2018",
-    yearDisplay: "2018",
-    category: "ACCREDITATION",
-    title: "DG Shipping RPSL Authorization",
-    subtitle: "Licence No: RPSL-MUM-506",
-    desc: "Received official Recruitment and Placement Service Licence (RPSL) from the Directorate General of Shipping India, confirming full MLC 2006 maritime compliance.",
-    icon: ShieldCheck,
-    trustBadge: "RPSL-MUM-506 • DG Shipping India",
-    marketingMetric: "100% MLC 2006 Compliant",
-    bullets: [
-      "Directorate General of Shipping Official Licence",
-      "Merchant Shipping (Recruitment & Placement) Rules Approved",
-      "Seaman Employment & CDC Official Authorization",
     ],
   },
   {
@@ -320,7 +304,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                 <span>INTERACTIVE MILESTONE VOYAGE LINE — SELECT A YEAR TO EXPLORE DETAILS</span>
               </div>
 
-              <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2 sm:gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
                 {MILESTONES.map((item) => {
                   const isSelected = selectedMilestone.year === item.year;
                   const Icon = item.icon;
