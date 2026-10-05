@@ -206,40 +206,39 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
   });
 
   return (
-    <section id="milestones" className="w-full bg-[#061B2A] text-white py-16 sm:py-24 px-4 sm:px-8 relative overflow-hidden select-none font-sans">
-      {/* Background Decorative Gradients & Grid Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,104,183,0.15),transparent_50%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,217,232,0.08),transparent_50%)] pointer-events-none" />
-      <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+    <section id="milestones" className="w-full bg-[#F8F8F5] text-[#071A2B] py-16 sm:py-24 px-4 sm:px-8 relative overflow-hidden select-none font-sans border-b border-[#8B94A3]/20">
+      {/* Background Decorative Gradients & Subtle Grid */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,104,183,0.06),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000000_1px,transparent_1px),linear-gradient(to_bottom,#000000_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10 space-y-10 sm:space-y-14">
         
-        {/* HEADER & MARKETING PORTRAYAL INTRO */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between border-b border-white/10 pb-8 gap-6 sm:gap-8">
+        {/* HEADER & INTRO */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between border-b border-[#8B94A3]/25 pb-8 gap-6 sm:gap-8">
           <div className="space-y-3 max-w-2xl">
             <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#0077FF] tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-[#00D9FF] animate-ping" />
               <span>// OUR MILESTONES & PROVEN CREDS</span>
             </div>
             
-            <h2 className="font-poppins text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
-              Two Decades of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D9E8] via-[#00A8E8] to-[#0077FF]">Proven Growth</span>
+            <h2 className="font-poppins text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
+              Two Decades of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0068B7] via-[#0077FF] to-[#00A8E8]">Proven Growth</span>
             </h2>
             
-            <p className="font-inter text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+            <p className="font-inter text-xs sm:text-sm text-[#687384] leading-relaxed font-normal">
               From our founding in Navi Mumbai in 2002 to managing a global fleet of 59+ commercial vessels across 5 strategic international hubs today—explore how Oceanic Star built its reputation as a trusted global ship management partner.
             </p>
           </div>
 
           {/* VIEW TOGGLE & COMPLIANCE STAMP */}
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-4">
-            <div className="bg-[#0B2545] p-1 rounded-xl border border-white/10 flex items-center shadow-lg">
+            <div className="bg-[#EAEAEA] p-1 rounded-xl border border-[#8B94A3]/25 flex items-center shadow-inner">
               <button
                 onClick={() => setViewMode("TIMELINE")}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-300 flex items-center space-x-2 ${
                   viewMode === "TIMELINE"
-                    ? "bg-[#0068B7] text-white shadow-[0_0_12px_rgba(0,217,232,0.3)] border border-[#00D9E8]/40"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-[#071A2B] text-white shadow-sm"
+                    : "text-[#687384] hover:text-[#071A2B]"
                 }`}
               >
                 <Clock className="w-3.5 h-3.5" />
@@ -249,8 +248,8 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                 onClick={() => setViewMode("GRID")}
                 className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-300 flex items-center space-x-2 ${
                   viewMode === "GRID"
-                    ? "bg-[#0068B7] text-white shadow-[0_0_12px_rgba(0,217,232,0.3)] border border-[#00D9E8]/40"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-[#071A2B] text-white shadow-sm"
+                    : "text-[#687384] hover:text-[#071A2B]"
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
@@ -258,37 +257,37 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               </button>
             </div>
 
-            <div className="hidden sm:flex items-center space-x-3 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10">
-              <ShieldCheck className="w-5 h-5 text-[#00D9E8]" />
+            <div className="hidden sm:flex items-center space-x-3 px-3.5 py-2 rounded-xl bg-white border border-[#8B94A3]/30 shadow-sm">
+              <ShieldCheck className="w-5 h-5 text-[#0077FF]" />
               <div className="text-left">
-                <span className="text-[10px] font-mono text-slate-400 block uppercase">DG SHIPPING APPROVED</span>
-                <span className="text-xs font-mono font-bold text-[#00D9E8]">RPSL-MUM-506</span>
+                <span className="text-[10px] font-mono text-[#687384] block uppercase">DG SHIPPING APPROVED</span>
+                <span className="text-xs font-mono font-bold text-[#0068B7]">RPSL-MUM-506</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* 4 MARKETING KEY METRICS BAR */}
+        {/* 4 KEY METRICS BAR */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {METRICS_SUMMARY.map((metric, idx) => (
             <div
               key={idx}
-              className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#0B2545]/80 to-[#061B2A] border border-white/10 hover:border-[#00D9E8]/50 transition-all duration-300 shadow-lg group"
+              className="p-4 sm:p-5 rounded-2xl bg-white border border-[#8B94A3]/25 hover:border-[#0077FF]/50 transition-all duration-300 shadow-sm group"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">{metric.label}</span>
-                <Star className="w-3.5 h-3.5 text-[#00D9E8] opacity-60 group-hover:opacity-100 transition-opacity" />
+                <span className="text-[11px] font-mono text-[#687384] uppercase tracking-wider">{metric.label}</span>
+                <Star className="w-3.5 h-3.5 text-[#0077FF] opacity-70 group-hover:opacity-100 transition-opacity" />
               </div>
-              <div className="font-poppins text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#00D9E8]">
+              <div className="font-poppins text-3xl sm:text-4xl font-extrabold text-[#071A2B]">
                 {metric.value}
               </div>
-              <span className="text-[11px] font-inter text-slate-400 mt-1 block font-medium">{metric.detail}</span>
+              <span className="text-[11px] font-inter text-[#687384] mt-1 block font-medium">{metric.detail}</span>
             </div>
           ))}
         </div>
 
         {/* CATEGORY FILTER TABS */}
-        <div className="flex items-center justify-start overflow-x-auto no-scrollbar gap-2 pb-2 border-b border-white/10">
+        <div className="flex items-center justify-start overflow-x-auto no-scrollbar gap-2 pb-2 border-b border-[#8B94A3]/25">
           {[
             { id: "ALL", label: "All Milestones" },
             { id: "EXPANSION", label: "Global Expansion" },
@@ -301,8 +300,8 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               onClick={() => setActiveCategory(tab.id)}
               className={`px-4 py-2 rounded-full text-xs font-mono font-bold transition-all duration-300 whitespace-nowrap shrink-0 ${
                 activeCategory === tab.id
-                  ? "bg-[#00D9E8] text-[#061B2A] shadow-[0_0_15px_rgba(0,217,232,0.4)]"
-                  : "bg-white/5 text-slate-300 hover:bg-white/10 border border-white/10"
+                  ? "bg-[#071A2B] text-white shadow-md"
+                  : "bg-white text-[#687384] hover:bg-[#EAEAEA] border border-[#8B94A3]/30"
               }`}
             >
               {tab.label}
@@ -315,9 +314,9 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
           <div className="space-y-10">
             
             {/* HORIZONTAL INTERACTIVE YEAR NAVIGATION SCROLLER */}
-            <div className="relative bg-[#0B2545]/60 p-4 sm:p-5 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-md">
-              <div className="text-[11px] font-mono text-[#00D9E8] font-bold uppercase tracking-wider mb-3 flex items-center space-x-2">
-                <Compass className="w-3.5 h-3.5 animate-spin text-[#00D9E8]" />
+            <div className="relative bg-white p-4 sm:p-5 rounded-2xl border border-[#8B94A3]/25 shadow-sm">
+              <div className="text-[11px] font-mono text-[#0077FF] font-bold uppercase tracking-wider mb-3 flex items-center space-x-2">
+                <Compass className="w-3.5 h-3.5 animate-spin text-[#0077FF]" />
                 <span>INTERACTIVE MILESTONE VOYAGE LINE — SELECT A YEAR TO EXPLORE DETAILS</span>
               </div>
 
@@ -331,23 +330,23 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                       onClick={() => setSelectedMilestone(item)}
                       className={`p-3 rounded-xl border text-center transition-all duration-300 flex flex-col items-center justify-center space-y-1 relative overflow-hidden group ${
                         isSelected
-                          ? "bg-gradient-to-b from-[#0068B7] to-[#004E89] border-[#00D9E8] text-white shadow-xl scale-105"
-                          : "bg-[#061B2A]/70 border-white/10 text-slate-400 hover:border-[#00D9E8]/60 hover:text-white"
+                          ? "bg-[#071A2B] border-[#0077FF] text-white shadow-md scale-105"
+                          : "bg-[#F0F4F8] border-[#8B94A3]/20 text-[#687384] hover:border-[#0077FF] hover:text-[#071A2B]"
                       }`}
                     >
                       {item.highlight && (
-                        <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#00D9E8] animate-ping" />
+                        <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#0077FF] animate-ping" />
                       )}
                       
-                      <div className={`p-1.5 rounded-lg ${isSelected ? "bg-white/20 text-[#00D9E8]" : "bg-white/5 text-slate-400 group-hover:text-[#00D9E8]"}`}>
+                      <div className={`p-1.5 rounded-lg ${isSelected ? "bg-white/20 text-[#00D9E8]" : "bg-white text-[#0077FF] shadow-xs"}`}>
                         <Icon className="w-4 h-4" />
                       </div>
 
-                      <span className={`font-poppins text-base font-bold tracking-tight ${isSelected ? "text-white" : "text-slate-200"}`}>
+                      <span className={`font-poppins text-base font-bold tracking-tight ${isSelected ? "text-white" : "text-[#071A2B]"}`}>
                         {item.yearDisplay}
                       </span>
 
-                      <span className="text-[10px] font-mono tracking-tight block truncate max-w-full text-slate-300 font-normal">
+                      <span className={`text-[10px] font-mono tracking-tight block truncate max-w-full font-normal ${isSelected ? "text-slate-300" : "text-[#687384]"}`}>
                         {item.category}
                       </span>
                     </button>
@@ -368,54 +367,47 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               >
                 
                 {/* LEFT MAIN CARD */}
-                <div className={`lg:col-span-8 p-6 sm:p-8 rounded-2xl border shadow-2xl relative overflow-hidden flex flex-col justify-between ${
-                  selectedMilestone.highlight
-                    ? "bg-gradient-to-br from-[#0B2545] via-[#061B2A] to-[#0B2545] border-[#00D9E8]/60"
-                    : "bg-[#0B2545]/90 border-white/15"
-                }`}>
+                <div className="lg:col-span-8 p-6 sm:p-8 rounded-2xl bg-white border border-[#8B94A3]/30 shadow-md flex flex-col justify-between">
                   
-                  {/* Subtle Background Glow */}
-                  <div className="absolute top-0 right-0 w-64 h-64 bg-[#0068B7]/10 rounded-full blur-3xl pointer-events-none" />
-
                   <div className="space-y-5 relative z-10">
                     
                     {/* Header Badges */}
                     <div className="flex flex-wrap items-center gap-2.5">
-                      <span className="font-poppins text-4xl sm:text-5xl font-black text-[#00D9E8]">
+                      <span className="font-poppins text-4xl sm:text-5xl font-black text-[#0077FF]">
                         {selectedMilestone.yearDisplay}
                       </span>
-                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#0068B7]/30 border border-[#00D9E8]/40 text-[#00D9E8]">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#0077FF]/10 border border-[#0077FF]/30 text-[#0068B7]">
                         {selectedMilestone.trustBadge}
                       </span>
-                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-50 border border-emerald-300 text-emerald-700">
                         {selectedMilestone.marketingMetric}
                       </span>
                     </div>
 
                     {/* Title & Subtitle */}
                     <div className="space-y-1">
-                      <h3 className="font-poppins text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                      <h3 className="font-poppins text-2xl sm:text-3xl font-extrabold text-[#071A2B] tracking-tight">
                         {selectedMilestone.title}
                       </h3>
-                      <p className="font-mono text-xs text-[#00D9E8] font-bold uppercase tracking-wider">
+                      <p className="font-mono text-xs text-[#0077FF] font-bold uppercase tracking-wider">
                         {selectedMilestone.subtitle}
                       </p>
                     </div>
 
                     {/* Description */}
-                    <p className="font-inter text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    <p className="font-inter text-xs sm:text-sm text-[#475569] leading-relaxed font-normal">
                       {selectedMilestone.desc}
                     </p>
 
                     {/* Verified Marketing Proof Points */}
-                    <div className="space-y-2.5 pt-2 border-t border-white/10">
-                      <span className="text-[11px] font-mono text-slate-400 uppercase font-bold tracking-wider block">
+                    <div className="space-y-2.5 pt-3 border-t border-[#8B94A3]/20">
+                      <span className="text-[11px] font-mono text-[#687384] uppercase font-bold tracking-wider block">
                         VERIFIED OPERATIONAL DELIVERABLES:
                       </span>
-                      <div className="grid sm:grid-cols-2 gap-2 text-xs font-inter text-slate-200">
+                      <div className="grid sm:grid-cols-2 gap-2 text-xs font-inter text-[#334155]">
                         {selectedMilestone.bullets.map((bullet, idx) => (
                           <div key={idx} className="flex items-start space-x-2">
-                            <CheckCircle2 className="w-4 h-4 text-[#00D9E8] shrink-0 mt-0.5" />
+                            <CheckCircle2 className="w-4 h-4 text-[#0077FF] shrink-0 mt-0.5" />
                             <span>{bullet}</span>
                           </div>
                         ))}
@@ -425,9 +417,9 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                   </div>
 
                   {/* Bottom Action Footer */}
-                  <div className="pt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 mt-6 relative z-10">
-                    <div className="flex items-center space-x-2 text-xs font-mono text-slate-400">
-                      <TrendingUp className="w-4 h-4 text-[#00D9E8]" />
+                  <div className="pt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[#8B94A3]/20 mt-6 relative z-10">
+                    <div className="flex items-center space-x-2 text-xs font-mono text-[#687384]">
+                      <TrendingUp className="w-4 h-4 text-[#0077FF]" />
                       <span>Sustained Growth Track Since 2002</span>
                     </div>
 
@@ -436,7 +428,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                         const elem = document.getElementById("contact");
                         if (elem) elem.scrollIntoView({ behavior: "smooth" });
                       })}
-                      className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#0068B7] hover:bg-[#0077FF] text-white text-xs font-mono font-bold shadow-lg hover:shadow-[0_0_15px_rgba(0,217,232,0.4)] transition-all duration-300"
+                      className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#071A2B] hover:bg-[#0068B7] text-white text-xs font-mono font-bold shadow-md transition-all duration-300"
                     >
                       <span>Inquire Commercial Proposals</span>
                       <ArrowRight className="w-4 h-4" />
@@ -446,42 +438,42 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                 </div>
 
                 {/* RIGHT SIDE MARKETING PROOF CARD */}
-                <div className="lg:col-span-4 bg-gradient-to-b from-[#0B2545] to-[#061B2A] p-6 sm:p-7 rounded-2xl border border-white/10 flex flex-col justify-between space-y-6 shadow-xl relative overflow-hidden">
+                <div className="lg:col-span-4 bg-[#F0F4F8] p-6 sm:p-7 rounded-2xl border border-[#8B94A3]/30 flex flex-col justify-between space-y-6 shadow-sm relative overflow-hidden">
                   <div className="space-y-5">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0068B7] to-[#0096C7] flex items-center justify-center text-white shadow-lg border border-white/20">
-                      {React.createElement(selectedMilestone.icon, { className: "w-6 h-6 text-[#00D9E8]" })}
+                    <div className="w-12 h-12 rounded-xl bg-[#0068B7] flex items-center justify-center text-white shadow-md">
+                      {React.createElement(selectedMilestone.icon, { className: "w-6 h-6" })}
                     </div>
 
                     <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-[#00D9E8] font-bold uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono text-[#0077FF] font-bold uppercase tracking-widest block">
                         MILESTONE IMPACT
                       </span>
-                      <h4 className="font-poppins text-lg font-bold text-white">
+                      <h4 className="font-poppins text-lg font-bold text-[#071A2B]">
                         {selectedMilestone.title}
                       </h4>
-                      <p className="font-inter text-xs text-slate-300 leading-relaxed font-normal">
+                      <p className="font-inter text-xs text-[#687384] leading-relaxed font-normal">
                         This strategic expansion milestone directly empowers ship owners and charterers with higher operational availability and compliance security.
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-2">
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-300">
+                    <div className="p-3.5 rounded-xl bg-white border border-[#8B94A3]/25 space-y-2 shadow-xs">
+                      <div className="flex items-center justify-between text-xs font-mono text-[#475569]">
                         <span>Management Standard:</span>
-                        <span className="font-bold text-emerald-400">Audited & Active</span>
+                        <span className="font-bold text-emerald-600">Audited & Active</span>
                       </div>
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-300">
+                      <div className="flex items-center justify-between text-xs font-mono text-[#475569]">
                         <span>Compliance Status:</span>
-                        <span className="font-bold text-[#00D9E8]">100% SOLAS / MLC</span>
+                        <span className="font-bold text-[#0077FF]">100% SOLAS / MLC</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-3 pt-4 border-t border-white/10">
+                  <div className="space-y-3 pt-4 border-t border-[#8B94A3]/25">
                     <a
                       href="#certifications"
-                      className="w-full inline-flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all duration-300 border border-white/10"
+                      className="w-full inline-flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-[#071A2B] text-xs font-mono font-bold transition-all duration-300 border border-[#8B94A3]/30 shadow-xs"
                     >
-                      <ExternalLink className="w-4 h-4 text-[#00D9E8]" />
+                      <ExternalLink className="w-4 h-4 text-[#0077FF]" />
                       <span>Inspect Audited Certifications</span>
                     </a>
                   </div>
@@ -504,57 +496,55 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                   key={idx}
                   className={`p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between space-y-5 group hover:-translate-y-1 ${
                     item.highlight
-                      ? "bg-gradient-to-b from-[#0B2545] to-[#061B2A] border-[#00D9E8] shadow-2xl"
-                      : "bg-[#0B2545]/70 border-white/10 hover:border-[#00D9E8]/60 shadow-lg"
+                      ? "bg-white border-[#0077FF] shadow-md"
+                      : "bg-white border-[#8B94A3]/25 hover:border-[#0077FF]/60 shadow-xs"
                   }`}
                 >
                   <div className="space-y-3.5">
                     {/* Header Row */}
                     <div className="flex items-center justify-between">
-                      <span className="font-poppins text-3xl font-black text-[#00D9E8]">
+                      <span className="font-poppins text-3xl font-black text-[#0077FF]">
                         {item.yearDisplay}
                       </span>
-                      <div className={`p-2 rounded-xl ${
-                        item.highlight ? "bg-[#00D9E8]/20 text-[#00D9E8]" : "bg-white/5 text-[#00D9E8] group-hover:bg-[#00D9E8]/20"
-                      }`}>
+                      <div className="p-2 rounded-xl bg-[#F0F4F8] text-[#0077FF]">
                         <Icon className="w-5 h-5" />
                       </div>
                     </div>
 
                     {/* Badge */}
                     <div>
-                      <span className="inline-block px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-white/10 text-slate-300 border border-white/10">
+                      <span className="inline-block px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[#F0F4F8] text-[#687384] border border-[#8B94A3]/20">
                         {item.trustBadge}
                       </span>
                     </div>
 
                     {/* Title */}
                     <div>
-                      <h3 className="font-poppins text-lg font-bold text-white tracking-tight">
+                      <h3 className="font-poppins text-lg font-bold text-[#071A2B] tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="text-xs font-mono text-[#00D9E8] mt-0.5">{item.subtitle}</p>
+                      <p className="text-xs font-mono text-[#0077FF] mt-0.5">{item.subtitle}</p>
                     </div>
 
                     {/* Description */}
-                    <p className="font-inter text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                    <p className="font-inter text-xs sm:text-sm text-[#687384] leading-relaxed font-normal">
                       {item.desc}
                     </p>
 
                     {/* Bullets */}
-                    <div className="space-y-1.5 pt-2 border-t border-white/10">
+                    <div className="space-y-1.5 pt-2 border-t border-[#8B94A3]/20">
                       {item.bullets.map((b, bIdx) => (
-                        <div key={bIdx} className="flex items-center space-x-2 text-[11px] font-inter text-slate-300">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#00D9E8] shrink-0" />
+                        <div key={bIdx} className="flex items-center space-x-2 text-[11px] font-inter text-[#334155]">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#0077FF] shrink-0" />
                           <span className="truncate">{b}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                  <div className="pt-3.5 border-t border-[#8B94A3]/20 flex items-center justify-between text-xs font-mono text-[#687384]">
                     <span>{item.category}</span>
-                    <span className="text-[#00D9E8] font-bold">{item.marketingMetric}</span>
+                    <span className="text-[#0077FF] font-bold">{item.marketingMetric}</span>
                   </div>
                 </div>
               );
@@ -563,8 +553,8 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
         )}
 
         {/* BOTTOM MARKETING TRUST CTA BANNER */}
-        <div className="p-6 sm:p-10 rounded-2xl bg-gradient-to-r from-[#0068B7] via-[#0077B6] to-[#0B2545] border border-white/20 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
-          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(circle_at_70%_50%,rgba(0,217,232,0.2),transparent_70%)] pointer-events-none" />
+        <div className="p-6 sm:p-10 rounded-2xl bg-gradient-to-r from-[#071A2B] via-[#0B2545] to-[#0068B7] text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+          <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(circle_at_70%_50%,rgba(0,217,232,0.15),transparent_70%)] pointer-events-none" />
 
           <div className="space-y-2 max-w-2xl relative z-10">
             <span className="text-xs font-mono font-bold text-[#00D9E8] uppercase tracking-widest block">
@@ -584,7 +574,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                 const elem = document.getElementById("contact");
                 if (elem) elem.scrollIntoView({ behavior: "smooth" });
               })}
-              className="px-5 py-3 rounded-xl bg-[#00D9E8] hover:bg-[#00B4D8] text-[#061B2A] text-xs font-mono font-bold shadow-xl transition-all duration-300 flex items-center space-x-2"
+              className="px-5 py-3 rounded-xl bg-[#00D9E8] hover:bg-[#00B4D8] text-[#061B2A] text-xs font-mono font-bold shadow-lg transition-all duration-300 flex items-center space-x-2"
             >
               <span>Request Fleet Management Proposal</span>
               <ChevronRight className="w-4 h-4" />
