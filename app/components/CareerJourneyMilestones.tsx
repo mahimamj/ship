@@ -206,39 +206,39 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
   });
 
   return (
-    <section id="milestones" className="w-full bg-[#061B2A] text-white py-20 sm:py-28 px-4 sm:px-8 relative overflow-hidden select-none">
+    <section id="milestones" className="w-full bg-[#061B2A] text-white py-16 sm:py-24 px-4 sm:px-8 relative overflow-hidden select-none font-sans">
       {/* Background Decorative Gradients & Grid Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,104,183,0.15),transparent_50%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(197,155,39,0.1),transparent_50%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,217,232,0.08),transparent_50%)] pointer-events-none" />
       <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10 space-y-12 sm:space-y-16">
+      <div className="max-w-7xl mx-auto relative z-10 space-y-10 sm:space-y-14">
         
         {/* HEADER & MARKETING PORTRAYAL INTRO */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between border-b border-white/10 pb-8 gap-6 sm:gap-8">
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#C59B27]/15 border border-[#C59B27]/30 text-xs font-mono text-[#E5C158] font-bold">
-              <Sparkles className="w-3.5 h-3.5 text-[#C59B27] animate-pulse" />
-              <span className="tracking-widest uppercase">OUR MILESTONES & PROVEN CREDS</span>
+            <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#0077FF] tracking-widest uppercase">
+              <span className="w-2 h-2 rounded-full bg-[#00D9FF] animate-ping" />
+              <span>// OUR MILESTONES & PROVEN CREDS</span>
             </div>
             
-            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
-              Two Decades of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D9E8] via-[#0077B6] to-[#C59B27]">Proven Growth</span>
+            <h2 className="font-poppins text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
+              Two Decades of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D9E8] via-[#00A8E8] to-[#0077FF]">Proven Growth</span>
             </h2>
             
-            <p className="font-manrope text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+            <p className="font-inter text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
               From our founding in Navi Mumbai in 2002 to managing a global fleet of 59+ commercial vessels across 5 strategic international hubs today—explore how Oceanic Star built its reputation as a trusted global ship management partner.
             </p>
           </div>
 
           {/* VIEW TOGGLE & COMPLIANCE STAMP */}
           <div className="flex flex-wrap sm:flex-nowrap items-center gap-4">
-            <div className="bg-[#0B2545] p-1.5 rounded-2xl border border-white/10 flex items-center shadow-lg">
+            <div className="bg-[#0B2545] p-1 rounded-xl border border-white/10 flex items-center shadow-lg">
               <button
                 onClick={() => setViewMode("TIMELINE")}
-                className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all duration-300 flex items-center space-x-2 ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-300 flex items-center space-x-2 ${
                   viewMode === "TIMELINE"
-                    ? "bg-gradient-to-r from-[#0068B7] to-[#0096C7] text-white shadow-md"
+                    ? "bg-[#0068B7] text-white shadow-[0_0_12px_rgba(0,217,232,0.3)] border border-[#00D9E8]/40"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
@@ -247,9 +247,9 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               </button>
               <button
                 onClick={() => setViewMode("GRID")}
-                className={`px-4 py-2 rounded-xl text-xs font-mono font-bold transition-all duration-300 flex items-center space-x-2 ${
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-300 flex items-center space-x-2 ${
                   viewMode === "GRID"
-                    ? "bg-gradient-to-r from-[#0068B7] to-[#0096C7] text-white shadow-md"
+                    ? "bg-[#0068B7] text-white shadow-[0_0_12px_rgba(0,217,232,0.3)] border border-[#00D9E8]/40"
                     : "text-slate-400 hover:text-white"
                 }`}
               >
@@ -258,11 +258,11 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               </button>
             </div>
 
-            <div className="hidden sm:flex items-center space-x-3 px-4 py-2.5 rounded-2xl bg-white/5 border border-white/10">
+            <div className="hidden sm:flex items-center space-x-3 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10">
               <ShieldCheck className="w-5 h-5 text-[#00D9E8]" />
               <div className="text-left">
                 <span className="text-[10px] font-mono text-slate-400 block uppercase">DG SHIPPING APPROVED</span>
-                <span className="text-xs font-mono font-bold text-emerald-400">RPSL-MUM-506</span>
+                <span className="text-xs font-mono font-bold text-[#00D9E8]">RPSL-MUM-506</span>
               </div>
             </div>
           </div>
@@ -273,16 +273,16 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
           {METRICS_SUMMARY.map((metric, idx) => (
             <div
               key={idx}
-              className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-[#0B2545]/80 to-[#061B2A] border border-white/10 hover:border-[#C59B27]/50 transition-all duration-300 shadow-lg group"
+              className="p-4 sm:p-5 rounded-2xl bg-gradient-to-b from-[#0B2545]/80 to-[#061B2A] border border-white/10 hover:border-[#00D9E8]/50 transition-all duration-300 shadow-lg group"
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono text-slate-400 uppercase tracking-wider">{metric.label}</span>
-                <Star className="w-4 h-4 text-[#C59B27] opacity-60 group-hover:opacity-100 transition-opacity" />
+                <span className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">{metric.label}</span>
+                <Star className="w-3.5 h-3.5 text-[#00D9E8] opacity-60 group-hover:opacity-100 transition-opacity" />
               </div>
-              <div className="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-sky-100 to-[#00D9E8]">
+              <div className="font-poppins text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-[#00D9E8]">
                 {metric.value}
               </div>
-              <span className="text-[11px] font-manrope text-slate-400 mt-1 block font-medium">{metric.detail}</span>
+              <span className="text-[11px] font-inter text-slate-400 mt-1 block font-medium">{metric.detail}</span>
             </div>
           ))}
         </div>
@@ -301,7 +301,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               onClick={() => setActiveCategory(tab.id)}
               className={`px-4 py-2 rounded-full text-xs font-mono font-bold transition-all duration-300 whitespace-nowrap shrink-0 ${
                 activeCategory === tab.id
-                  ? "bg-[#C59B27] text-[#061B2A] shadow-md shadow-[#C59B27]/20"
+                  ? "bg-[#00D9E8] text-[#061B2A] shadow-[0_0_15px_rgba(0,217,232,0.4)]"
                   : "bg-white/5 text-slate-300 hover:bg-white/10 border border-white/10"
               }`}
             >
@@ -312,12 +312,12 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
 
         {/* TIMELINE MODE DISPLAY */}
         {viewMode === "TIMELINE" && (
-          <div className="space-y-12">
+          <div className="space-y-10">
             
             {/* HORIZONTAL INTERACTIVE YEAR NAVIGATION SCROLLER */}
-            <div className="relative bg-[#0B2545]/60 p-4 sm:p-6 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-md">
-              <div className="text-xs font-mono text-[#00D9E8] font-bold uppercase tracking-wider mb-4 flex items-center space-x-2">
-                <Compass className="w-4 h-4 animate-spin text-[#00D9E8]" />
+            <div className="relative bg-[#0B2545]/60 p-4 sm:p-5 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-md">
+              <div className="text-[11px] font-mono text-[#00D9E8] font-bold uppercase tracking-wider mb-3 flex items-center space-x-2">
+                <Compass className="w-3.5 h-3.5 animate-spin text-[#00D9E8]" />
                 <span>INTERACTIVE MILESTONE VOYAGE LINE — SELECT A YEAR TO EXPLORE DETAILS</span>
               </div>
 
@@ -329,21 +329,21 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                     <button
                       key={item.year}
                       onClick={() => setSelectedMilestone(item)}
-                      className={`p-3 sm:p-4 rounded-2xl border text-center transition-all duration-300 flex flex-col items-center justify-center space-y-1.5 relative overflow-hidden group ${
+                      className={`p-3 rounded-xl border text-center transition-all duration-300 flex flex-col items-center justify-center space-y-1 relative overflow-hidden group ${
                         isSelected
                           ? "bg-gradient-to-b from-[#0068B7] to-[#004E89] border-[#00D9E8] text-white shadow-xl scale-105"
-                          : "bg-[#061B2A]/70 border-white/10 text-slate-400 hover:border-[#C59B27] hover:text-white"
+                          : "bg-[#061B2A]/70 border-white/10 text-slate-400 hover:border-[#00D9E8]/60 hover:text-white"
                       }`}
                     >
                       {item.highlight && (
                         <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#00D9E8] animate-ping" />
                       )}
                       
-                      <div className={`p-1.5 rounded-lg ${isSelected ? "bg-white/20 text-[#00D9E8]" : "bg-white/5 text-slate-400 group-hover:text-[#C59B27]"}`}>
+                      <div className={`p-1.5 rounded-lg ${isSelected ? "bg-white/20 text-[#00D9E8]" : "bg-white/5 text-slate-400 group-hover:text-[#00D9E8]"}`}>
                         <Icon className="w-4 h-4" />
                       </div>
 
-                      <span className={`font-serif text-base sm:text-lg font-bold tracking-tight ${isSelected ? "text-white" : "text-slate-200"}`}>
+                      <span className={`font-poppins text-base font-bold tracking-tight ${isSelected ? "text-white" : "text-slate-200"}`}>
                         {item.yearDisplay}
                       </span>
 
@@ -364,11 +364,11 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="grid lg:grid-cols-12 gap-6 sm:gap-8 items-stretch"
+                className="grid lg:grid-cols-12 gap-6 items-stretch"
               >
                 
                 {/* LEFT MAIN CARD */}
-                <div className={`lg:col-span-8 p-6 sm:p-10 rounded-3xl border shadow-2xl relative overflow-hidden flex flex-col justify-between ${
+                <div className={`lg:col-span-8 p-6 sm:p-8 rounded-2xl border shadow-2xl relative overflow-hidden flex flex-col justify-between ${
                   selectedMilestone.highlight
                     ? "bg-gradient-to-br from-[#0B2545] via-[#061B2A] to-[#0B2545] border-[#00D9E8]/60"
                     : "bg-[#0B2545]/90 border-white/15"
@@ -377,24 +377,24 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                   {/* Subtle Background Glow */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-[#0068B7]/10 rounded-full blur-3xl pointer-events-none" />
 
-                  <div className="space-y-6 relative z-10">
+                  <div className="space-y-5 relative z-10">
                     
                     {/* Header Badges */}
-                    <div className="flex flex-wrap items-center gap-3">
-                      <span className="font-serif text-4xl sm:text-6xl font-black text-[#00D9E8]">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <span className="font-poppins text-4xl sm:text-5xl font-black text-[#00D9E8]">
                         {selectedMilestone.yearDisplay}
                       </span>
-                      <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-[#C59B27]/20 border border-[#C59B27]/40 text-[#E5C158]">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#0068B7]/30 border border-[#00D9E8]/40 text-[#00D9E8]">
                         {selectedMilestone.trustBadge}
                       </span>
-                      <span className="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300">
+                      <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/20 border border-emerald-500/40 text-emerald-300">
                         {selectedMilestone.marketingMetric}
                       </span>
                     </div>
 
                     {/* Title & Subtitle */}
                     <div className="space-y-1">
-                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                      <h3 className="font-poppins text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                         {selectedMilestone.title}
                       </h3>
                       <p className="font-mono text-xs text-[#00D9E8] font-bold uppercase tracking-wider">
@@ -403,18 +403,18 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                     </div>
 
                     {/* Description */}
-                    <p className="font-manrope text-sm sm:text-base text-slate-300 leading-relaxed font-light">
+                    <p className="font-inter text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                       {selectedMilestone.desc}
                     </p>
 
                     {/* Verified Marketing Proof Points */}
-                    <div className="space-y-3 pt-2 border-t border-white/10">
-                      <span className="text-xs font-mono text-slate-400 uppercase font-bold tracking-wider block">
+                    <div className="space-y-2.5 pt-2 border-t border-white/10">
+                      <span className="text-[11px] font-mono text-slate-400 uppercase font-bold tracking-wider block">
                         VERIFIED OPERATIONAL DELIVERABLES:
                       </span>
-                      <div className="grid sm:grid-cols-2 gap-2.5">
+                      <div className="grid sm:grid-cols-2 gap-2 text-xs font-inter text-slate-200">
                         {selectedMilestone.bullets.map((bullet, idx) => (
-                          <div key={idx} className="flex items-start space-x-2 text-xs font-manrope text-slate-200">
+                          <div key={idx} className="flex items-start space-x-2">
                             <CheckCircle2 className="w-4 h-4 text-[#00D9E8] shrink-0 mt-0.5" />
                             <span>{bullet}</span>
                           </div>
@@ -425,9 +425,9 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                   </div>
 
                   {/* Bottom Action Footer */}
-                  <div className="pt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 mt-6 relative z-10">
+                  <div className="pt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 mt-6 relative z-10">
                     <div className="flex items-center space-x-2 text-xs font-mono text-slate-400">
-                      <TrendingUp className="w-4 h-4 text-[#C59B27]" />
+                      <TrendingUp className="w-4 h-4 text-[#00D9E8]" />
                       <span>Sustained Growth Track Since 2002</span>
                     </div>
 
@@ -436,7 +436,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                         const elem = document.getElementById("contact");
                         if (elem) elem.scrollIntoView({ behavior: "smooth" });
                       })}
-                      className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C59B27] to-[#DAAC32] text-[#061B2A] text-xs font-mono font-bold hover:shadow-lg hover:shadow-[#C59B27]/30 transition-all duration-300"
+                      className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-[#0068B7] hover:bg-[#0077FF] text-white text-xs font-mono font-bold shadow-lg hover:shadow-[0_0_15px_rgba(0,217,232,0.4)] transition-all duration-300"
                     >
                       <span>Inquire Commercial Proposals</span>
                       <ArrowRight className="w-4 h-4" />
@@ -446,25 +446,25 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                 </div>
 
                 {/* RIGHT SIDE MARKETING PROOF CARD */}
-                <div className="lg:col-span-4 bg-gradient-to-b from-[#0B2545] to-[#061B2A] p-8 rounded-3xl border border-white/10 flex flex-col justify-between space-y-6 shadow-xl relative overflow-hidden">
-                  <div className="space-y-6">
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0068B7] to-[#0096C7] flex items-center justify-center text-white shadow-lg border border-white/20">
-                      {React.createElement(selectedMilestone.icon, { className: "w-7 h-7" })}
+                <div className="lg:col-span-4 bg-gradient-to-b from-[#0B2545] to-[#061B2A] p-6 sm:p-7 rounded-2xl border border-white/10 flex flex-col justify-between space-y-6 shadow-xl relative overflow-hidden">
+                  <div className="space-y-5">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0068B7] to-[#0096C7] flex items-center justify-center text-white shadow-lg border border-white/20">
+                      {React.createElement(selectedMilestone.icon, { className: "w-6 h-6 text-[#00D9E8]" })}
                     </div>
 
                     <div className="space-y-2">
-                      <span className="text-[10px] font-mono text-[#C59B27] font-bold uppercase tracking-widest block">
+                      <span className="text-[10px] font-mono text-[#00D9E8] font-bold uppercase tracking-widest block">
                         MILESTONE IMPACT
                       </span>
-                      <h4 className="font-serif text-xl font-bold text-white">
+                      <h4 className="font-poppins text-lg font-bold text-white">
                         {selectedMilestone.title}
                       </h4>
-                      <p className="font-manrope text-xs text-slate-300 leading-relaxed font-light">
+                      <p className="font-inter text-xs text-slate-300 leading-relaxed font-normal">
                         This strategic expansion milestone directly empowers ship owners and charterers with higher operational availability and compliance security.
                       </p>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                    <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-2">
                       <div className="flex items-center justify-between text-xs font-mono text-slate-300">
                         <span>Management Standard:</span>
                         <span className="font-bold text-emerald-400">Audited & Active</span>
@@ -479,7 +479,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                   <div className="space-y-3 pt-4 border-t border-white/10">
                     <a
                       href="#certifications"
-                      className="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all duration-300 border border-white/10"
+                      className="w-full inline-flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all duration-300 border border-white/10"
                     >
                       <ExternalLink className="w-4 h-4 text-[#00D9E8]" />
                       <span>Inspect Audited Certifications</span>
@@ -496,26 +496,26 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
 
         {/* CARDS GRID MODE DISPLAY */}
         {viewMode === "GRID" && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {filteredMilestones.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className={`p-6 sm:p-8 rounded-3xl border transition-all duration-300 flex flex-col justify-between space-y-6 group hover:-translate-y-1 ${
+                  className={`p-6 rounded-2xl border transition-all duration-300 flex flex-col justify-between space-y-5 group hover:-translate-y-1 ${
                     item.highlight
                       ? "bg-gradient-to-b from-[#0B2545] to-[#061B2A] border-[#00D9E8] shadow-2xl"
-                      : "bg-[#0B2545]/70 border-white/10 hover:border-[#C59B27]/60 shadow-lg"
+                      : "bg-[#0B2545]/70 border-white/10 hover:border-[#00D9E8]/60 shadow-lg"
                   }`}
                 >
-                  <div className="space-y-4">
+                  <div className="space-y-3.5">
                     {/* Header Row */}
                     <div className="flex items-center justify-between">
-                      <span className="font-serif text-3xl font-extrabold text-[#00D9E8]">
+                      <span className="font-poppins text-3xl font-black text-[#00D9E8]">
                         {item.yearDisplay}
                       </span>
-                      <div className={`p-2.5 rounded-xl ${
-                        item.highlight ? "bg-[#00D9E8]/20 text-[#00D9E8]" : "bg-white/5 text-[#C59B27] group-hover:bg-[#C59B27]/20"
+                      <div className={`p-2 rounded-xl ${
+                        item.highlight ? "bg-[#00D9E8]/20 text-[#00D9E8]" : "bg-white/5 text-[#00D9E8] group-hover:bg-[#00D9E8]/20"
                       }`}>
                         <Icon className="w-5 h-5" />
                       </div>
@@ -530,31 +530,31 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
 
                     {/* Title */}
                     <div>
-                      <h3 className="font-serif text-xl font-bold text-white tracking-tight">
+                      <h3 className="font-poppins text-lg font-bold text-white tracking-tight">
                         {item.title}
                       </h3>
-                      <p className="text-xs font-mono text-[#00D9E8] mt-1">{item.subtitle}</p>
+                      <p className="text-xs font-mono text-[#00D9E8] mt-0.5">{item.subtitle}</p>
                     </div>
 
                     {/* Description */}
-                    <p className="font-manrope text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+                    <p className="font-inter text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                       {item.desc}
                     </p>
 
                     {/* Bullets */}
                     <div className="space-y-1.5 pt-2 border-t border-white/10">
                       {item.bullets.map((b, bIdx) => (
-                        <div key={bIdx} className="flex items-center space-x-2 text-[11px] font-manrope text-slate-300">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#C59B27] shrink-0" />
+                        <div key={bIdx} className="flex items-center space-x-2 text-[11px] font-inter text-slate-300">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#00D9E8] shrink-0" />
                           <span className="truncate">{b}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                  <div className="pt-3.5 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
                     <span>{item.category}</span>
-                    <span className="text-[#E5C158] font-bold">{item.marketingMetric}</span>
+                    <span className="text-[#00D9E8] font-bold">{item.marketingMetric}</span>
                   </div>
                 </div>
               );
@@ -563,28 +563,28 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
         )}
 
         {/* BOTTOM MARKETING TRUST CTA BANNER */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#0068B7] via-[#0077B6] to-[#0B2545] border border-white/20 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
+        <div className="p-6 sm:p-10 rounded-2xl bg-gradient-to-r from-[#0068B7] via-[#0077B6] to-[#0B2545] border border-white/20 shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden">
           <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[radial-gradient(circle_at_70%_50%,rgba(0,217,232,0.2),transparent_70%)] pointer-events-none" />
 
           <div className="space-y-2 max-w-2xl relative z-10">
             <span className="text-xs font-mono font-bold text-[#00D9E8] uppercase tracking-widest block">
               WORLD-CLASS SHIP MANAGEMENT MATRIX
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h3 className="font-poppins text-xl sm:text-2xl font-extrabold text-white">
               Partner With Oceanic Star for Your Fleet Operations
             </h3>
-            <p className="font-manrope text-xs sm:text-sm text-sky-100 font-light leading-relaxed">
+            <p className="font-inter text-xs sm:text-sm text-sky-100 font-normal leading-relaxed">
               Benefit from 20+ years of audited quality, RPSL-MUM-506 compliance, and 24/7 fleet command across 5 international hubs.
             </p>
           </div>
 
-          <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 relative z-10 shrink-0">
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 relative z-10 shrink-0">
             <button
               onClick={onOpenQuote || (() => {
                 const elem = document.getElementById("contact");
                 if (elem) elem.scrollIntoView({ behavior: "smooth" });
               })}
-              className="px-6 py-3.5 rounded-xl bg-[#C59B27] hover:bg-[#DAAC32] text-[#061B2A] text-xs font-mono font-bold shadow-xl transition-all duration-300 flex items-center space-x-2"
+              className="px-5 py-3 rounded-xl bg-[#00D9E8] hover:bg-[#00B4D8] text-[#061B2A] text-xs font-mono font-bold shadow-xl transition-all duration-300 flex items-center space-x-2"
             >
               <span>Request Fleet Management Proposal</span>
               <ChevronRight className="w-4 h-4" />
@@ -592,7 +592,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
 
             <a
               href="#careers"
-              className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold border border-white/20 transition-all duration-300"
+              className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold border border-white/20 transition-all duration-300"
             >
               Join Our Seafarer Network
             </a>
