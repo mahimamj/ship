@@ -42,27 +42,27 @@ export const FollowTheJourneySection: React.FC = () => {
   ];
 
   return (
-    <section className="w-full bg-[#FAFAF7] text-[#061B2A] py-10 sm:py-14 px-6 sm:px-12 border-t border-slate-200 select-none">
-      <div className="max-w-[1200px] mx-auto text-center space-y-6">
+    <section className="w-full bg-[#FAFAF7] text-[#061B2A] py-6 sm:py-8 px-6 sm:px-12 border-t border-slate-200 select-none">
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
         
         {/* Top Header */}
-        <div className="space-y-2">
+        <div className="space-y-1.5 text-center lg:text-left">
           <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block">
             CONNECT &amp; FOLLOW
           </span>
 
-          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B2545] tracking-tight leading-tight">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0B2545] tracking-tight leading-tight">
             Follow Oceanic Star Group
           </h2>
 
-          <p className="font-manrope text-xs sm:text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="font-manrope text-xs sm:text-sm text-slate-600 max-w-xl leading-relaxed">
             Stay updated with our official company updates, fleet dispatches, seafarer recruitment notices, and operational announcements.
           </p>
         </div>
 
         {/* Official Company Channels Row */}
-        <div className="pt-2">
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+        <div>
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-3">
             {companyChannels.map((channel, idx) => {
               const Icon = channel.Icon;
               return (
@@ -71,14 +71,14 @@ export const FollowTheJourneySection: React.FC = () => {
                   href={channel.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative flex items-center gap-3.5 px-6 py-3.5 rounded-full bg-white border-2 border-[#0068B7]/30 shadow-md hover:shadow-xl hover:border-[#0068B7] transition-all duration-300 hover:scale-[1.03] cursor-pointer"
+                  className="group relative flex items-center gap-3 px-4 sm:px-5 py-2.5 rounded-full bg-white border border-[#0068B7]/25 shadow-sm hover:shadow-md hover:border-[#0068B7] transition-all duration-300 cursor-pointer"
                 >
-                  <div className="p-2 rounded-full bg-sky-50 group-hover:bg-[#0068B7] text-[#0068B7] group-hover:text-white transition-colors duration-300">
-                    <Icon className="w-4 h-4" />
+                  <div className="p-1.5 rounded-full bg-sky-50 group-hover:bg-[#0068B7] text-[#0068B7] group-hover:text-white transition-colors duration-300">
+                    <Icon className="w-3.5 h-3.5" />
                   </div>
 
                   <div className="text-left">
-                    <span className="font-sans text-xs sm:text-sm font-bold text-[#0B2545] tracking-wide block">
+                    <span className="font-sans text-xs font-bold text-[#0B2545] tracking-wide block whitespace-nowrap">
                       {channel.name}
                     </span>
                   </div>

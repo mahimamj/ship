@@ -23,6 +23,10 @@
 }
 
 :root {
+  --font-jakarta: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+  --font-cinzel: Georgia, "Times New Roman", serif;
+  --font-inter: Inter, "Segoe UI", Arial, sans-serif;
+  --font-manrope: Manrope, "Segoe UI", Arial, sans-serif;
   --color-primary-navy: #061B2A;
   --color-deep-ocean: #082F49;
   --color-ocean-blue: #0068B7;

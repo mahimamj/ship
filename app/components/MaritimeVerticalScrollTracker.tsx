@@ -12,19 +12,16 @@ interface Waypoint {
 const WAYPOINTS: Waypoint[] = [
   { id: "cinematic-stack", label: "START VOYAGE", code: "01" },
   { id: "about", label: "OVERVIEW", code: "02" },
-  { id: "mission-vision-split", label: "PURPOSE & VISION", code: "03" },
-  { id: "gsap-vertical-fleet-gallery", label: "FLEET CORRIDORS", code: "04" },
+  { id: "milestones", label: "MILESTONES", code: "03" },
+  { id: "mission-vision-split", label: "PURPOSE & VISION", code: "04" },
   { id: "cinematic-operations", label: "OPERATIONS", code: "05" },
   { id: "capabilities", label: "CAPABILITIES", code: "06" },
   { id: "why-choose-us", label: "ADVANTAGES", code: "07" },
   { id: "presence", label: "GLOBAL NETWORK", code: "08" },
-  { id: "milestones", label: "MILESTONES", code: "09" },
-  { id: "voyage", label: "LIVE TRACKING", code: "10" },
-  { id: "careers-job-board", label: "CAREERS", code: "11" },
-  { id: "fleet-matrix-explosion", label: "FLEET MATRIX", code: "12" },
-  { id: "fleet", label: "FLEET SPECS", code: "13" },
-  { id: "certifications", label: "CERTIFICATIONS", code: "14" },
-  { id: "contact", label: "CONTACT DOCK", code: "15" },
+  { id: "fleet-matrix-explosion", label: "FLEET MATRIX", code: "09" },
+  { id: "fleet", label: "FLEET SPECS", code: "10" },
+  { id: "certifications", label: "CERTIFICATIONS", code: "11" },
+  { id: "contact", label: "CONTACT DOCK", code: "12" },
 ];
 
 export const MaritimeVerticalScrollTracker: React.FC = () => {

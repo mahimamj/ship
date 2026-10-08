@@ -1,32 +1,8 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Cinzel, Inter, Manrope } from "next/font/google";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
 import { CinematicCustomCursor } from "./components/CinematicCustomCursor";
-
-const jakarta = Plus_Jakarta_Sans({
-  weight: ["600", "700", "800"],
-  subsets: ["latin"],
-  variable: "--font-jakarta",
-});
-
-const cinzel = Cinzel({
-  weight: ["600", "700", "800", "900"],
-  subsets: ["latin"],
-  variable: "--font-cinzel",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-manrope",
-});
 
 export const metadata: Metadata = {
   title: "Oceanic Star Shipping | International Maritime Operations & Ship Management",
@@ -48,10 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${jakarta.variable} ${cinzel.variable} ${inter.variable} ${manrope.variable} scroll-smooth`}
-    >
+    <html lang="en" className="scroll-smooth">
       <body className="bg-[#F5F5F2] text-[#071A2B] font-sans antialiased min-h-screen overflow-x-hidden">
         <CinematicCustomCursor />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>

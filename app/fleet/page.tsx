@@ -9,7 +9,6 @@ import { MaritimeCommandPalette } from "../components/MaritimeCommandPalette";
 import { OceanicAIChatbotWidget } from "../components/OceanicAIChatbotWidget";
 import { FloatingWhatsAppButton } from "../components/FloatingWhatsAppButton";
 import { LatestNewsSection, LinkedInIcon } from "../components/LatestNewsSection";
-import { OurImpactSection } from "../components/OurImpactSection";
 import { Ship, Anchor, ShieldCheck, Activity, Sparkles } from "lucide-react";
 
 export default function FleetPage() {
@@ -57,9 +56,6 @@ export default function FleetPage() {
 
       {/* 1. LATEST NEWS SECTION (5 LINKEDIN POSTS FROM COMPANY ID) */}
       <LatestNewsSection />
-
-      {/* 2. OUR IMPACT SECTION (WOMEN SEAFARERS & SUSTAINABILITY) */}
-      <OurImpactSection />
 
       {/* CONTACT & FOOTER */}
       <div className="bg-white">

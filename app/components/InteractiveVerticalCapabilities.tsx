@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { ArrowUpRight, ShieldCheck, Award, Ship, Scale, CheckCircle2, HeartHandshake } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Award, Ship, Scale, CheckCircle2, Wifi } from "lucide-react";
 import { CAPABILITIES } from "@/lib/content/capabilities";
 import { initGSAP } from "@/lib/gsapHelper";
 
@@ -89,13 +89,13 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
     { name: "DP2 Offshore", sub: "AHTS, PSV & Subsea Support", type: "Offshore DP" },
   ];
 
-  const fairnessHighlights = [
-    { title: "Zero Recruitment Fees", desc: "100% Free placement policy", badge: "DG Certified" },
-    { title: "Preference Matching", desc: "Tailored ship & contract choice", badge: "Seafarer First" },
-    { title: "Merit-Based Selection", desc: "Transparent skill evaluations", badge: "Zero Bias" },
-    { title: "Direct Wage Remittance", desc: "On-time full salary transfers", badge: "Transparent" },
-    { title: "Structured Rotations", desc: "Predictable 4-6 month contracts", badge: "Work-Life" },
-    { title: "24/7 Family Welfare", desc: "Dedicated shore emergency line", badge: "Morale Care" },
+  const fairnessCommitments = [
+    { title: "Zero Recruitment Fees", sub: "100% Free placement policy", type: "DG Certified" },
+    { title: "Preference Matching", sub: "Tailored ship & contract choice", type: "Seafarer First" },
+    { title: "Merit-Based Selection", sub: "Transparent skill evaluations", type: "Zero Bias" },
+    { title: "Direct Wage Remittance", sub: "On-time full salary transfers", type: "Transparent" },
+    { title: "Structured Rotations", sub: "Predictable 4-6 month contracts", type: "Work-Life" },
+    { title: "Onboard WiFi Access", sub: "Connected crew welfare support", type: "Crew Connect", icon: Wifi },
   ];
 
   return (
@@ -182,8 +182,8 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
             </div>
           </div>
 
-          {/* Section 2: Fairness & Seafarer Commitment */}
-          <div className="relative z-10 space-y-4 pt-2 border-t border-white/10">
+          {/* Section 2: Fairness & Equal Opportunity */}
+          <div className="relative z-10 space-y-4 border-t border-white/10 pt-5">
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/40 flex items-center justify-center text-emerald-400 shadow-inner">
@@ -209,25 +209,28 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
               </span>
             </div>
 
-            {/* Fairness Glass Cards */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {fairnessHighlights.map((fh) => (
+              {fairnessCommitments.map((item) => (
                 <div
-                  key={fh.title}
-                  className="group relative p-3.5 rounded-2xl bg-white/[0.04] hover:bg-emerald-500/15 border border-white/10 hover:border-emerald-400/50 backdrop-blur-md transition-all duration-300 flex flex-col justify-between space-y-2 cursor-pointer shadow-lg hover:-translate-y-0.5"
+                  key={item.title}
+                  className="group relative p-3.5 rounded-2xl bg-white/[0.04] hover:bg-emerald-500/15 border border-white/10 hover:border-emerald-400/50 backdrop-blur-md transition-all duration-300 flex flex-col justify-between space-y-3 shadow-lg hover:-translate-y-0.5"
                 >
                   <div className="flex items-center justify-between">
-                    <HeartHandshake className="w-3.5 h-3.5 text-emerald-400" />
+                    {item.icon ? (
+                      <item.icon className="w-3.5 h-3.5 text-emerald-400" />
+                    ) : (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    )}
                     <span className="font-mono text-[9px] text-emerald-300/80 font-bold uppercase tracking-wider">
-                      {fh.badge}
+                      {item.type}
                     </span>
                   </div>
                   <div>
                     <h4 className="font-syne text-xs font-bold text-white group-hover:text-emerald-300 transition-colors">
-                      {fh.title}
+                      {item.title}
                     </h4>
                     <p className="font-manrope text-[10px] text-slate-400 font-light mt-0.5">
-                      {fh.desc}
+                      {item.sub}
                     </p>
                   </div>
                 </div>
@@ -380,4 +383,3 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
     </section>
   );
 };
-

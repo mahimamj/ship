@@ -10,12 +10,12 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#F5F5F2] text-[#071A2B] border-t border-[rgba(7,26,43,0.12)] pt-20 pb-12 relative">
+    <footer className="bg-[#F5F5F2] text-[#071A2B] border-t border-[rgba(7,26,43,0.12)] pt-10 pb-6 relative">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Main 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[rgba(7,26,43,0.12)] text-xs font-manrope">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 pb-8 border-b border-[rgba(7,26,43,0.12)] text-xs font-manrope">
           {/* Col 1: Brand Info */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-3">
             <div className="flex items-center space-x-3">
               <img
                 src="/images/logo_nobg.png"
@@ -63,10 +63,10 @@ export const Footer: React.FC = () => {
               NAVIGATION
             </h4>
             <ul className="space-y-2 text-[#667783]">
-              <li><a href="#about" className="hover:text-[#176B87] transition">About Oceanic Star</a></li>
+              <li><Link href="/about" className="hover:text-[#176B87] transition">About Oceanic Star</Link></li>
               <li><Link href="/founder" className="hover:text-[#176B87] transition">Founder &amp; MD (Leadership)</Link></li>
               <li><a href="#capabilities" className="hover:text-[#176B87] transition">Capabilities & Services</a></li>
-              <li><a href="#careers" className="hover:text-[#176B87] transition">Careers (At Shore & At Sea)</a></li>
+              <li><Link href="/careers/at-shore" className="hover:text-[#176B87] transition">Careers (At Shore & At Sea)</Link></li>
               <li><a href="#presence" className="hover:text-[#176B87] transition">Global Hubs</a></li>
               <li><a href="#contact" className="hover:text-[#176B87] transition">Contact Operations</a></li>
               <li>
@@ -123,7 +123,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright, Credits & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-[#667783] gap-4 font-mono">
+        <div className="pt-4 flex flex-col sm:flex-row justify-between items-center text-xs text-[#667783] gap-3 font-mono">
           <div className="flex flex-wrap items-center gap-3">
             <span>© {new Date().getFullYear()} <strong className="text-[#071A2B] font-bold">Oceanic Star Group</strong>. All rights reserved.</span>
             <span>•</span>

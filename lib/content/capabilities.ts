@@ -35,7 +35,7 @@ export const CAPABILITIES: Capability[] = [
     number: "04",
     title: "CHARTERING & FLEET FIXTURES",
     description: "Spot market fixtures and long-term time-charters for tankers, dry bulk, container fleets, and specialized offshore DP vessels.",
-    image: "/images/capability_chartering.jpg",
+    image: "/images/capability_chartering_custom.png",
   },
   {
     id: "fairness-welfare",
@@ -59,5 +59,3 @@ export const CAPABILITIES: Capability[] = [
     image: "/images/capability_fleet_opt.jpg",
   },
 ];
-
-

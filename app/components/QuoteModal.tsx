@@ -169,7 +169,6 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                     {[
                       { id: "Technical Management", label: "Full Technical Vessel Management", desc: "Superintendence, OPEX & Drydocking" },
                       { id: "Crew Logistics", label: "RPSL Approved Crew Logistics", desc: "Certified Officers & Marine Engineers" },
-                      { id: "Container Freight", label: "Container & Liner Freight Charter", desc: "FCL / LCL Container Cargo Shipping" },
                       { id: "Offshore Tug", label: "Offshore & Tugboat Chartering", desc: "AHTS, Barges & Port Towage" },
                     ].map((s) => (
                       <button

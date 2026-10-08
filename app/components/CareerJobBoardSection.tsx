@@ -161,19 +161,6 @@ const JOB_OPENINGS: JobOpening[] = [
     department: "Shore Management",
     isShip: false,
   },
-  {
-    id: "job-12",
-    title: "Port Agency & Husbandry Executive",
-    category: "Shore jobs",
-    badge: "PORT AGENCY",
-    location: "Colombo & Dubai",
-    duration: "Full Time",
-    wages: "Standard Scale",
-    desc: "24/7 port husbandry dispatch, launch coordination, seafarer transit clearance, Bunkering assistance, and spare parts logistics.",
-    requirements: ["Port Husbandry", "Customs Clearance", "24/7 Operations"],
-    department: "Shore Management",
-    isShip: false,
-  },
 ];
 
 interface CareerJobBoardSectionProps {

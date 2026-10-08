@@ -565,7 +565,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
             </button>
 
             <a
-              href="#careers"
+              href="/careers/at-sea"
               className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold border border-white/20 transition-all duration-300"
             >
               Join Our Seafarer Network

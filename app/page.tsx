@@ -8,20 +8,16 @@ import { ScrollSection } from "./components/ScrollSection";
 import { CinematicNavbar } from "./components/CinematicNavbar";
 import { CinematicHeroLayer } from "./components/CinematicScrollStory";
 import { AboutOceanicOverview } from "./components/AboutOceanicOverview";
-import { VoyageTheatreSection } from "./components/VoyageTheatreSection";
-import { GsapHorizontalScrollGallery } from "./components/GsapHorizontalScrollGallery";
 import { CinematicOperationsSection } from "./components/CinematicOperationsSection";
 import { InteractiveVerticalCapabilities } from "./components/InteractiveVerticalCapabilities";
 import { WhyChooseUs } from "./components/WhyChooseUs";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
 import { MissionVisionCutoutSection } from "./components/MissionVisionCutoutSection";
-import { CareerJobBoardSection } from "./components/CareerJobBoardSection";
 import { InteractiveFleetExplosion } from "./components/InteractiveFleetExplosion";
 import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
 import { CertificationsMarquee } from "./components/CertificationsMarquee";
 import { CertificationsSection } from "./components/CertificationsSection";
 import { FollowTheJourneySection } from "./components/FollowTheJourneySection";
-import { CareerJourneyMilestones } from "./components/CareerJourneyMilestones";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { FloatingWhatsAppButton } from "./components/FloatingWhatsAppButton";
@@ -29,7 +25,6 @@ import { CookieConsentBanner } from "./components/CookieConsentBanner";
 
 import { FleetVideoModal } from "./components/FleetVideoModal";
 import { QuoteModal } from "./components/QuoteModal";
-import { CareerModal } from "./components/CareerModal";
 import { MaritimeCommandPalette } from "./components/MaritimeCommandPalette";
 import { OceanicAIChatbotWidget } from "./components/OceanicAIChatbotWidget";
 
@@ -37,9 +32,6 @@ export default function Home() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
-  const [careerModalState, setCareerModalState] = useState<{ isOpen: boolean; jobTitle?: string }>({
-    isOpen: false,
-  });
 
   return (
     <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased overflow-x-hidden selection:bg-[#0077B6] selection:text-white">
@@ -62,14 +54,11 @@ export default function Home() {
         </ScrollSection>
       </div>
 
-      {/* 2. ABOUT OCEANIC STAR OVERVIEW (WHAT IS OCEANIC / WHAT WE DO) */}
+      {/* 2. ABOUT OCEANIC STAR OVERVIEW + MILESTONES */}
       <AboutOceanicOverview onOpenQuote={() => setIsQuoteOpen(true)} />
 
       {/* 2B. VISION & MISSION UNIFIED SECTION */}
       <MissionVisionCutoutSection />
-
-      {/* 3. GSAP FLEET GALLERY & CORRIDORS */}
-      <GsapHorizontalScrollGallery onOpenQuote={() => setIsQuoteOpen(true)} />
 
       {/* 4. CINEMATIC OPERATIONS WATER WHEEL SPECTRUM */}
       <CinematicOperationsSection />
@@ -85,17 +74,6 @@ export default function Home() {
 
       {/* 6. GLOBAL NETWORK MAP */}
       <GlobalPresenceMap />
-
-      {/* 6B. PROVEN MARITIME MILESTONES & MARKETING SHOWCASE */}
-      <CareerJourneyMilestones onOpenQuote={() => setIsQuoteOpen(true)} />
-
-      {/* 6D. LIVE FLEET TRACKER — AUTOMATED VOYAGE ROTATION */}
-      <VoyageTheatreSection />
-
-      {/* 8. CAREERS JOB BOARD */}
-      <CareerJobBoardSection
-        onOpenApplyModal={(jobTitle) => setCareerModalState({ isOpen: true, jobTitle })}
-      />
 
       {/* 💥 RESTORED 59 VESSELS PARTICLE MORPHING FLEET MATRIX */}
       <InteractiveFleetExplosion />
@@ -128,12 +106,6 @@ export default function Home() {
       <QuoteModal
         isOpen={isQuoteOpen}
         onClose={() => setIsQuoteOpen(false)}
-      />
-
-      <CareerModal
-        isOpen={careerModalState.isOpen}
-        jobTitle={careerModalState.jobTitle}
-        onClose={() => setCareerModalState({ isOpen: false })}
       />
 
       <MaritimeCommandPalette

@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { Ship, ShieldCheck, Users, Anchor, ArrowRight, Award, Compass, Globe } from "lucide-react";
-import Link from "next/link";
+import { Ship, ShieldCheck, Users, Award, Compass } from "lucide-react";
 
 interface AboutOceanicOverviewProps {
   onOpenQuote?: () => void;
@@ -25,13 +24,6 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
       accent: "border-amber-500/30 text-amber-700 bg-amber-50",
     },
     {
-      title: "Port Agency & Husbandry Services",
-      desc: "24/7 port dispatch, launch services, vessel husbandry, and spare logistics across international shipping hubs.",
-      icon: Anchor,
-      badge: "PORT DISPATCH",
-      accent: "border-emerald-500/30 text-emerald-700 bg-emerald-50",
-    },
-    {
       title: "Commercial Chartering & Brokering",
       desc: "Strategic freight brokering, cargo matching, and commercial vessel operations across global maritime trade corridors.",
       icon: Compass,
@@ -41,7 +33,8 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
   ];
 
   return (
-    <section id="about" className="w-full bg-[#FAFAF7] text-[#061B2A] py-10 sm:py-14 px-6 sm:px-12 border-b border-slate-200 select-none relative overflow-hidden">
+    <div id="about">
+    <section className="w-full bg-[#FAFAF7] text-[#061B2A] py-10 sm:py-14 px-6 sm:px-12 border-b border-slate-200 select-none relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto space-y-8 relative z-10">
         
         {/* Section Header */}
@@ -84,7 +77,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
         </div>
 
         {/* 4 Pillars Grid (What Oceanic Does) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {pillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
@@ -144,5 +137,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
 
       </div>
     </section>
+
+    </div>
   );
 };

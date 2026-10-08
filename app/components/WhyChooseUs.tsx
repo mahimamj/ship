@@ -266,51 +266,54 @@ export const WhyChooseUs: React.FC = () => {
           </p>
         </div>
 
-        {/* 11 Compact Cards Grid Layout (4-Cols on Desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {REASONS.map((item) => {
-            const Icon = item.icon;
-            const t = item.theme;
-            return (
-              <div
-                key={item.number}
-                className={`group relative p-4 sm:p-5 rounded-2xl bg-white border ${t.border} ${t.hoverBorder} transition-all duration-300 flex flex-col justify-between overflow-hidden hover:shadow-md hover:-translate-y-0.5`}
-              >
-                {/* Top Gradient Accent Line */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${t.topBar}`} />
+        {/* Continuous moving card carousel (same motion as certifications) */}
+        <div className="relative overflow-hidden group/why-scroll">
+          <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-14 bg-gradient-to-r from-[#FAFAF7] to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-14 bg-gradient-to-l from-[#FAFAF7] to-transparent z-20 pointer-events-none" />
 
-                <div className="space-y-2.5 relative z-10 pt-1">
-                  {/* Card Header: Icon & Badge */}
-                  <div className="flex items-center justify-between">
-                    <div className={`p-2 rounded-xl border transition-colors duration-300 ${t.iconBg}`}>
-                      <Icon className="w-4 h-4" />
+          <div className="flex items-stretch overflow-hidden py-1">
+            <div className="flex items-stretch gap-4 animate-marquee-reverse shrink-0">
+              {[...REASONS, ...REASONS].map((item, idx) => {
+                const Icon = item.icon;
+                const t = item.theme;
+                return (
+                  <div
+                    key={`${item.number}-${idx}`}
+                    className={`group relative w-[260px] sm:w-[280px] md:w-[300px] shrink-0 p-4 sm:p-5 rounded-2xl bg-white border ${t.border} ${t.hoverBorder} transition-all duration-300 flex flex-col justify-between overflow-hidden hover:shadow-md hover:-translate-y-0.5`}
+                  >
+                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${t.topBar}`} />
+
+                    <div className="space-y-2.5 relative z-10 pt-1">
+                      <div className="flex items-center justify-between">
+                        <div className={`p-2 rounded-xl border transition-colors duration-300 ${t.iconBg}`}>
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span className={`font-mono text-[9px] font-bold px-2.5 py-0.5 rounded-full border uppercase tracking-wider transition-all duration-300 ${t.badgeBg}`}>
+                          {item.badge}
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3 className={`font-serif text-sm sm:text-base font-bold text-[#0B2545] tracking-tight transition-colors duration-300 mb-1 ${t.hoverText}`}>
+                          {item.title}
+                        </h3>
+                        <p className="font-manrope text-xs text-slate-600 leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
-                    <span className={`font-mono text-[9px] font-bold px-2.5 py-0.5 rounded-full border uppercase tracking-wider transition-all duration-300 ${t.badgeBg}`}>
-                      {item.badge}
-                    </span>
-                  </div>
 
-                  {/* Title & Description */}
-                  <div>
-                    <h3 className={`font-serif text-sm sm:text-base font-bold text-[#0B2545] tracking-tight transition-colors duration-300 mb-1 ${t.hoverText}`}>
-                      {item.title}
-                    </h3>
-                    <p className="font-manrope text-xs text-slate-600 leading-relaxed font-normal">
-                      {item.desc}
-                    </p>
+                    <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between font-mono text-[10px] relative z-10">
+                      <span className={`font-bold ${t.accentText}`}>
+                        POINT {item.number}
+                      </span>
+                      <ArrowRight className={`w-3.5 h-3.5 text-slate-300 ${t.hoverText} group-hover:translate-x-1 transition-all duration-300`} />
+                    </div>
                   </div>
-                </div>
-
-                {/* Card Footer Number */}
-                <div className="pt-2 mt-2 border-t border-slate-100 flex items-center justify-between font-mono text-[10px] relative z-10">
-                  <span className={`font-bold ${t.accentText}`}>
-                    POINT {item.number}
-                  </span>
-                  <ArrowRight className={`w-3.5 h-3.5 text-slate-300 ${t.hoverText} group-hover:translate-x-1 transition-all duration-300`} />
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </div>
+          </div>
         </div>
 
       </div>

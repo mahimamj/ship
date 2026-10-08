@@ -142,10 +142,10 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
           </div>
 
           <Link
-            href="/#presence"
+            href="/about"
             className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
           >
-            GLOBAL
+            ABOUT
           </Link>
 
           <Link
@@ -263,11 +263,11 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
               </div>
 
               <Link
-                href="/#presence"
+                href="/about"
                 onClick={() => setMobileOpen(false)}
                 className="text-sm font-mono font-bold tracking-[0.2em] text-[#061B2A] hover:text-[#0068B7] transition-colors py-2 border-b border-slate-200 flex items-center justify-between"
               >
-                <span>GLOBAL</span>
+                <span>ABOUT</span>
                 <span className="text-xs text-[#0068B7]">→</span>
               </Link>
 

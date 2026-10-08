@@ -31,18 +31,18 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-10 md:py-16 bg-[#F5F5F2] text-[#071A2B] border-b border-slate-200">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-8">
+    <section id="contact" className="py-8 md:py-10 bg-[#F5F5F2] text-[#071A2B] border-b border-slate-200">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-5">
         
         {/* COMBINED HIGH-CONVERSION PARTNERSHIP CTA BANNER */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#071A2B] via-[#0A243C] to-[#0077B6] text-white shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-700">
+        <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#071A2B] via-[#0A243C] to-[#0077B6] text-white shadow-lg relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-4 border border-slate-700">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#0077B6]/20 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="space-y-2 max-w-2xl relative z-10">
-            <span className="px-3 py-1 bg-white/10 text-sky-300 border border-white/20 rounded-full font-mono text-xs font-bold tracking-widest uppercase inline-flex items-center gap-2">
+          <div className="space-y-1.5 max-w-2xl relative z-10">
+            <span className="px-2.5 py-1 bg-white/10 text-sky-300 border border-white/20 rounded-full font-mono text-[10px] font-bold tracking-widest uppercase inline-flex items-center gap-2">
               <Anchor className="w-3.5 h-3.5 text-sky-400" /> MARITIME PARTNERSHIP CTA
             </span>
-            <h3 className="font-syne text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+            <h3 className="font-syne text-xl sm:text-2xl font-black text-white tracking-tight leading-tight">
               READY TO ELEVATE YOUR FLEET OPERATIONS?
             </h3>
             <p className="font-manrope text-xs sm:text-sm text-slate-300 font-normal leading-relaxed">
@@ -53,7 +53,7 @@ export const ContactSection: React.FC = () => {
           <div className="relative z-10 flex flex-col sm:flex-row items-center gap-4 shrink-0 w-full sm:w-auto">
             <a
               href="#contact-form"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#0077B6] hover:bg-white hover:text-[#071A2B] text-white font-mono font-bold text-xs tracking-wider uppercase transition-all shadow-lg text-center flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#0077B6] hover:bg-white hover:text-[#071A2B] text-white font-mono font-bold text-xs tracking-wider uppercase transition-all shadow-lg text-center flex items-center justify-center gap-2"
             >
               <FileText className="w-4 h-4" /> REQUEST PROPOSAL NOW
             </a>
@@ -61,39 +61,39 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* Section Header */}
-        <div id="contact-form" className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-8 gap-6">
+        <div id="contact-form" className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-4 gap-4">
           <div>
-            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-2">
+            <span className="font-mono text-[10px] font-bold text-[#0077B6] tracking-widest uppercase block mb-1">
               // DISPATCH &amp; COMMERCIAL INQUIRIES
             </span>
-            <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
+            <h2 className="font-syne text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
               CONTACT OPERATIONS
             </h2>
           </div>
 
-          <p className="text-sm font-manrope text-slate-600 max-w-md leading-relaxed">
+          <p className="text-xs font-manrope text-slate-600 max-w-md leading-relaxed">
             Reach out directly for technical vessel proposals, RPSL crewing assessments, drydock planning, or port agency dispatch.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
           {/* Left Column: Office Contacts */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
             {/* Dubai HQ Card */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
+            <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
+                <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-sm shrink-0">
                   🇦🇪
                 </div>
                 <div>
-                  <h3 className="font-syne text-lg font-bold text-[#071A2B]">
+                  <h3 className="font-syne text-sm font-bold text-[#071A2B] leading-tight">
                     Oceanic Star Fleet Ship Management LLC
                   </h3>
                   <p className="text-xs font-mono text-[#0077B6] font-semibold">Dubai Operations HQ</p>
                 </div>
               </div>
 
-              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
+              <div className="text-[11px] font-manrope text-slate-600 space-y-2 pt-3 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Office No. 601, 6th Floor, Al Jawharah Building, Bur Dubai, UAE</span>
@@ -110,20 +110,20 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* India HQ Card */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
+            <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
+                <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-sm shrink-0">
                   🇮🇳
                 </div>
                 <div>
-                  <h3 className="font-syne text-lg font-bold text-[#071A2B]">
+                  <h3 className="font-syne text-sm font-bold text-[#071A2B] leading-tight">
                     Oceanic Star Shipping Pvt. Ltd.
                   </h3>
                   <p className="text-xs font-mono text-[#0077B6] font-semibold">Navi Mumbai HQ &amp; Crewing Center</p>
                 </div>
               </div>
 
-              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
+              <div className="text-[11px] font-manrope text-slate-600 space-y-2 pt-3 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Real Tech Park, Office No. 602–603, Sector 30A, Vashi, Navi Mumbai – 400 703, India</span>
@@ -140,20 +140,20 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Sri Lanka Office Card */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
+            <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
+                <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-sm shrink-0">
                   🇱🇰
                 </div>
                 <div>
-                  <h3 className="font-syne text-lg font-bold text-[#071A2B]">
+                  <h3 className="font-syne text-sm font-bold text-[#071A2B] leading-tight">
                     Oceanic Star Lanka Pvt Ltd
                   </h3>
                   <p className="text-xs font-mono text-[#0077B6] font-semibold">Colombo Operations &amp; Husbandry</p>
                 </div>
               </div>
 
-              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
+              <div className="text-[11px] font-manrope text-slate-600 space-y-2 pt-3 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Maritime House, 2nd Floor, Janadhipathi Mawatha, Colombo 01, Sri Lanka</span>
@@ -170,20 +170,20 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* Turkey Office Card */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-md space-y-4">
+            <div className="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm space-y-3">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-xl">
+                <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0077B6] flex items-center justify-center font-bold text-sm shrink-0">
                   🇹🇷
                 </div>
                 <div>
-                  <h3 className="font-syne text-lg font-bold text-[#071A2B]">
+                  <h3 className="font-syne text-sm font-bold text-[#071A2B] leading-tight">
                     Oceanic Star Shipping Turkey
                   </h3>
                   <p className="text-xs font-mono text-[#0077B6] font-semibold">Istanbul Branch Office</p>
                 </div>
               </div>
 
-              <div className="text-xs font-manrope text-slate-600 space-y-2.5 pt-4 border-t border-slate-100">
+              <div className="text-[11px] font-manrope text-slate-600 space-y-2 pt-3 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-[#0077B6] shrink-0 mt-0.5" />
                   <span>Mimar Sinan Mah. Bosna Cad. Çolpan Sok. No.2, Uzunlar Apt. A Blok D.4, 34782 Çekmeköy - İstanbul / TURKEY</span>
@@ -199,33 +199,13 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Direct WhatsApp Quick Contact */}
-            <a
-              href="https://wa.me/919004390041?text=Hello%20Oceanic%20Star%20Fleet%2C%20I%20would%20like%20to%20inquire%20about%20your%20maritime%20services."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-50 border border-emerald-200 rounded-3xl p-6 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100 shadow-sm"
-            >
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 rounded-2xl bg-emerald-100 flex items-center justify-center text-emerald-700">
-                  <MessageSquare className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold font-syne text-emerald-950">Direct WhatsApp Operations</h4>
-                  <p className="text-xs text-emerald-700 font-mono">Dispatch Hotline (+91 90043 90041)</p>
-                </div>
-              </div>
-              <span className="text-xs font-mono font-bold px-4 py-2 bg-emerald-600 text-white rounded-full">
-                CHAT NOW
-              </span>
-            </a>
           </div>
 
           {/* Right Column: Commercial Proposal Form */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-xl space-y-6">
-              <div className="border-b border-slate-100 pb-4">
-                <h3 className="font-syne text-2xl font-extrabold text-[#071A2B]">COMMERCIAL PROPOSAL REQUEST</h3>
+            <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-lg space-y-4">
+              <div className="border-b border-slate-100 pb-3">
+                <h3 className="font-syne text-xl font-extrabold text-[#071A2B]">COMMERCIAL PROPOSAL REQUEST</h3>
                 <p className="text-xs font-manrope text-slate-500 mt-1">Submit your specifications for a response within 2 business hours.</p>
               </div>
 
@@ -250,15 +230,15 @@ export const ContactSection: React.FC = () => {
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs font-manrope">
-                  <div className="grid sm:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 text-xs font-manrope">
+                  <div className="grid sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[#071A2B] font-semibold mb-1">Full Name *</label>
                       <input
                         type="text"
                         {...register("fullName", { required: "Full Name is required" })}
                         placeholder="Capt. John Doe"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                       {errors.fullName && <span className="text-rose-600 text-[10px]">{errors.fullName.message}</span>}
                     </div>
@@ -272,20 +252,20 @@ export const ContactSection: React.FC = () => {
                           pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
                         })}
                         placeholder="j.doe@shipping-co.com"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                       {errors.email && <span className="text-rose-600 text-[10px]">{errors.email.message}</span>}
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[#071A2B] font-semibold mb-1">Phone / Mobile *</label>
                       <input
                         type="tel"
                         {...register("phone", { required: "Phone number is required" })}
                         placeholder="+971 50 123 4567"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                       {errors.phone && <span className="text-rose-600 text-[10px]">{errors.phone.message}</span>}
                     </div>
@@ -296,17 +276,17 @@ export const ContactSection: React.FC = () => {
                         type="text"
                         {...register("companyName")}
                         placeholder="Global Maritime Ltd"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[#071A2B] font-semibold mb-1">Service Required *</label>
                       <select
                         {...register("serviceCategory", { required: "Please select a service" })}
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       >
                         <option value="">Select Service Category</option>
                         <option value="Crew Management">Crew Management</option>
@@ -322,7 +302,7 @@ export const ContactSection: React.FC = () => {
                       <label className="block text-[#071A2B] font-semibold mb-1">Preferred Office Entity</label>
                       <select
                         {...register("entityPreference")}
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
+                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#0077B6]"
                       >
                         <option value="Dubai LLC">Dubai LLC (Oceanic Star Fleet)</option>
                         <option value="India Pvt Ltd">India Pvt Ltd (Oceanic Star Shipping)</option>
@@ -334,10 +314,10 @@ export const ContactSection: React.FC = () => {
                   <div>
                     <label className="block text-[#071A2B] font-semibold mb-1">Detailed Message / Specifications *</label>
                     <textarea
-                      rows={4}
+                      rows={3}
                       {...register("message", { required: "Please describe your request" })}
                       placeholder="Specify vessel type, DWT, port call dates, or crew rank requirements..."
-                      className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-4 py-3 text-[#071A2B] focus:outline-none focus:border-[#0077B6] resize-none"
+                      className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#0077B6] resize-none"
                     ></textarea>
                     {errors.message && <span className="text-rose-600 text-[10px]">{errors.message.message}</span>}
                   </div>
@@ -345,7 +325,7 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 rounded-xl font-mono font-bold text-xs bg-[#0077B6] hover:bg-[#071A2B] text-white transition flex items-center justify-center space-x-2 shadow-lg"
+                    className="w-full py-3 rounded-xl font-mono font-bold text-xs bg-[#0077B6] hover:bg-[#071A2B] text-white transition flex items-center justify-center space-x-2 shadow-lg"
                   >
                     {isSubmitting ? (
                       <span>Sending Request...</span>
@@ -359,6 +339,27 @@ export const ContactSection: React.FC = () => {
                 </form>
               )}
             </div>
+
+            {/* Direct WhatsApp Quick Contact */}
+            <a
+              href="https://wa.me/919004390041?text=Hello%20Oceanic%20Star%20Fleet%2C%20I%20would%20like%20to%20inquire%20about%20your%20maritime%20services."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100 shadow-sm"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                  <MessageSquare className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold font-syne text-emerald-950">Direct WhatsApp Operations</h4>
+                  <p className="text-xs text-emerald-700 font-mono">Dispatch Hotline (+91 90043 90041)</p>
+                </div>
+              </div>
+              <span className="text-[10px] font-mono font-bold px-3 py-1.5 bg-emerald-600 text-white rounded-full">
+                CHAT NOW
+              </span>
+            </a>
           </div>
         </div>
       </div>
