@@ -66,11 +66,14 @@ const GENERATE_SHIP_HULL_POINTS = (): { x: number; y: number }[] => {
 const GRID_POINTS = GENERATE_GRID_POINTS();
 const HULL_POINTS = GENERATE_SHIP_HULL_POINTS();
 
-export const InteractiveFleetExplosion: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+interface InteractiveFleetExplosionProps {
+  embedded?: boolean;
+}
+
+export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps> = ({ embedded = false }) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
   const vesselContainerRef = useRef<HTMLDivElement>(null);
 
   // Initial SSR state is 59 so crawlers see "59 VESSELS" in static HTML
@@ -85,8 +88,8 @@ export const InteractiveFleetExplosion: React.FC = () => {
 
       // 1. Entrance animation on viewport scroll
       gsap.fromTo(
-        [headerRef.current, counterRef.current, statsRef.current],
-        { y: 40, opacity: 0, scale: 0.95 },
+        [headerRef.current, counterRef.current],
+        { y: 30, opacity: 0, scale: 0.96 },
         {
           y: 0,
           opacity: 1,
@@ -96,7 +99,7 @@ export const InteractiveFleetExplosion: React.FC = () => {
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: "top 80%",
+            start: "top 85%",
           },
         }
       );
@@ -175,9 +178,82 @@ export const InteractiveFleetExplosion: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  if (embedded) {
+    return (
+      <div
+        ref={sectionRef}
+        id="fleet-matrix-explosion"
+        className="relative w-full bg-[#061B2A] text-white p-5 sm:p-7 rounded-3xl overflow-hidden font-sans select-none border border-[#00D9E8]/30 shadow-2xl flex flex-col justify-between"
+      >
+        {/* Background Radar Mesh & Signature Cyan Glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(#00D9E8_1px,transparent_1px)] [background-size:28px_28px] opacity-20 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-[#00D9E8]/10 rounded-full blur-[80px] pointer-events-none" />
+
+        {/* Top Header Bar */}
+        <div ref={headerRef} className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 relative z-10">
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 bg-[#00D9E8]/15 text-[#00D9E8] border border-[#00D9E8]/40 rounded-full font-mono text-[10px] font-bold tracking-widest uppercase">
+              FLEET // 01
+            </span>
+            <span className="text-[11px] text-slate-300 font-mono tracking-wider font-bold">
+              MANAGED FLEET MATRIX
+            </span>
+          </div>
+
+          <div className="flex items-center gap-1.5 bg-[#082F49]/80 border border-[#00D9E8]/30 px-2.5 py-1 rounded-xl text-[10px] font-mono shadow-lg backdrop-blur-md">
+            <Activity className="w-3 h-3 text-[#00D9E8] animate-spin" />
+            <span className="text-[#00D9E8] font-bold">AUTO LOOP</span>
+          </div>
+        </div>
+
+        {/* Center Canvas Stage: Number Counter & Morphing Vessels */}
+        <div className="flex flex-col items-center justify-center text-center py-4 my-auto relative z-10 space-y-3">
+          {/* Big Number Reveal Counter */}
+          <div ref={counterRef} className="relative inline-flex flex-col items-center">
+            <div className="flex items-baseline gap-2">
+              <span className="font-syne text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-sky-100 to-[#00D9E8] tracking-tight leading-none min-w-[70px]">
+                {counterVal}
+              </span>
+              <span className="font-syne text-xl sm:text-2xl font-black text-[#00D9E8] tracking-wider uppercase">
+                VESSELS
+              </span>
+            </div>
+
+            <div className="h-0.5 w-20 bg-gradient-to-r from-transparent via-[#00D9E8] to-transparent my-1" />
+            <span className="font-mono text-[9px] sm:text-[10px] text-slate-300 font-bold tracking-[0.2em] uppercase">
+              MANAGED FLEET IN OPERATION
+            </span>
+          </div>
+
+          {/* 59 VESSEL PARTICLE MORPH CONTAINER STAGE */}
+          <div className="relative w-full h-[200px] sm:h-[240px] flex items-center justify-center overflow-hidden">
+            <div
+              ref={vesselContainerRef}
+              className="relative w-full h-full flex items-center justify-center transform scale-[0.52] sm:scale-[0.62] origin-center transition-transform"
+            >
+              {Array.from({ length: 59 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="vessel-particle absolute w-6 h-6 rounded-lg bg-[#082F49] border border-[#00D9E8]/60 flex items-center justify-center shadow-[0_0_10px_rgba(0,217,232,0.3)] text-[#00D9E8]"
+                  style={{
+                    left: "50%",
+                    top: "50%",
+                    transform: "translate(-50%, -50%)",
+                  }}
+                >
+                  <Ship className="w-3 h-3" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <section
-      ref={sectionRef}
+      ref={sectionRef as any}
       id="fleet-matrix-explosion"
       className="relative w-full bg-[#061B2A] text-white py-8 md:py-12 px-4 sm:px-6 md:px-12 overflow-hidden font-sans select-none border-t border-b border-[#00D9E8]/20"
     >
@@ -243,27 +319,6 @@ export const InteractiveFleetExplosion: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-
-        {/* Bottom Banner Stats */}
-        <div ref={statsRef} className="border-t border-white/10 pt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-          <div className="space-y-0.5">
-            <span className="font-syne text-xl sm:text-2xl font-extrabold text-[#00D9E8]">29</span>
-            <p className="font-mono text-[10px] sm:text-xs text-slate-200 font-bold tracking-wider">SHIPS ON ORDER</p>
-            <span className="font-mono text-[9px] text-slate-400 font-bold block">DUAL FUEL &amp; ECO EXPANSION</span>
-          </div>
-
-          <div className="space-y-0.5 sm:border-x border-white/10 px-3">
-            <span className="font-syne text-xl sm:text-2xl font-extrabold text-[#00D9E8]">04</span>
-            <p className="font-mono text-[10px] sm:text-xs text-slate-200 font-bold tracking-wider">GLOBAL HUBS</p>
-            <span className="font-mono text-[9px] text-slate-400 font-bold block">DUBAI &bull; MUMBAI &bull; COLOMBO &bull; ISTANBUL</span>
-          </div>
-
-          <div className="space-y-0.5">
-            <span className="font-syne text-xl sm:text-2xl font-extrabold text-[#00D9E8]">24+</span>
-            <p className="font-mono text-[10px] sm:text-xs text-slate-200 font-bold tracking-wider">YEARS OF EXCELLENCE</p>
-            <span className="font-mono text-[9px] text-slate-400 font-bold block">ESTABLISHED 2002</span>
           </div>
         </div>
       </div>

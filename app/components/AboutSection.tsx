@@ -137,7 +137,7 @@ export const AboutSection: React.FC = () => {
             <div className="space-y-2 pt-2 text-sm text-slate-200">
               <div className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                <span>DG Shipping Approved RPSL License (RPSL-MUM-245)</span>
+                <span>DG Shipping Approved RPSL License (RPSL-MUM-506)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />

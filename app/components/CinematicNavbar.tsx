@@ -46,7 +46,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
           <img
             src="/images/logo_nobg.png"
             alt="Oceanic Star Shipping"
-            className="h-9 w-auto object-contain"
+            className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
           <span className="hidden sm:block font-syne text-sm font-black tracking-[0.15em] text-[#061B2A]">
             OCEANIC STAR <span className="text-[#0068B7]">SHIPPING</span>

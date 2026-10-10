@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
               <img
                 src="/images/logo_nobg.png"
                 alt="Oceanic Star Shipping Logo"
-                className="h-10 w-auto object-contain"
+                className="h-12 sm:h-14 w-auto object-contain"
               />
               <span className="font-syne text-lg font-extrabold text-[#071A2B] tracking-tight">
                 OCEANIC STAR <span className="text-[#176B87]">SHIPPING</span>

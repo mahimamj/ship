@@ -5,6 +5,8 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Radar, X, Ship, FileText } from "lucide-react";
 import { initGSAP } from "@/lib/gsapHelper";
 
+import { InteractiveFleetExplosion } from "./InteractiveFleetExplosion";
+
 interface FleetVisualizationSectionProps {
   onOpenQuote?: () => void;
 }
@@ -146,9 +148,10 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
   return (
     <section id="vessels" ref={sectionRef} className="py-10 md:py-16 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] relative">
       <div id="fleet" />
+      <div id="fleet-matrix-explosion" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-5 mb-6 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[rgba(7,26,43,0.12)] pb-5 mb-8 gap-6">
           <div>
             <span className="label-mono text-[#176B87] mb-1.5 block font-semibold">
               // FLEET OVERVIEW &amp; VESSEL MATRIX
@@ -185,54 +188,62 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
           </div>
         </div>
 
-        {/* Horizontal Animated Fleet Bars with Automatic Count-Up & Progress Fill on Scroll */}
-        <div className="fleet-cards-container space-y-6 max-w-5xl">
-          {fleetData.map((item, index) => {
-            return (
-              <div
-                key={item.type}
-                onClick={() => setSelectedCategory(item.type)}
-                className="fleet-card group p-5 rounded-2xl bg-white border border-[rgba(7,26,43,0.12)] hover:border-[#176B87] shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden space-y-3"
-              >
-                {/* Glowing top accent line on hover */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#176B87] via-[#00D26A] to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        {/* 2-Column Split: Left = Fleet Category Cards, Right = Interactive Particle Fleet Matrix */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* LEFT: Fleet Category Cards */}
+          <div className="lg:col-span-7 fleet-cards-container space-y-4">
+            {fleetData.map((item, index) => {
+              return (
+                <div
+                  key={item.type}
+                  onClick={() => setSelectedCategory(item.type)}
+                  className="fleet-card group p-4 sm:p-5 rounded-2xl bg-white border border-[rgba(7,26,43,0.12)] hover:border-[#176B87] shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden space-y-3"
+                >
+                  {/* Glowing top accent line on hover */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#176B87] via-[#00D26A] to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#071A2B]/5 border border-[rgba(7,26,43,0.12)] flex items-center justify-center text-[#176B87] group-hover:bg-[#071A2B] group-hover:text-white transition-colors">
-                      <Ship className="w-5 h-5" />
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-[#071A2B]/5 border border-[rgba(7,26,43,0.12)] flex items-center justify-center text-[#176B87] group-hover:bg-[#071A2B] group-hover:text-white transition-colors">
+                        <Ship className="w-5 h-5" />
+                      </div>
+                      <div>
+                        <span className="font-syne text-base sm:text-lg font-bold tracking-tight text-[#071A2B] group-hover:text-[#176B87] transition-colors block">
+                          {item.type}
+                        </span>
+                        <span className="text-xs text-[#667783] font-manrope hidden sm:block">
+                          {item.desc}
+                        </span>
+                      </div>
                     </div>
-                    <div>
-                      <span className="font-syne text-lg sm:text-xl font-bold tracking-tight text-[#071A2B] group-hover:text-[#176B87] transition-colors block">
-                        {item.type}
-                      </span>
-                      <span className="text-xs text-[#667783] font-manrope hidden sm:block">
-                        {item.desc}
+
+                    {/* Animated Live Count Up Number */}
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-lg sm:text-xl font-extrabold text-[#176B87]">
+                        <CountUpNumber end={item.count} /> <span className="text-xs text-[#667783] font-normal uppercase">UNITS</span>
                       </span>
                     </div>
                   </div>
 
-                  {/* Animated Live Count Up Number */}
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xl sm:text-2xl font-extrabold text-[#176B87]">
-                      <CountUpNumber end={item.count} /> <span className="text-xs text-[#667783] font-normal uppercase">UNITS</span>
-                    </span>
+                  {/* Automatic Growing Progress Bar on Scroll */}
+                  <div className="w-full h-2 bg-[#F5F5F2] rounded-full overflow-hidden border border-[rgba(7,26,43,0.08)]">
+                    <motion.div
+                      initial={{ width: "0%" }}
+                      whileInView={{ width: `${item.percentage}%` }}
+                      viewport={{ amount: 0.2 }}
+                      transition={{ duration: 1.5, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                      className="h-full bg-gradient-to-r from-[#071A2B] via-[#176B87] to-[#00D26A] rounded-full"
+                    />
                   </div>
                 </div>
+              );
+            })}
+          </div>
 
-                {/* Automatic Growing Progress Bar on Scroll */}
-                <div className="w-full h-2.5 bg-[#F5F5F2] rounded-full overflow-hidden border border-[rgba(7,26,43,0.08)]">
-                  <motion.div
-                    initial={{ width: "0%" }}
-                    whileInView={{ width: `${item.percentage}%` }}
-                    viewport={{ amount: 0.2 }}
-                    transition={{ duration: 1.5, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="h-full bg-gradient-to-r from-[#071A2B] via-[#176B87] to-[#00D26A] rounded-full"
-                  />
-                </div>
-              </div>
-            );
-          })}
+          {/* RIGHT: Interactive 59 Vessels Particle Matrix Console */}
+          <div className="lg:col-span-5 lg:sticky lg:top-24">
+            <InteractiveFleetExplosion embedded />
+          </div>
         </div>
 
         {/* Live Interactive Fleet Radar Inspector Drawer Modal */}

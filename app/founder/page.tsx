@@ -96,11 +96,24 @@ export default function FounderPage() {
                   </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-4 font-manrope text-xs text-slate-300">
-                  <p className="flex items-center space-x-2">
-                    <Mail className="w-4 h-4 text-[#00D9E8] shrink-0" />
-                    <a href="mailto:ceo@oceanicstarfleet.com" className="hover:text-white transition font-bold">ceo@oceanicstarfleet.com</a>
-                  </p>
+                {/* Executive Email Direct Callout */}
+                <div className="pt-2">
+                  <a
+                    href="mailto:ceo@oceanicstarfleet.com"
+                    className="group block p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#00D9E8]/15 via-[#0068B7]/20 to-[#082F49]/50 border border-[#00D9E8]/40 hover:border-[#00D9E8] shadow-[0_0_20px_rgba(0,217,232,0.15)] hover:shadow-[0_0_30px_rgba(0,217,232,0.35)] transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#00D9E8] font-bold flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-[#00D9E8]" /> DIRECT EXECUTIVE DESK
+                      </span>
+                      <span className="text-[10px] font-mono text-sky-200/70 group-hover:text-white transition-colors">
+                        Click to Mail ↗
+                      </span>
+                    </div>
+                    <span className="font-syne text-lg sm:text-xl md:text-2xl font-black text-white group-hover:text-[#00D9E8] transition-colors block break-all tracking-tight">
+                      ceo@oceanicstarfleet.com
+                    </span>
+                  </a>
                 </div>
 
                 {/* Personal Channels Callout */}
@@ -205,7 +218,7 @@ export default function FounderPage() {
                   </div>
                   <div>
                     <h4 className="font-syne text-sm font-bold text-[#061B2A]">RPSL Approved Manning</h4>
-                    <p className="text-xs text-slate-600 font-manrope mt-1">Full DG Shipping compliance (License: RPSL-MUM-245) for merchant marine crew deployment.</p>
+                    <p className="text-xs text-slate-600 font-manrope mt-1">Full DG Shipping compliance (License: RPSL-MUM-506) for merchant marine crew deployment.</p>
                   </div>
                 </div>
 

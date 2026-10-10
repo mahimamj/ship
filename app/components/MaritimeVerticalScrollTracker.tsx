@@ -19,9 +19,8 @@ const WAYPOINTS: Waypoint[] = [
   { id: "why-choose-us", label: "ADVANTAGES", code: "07" },
   { id: "presence", label: "GLOBAL NETWORK", code: "08" },
   { id: "fleet-matrix-explosion", label: "FLEET MATRIX", code: "09" },
-  { id: "fleet", label: "FLEET SPECS", code: "10" },
-  { id: "certifications", label: "CERTIFICATIONS", code: "11" },
-  { id: "contact", label: "CONTACT DOCK", code: "12" },
+  { id: "certifications", label: "CERTIFICATIONS", code: "10" },
+  { id: "contact", label: "CONTACT DOCK", code: "11" },
 ];
 
 export const MaritimeVerticalScrollTracker: React.FC = () => {

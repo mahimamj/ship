@@ -71,7 +71,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
           </div>
 
           <div className="space-y-1 text-center md:text-left md:pl-4">
-            <span className="font-syne text-2xl sm:text-3xl font-black text-sky-400">RPSL-506</span>
+            <span className="font-syne text-xl sm:text-2xl lg:text-3xl font-black text-sky-400 whitespace-nowrap">RPSL MUM-506</span>
             <p className="font-mono text-[10px] text-slate-300 uppercase tracking-wider">DG Shipping &amp; ISO 9001</p>
           </div>
         </div>

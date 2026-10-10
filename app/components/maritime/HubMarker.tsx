@@ -72,8 +72,13 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
         >
           ● {hub.city}
         </span>
-        <span className="font-mono text-[8px] tracking-widest text-[#687384] uppercase font-semibold mt-0.5">
-          {hub.country}
+        <span className="font-mono text-[8px] tracking-widest text-[#687384] uppercase font-semibold mt-0.5 flex items-center gap-1">
+          <span>{hub.country}</span>
+          {hub.isUpcoming && (
+            <span className="text-amber-800 bg-amber-100 px-1 rounded font-bold text-[7px]">
+              SOON
+            </span>
+          )}
         </span>
       </div>
 

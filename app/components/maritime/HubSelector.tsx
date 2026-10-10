@@ -31,6 +31,15 @@ export const HubSelector: React.FC<HubSelectorProps> = ({ activeHubId, onSelectH
                 }`}
               />
               <span>{hub.pillLabel}</span>
+              {hub.isUpcoming && (
+                <span className={`text-[9px] font-mono px-2 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                  isActive
+                    ? "bg-[#00D9FF] text-[#071A2B]"
+                    : "bg-amber-100 text-amber-800 border border-amber-300"
+                }`}>
+                  SOON
+                </span>
+              )}
             </button>
           );
         })}

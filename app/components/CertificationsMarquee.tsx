@@ -10,7 +10,7 @@ export const CertificationsMarquee: React.FC = () => {
     {
       id: "dg-shipping",
       name: "DG SHIPPING (INDIA)",
-      desc: "Directorate General of Shipping approved RPSL Manning License: RPSL-MUM-245.",
+      desc: "Directorate General of Shipping approved RPSL Manning License: RPSL-MUM-506.",
     },
     {
       id: "iso-9001",

@@ -13,7 +13,6 @@ import { InteractiveVerticalCapabilities } from "./components/InteractiveVertica
 import { WhyChooseUs } from "./components/WhyChooseUs";
 import { GlobalPresenceMap } from "./components/GlobalPresenceMap";
 import { MissionVisionCutoutSection } from "./components/MissionVisionCutoutSection";
-import { InteractiveFleetExplosion } from "./components/InteractiveFleetExplosion";
 import { FleetVisualizationSection } from "./components/FleetVisualizationSection";
 import { CertificationsMarquee } from "./components/CertificationsMarquee";
 import { CertificationsSection } from "./components/CertificationsSection";
@@ -75,10 +74,7 @@ export default function Home() {
       {/* 6. GLOBAL NETWORK MAP */}
       <GlobalPresenceMap />
 
-      {/* 💥 RESTORED 59 VESSELS PARTICLE MORPHING FLEET MATRIX */}
-      <InteractiveFleetExplosion />
-
-      {/* 9. FLEET VISUALIZATION SPECS */}
+      {/* 9. UNIFIED FLEET MATRIX & VISUALIZATION (LEFT: CATEGORIES, RIGHT: 59 VESSELS INTERACTIVE MATRIX) */}
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
       {/* 11. COMPACT CERTIFICATIONS */}
