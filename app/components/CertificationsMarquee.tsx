@@ -44,7 +44,7 @@ export const CertificationsMarquee: React.FC = () => {
   return (
     <section className="py-2.5 sm:py-3 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 mb-1">
-        <span className="label-mono text-[#176B87] block font-semibold text-[10px]">
+        <span className="label-mono text-[#01666A] block font-semibold text-[10px]">
           // ACCREDITATIONS & CLASS CERTIFICATIONS
         </span>
       </div>
@@ -57,7 +57,7 @@ export const CertificationsMarquee: React.FC = () => {
               key={idx}
               onMouseEnter={() => setHoveredCert(cert.id)}
               onMouseLeave={() => setHoveredCert(null)}
-              className="font-syne font-extrabold text-xs sm:text-sm md:text-base text-[#071A2B] hover:text-[#176B87] transition-colors cursor-pointer px-2 tracking-wide"
+              className="font-syne font-extrabold text-xs sm:text-sm md:text-base text-[#071A2B] hover:text-[#007CD6] transition-colors cursor-pointer px-2 tracking-wide"
               data-cursor
               data-cursor-text="INFO"
             >

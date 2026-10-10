@@ -38,7 +38,7 @@ export const CookieConsentBanner: React.FC = () => {
         >
           <div className="p-6 rounded-3xl bg-[#061B2A]/95 backdrop-blur-xl border border-[#00D9E8]/30 shadow-2xl text-white space-y-4 relative overflow-hidden">
             {/* Background Radial Ambient Glow */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#0077B6]/20 rounded-full blur-2xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#007CD6]/20 rounded-full blur-2xl pointer-events-none" />
 
             {/* Banner Header */}
             <div className="flex items-start justify-between gap-3 relative z-10">

@@ -88,8 +88,8 @@ export const CommandHubs: React.FC<CommandHubsProps> = ({ onOpenQuote }) => {
         
         {/* Header Section */}
         <div ref={headerRef} className="space-y-2">
-          <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#0077FF] tracking-widest uppercase">
-            <span className="w-2 h-2 rounded-full bg-[#00D9FF] animate-ping" />
+          <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#007CD6] tracking-widest uppercase">
+            <span className="w-2 h-2 rounded-full bg-[#007CD6] animate-ping" />
             <span>// TOTAL GLOBAL COMMAND HUBS</span>
           </div>
 

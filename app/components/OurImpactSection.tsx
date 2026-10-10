@@ -10,7 +10,7 @@ export const OurImpactSection: React.FC = () => {
         
         {/* Section Title */}
         <div className="border-b border-slate-300 pb-4">
-          <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-1">
+          <span className="font-mono text-xs font-bold text-[#01666A] tracking-widest uppercase block mb-1">
             // SUSTAINABILITY &amp; SOCIAL RESPONSIBILITY
           </span>
           <h2 className="font-syne text-4xl sm:text-6xl font-extrabold text-[#071A2B] tracking-tight">
@@ -27,7 +27,7 @@ export const OurImpactSection: React.FC = () => {
               {/* Brand Banner Bar */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div className="flex items-center space-x-2">
-                  <Anchor className="w-5 h-5 text-[#0077B6]" />
+                  <Anchor className="w-5 h-5 text-[#007CD6]" />
                   <span className="font-syne text-sm font-extrabold tracking-wider text-[#071A2B]">
                     OCEANIC STAR
                   </span>
@@ -47,7 +47,7 @@ export const OurImpactSection: React.FC = () => {
               </div>
 
               {/* Bottom Quote Banner */}
-              <div className="p-3.5 bg-sky-50 rounded-xl border border-sky-100 flex items-center justify-between text-xs font-mono font-bold text-[#0077B6]">
+              <div className="p-3.5 bg-sky-50 rounded-xl border border-sky-100 flex items-center justify-between text-xs font-mono font-bold text-[#007CD6]">
                 <span>EQUAL OPPORTUNITY AT SEA</span>
                 <span>MLC 2006 COMPLIANT</span>
               </div>
@@ -58,7 +58,7 @@ export const OurImpactSection: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             <h3 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A2B] leading-tight tracking-tight">
               Our inspiring women <br />
-              <span className="text-[#0077B6]">seafarers</span>
+              <span className="text-[#007CD6]">seafarers</span>
             </h3>
 
             {/* Simple & Catchy Line */}

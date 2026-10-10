@@ -11,15 +11,15 @@ interface HubInfoCardProps {
 
 export const HubInfoCard: React.FC<HubInfoCardProps> = ({ hub, onExplore }) => {
   return (
-    <div className="w-full bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#8B94A3]/20 rounded-xl p-4 sm:p-5 shadow-md flex flex-col justify-between space-y-3 text-[#071A2B] font-sans relative overflow-hidden transition-all duration-300 hover:border-[#00D9FF]/40">
+    <div className="w-full bg-[#FFFFFF]/95 backdrop-blur-xl border border-[#8B94A3]/20 rounded-xl p-4 sm:p-5 shadow-md flex flex-col justify-between space-y-3 text-[#071A2B] font-sans relative overflow-hidden transition-all duration-300 hover:border-[#007CD6]/40">
       {/* Top Accent Stripe */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#071A2B] via-[#00D9FF] to-[#0077FF]" />
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#01666A] via-[#007CD6] to-[#061B2A]" />
 
       <div className="space-y-2.5">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-2 gap-2">
-          <span className="font-mono text-[11px] font-bold text-[#0077FF] tracking-widest uppercase flex items-center gap-1.5">
-            <Compass className="w-3.5 h-3.5 text-[#00D9FF]" />
+          <span className="font-mono text-[11px] font-bold text-[#007CD6] tracking-widest uppercase flex items-center gap-1.5">
+            <Compass className="w-3.5 h-3.5 text-[#01666A]" />
             {hub.pillLabel}
           </span>
           <span
@@ -68,10 +68,10 @@ export const HubInfoCard: React.FC<HubInfoCardProps> = ({ hub, onExplore }) => {
       <div className="pt-2 border-t border-slate-100">
         <button
           onClick={() => onExplore?.(hub.id)}
-          className="w-full py-2 px-3 bg-[#071A2B] text-white rounded-lg font-mono text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-1.5 hover:bg-[#16324A] hover:shadow transition-all group cursor-pointer"
+          className="w-full py-2 px-3 bg-[#061B2A] text-white rounded-lg font-mono text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-1.5 hover:bg-[#007CD6] hover:shadow transition-all group cursor-pointer"
         >
           <span>EXPLORE HUB</span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#00D9FF] group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-3.5 h-3.5 text-[#007CD6] group-hover:text-white group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
     </div>

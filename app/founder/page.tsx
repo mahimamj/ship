@@ -28,7 +28,7 @@ export default function FounderPage() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased selection:bg-[#0077B6] selection:text-white">
+    <div className="min-h-screen bg-[#F5F5F2] text-[#071A2B] font-sans antialiased selection:bg-[#007CD6] selection:text-white">
       <CinematicNavbar
         onOpenQuote={() => setIsQuoteOpen(true)}
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
@@ -37,7 +37,7 @@ export default function FounderPage() {
       {/* 1. FOUNDER HERO SECTION */}
       <section className="relative pt-24 pb-12 md:pt-28 md:pb-14 bg-[#061B2A] text-white overflow-hidden">
         {/* Ambient Glow Orbs */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0077B6]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#007CD6]/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#C59B27]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
@@ -45,7 +45,7 @@ export default function FounderPage() {
             
             {/* Left Col: Text & Profile Intro */}
             <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00D9E8]/10 text-[#00D9E8] border border-[#00D9E8]/30 font-mono text-xs font-bold uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#007CD6]/10 text-[#007CD6] border border-[#007CD6]/30 font-mono text-xs font-bold uppercase tracking-widest">
                 <User className="w-3.5 h-3.5" /> FOUNDER &amp; MANAGING DIRECTOR
               </div>
 
@@ -67,7 +67,7 @@ export default function FounderPage() {
                   <Award className="w-4 h-4 text-[#C59B27]" /> 20+ Years Maritime Leadership
                 </span>
                 <span className="px-3.5 py-1.5 rounded-xl bg-white/10 text-white border border-white/15 font-mono text-xs font-semibold flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-[#00D9E8]" /> 5 Global Command Hubs
+                  <Building2 className="w-4 h-4 text-[#007CD6]" /> 6 Global Command Hubs
                 </span>
                 <span className="px-3.5 py-1.5 rounded-xl bg-white/10 text-white border border-white/15 font-mono text-xs font-semibold flex items-center gap-2">
                   <Anchor className="w-4 h-4 text-sky-400" /> 59+ Vessels Managed
@@ -91,7 +91,7 @@ export default function FounderPage() {
                   
                   <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#061B2A]/90 backdrop-blur-md border border-white/15 space-y-1">
                     <h3 className="font-syne text-lg sm:text-xl font-extrabold text-white">Ram B. Keshari</h3>
-                    <p className="font-mono text-xs text-[#00D9E8] font-semibold">Founder &amp; Managing Director</p>
+                    <p className="font-mono text-xs text-[#007CD6] font-semibold">Founder &amp; Managing Director</p>
                     <p className="font-mono text-[10px] text-slate-300">Oceanic Star Shipping Pvt. Ltd.</p>
                   </div>
                 </div>
@@ -100,17 +100,17 @@ export default function FounderPage() {
                 <div className="pt-2">
                   <a
                     href="mailto:ceo@oceanicstarfleet.com"
-                    className="group block p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#00D9E8]/15 via-[#0068B7]/20 to-[#082F49]/50 border border-[#00D9E8]/40 hover:border-[#00D9E8] shadow-[0_0_20px_rgba(0,217,232,0.15)] hover:shadow-[0_0_30px_rgba(0,217,232,0.35)] transition-all duration-300 hover:scale-[1.02]"
+                    className="group block p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#01666A]/20 via-[#007CD6]/20 to-[#061B2A]/60 border border-[#007CD6]/40 hover:border-[#007CD6] shadow-[0_0_20px_rgba(0,124,214,0.15)] hover:shadow-[0_0_30px_rgba(0,124,214,0.35)] transition-all duration-300 hover:scale-[1.02]"
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#00D9E8] font-bold flex items-center gap-2">
-                        <Mail className="w-4 h-4 text-[#00D9E8]" /> DIRECT EXECUTIVE DESK
+                      <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#007CD6] font-bold flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-[#007CD6]" /> DIRECT EXECUTIVE DESK
                       </span>
                       <span className="text-[10px] font-mono text-sky-200/70 group-hover:text-white transition-colors">
                         Click to Mail ↗
                       </span>
                     </div>
-                    <span className="font-syne text-lg sm:text-xl md:text-2xl font-black text-white group-hover:text-[#00D9E8] transition-colors block break-all tracking-tight">
+                    <span className="font-syne text-lg sm:text-xl md:text-2xl font-black text-white group-hover:text-[#007CD6] transition-colors block break-all tracking-tight">
                       ceo@oceanicstarfleet.com
                     </span>
                   </a>
@@ -165,7 +165,7 @@ export default function FounderPage() {
       <section className="py-10 md:py-14 px-6 md:px-12 bg-white border-b border-slate-200">
         <div className="max-w-[1200px] mx-auto space-y-8">
           
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#061B2A] via-[#0A243C] to-[#0077B6] text-white shadow-lg relative overflow-hidden space-y-4">
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[#061B2A] via-[#0A243C] to-[#007CD6] text-white shadow-lg relative overflow-hidden space-y-4">
             <Quote className="w-10 h-10 text-[#C59B27]/40 pointer-events-none" />
 
             <blockquote className="font-serif text-lg sm:text-xl md:text-2xl font-bold leading-relaxed tracking-tight text-white">
@@ -187,7 +187,7 @@ export default function FounderPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-7 space-y-6 text-[#071A2B] font-manrope">
               <div className="space-y-2">
-                <span className="label-mono text-[#0068B7] block font-bold">// EXECUTIVE BIOGRAPHY</span>
+                <span className="label-mono text-[#007CD6] block font-bold">// EXECUTIVE BIOGRAPHY</span>
                 <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#061B2A] tracking-tight">
                   Steering Maritime Innovation &amp; Seafarer Excellence
                 </h2>
@@ -198,7 +198,7 @@ export default function FounderPage() {
               </p>
 
               <p className="text-base leading-relaxed text-slate-700 font-normal">
-                Under his leadership, Oceanic Star Shipping expanded its strategic footprint across key maritime hubs—establishing operational command centers in <strong>Navi Mumbai (India), Dubai (UAE), Colombo (Sri Lanka), and Istanbul (Turkey)</strong>. His unwavering commitment to Director General of Shipping (DG Shipping India) compliance, ISO 9001:2015 quality standards, and seafarer welfare has earned the company premier industry accreditations.
+                Under his leadership, Oceanic Star Shipping expanded its strategic footprint across key maritime hubs—establishing operational command centers in <strong>Navi Mumbai (India), Dubai (UAE), Colombo (Sri Lanka), Istanbul (Turkey), Singapore, and Canada</strong>. His unwavering commitment to Director General of Shipping (DG Shipping India) compliance, ISO 9001:2015 quality standards, and seafarer welfare has earned the company premier industry accreditations.
               </p>
 
               <p className="text-base leading-relaxed text-slate-700 font-normal">
@@ -213,7 +213,7 @@ export default function FounderPage() {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-2xl bg-[#0068B7]/10 text-[#0068B7] shrink-0">
+                  <div className="p-3 rounded-2xl bg-[#007CD6]/10 text-[#007CD6] shrink-0">
                     <ShieldCheck className="w-6 h-6" />
                   </div>
                   <div>
@@ -233,7 +233,7 @@ export default function FounderPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-2xl bg-[#00D9E8]/10 text-[#0068B7] shrink-0">
+                  <div className="p-3 rounded-2xl bg-[#01666A]/10 text-[#01666A] shrink-0">
                     <Anchor className="w-6 h-6" />
                   </div>
                   <div>

@@ -22,8 +22,8 @@ export const Footer: React.FC = () => {
                 alt="Oceanic Star Shipping Logo"
                 className="h-12 sm:h-14 w-auto object-contain"
               />
-              <span className="font-syne text-lg font-extrabold text-[#071A2B] tracking-tight">
-                OCEANIC STAR <span className="text-[#176B87]">SHIPPING</span>
+              <span className="font-syne text-lg font-extrabold tracking-tight">
+                <span className="text-[#01666A]">OCEANIC</span> <span className="text-[#007CD6]">STAR</span> <span className="text-[#061B2A]">SHIPPING</span>
               </span>
             </div>
 
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
 
             <div className="flex flex-wrap items-center gap-2 pt-1">
               <div className="flex items-center space-x-2 bg-white border border-[rgba(7,26,43,0.12)] rounded-xl px-3.5 py-2 text-[11px] text-[#071A2B] font-mono font-semibold w-fit">
-                <ShieldCheck className="w-4 h-4 text-[#176B87]" />
+                <ShieldCheck className="w-4 h-4 text-[#01666A]" />
                 <span>ISO 9001:2015 &amp; DG SHIPPING RPSL-MUM-506</span>
               </div>
               <a
@@ -63,14 +63,14 @@ export const Footer: React.FC = () => {
               NAVIGATION
             </h4>
             <ul className="space-y-2 text-[#667783]">
-              <li><Link href="/about" className="hover:text-[#176B87] transition">About Oceanic Star</Link></li>
-              <li><Link href="/founder" className="hover:text-[#176B87] transition">Founder &amp; MD (Leadership)</Link></li>
-              <li><a href="#capabilities" className="hover:text-[#176B87] transition">Capabilities & Services</a></li>
-              <li><Link href="/careers/at-shore" className="hover:text-[#176B87] transition">Careers (At Shore & At Sea)</Link></li>
-              <li><a href="#presence" className="hover:text-[#176B87] transition">Total Global Hubs</a></li>
-              <li><a href="#contact" className="hover:text-[#176B87] transition">Contact Operations</a></li>
+              <li><Link href="/about" className="hover:text-[#007CD6] transition">About Oceanic Star</Link></li>
+              <li><Link href="/founder" className="hover:text-[#007CD6] transition">Founder &amp; MD (Leadership)</Link></li>
+              <li><a href="#capabilities" className="hover:text-[#007CD6] transition">Capabilities & Services</a></li>
+              <li><Link href="/careers/at-shore" className="hover:text-[#007CD6] transition">Careers (At Shore & At Sea)</Link></li>
+              <li><a href="#presence" className="hover:text-[#007CD6] transition">Total Global Hubs</a></li>
+              <li><a href="#contact" className="hover:text-[#007CD6] transition">Contact Operations</a></li>
               <li>
-                <Link href="/cookie-policy" className="hover:text-[#176B87] transition flex items-center space-x-1.5 text-[#176B87] font-semibold">
+                <Link href="/cookie-policy" className="hover:text-[#007CD6] transition flex items-center space-x-1.5 text-[#007CD6] font-semibold">
                   <Cookie className="w-3.5 h-3.5" />
                   <span>Cookie Policy</span>
                 </Link>
@@ -84,11 +84,11 @@ export const Footer: React.FC = () => {
               SERVICES
             </h4>
             <ul className="space-y-2 text-[#667783]">
-              <li><a href="#capabilities" className="hover:text-[#176B87] transition">Crew Management</a></li>
-              <li><a href="#capabilities" className="hover:text-[#176B87] transition">Technical Ship Mgmt</a></li>
-              <li><a href="#capabilities" className="hover:text-[#176B87] transition">Port Agency & Husbandry</a></li>
-              <li><a href="#capabilities" className="hover:text-[#176B87] transition">Chartering & Brokering</a></li>
-              <li><a href="#capabilities" className="hover:text-[#176B87] transition">ISM & ISPS Auditing</a></li>
+              <li><a href="#capabilities" className="hover:text-[#007CD6] transition">Crew Management</a></li>
+              <li><a href="#capabilities" className="hover:text-[#007CD6] transition">Technical Ship Mgmt</a></li>
+              <li><a href="#capabilities" className="hover:text-[#007CD6] transition">Port Agency & Husbandry</a></li>
+              <li><a href="#capabilities" className="hover:text-[#007CD6] transition">Chartering & Brokering</a></li>
+              <li><a href="#capabilities" className="hover:text-[#007CD6] transition">ISM & ISPS Auditing</a></li>
             </ul>
           </div>
 
@@ -101,32 +101,32 @@ export const Footer: React.FC = () => {
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Dubai Office (UAE):</strong>
                 <span>+971 43889981</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarfleet.com</span>
+                <span className="block text-[#007CD6] font-mono mt-0.5">info@oceanicstarfleet.com</span>
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">India HQ (Navi Mumbai):</strong>
                 <span>+91 22 27817171/72</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">info@oceanicstarshipping.com</span>
+                <span className="block text-[#007CD6] font-mono mt-0.5">info@oceanicstarshipping.com</span>
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Sri Lanka (Colombo):</strong>
                 <span>+971 5615-81941</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">operations@oceanicstarfleet.com</span>
+                <span className="block text-[#007CD6] font-mono mt-0.5">operations@oceanicstarfleet.com</span>
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Turkey Office (Istanbul):</strong>
                 <span>+971 43889981</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">operations@oceanicstarfleet.com</span>
+                <span className="block text-[#007CD6] font-mono mt-0.5">operations@oceanicstarfleet.com</span>
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Singapore Hub:</strong>
                 <span className="text-amber-700 font-semibold">Opening Soon</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">Southeast Asia Command</span>
+                <span className="block text-[#007CD6] font-mono mt-0.5">Southeast Asia Command</span>
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Canada Hub:</strong>
                 <span className="text-amber-700 font-semibold">Opening Soon</span>
-                <span className="block text-[#176B87] font-mono mt-0.5">North America Command</span>
+                <span className="block text-[#007CD6] font-mono mt-0.5">North America Command</span>
               </div>
             </div>
           </div>
@@ -137,13 +137,13 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             <span>© {new Date().getFullYear()} <strong className="text-[#071A2B] font-bold">Oceanic Star Group</strong>. All rights reserved.</span>
             <span>•</span>
-            <Link href="/cookie-policy" className="hover:text-[#176B87] transition underline underline-offset-2">
+            <Link href="/cookie-policy" className="hover:text-[#007CD6] transition underline underline-offset-2">
               Cookie Policy
             </Link>
           </div>
 
           <div className="text-[11px] text-[#667783]">
-            Created by <strong className="text-[#071A2B] font-bold">Mahima Joshi</strong> | Team <strong className="text-[#176B87] font-bold">Social Tusk</strong>
+            Created by <strong className="text-[#071A2B] font-bold">Mahima Joshi</strong> | Team <strong className="text-[#007CD6] font-bold">Social Tusk</strong>
           </div>
 
           <button

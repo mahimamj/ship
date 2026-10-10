@@ -66,7 +66,7 @@ export const FleetSilhouetteStats: React.FC<FleetSilhouetteStatsProps> = ({ onOp
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#0A5C96] text-white py-20 lg:py-28 overflow-hidden border-t border-b border-white/10"
+      className="relative w-full bg-gradient-to-r from-[#01666A] to-[#007CD6] text-white py-20 lg:py-28 overflow-hidden border-t border-b border-white/10"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -109,7 +109,7 @@ export const FleetSilhouetteStats: React.FC<FleetSilhouetteStatsProps> = ({ onOp
           <div className="lg:col-span-4 flex flex-col justify-between space-y-8 lg:border-l lg:border-white/20 lg:pl-10">
             <div className="space-y-6">
               <div className="flex items-baseline gap-3">
-                <span className="font-syne text-4xl sm:text-5xl font-extrabold text-[#00D26A]">
+                <span className="font-syne text-4xl sm:text-5xl font-extrabold text-white">
                   29
                 </span>
                 <div>

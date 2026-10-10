@@ -84,17 +84,17 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
         >
           {/* TOP HEADER TAG */}
           <div className="flex items-center justify-between border-b border-slate-200 pb-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#176B87]/10 text-[#176B87] border border-[#176B87]/20 rounded-full text-xs font-mono font-bold tracking-widest uppercase">
-              <Compass className="w-4 h-4 text-[#176B87]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#01666A]/10 text-[#01666A] border border-[#01666A]/20 rounded-full text-xs font-mono font-bold tracking-widest uppercase">
+              <Compass className="w-4 h-4 text-[#01666A]" />
               <span>CAREERS &bull; AT SEA &amp; ON SHORE</span>
             </div>
             <span className="text-xs font-mono text-slate-400 font-bold">DG RPSL APPROVED</span>
           </div>
 
           {/* CAREERS BLOCK 1: CAREERS AT SEA */}
-          <div ref={block1Ref} className="space-y-5 border-l-4 border-[#176B87] pl-6 max-w-xl">
+          <div ref={block1Ref} className="space-y-5 border-l-4 border-[#01666A] pl-6 max-w-xl">
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-[#176B87]/10 text-[#176B87] text-xs font-mono font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wider">
+              <span className="px-3 py-1 bg-[#01666A]/10 text-[#01666A] text-xs font-mono font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wider">
                 <Users className="w-4 h-4" /> CAREERS AT SEA
               </span>
               <span className="text-xs font-mono text-slate-400 font-bold">1,800+ SEAFARERS</span>
@@ -102,7 +102,7 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
 
             <h2 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A2B] tracking-tight leading-[1.05]">
               MASTER OFFICERS &amp; <br />
-              <span className="text-[#176B87]">CHIEF ENGINEERS</span>
+              <span className="text-[#01666A]">CHIEF ENGINEERS</span>
             </h2>
 
             <p className="font-manrope text-base text-slate-600 leading-relaxed font-normal">
@@ -110,12 +110,12 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
             </p>
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-              <span className="text-xs font-mono text-[#176B87] flex items-center gap-2 font-bold">
-                <Shield className="w-4 h-4 text-[#176B87]" /> STCW 2010 CERTIFIED
+              <span className="text-xs font-mono text-[#01666A] flex items-center gap-2 font-bold">
+                <Shield className="w-4 h-4 text-[#01666A]" /> STCW 2010 CERTIFIED
               </span>
               <Link
                 href={SEAFARER_APPLY_PATH}
-                className="px-5 py-2.5 bg-[#176B87] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#071A2B] transition-all duration-300 flex items-center gap-2 shadow-lg group"
+                className="px-5 py-2.5 bg-[#01666A] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#071A2B] transition-all duration-300 flex items-center gap-2 shadow-lg group"
               >
                 <span>APPLY AT SEA</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -124,30 +124,30 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
           </div>
 
           {/* CAREERS BLOCK 2: CAREERS ON SHORE */}
-          <div ref={block2Ref} className="space-y-5 border-l-4 border-emerald-600 pl-6 max-w-xl">
+          <div ref={block2Ref} className="space-y-5 border-l-4 border-[#01666A] pl-6 max-w-xl">
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-emerald-500/10 text-emerald-700 text-xs font-mono font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wider">
+              <span className="px-3 py-1 bg-[#01666A]/10 text-[#01666A] text-xs font-mono font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wider">
                 <Wrench className="w-4 h-4" /> CAREERS ON SHORE
               </span>
-              <span className="text-xs font-mono text-slate-400 font-bold">DUBAI &amp; MUMBAI HUBS</span>
+              <span className="text-xs font-mono text-slate-400 font-bold">6 GLOBAL COMMAND HUBS</span>
             </div>
 
             <h2 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A2B] tracking-tight leading-[1.05]">
               DRYDOCK TECHNICAL <br />
-              <span className="text-emerald-700">SUPERINTENDENTS</span>
+              <span className="text-[#01666A]">SUPERINTENDENTS</span>
             </h2>
 
             <p className="font-manrope text-base text-slate-600 leading-relaxed font-normal">
-              Join our Dubai HQ and regional command hubs. Class-1 superintendents overseeing PMS maintenance, drydock overhauls, and commercial dispatch.
+              Join our 6 global command hubs across Dubai, Mumbai, Colombo, Istanbul, Singapore, and Canada. Class-1 superintendents overseeing PMS maintenance, drydock overhauls, and commercial dispatch.
             </p>
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-              <span className="text-xs font-mono text-emerald-700 flex items-center gap-2 font-bold">
-                <Award className="w-4 h-4 text-emerald-700" /> CLASS-1 SUPERINTENDENCY
+              <span className="text-xs font-mono text-[#01666A] flex items-center gap-2 font-bold">
+                <Award className="w-4 h-4 text-[#01666A]" /> CLASS-1 SUPERINTENDENCY
               </span>
               <button
                 onClick={() => onOpenApplyModal?.("Careers On Shore - Technical Superintendent")}
-                className="px-5 py-2.5 bg-emerald-700 text-white rounded-xl font-mono text-xs font-bold hover:bg-[#071A2B] transition-all duration-300 flex items-center gap-2 shadow-lg group"
+                className="px-5 py-2.5 bg-[#01666A] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#007CD6] transition-all duration-300 flex items-center gap-2 shadow-lg group"
               >
                 <span>APPLY ON SHORE</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -156,9 +156,9 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
           </div>
 
           {/* CAREERS BLOCK 3: GLOBAL COMMAND & DISPATCH */}
-          <div ref={block3Ref} className="space-y-5 border-l-4 border-cyan-700 pl-6 max-w-xl">
+          <div ref={block3Ref} className="space-y-5 border-l-4 border-[#007CD6] pl-6 max-w-xl">
             <div className="flex items-center gap-3">
-              <span className="px-3 py-1 bg-cyan-500/10 text-cyan-700 text-xs font-mono font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wider">
+              <span className="px-3 py-1 bg-[#007CD6]/10 text-[#007CD6] text-xs font-mono font-bold rounded-md flex items-center gap-1.5 uppercase tracking-wider">
                 <Globe className="w-4 h-4" /> GLOBAL DISPATCH
               </span>
               <span className="text-xs font-mono text-slate-400 font-bold">24/7 TELEMETRY</span>
@@ -166,7 +166,7 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
 
             <h2 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A2B] tracking-tight leading-[1.05]">
               SEAFARER WELFARE &amp; <br />
-              <span className="text-cyan-700">COMMERCIAL ROUTING</span>
+              <span className="text-[#007CD6]">COMMERCIAL ROUTING</span>
             </h2>
 
             <p className="font-manrope text-base text-slate-600 leading-relaxed font-normal">
@@ -174,12 +174,12 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
             </p>
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-              <span className="text-xs font-mono text-cyan-700 flex items-center gap-2 font-bold">
-                <CheckCircle2 className="w-4 h-4 text-cyan-700" /> 24/7 COMMAND TELEMETRY
+              <span className="text-xs font-mono text-[#007CD6] flex items-center gap-2 font-bold">
+                <CheckCircle2 className="w-4 h-4 text-[#007CD6]" /> 24/7 COMMAND TELEMETRY
               </span>
               <button
                 onClick={() => onOpenApplyModal?.("Global Dispatch Operations Specialist")}
-                className="px-5 py-2.5 bg-cyan-800 text-white rounded-xl font-mono text-xs font-bold hover:bg-[#071A2B] transition-all duration-300 flex items-center gap-2 shadow-lg group"
+                className="px-5 py-2.5 bg-[#007CD6] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#061B2A] transition-all duration-300 flex items-center gap-2 shadow-lg group"
               >
                 <span>JOIN DISPATCH</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -198,7 +198,7 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
 
             <h2 className="font-syne text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A2B] tracking-tight leading-[1.05]">
               MLC 2006 &amp; <br />
-              <span className="text-[#176B87]">DG RPSL AUDITED</span>
+              <span className="text-[#01666A]">DG RPSL AUDITED</span>
             </h2>
 
             <p className="font-manrope text-base text-slate-600 leading-relaxed font-normal">
@@ -206,12 +206,12 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
             </p>
 
             <div className="flex flex-wrap items-center justify-between gap-4 pt-2">
-              <span className="text-xs font-mono text-[#176B87] flex items-center gap-2 font-bold">
-                <Shield className="w-4 h-4 text-[#176B87]" /> DG SHIPPING APPROVED
+              <span className="text-xs font-mono text-[#01666A] flex items-center gap-2 font-bold">
+                <Shield className="w-4 h-4 text-[#01666A]" /> DG SHIPPING APPROVED
               </span>
               <Link
                 href={SEAFARER_APPLY_PATH}
-                className="px-5 py-2.5 bg-[#071A2B] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#176B87] transition-all duration-300 flex items-center gap-2 shadow-lg group"
+                className="px-5 py-2.5 bg-[#071A2B] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#007CD6] transition-all duration-300 flex items-center gap-2 shadow-lg group"
               >
                 <span>APPLY NOW</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -222,7 +222,7 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
           {/* Bottom Navigation Status */}
           <div className="border-t border-slate-200 pt-4 flex items-center justify-between text-xs font-mono text-slate-500">
             <span>HOME / CAREERS SELECTION</span>
-            <span className="text-[#176B87] font-bold">ACTIVE RECRUITMENT HUB</span>
+            <span className="text-[#007CD6] font-bold">ACTIVE RECRUITMENT HUB</span>
           </div>
         </div>
 

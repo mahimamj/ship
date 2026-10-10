@@ -60,7 +60,7 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
     return pathGenerator(graticule() as any);
   }, [pathGenerator]);
 
-  // 4. Calculate Projected [x, y] Coordinates for the 4 Command Hubs
+  // 4. Calculate Projected [x, y] Coordinates for the 6 Command Hubs
   const projectedHubs = useMemo(() => {
     return COMMAND_HUBS.map((hub) => {
       const coords = projection([hub.longitude, hub.latitude]);
@@ -297,7 +297,7 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
         </span>
       </div>
 
-      {/* 4 Command Hub Markers */}
+      {/* 6 Command Hub Markers */}
       {projectedHubs.map((hub) => (
         <HubMarker
           key={hub.id}

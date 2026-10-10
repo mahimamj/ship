@@ -16,7 +16,7 @@ export const MissionVisionSplit: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <span className="label-mono text-[#176B87] block font-semibold">
+            <span className="label-mono text-[#01666A] block font-semibold">
               // 01 ARCHITECTURE
             </span>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B]">
@@ -35,7 +35,7 @@ export const MissionVisionSplit: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-6"
           >
-            <span className="label-mono text-[#176B87] block font-semibold">
+            <span className="label-mono text-[#007CD6] block font-semibold">
               // 02 HORIZON
             </span>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B]">

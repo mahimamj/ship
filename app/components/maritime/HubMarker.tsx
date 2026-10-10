@@ -37,8 +37,8 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
         <span
           className={`absolute rounded-full transition-all duration-500 ${
             isActive
-              ? "w-10 h-10 bg-[#00D9FF]/20 border border-[#00D9FF] animate-ping opacity-75"
-              : "w-6 h-6 bg-[#0077FF]/10 opacity-40 group-hover:scale-150"
+              ? "w-10 h-10 bg-[#007CD6]/20 border border-[#007CD6] animate-ping opacity-75"
+              : "w-6 h-6 bg-[#01666A]/10 opacity-40 group-hover:scale-150"
           }`}
         />
         
@@ -46,10 +46,10 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
         <span
           className={`absolute rounded-full transition-all duration-300 ${
             isActive
-              ? "w-7 h-7 bg-[#071A2B] border-2 border-[#00D9FF] shadow-[0_0_15px_#00D9FF]"
+              ? "w-7 h-7 bg-[#071A2B] border-2 border-[#007CD6] shadow-[0_0_15px_#007CD6]"
               : hub.isUpcoming
                 ? "w-5 h-5 bg-[#071A2B] border border-amber-400/80 group-hover:border-amber-300"
-                : "w-5 h-5 bg-[#071A2B] border border-[#0077FF]/60 group-hover:border-[#00D9FF]"
+                : "w-5 h-5 bg-[#071A2B] border border-[#01666A]/60 group-hover:border-[#007CD6]"
           }`}
         />
 
@@ -57,10 +57,10 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
         <span
           className={`relative rounded-full transition-all duration-300 ${
             isActive
-              ? "w-2.5 h-2.5 bg-[#00D9FF] shadow-[0_0_10px_#00D9FF]"
+              ? "w-2.5 h-2.5 bg-[#007CD6] shadow-[0_0_10px_#007CD6]"
               : hub.isUpcoming
                 ? "w-1.5 h-1.5 bg-amber-400 group-hover:bg-amber-300"
-                : "w-1.5 h-1.5 bg-[#0077FF] group-hover:bg-[#00D9FF]"
+                : "w-1.5 h-1.5 bg-[#01666A] group-hover:bg-[#007CD6]"
           }`}
         />
       </div>
@@ -70,8 +70,8 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
         <span
           className={`font-mono text-[10px] tracking-wider uppercase font-bold transition-all duration-300 leading-none ${
             isActive
-              ? "text-[#071A2B] bg-[#00D9FF] px-1.5 py-0.5 rounded shadow-md"
-              : "text-[#071A2B] bg-white/90 border border-[#8B94A3]/30 px-1 py-0.5 rounded group-hover:text-[#0077FF]"
+              ? "text-white bg-[#007CD6] px-1.5 py-0.5 rounded shadow-md"
+              : "text-[#071A2B] bg-white/90 border border-[#8B94A3]/30 px-1 py-0.5 rounded group-hover:text-[#007CD6]"
           }`}
         >
           ● {hub.city}
@@ -88,8 +88,8 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
 
       {/* Desktop Hover Tooltip */}
       {(isHovered || isActive) && (
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#071A2B] text-white p-2.5 rounded-lg shadow-2xl border border-[#00D9FF]/40 text-[10px] font-mono z-50 pointer-events-none transition-all duration-200">
-          <div className="flex items-center gap-1.5 font-bold text-[#00D9FF]">
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#071A2B] text-white p-2.5 rounded-lg shadow-2xl border border-[#007CD6]/40 text-[10px] font-mono z-50 pointer-events-none transition-all duration-200">
+          <div className="flex items-center gap-1.5 font-bold text-[#007CD6]">
             <span>{hub.city}</span>
             <span>//</span>
             <span>{hub.country}</span>

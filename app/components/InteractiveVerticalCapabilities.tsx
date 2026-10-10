@@ -51,8 +51,8 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
       kpi: "ALL SHIP TYPES",
       desc: "Full crewing & technical expertise across Bulk Carriers, Containers, Oil & Chem Tankers, LPG/LNG Gas Carriers, Ro-Ro & DP Offshore.",
       icon: Ship,
-      color: "text-[#0077B6]",
-      bg: "border-[#0077B6]/30",
+      color: "text-[#007CD6]",
+      bg: "border-[#007CD6]/30",
     },
     {
       title: "FAIRNESS & EQUAL OPPORTUNITY",
@@ -110,7 +110,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-5 gap-4">
           <div>
-            <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase block mb-1">
+            <span className="font-mono text-xs font-bold text-[#007CD6] tracking-widest uppercase block mb-1">
               // CORE CAPABILITIES • ALL VESSEL TYPES • FAIRNESS FIRST
             </span>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
@@ -261,7 +261,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
                   <div className="flex items-baseline gap-6 sm:gap-10">
                     <span
                       className={`font-mono text-xs sm:text-sm transition-colors duration-300 ${
-                        isActive ? "text-[#0077B6] font-bold" : "text-slate-500"
+                        isActive ? "text-[#007CD6] font-bold" : "text-slate-500"
                       }`}
                     >
                       {cap.number}
@@ -290,7 +290,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
                           {cap.vesselTypes.map((v) => (
                             <span
                               key={v}
-                              className="px-2 py-0.5 bg-[#0077B6]/10 text-[#0077B6] font-mono text-[10px] font-bold rounded"
+                              className="px-2 py-0.5 bg-[#007CD6]/10 text-[#007CD6] font-mono text-[10px] font-bold rounded"
                             >
                               {v}
                             </span>
@@ -303,7 +303,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
                   <div
                     className={`w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 ${
                       isActive
-                        ? "bg-[#0077B6] text-white border-[#0077B6] rotate-45 scale-110"
+                        ? "bg-[#007CD6] text-white border-[#007CD6] rotate-45 scale-110"
                         : "text-[#071A2B] group-hover:border-[#071A2B]"
                     }`}
                   >
@@ -326,7 +326,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B] via-[#071A2B]/40 to-transparent" />
 
                 <div className="absolute bottom-8 left-8 right-8 text-white space-y-2">
-                  <span className="font-mono text-xs tracking-widest text-[#0077B6] uppercase font-bold block">
+                  <span className="font-mono text-xs tracking-widest text-[#007CD6] uppercase font-bold block">
                     CAPABILITY // {activeCap.number}
                   </span>
                   <h4 className="font-syne text-2xl sm:text-3xl font-extrabold">
@@ -338,7 +338,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
 
                   {/* Highlights Pill */}
                   <div className="pt-2 flex flex-wrap gap-2">
-                    <span className="px-2.5 py-1 bg-[#0077B6]/30 backdrop-blur-sm text-cyan-300 font-mono text-[11px] font-bold rounded-lg border border-cyan-400/30">
+                    <span className="px-2.5 py-1 bg-[#007CD6]/30 backdrop-blur-sm text-cyan-300 font-mono text-[11px] font-bold rounded-lg border border-cyan-400/30">
                       ✓ All Ship Types
                     </span>
                     <span className="px-2.5 py-1 bg-[#059669]/30 backdrop-blur-sm text-emerald-300 font-mono text-[11px] font-bold rounded-lg border border-emerald-400/30">
@@ -354,7 +354,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
         {/* COMBINED "WHY OCEANIC STAR" CORE PRINCIPLES STRIP */}
         <div className="pt-8 border-t border-slate-200">
           <div className="mb-6 flex items-center justify-between">
-            <span className="text-xs font-mono font-bold text-[#0077B6] tracking-widest uppercase">
+            <span className="text-xs font-mono font-bold text-[#007CD6] tracking-widest uppercase">
               // OPERATIONAL PRINCIPLES &amp; CORE PROMISES
             </span>
             <span className="text-xs font-mono text-slate-500 font-bold hidden sm:inline">ISO 9001:2015 &amp; DG RPSL-MUM-506 CERTIFIED</span>

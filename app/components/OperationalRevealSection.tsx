@@ -212,10 +212,11 @@ export const OperationalRevealSection: React.FC = () => {
           {/* SVG Animated Route Paths */}
           <svg className="w-full h-full" viewBox="0 0 1440 900" fill="none">
             {/* Europe to Dubai route */}
+            {/* Istanbul to Dubai route */}
             <path
               className="route-path"
               d="M 520 220 L 640 340"
-              stroke="#00F0FF"
+              stroke="#01666A"
               strokeWidth="3.5"
               strokeDasharray="8 8"
             />
@@ -223,7 +224,7 @@ export const OperationalRevealSection: React.FC = () => {
             <path
               className="route-path"
               d="M 640 340 L 800 440"
-              stroke="#00F0FF"
+              stroke="#007CD6"
               strokeWidth="3.5"
               strokeDasharray="8 8"
             />
@@ -231,46 +232,80 @@ export const OperationalRevealSection: React.FC = () => {
             <path
               className="route-path"
               d="M 800 440 L 840 560"
-              stroke="#00F0FF"
+              stroke="#01666A"
+              strokeWidth="3.5"
+              strokeDasharray="8 8"
+            />
+            {/* Colombo to Singapore route */}
+            <path
+              className="route-path"
+              d="M 840 560 L 1040 580"
+              stroke="#007CD6"
+              strokeWidth="3.5"
+              strokeDasharray="8 8"
+            />
+            {/* Atlantic/Pacific route to Canada */}
+            <path
+              className="route-path"
+              d="M 520 220 L 260 230"
+              stroke="#01666A"
               strokeWidth="3.5"
               strokeDasharray="8 8"
             />
           </svg>
 
-          {/* Glowing Hub Nodes */}
-          {/* EUROPE HUB */}
+          {/* 6 Glowing Hub Nodes */}
+          {/* TURKEY / ISTANBUL HUB */}
           <div className="hub-node absolute top-[24%] left-[36%] z-10 flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-[#00F0FF] animate-ping opacity-75" />
-            <div className="w-3.5 h-3.5 rounded-full bg-[#00F0FF] border-2 border-white shadow-lg shadow-[#00F0FF]/50 -mt-3.5" />
-            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-[#00F0FF]/50 text-[#00F0FF] text-xs font-mono font-bold rounded-lg shadow-xl">
-              EUROPE ● ROTTERDAM
+            <div className="w-4 h-4 rounded-full bg-[#01666A] animate-ping opacity-75" />
+            <div className="w-3.5 h-3.5 rounded-full bg-[#01666A] border-2 border-white shadow-lg shadow-[#01666A]/50 -mt-3.5" />
+            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-[#01666A]/50 text-[#01666A] text-xs font-mono font-bold rounded-lg shadow-xl">
+              TURKEY ● ISTANBUL
             </span>
           </div>
 
           {/* DUBAI / UAE HUB */}
           <div className="hub-node absolute top-[38%] left-[44%] z-10 flex flex-col items-center">
-            <div className="w-5 h-5 rounded-full bg-[#00F0FF] animate-ping opacity-75" />
-            <div className="w-4 h-4 rounded-full bg-[#00F0FF] border-2 border-white shadow-lg shadow-[#00F0FF]/50 -mt-4" />
-            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-[#00F0FF]/50 text-[#00F0FF] text-xs font-mono font-bold rounded-lg shadow-xl">
+            <div className="w-5 h-5 rounded-full bg-[#007CD6] animate-ping opacity-75" />
+            <div className="w-4 h-4 rounded-full bg-[#007CD6] border-2 border-white shadow-lg shadow-[#007CD6]/50 -mt-4" />
+            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-[#007CD6]/50 text-[#007CD6] text-xs font-mono font-bold rounded-lg shadow-xl">
               UAE / DUBAI HUB ● HQ
             </span>
           </div>
 
           {/* INDIA / MUMBAI HUB (CAMERA ZOOMS HERE) */}
           <div className="hub-node absolute top-[48%] left-[55%] z-20 flex flex-col items-center">
-            <div className="w-6 h-6 rounded-full bg-emerald-400 animate-ping opacity-75" />
-            <div className="w-4.5 h-4.5 rounded-full bg-emerald-400 border-2 border-white shadow-xl shadow-emerald-400/60 -mt-5" />
-            <span className="mt-2 px-3.5 py-1.5 bg-[#071A2B]/95 border-2 border-emerald-400 text-emerald-400 text-xs font-mono font-black rounded-lg shadow-2xl scale-110">
+            <div className="w-6 h-6 rounded-full bg-[#01666A] animate-ping opacity-75" />
+            <div className="w-4.5 h-4.5 rounded-full bg-[#01666A] border-2 border-white shadow-xl shadow-[#01666A]/60 -mt-5" />
+            <span className="mt-2 px-3.5 py-1.5 bg-[#071A2B]/95 border-2 border-[#01666A] text-[#01666A] text-xs font-mono font-black rounded-lg shadow-2xl scale-110">
               INDIA ● MUMBAI (MANNING)
             </span>
           </div>
 
           {/* COLOMBO HUB */}
           <div className="hub-node absolute top-[62%] left-[58%] z-10 flex flex-col items-center">
-            <div className="w-4 h-4 rounded-full bg-amber-400 animate-ping opacity-75" />
-            <div className="w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-white shadow-lg -mt-3.5" />
-            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-amber-400/50 text-amber-400 text-xs font-mono font-bold rounded-lg shadow-xl">
+            <div className="w-4 h-4 rounded-full bg-[#007CD6] animate-ping opacity-75" />
+            <div className="w-3.5 h-3.5 rounded-full bg-[#007CD6] border-2 border-white shadow-lg shadow-[#007CD6]/50 -mt-3.5" />
+            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-[#007CD6]/50 text-[#007CD6] text-xs font-mono font-bold rounded-lg shadow-xl">
               COLOMBO ● BUNKER
+            </span>
+          </div>
+
+          {/* SINGAPORE HUB */}
+          <div className="hub-node absolute top-[64%] left-[72%] z-10 flex flex-col items-center">
+            <div className="w-4 h-4 rounded-full bg-[#007CD6] animate-ping opacity-75" />
+            <div className="w-3.5 h-3.5 rounded-full bg-[#007CD6] border-2 border-white shadow-lg shadow-[#007CD6]/50 -mt-3.5" />
+            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-[#007CD6]/50 text-[#007CD6] text-xs font-mono font-bold rounded-lg shadow-xl">
+              SINGAPORE ● SE ASIA HUB
+            </span>
+          </div>
+
+          {/* CANADA / NORTH AMERICA HUB */}
+          <div className="hub-node absolute top-[26%] left-[18%] z-10 flex flex-col items-center">
+            <div className="w-4 h-4 rounded-full bg-[#01666A] animate-ping opacity-75" />
+            <div className="w-3.5 h-3.5 rounded-full bg-[#01666A] border-2 border-white shadow-lg shadow-[#01666A]/50 -mt-3.5" />
+            <span className="mt-2 px-3 py-1 bg-[#071A2B]/90 border border-[#01666A]/50 text-[#01666A] text-xs font-mono font-bold rounded-lg shadow-xl">
+              CANADA ● VANCOUVER HUB
             </span>
           </div>
         </div>
@@ -278,15 +313,15 @@ export const OperationalRevealSection: React.FC = () => {
         {/* Top Header */}
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 border-b border-white/15 pb-4">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 bg-emerald-400/20 text-emerald-400 border border-emerald-400/40 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
+            <span className="px-3 py-1 bg-[#007CD6]/20 text-[#007CD6] border border-[#007CD6]/40 rounded-full font-mono text-xs font-bold tracking-widest uppercase">
               GLOBAL MAP // 02
             </span>
             <span className="text-xs text-white/80 font-mono tracking-wider">
-              EUROPE → UAE → INDIA → COLOMBO CONNECTED NETWORK
+              6 STRATEGIC HUBS: DUBAI • MUMBAI • COLOMBO • ISTANBUL • SINGAPORE • CANADA
             </span>
           </div>
 
-          <div className="flex items-center gap-3 text-xs font-mono text-emerald-400 font-bold">
+          <div className="flex items-center gap-3 text-xs font-mono text-[#007CD6] font-bold">
             <Globe className="w-4 h-4 animate-spin" />
             <span>GLOBAL DISPATCH ONLINE</span>
           </div>
@@ -296,27 +331,27 @@ export const OperationalRevealSection: React.FC = () => {
         <div className="relative z-10 max-w-4xl my-auto space-y-6">
           <h2 className="font-syne text-5xl sm:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[0.95]">
             GLOBAL OPERATIONAL <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] via-emerald-400 to-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#01666A] via-[#007CD6] to-white">
               COMMAND NETWORK
             </span>
           </h2>
 
           {/* Real-Time Live Telemetry Metrics Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 max-w-3xl">
-            <div className="p-4 rounded-2xl bg-[#071A2B]/90 border border-[#00F0FF]/40 backdrop-blur-xl shadow-xl">
+            <div className="p-4 rounded-2xl bg-[#071A2B]/90 border border-[#007CD6]/40 backdrop-blur-xl shadow-xl">
               <span className="text-[10px] font-mono text-slate-400 block uppercase font-bold">
                 VESSELS IN TRANSIT
               </span>
-              <span className="font-syne text-3xl font-extrabold text-[#00F0FF] block mt-1">
+              <span className="font-syne text-3xl font-extrabold text-[#007CD6] block mt-1">
                 {telemetry.vesselsInTransit} UNITS
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-[#071A2B]/90 border border-emerald-400/40 backdrop-blur-xl shadow-xl">
+            <div className="p-4 rounded-2xl bg-[#071A2B]/90 border border-[#01666A]/40 backdrop-blur-xl shadow-xl">
               <span className="text-[10px] font-mono text-slate-400 block uppercase font-bold">
                 AVERAGE SPEED
               </span>
-              <span className="font-syne text-3xl font-extrabold text-emerald-400 block mt-1">
+              <span className="font-syne text-3xl font-extrabold text-[#01666A] block mt-1">
                 {telemetry.speed} KTS
               </span>
             </div>
@@ -334,8 +369,8 @@ export const OperationalRevealSection: React.FC = () => {
 
         {/* Bottom Footer */}
         <div className="relative z-10 flex items-center justify-between border-t border-white/15 pt-4 text-xs font-mono text-white/60">
-          <span>EUROPE ● UAE ● INDIA ● COLOMBO ROUTE VECTORS</span>
-          <span className="text-[#00F0FF]">ZOOMING TO INDIA FOR ON BOARD REVEAL →</span>
+          <span>6 COMMAND HUBS: DUBAI ● MUMBAI ● COLOMBO ● ISTANBUL ● SINGAPORE ● CANADA</span>
+          <span className="text-[#007CD6]">ZOOMING TO INDIA FOR ON BOARD REVEAL →</span>
         </div>
       </div>
 

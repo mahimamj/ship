@@ -165,7 +165,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
         >
           <path
             d="M 400 100 Q 580 350, 400 650 T 400 1200 T 400 1750 T 400 2100"
-            stroke="#176B87"
+            stroke="#01666A"
             strokeWidth="3"
             strokeDasharray="10 8"
             fill="none"
@@ -178,9 +178,9 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
         ref={shipRef}
         className="hidden md:block absolute top-36 left-1/2 -translate-x-1/2 z-30 pointer-events-none will-change-transform"
       >
-        <div className="relative p-3.5 bg-white border-2 border-[#176B87] rounded-full shadow-xl backdrop-blur-xl flex items-center justify-center">
-          <Ship className="w-8 h-8 text-[#176B87] animate-pulse" />
-          <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#176B87] rounded-full animate-ping" />
+        <div className="relative p-3.5 bg-white border-2 border-[#01666A] rounded-full shadow-xl backdrop-blur-xl flex items-center justify-center">
+          <Ship className="w-8 h-8 text-[#01666A] animate-pulse" />
+          <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#007CD6] rounded-full animate-ping" />
         </div>
       </div>
 
@@ -189,7 +189,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-200 pb-6 md:pb-8">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#176B87]/10 text-[#176B87] border border-[#176B87]/30 rounded-full text-[10px] sm:text-xs font-mono tracking-widest uppercase mb-3 font-bold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#01666A]/10 text-[#01666A] border border-[#01666A]/30 rounded-full text-[10px] sm:text-xs font-mono tracking-widest uppercase mb-3 font-bold">
               <Compass className="w-3.5 h-3.5 animate-spin" />
               <span>GLOBAL OCEAN TRADE ROUTES &amp; FLEET TELEMETRY</span>
             </div>
@@ -199,7 +199,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
               data-scroll-split
             >
               STRATEGIC FLEET <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#176B87] via-slate-800 to-[#071A2B]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#01666A] via-[#007CD6] to-[#071A2B]">
                 NAVIGATION &amp; CORRIDORS
               </span>
             </h2>
@@ -207,10 +207,10 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
 
           <div className="hidden sm:flex items-center gap-4 text-xs font-mono text-slate-600 bg-white border border-slate-200 px-4 py-2.5 rounded-xl shadow-sm font-bold">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#176B87] animate-pulse" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#007CD6] animate-pulse" />
               <span>Scroll Down to Sail Vessel Along Wave</span>
             </div>
-            <ArrowRight className="w-4 h-4 text-[#176B87]" />
+            <ArrowRight className="w-4 h-4 text-[#007CD6]" />
           </div>
         </div>
 
@@ -233,16 +233,16 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
                 {/* Card Container */}
                 <div
                   className={`w-full md:w-1/2 bg-white border-2 ${
-                    isActive ? "border-[#176B87] shadow-2xl scale-[1.01]" : "border-slate-200 shadow-md"
+                    isActive ? "border-[#007CD6] shadow-2xl scale-[1.01]" : "border-slate-200 shadow-md"
                   } rounded-2xl sm:rounded-3xl p-5 sm:p-9 flex flex-col justify-between relative transition-all duration-500 group`}
                 >
                   {/* Top Card Badge & Number */}
                   <div>
                     <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4 sm:mb-6">
-                      <span className="text-3xl sm:text-4xl font-black text-[#176B87] font-syne tracking-tight">
+                      <span className="text-3xl sm:text-4xl font-black text-[#01666A] font-syne tracking-tight">
                         {card.number}
                       </span>
-                      <span className="px-3 py-1 bg-[#176B87]/10 text-[#176B87] text-[10px] sm:text-xs font-mono rounded-full border border-[#176B87]/20 font-bold">
+                      <span className="px-3 py-1 bg-[#007CD6]/10 text-[#007CD6] text-[10px] sm:text-xs font-mono rounded-full border border-[#007CD6]/20 font-bold">
                         {card.category}
                       </span>
                     </div>
@@ -263,7 +263,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
                     </div>
 
                     {/* Card Title & Description */}
-                    <h3 className="text-xl sm:text-3xl font-extrabold text-[#071A2B] font-syne mb-2 sm:mb-3 group-hover:text-[#176B87] transition-colors">
+                    <h3 className="text-xl sm:text-3xl font-extrabold text-[#071A2B] font-syne mb-2 sm:mb-3 group-hover:text-[#007CD6] transition-colors">
                       {card.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-600 font-manrope leading-relaxed mb-4 sm:mb-6 font-normal">
@@ -274,7 +274,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
                     <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
                       {card.features.map((feature, fIdx) => (
                         <div key={fIdx} className="flex items-center gap-2 text-[11px] sm:text-xs font-mono text-slate-700 font-medium">
-                          <ShieldCheck className="w-3.5 h-3.5 text-[#176B87]" />
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#007CD6]" />
                           <span>{feature}</span>
                         </div>
                       ))}
@@ -285,7 +285,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
                   <div className="border-t border-slate-100 pt-3 sm:pt-4 flex items-center justify-between">
                     <div>
                       <div className="flex items-baseline gap-1">
-                        <span className="text-2xl sm:text-3xl font-black text-[#176B87] font-mono">
+                        <span className="text-2xl sm:text-3xl font-black text-[#01666A] font-mono">
                           {card.statValue}
                         </span>
                       </div>
@@ -297,7 +297,7 @@ export const GsapHorizontalScrollGallery: React.FC<GsapHorizontalScrollGalleryPr
                     {onOpenQuote && (
                       <button
                         onClick={onOpenQuote}
-                        className="px-4 py-2 sm:px-5 sm:py-2.5 bg-[#176B87] hover:bg-[#071A2B] text-white text-xs font-mono font-bold rounded-xl transition-all duration-300 flex items-center gap-1.5 shadow-md"
+                        className="px-4 py-2 sm:px-5 sm:py-2.5 bg-gradient-to-r from-[#01666A] to-[#007CD6] hover:brightness-110 text-white text-xs font-mono font-bold rounded-xl transition-all duration-300 flex items-center gap-1.5 shadow-md"
                       >
                         <span>Request Specs</span>
                         <ArrowRight className="w-3.5 h-3.5" />

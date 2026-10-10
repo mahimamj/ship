@@ -48,8 +48,8 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
             alt="Oceanic Star Shipping"
             className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
-          <span className="hidden sm:block font-syne text-sm font-black tracking-[0.15em] text-[#061B2A]">
-            OCEANIC STAR <span className="text-[#0068B7]">SHIPPING</span>
+          <span className="hidden sm:block font-syne text-sm font-black tracking-[0.15em] text-[#01666A]">
+            OCEANIC <span className="text-[#007CD6]">STAR</span> <span className="text-[#061B2A] text-xs font-semibold">SHIPPING</span>
           </span>
         </Link>
 
@@ -57,28 +57,28 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
         <nav className="hidden lg:flex items-center gap-8 text-[11px] font-mono tracking-[0.2em] text-[#061B2A] font-bold">
           <Link
             href="/"
-            className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
+            className="relative py-1 hover:text-[#007CD6] transition-colors duration-300 cursor-pointer"
           >
             HOME
           </Link>
 
           <Link
             href="/founder"
-            className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
+            className="relative py-1 hover:text-[#007CD6] transition-colors duration-300 cursor-pointer"
           >
             FOUNDER
           </Link>
 
           <Link
             href="/fleet"
-            className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
+            className="relative py-1 hover:text-[#007CD6] transition-colors duration-300 cursor-pointer"
           >
             NEWS &amp; IMPACT
           </Link>
 
           <Link
             href="/#capabilities"
-            className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
+            className="relative py-1 hover:text-[#007CD6] transition-colors duration-300 cursor-pointer"
           >
             CAPABILITIES
           </Link>
@@ -94,10 +94,10 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                 e.preventDefault();
                 setCareersDropdownOpen(!careersDropdownOpen);
               }}
-              className="flex items-center gap-1.5 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer py-1 text-left uppercase"
+              className="flex items-center gap-1.5 hover:text-[#007CD6] transition-colors duration-300 cursor-pointer py-1 text-left uppercase"
             >
               <span>CAREERS</span>
-              <ChevronDown className={`w-3.5 h-3.5 text-[#0068B7] transition-transform duration-300 ${careersDropdownOpen ? "rotate-180" : ""}`} />
+              <ChevronDown className={`w-3.5 h-3.5 text-[#007CD6] transition-transform duration-300 ${careersDropdownOpen ? "rotate-180" : ""}`} />
             </button>
 
             <AnimatePresence>

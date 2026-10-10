@@ -113,23 +113,23 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
       {/* Main Hero Content */}
       <div ref={contentRef} className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-20 flex flex-col justify-center min-h-[82vh] will-change-transform">
         <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061B2A]/80 border border-[#00D26A]/50 backdrop-blur-md w-fit">
-            <span className="w-2 h-2 rounded-full bg-[#00D26A] animate-ping" />
-            <span className="label-mono text-[#00D26A] font-bold tracking-widest text-[11px] uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061B2A]/80 border border-[#007CD6]/50 backdrop-blur-md w-fit">
+            <span className="w-2 h-2 rounded-full bg-[#007CD6] animate-ping" />
+            <span className="label-mono text-[#007CD6] font-bold tracking-widest text-[11px] uppercase">
               OCEANIC STAR FLEET — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
             </span>
           </div>
 
           <h1 className="font-syne font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
             <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">THE OCEAN</span> <br />
-            <span className="text-[#00D9E8] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] font-black">IS OUR</span> <br />
+            <span className="text-[#01666A] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] font-black">IS OUR</span> <br />
             <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">OPERATING</span> <br />
-            <span className="text-[#00D26A] drop-shadow-[0_0_25px_rgba(0,210,106,0.6)]">GROUND.</span>
+            <span className="text-[#007CD6] drop-shadow-[0_0_25px_rgba(0,124,214,0.6)]">GROUND.</span>
           </h1>
 
           <div className="pt-1 max-w-xl">
             <p className="text-xs sm:text-sm font-manrope font-normal text-slate-100 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-              Global provider of technical vessel management, RPSL approved crew logistics, and maritime operations across Dubai, Mumbai, Colombo, and Istanbul.
+              Global provider of technical vessel management, RPSL approved crew logistics, and maritime operations across 6 global command hubs in Dubai, Mumbai, Colombo, Istanbul, Singapore, and Canada.
             </p>
           </div>
         </div>
@@ -182,7 +182,7 @@ export const CinematicVisionLayer: React.FC = () => {
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div ref={textRef} className="lg:col-span-8 space-y-6">
-          <span className="font-mono text-xs font-bold tracking-widest text-[#00D26A] uppercase flex items-center gap-2">
+          <span className="font-mono text-xs font-bold tracking-widest text-[#007CD6] uppercase flex items-center gap-2">
             <Anchor className="w-4 h-4" /> // 01 HORIZON &amp; SUSTAINABILITY
           </span>
           <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[0.98]">
@@ -250,7 +250,7 @@ export const CinematicMissionLayer: React.FC = () => {
 
       <div className="relative z-10 w-full max-w-[1400px] mx-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div ref={textRef} className="lg:col-span-8 space-y-6">
-          <span className="font-mono text-xs font-bold tracking-widest text-[#00D26A] uppercase flex items-center gap-2">
+          <span className="font-mono text-xs font-bold tracking-widest text-[#007CD6] uppercase flex items-center gap-2">
             <Compass className="w-4 h-4" /> // 02 OPERATIONAL ARCHITECTURE
           </span>
           <h2 className="font-syne text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white tracking-tight leading-[0.98]">

@@ -21,10 +21,10 @@ export const WhyUsStatementSection: React.FC = () => {
       kpi: "0.00 LTIR BENCHMARK",
       badge: "ISO 45001 CERTIFIED",
       icon: ShieldCheck,
-      borderColor: "border-[#0077B6]/30 hover:border-[#0077B6]",
-      accentColor: "text-[#0077B6]",
-      bgGlow: "from-[#0077B6]/15 to-transparent",
-      badgeBg: "bg-[#0077B6]/10 text-[#0077B6] border border-[#0077B6]/20",
+      borderColor: "border-[#007CD6]/30 hover:border-[#007CD6]",
+      accentColor: "text-[#007CD6]",
+      bgGlow: "from-[#007CD6]/15 to-transparent",
+      badgeBg: "bg-[#007CD6]/10 text-[#007CD6] border border-[#007CD6]/20",
       hoverShadow: "hover:shadow-[0_20px_40px_rgba(0,119,182,0.15)]",
     },
     {
@@ -95,15 +95,15 @@ export const WhyUsStatementSection: React.FC = () => {
       className="relative w-full py-16 md:py-24 bg-[#F5F5F2] text-[#071A2B] font-sans select-none border-t border-b border-slate-200 overflow-hidden"
     >
       {/* Background Subtle Wave Grid Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#0077B6_1.2px,transparent_1.2px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#007CD6_1.2px,transparent_1.2px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 space-y-10 relative z-10">
         
         {/* Compact Section Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-6">
           <div className="space-y-1">
-            <span className="text-xs font-mono font-bold text-[#0077B6] tracking-widest uppercase flex items-center gap-2">
-              <Compass className="w-4 h-4 text-[#0077B6]" /> // OPERATIONAL PRINCIPLES
+            <span className="text-xs font-mono font-bold text-[#007CD6] tracking-widest uppercase flex items-center gap-2">
+              <Compass className="w-4 h-4 text-[#007CD6]" /> // OPERATIONAL PRINCIPLES
             </span>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#071A2B] tracking-tight">
               WHY OCEANIC STAR
@@ -111,7 +111,7 @@ export const WhyUsStatementSection: React.FC = () => {
           </div>
 
           <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-600 bg-white border border-slate-200 px-4 py-2 rounded-xl shadow-sm font-bold">
-            <CheckCircle2 className="w-4 h-4 text-[#0077B6]" />
+            <CheckCircle2 className="w-4 h-4 text-[#007CD6]" />
             <span>CORE MARITIME STANDARDS</span>
           </div>
         </div>
@@ -140,7 +140,7 @@ export const WhyUsStatementSection: React.FC = () => {
                   </div>
 
                   {/* Main Keyword */}
-                  <h3 className="font-syne text-4xl sm:text-5xl font-black text-[#071A2B] tracking-tight leading-none group-hover:text-[#0077B6] transition-colors">
+                  <h3 className="font-syne text-4xl sm:text-5xl font-black text-[#071A2B] tracking-tight leading-none group-hover:text-[#007CD6] transition-colors">
                     {st.keyword}
                   </h3>
 

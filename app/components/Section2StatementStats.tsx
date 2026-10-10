@@ -57,7 +57,7 @@ export const Section2StatementStats: React.FC = () => {
 
       animateValue(num1Ref, 24);
       animateValue(num2Ref, 59);
-      animateValue(num3Ref, 3, true);
+      animateValue(num3Ref, 6, true);
       animateValue(num4Ref, 24);
     }, sectionRef);
 
@@ -70,7 +70,7 @@ export const Section2StatementStats: React.FC = () => {
   return (
     <section id="about" ref={sectionRef} className="relative py-28 md:py-40 bg-[#FFFFFF] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        <p className="label-mono text-[#176B87] mb-8 font-semibold tracking-widest text-xs">
+        <p className="label-mono text-[#01666A] mb-8 font-semibold tracking-widest text-xs">
           // HERITAGE & OPERATIONAL SCALE
         </p>
 
@@ -91,7 +91,7 @@ export const Section2StatementStats: React.FC = () => {
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
               <span ref={num1Ref}>24</span>
-              <span className="text-[#176B87]">+</span>
+              <span className="text-[#007CD6]">+</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
               YEARS IN MARITIME OPERATIONS
@@ -108,11 +108,11 @@ export const Section2StatementStats: React.FC = () => {
             </p>
           </div>
 
-          {/* Stat 3: Initial SSR renders 03 HUBS for SEO crawlers */}
+          {/* Stat 3: Initial SSR renders 06 HUBS for SEO crawlers */}
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
-              <span ref={num3Ref}>03</span>
-              <span className="text-3xl sm:text-4xl text-[#176B87] font-semibold"> HUBS</span>
+              <span ref={num3Ref}>06</span>
+              <span className="text-3xl sm:text-4xl text-[#007CD6] font-semibold"> HUBS</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
               GLOBAL OPERATIONAL COMMAND HUBS
@@ -123,7 +123,7 @@ export const Section2StatementStats: React.FC = () => {
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
               <span ref={num4Ref}>24</span>
-              <span className="text-[#176B87]">/7</span>
+              <span className="text-[#007CD6]">/7</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
               ROUND-THE-CLOCK FLEET DISPATCH

@@ -222,15 +222,15 @@ export const EditorialServicesSection: React.FC<EditorialServicesProps> = ({
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#0284C7] group-hover:scale-110 group-hover:border-[#0284C7] transition duration-300 shadow-sm">
+                    <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-[#007CD6] group-hover:scale-110 group-hover:border-[#007CD6] transition duration-300 shadow-sm">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[10px] font-mono tracking-widest text-[#0284C7] bg-sky-50 px-3 py-1 rounded-full border border-sky-100 font-bold">
+                    <span className="text-[10px] font-mono tracking-widest text-[#007CD6] bg-sky-50 px-3 py-1 rounded-full border border-sky-100 font-bold">
                       {service.category}
                     </span>
                   </div>
 
-                  <h3 className="font-syne text-xl font-bold text-[#0F172A] group-hover:text-[#0284C7] transition mb-3">
+                  <h3 className="font-syne text-xl font-bold text-[#0F172A] group-hover:text-[#007CD6] transition mb-3">
                     {service.name}
                   </h3>
 
@@ -251,9 +251,9 @@ export const EditorialServicesSection: React.FC<EditorialServicesProps> = ({
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between text-xs font-mono text-[#0F172A] pt-2 group-hover:text-[#0284C7] transition font-semibold">
+                  <div className="flex items-center justify-between text-xs font-mono text-[#0F172A] pt-2 group-hover:text-[#007CD6] transition font-semibold">
                     <span>REQUEST DISPATCH</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#0284C7] group-hover:translate-x-1 group-hover:-translate-y-1 transition" />
+                    <ArrowUpRight className="w-4 h-4 text-[#007CD6] group-hover:translate-x-1 group-hover:-translate-y-1 transition" />
                   </div>
                 </div>
               </motion.div>
@@ -268,14 +268,14 @@ export const EditorialServicesSection: React.FC<EditorialServicesProps> = ({
               NEED CUSTOMIZED SHIP MANAGEMENT OR MANNING?
             </h4>
             <p className="text-xs text-[#64748B] mt-1">
-              Our 24/7 Operations Hubs in Dubai and India provide tailormade technical and crewing proposals.
+              Our 24/7 Operations Hubs across Dubai, Mumbai, Colombo, Istanbul, Singapore, and Canada provide tailormade technical and crewing proposals.
             </p>
           </div>
 
           {onOpenQuote && (
             <button
               onClick={onOpenQuote}
-              className="px-8 py-3.5 rounded-full bg-[#0F172A] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#0284C7] transition shadow-md shrink-0"
+              className="px-8 py-3.5 rounded-full bg-[#0F172A] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#007CD6] transition shadow-md shrink-0"
             >
               REQUEST FLEET PROPOSAL
             </button>

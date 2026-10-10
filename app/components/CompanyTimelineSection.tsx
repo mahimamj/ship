@@ -60,7 +60,7 @@ export const MILESTONES: TimelineMilestone[] = [
     title: "59 MANAGED FLEET VESSELS & GLOBAL CORRIDORS",
     badge: "59 Fleet Ships • International Hubs",
     description: "Expanded managed fleet matrix to 59 active commercial vessels (Tankers, Bulkers, Containers, RoRo, AHTS, LPG) with global port dispatch.",
-    details: ["30 Tankers, 14 Bulkers, 7 Containers", "Dubai, Mumbai & Colombo Headquarters", "100% SOLAS & ISM Code Safety Standard"],
+    details: ["30 Tankers, 14 Bulkers, 7 Containers", "Dubai, Mumbai, Colombo, Istanbul, SG & CA Hubs", "100% SOLAS & ISM Code Safety Standard"],
     icon: CheckCircle2,
   },
 ];
@@ -80,8 +80,8 @@ export const CompanyTimelineSection: React.FC = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#071A2B]/10 pb-8 mb-12 gap-8">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#176B87]/15 border border-[#176B87]/30 text-xs font-mono text-[#176B87] font-bold mb-4">
-              <Compass className="w-4 h-4 text-[#176B87] animate-spin" />
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#01666A]/10 border border-[#01666A]/30 text-xs font-mono text-[#01666A] font-bold mb-4">
+              <Compass className="w-4 h-4 text-[#01666A] animate-spin" />
               <span>MARITIME SHIP VOYAGE TIMELINE</span>
             </div>
             <h2 className="font-syne text-5xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] font-extrabold leading-none">
@@ -90,7 +90,7 @@ export const CompanyTimelineSection: React.FC = () => {
           </div>
 
           <p className="text-sm font-light text-[#667783] max-w-md leading-relaxed font-manrope">
-            A continuous decade of maritime expansion—sailing from initial incorporation in 2011 to managing 59 commercial fleet vessels across Dubai, Mumbai, and Colombo hubs.
+            A continuous decade of maritime expansion—sailing from initial incorporation in 2011 to managing 59 commercial fleet vessels across 6 global command hubs in Dubai, Mumbai, Colombo, Istanbul, Singapore, and Canada.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export const CompanyTimelineSection: React.FC = () => {
           <div className="relative w-full h-12 flex items-center justify-between px-4">
             <div className="absolute left-6 right-6 h-1.5 bg-[#071A2B]/10 rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#176B87] transition-all duration-700 ease-out"
+                className="h-full bg-[#007CD6] transition-all duration-700 ease-out"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
@@ -111,7 +111,7 @@ export const CompanyTimelineSection: React.FC = () => {
               className="absolute top-1/2 -translate-y-1/2 transition-all duration-700 ease-out z-20"
               style={{ left: `calc(${progressPct}% - 24px)` }}
             >
-              <div className="w-12 h-12 rounded-2xl bg-[#071A2B] text-[#00F0FF] flex items-center justify-center shadow-xl border border-[#176B87]">
+              <div className="w-12 h-12 rounded-2xl bg-[#071A2B] text-[#007CD6] flex items-center justify-center shadow-xl border border-[#01666A]">
                 <Ship className="w-6 h-6 animate-bounce" />
               </div>
             </div>
@@ -128,10 +128,10 @@ export const CompanyTimelineSection: React.FC = () => {
                   className={`p-4 rounded-2xl border text-center transition duration-300 flex flex-col items-center justify-center space-y-1 ${
                     isSelected
                       ? "bg-[#071A2B] border-[#071A2B] text-white shadow-xl scale-105"
-                      : "bg-[#F5F5F2] border-[#071A2B]/10 text-[#667783] hover:border-[#176B87] hover:text-[#071A2B]"
+                      : "bg-[#F5F5F2] border-[#071A2B]/10 text-[#667783] hover:border-[#007CD6] hover:text-[#071A2B]"
                   }`}
                 >
-                  <span className={`font-syne text-2xl font-black ${isSelected ? "text-[#00F0FF]" : "text-[#071A2B]"}`}>
+                  <span className={`font-syne text-2xl font-black ${isSelected ? "text-[#007CD6]" : "text-[#071A2B]"}`}>
                     {item.year}
                   </span>
                   <span className={`text-[10px] font-mono block truncate max-w-full ${isSelected ? "text-slate-200" : "text-[#667783]"}`}>
@@ -153,7 +153,7 @@ export const CompanyTimelineSection: React.FC = () => {
         >
           <div className="lg:col-span-8 space-y-4">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="font-syne text-5xl text-[#176B87] font-black">{selectedMilestone.year}</span>
+              <span className="font-syne text-5xl text-[#007CD6] font-black">{selectedMilestone.year}</span>
               <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200">
                 {selectedMilestone.badge}
               </span>
@@ -172,7 +172,7 @@ export const CompanyTimelineSection: React.FC = () => {
               <div className="grid sm:grid-cols-2 gap-2">
                 {selectedMilestone.details.map((detail, idx) => (
                   <div key={idx} className="flex items-center space-x-2 text-xs font-mono text-[#667783]">
-                    <CheckCircle2 className="w-4 h-4 text-[#176B87] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#01666A] shrink-0" />
                     <span>{detail}</span>
                   </div>
                 ))}
@@ -181,7 +181,7 @@ export const CompanyTimelineSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-4 bg-[#071A2B] text-white p-8 rounded-2xl border border-white/10 text-center space-y-4 shadow-xl">
-            <div className="w-16 h-16 rounded-2xl bg-[#176B87]/30 border border-[#176B87] flex items-center justify-center text-[#00F0FF] mx-auto">
+            <div className="w-16 h-16 rounded-2xl bg-[#01666A]/30 border border-[#01666A] flex items-center justify-center text-[#007CD6] mx-auto">
               <selectedMilestone.icon className="w-8 h-8" />
             </div>
             <div>
@@ -190,7 +190,7 @@ export const CompanyTimelineSection: React.FC = () => {
             </div>
             <a
               href="#certifications"
-              className="inline-flex items-center space-x-2 text-xs font-mono text-[#00F0FF] font-bold hover:underline"
+              className="inline-flex items-center space-x-2 text-xs font-mono text-[#007CD6] font-bold hover:underline"
             >
               <span>Inspect Certifications</span>
               <ArrowRight className="w-3.5 h-3.5" />

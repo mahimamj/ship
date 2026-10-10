@@ -60,7 +60,7 @@ export const NetworkStats: React.FC = () => {
       className="w-full grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-[#8B94A3]/20 pt-4 mt-4 select-none"
     >
       <div className="flex items-center gap-2.5 bg-white/80 p-2.5 rounded-xl border border-slate-200/80 shadow-sm">
-        <div className="w-8 h-8 rounded-lg bg-[#071A2B] text-[#00D9FF] flex items-center justify-center shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-[#071A2B] text-[#007CD6] flex items-center justify-center shrink-0">
           <Globe className="w-4 h-4" />
         </div>
         <div>
@@ -74,7 +74,7 @@ export const NetworkStats: React.FC = () => {
       </div>
 
       <div className="flex items-center gap-2.5 bg-white/80 p-2.5 rounded-xl border border-slate-200/80 shadow-sm">
-        <div className="w-8 h-8 rounded-lg bg-[#071A2B] text-[#00D9FF] flex items-center justify-center shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-[#071A2B] text-[#007CD6] flex items-center justify-center shrink-0">
           <ShieldCheck className="w-4 h-4" />
         </div>
         <div>
@@ -88,7 +88,7 @@ export const NetworkStats: React.FC = () => {
       </div>
 
       <div className="flex items-center gap-2.5 bg-white/80 p-2.5 rounded-xl border border-slate-200/80 shadow-sm">
-        <div className="w-8 h-8 rounded-lg bg-[#071A2B] text-[#00D9FF] flex items-center justify-center shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-[#071A2B] text-[#007CD6] flex items-center justify-center shrink-0">
           <Clock className="w-4 h-4" />
         </div>
         <div>

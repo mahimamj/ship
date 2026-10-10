@@ -2,20 +2,27 @@
 
 @theme {
   --color-primary-navy: #061B2A;
-  --color-deep-ocean: #082F49;
-  --color-ocean-blue: #0068B7;
-  --color-logo-cyan: #00D9E8;
-  --color-soft-aqua: #DDF7F7;
-  --color-sea-mist: #EDF5F5;
+  --color-deep-ocean: #014D51;
+  --color-oceanic-teal: #01666A;
+  --color-oceanic-teal-dark: #014A4D;
+  --color-oceanic-teal-light: #0B7F85;
+  --color-star-blue: #007CD6;
+  --color-star-blue-dark: #0064B0;
+  --color-star-blue-light: #2BA0F2;
+  --color-ocean-blue: #007CD6;
+  --color-logo-teal: #01666A;
+  --color-logo-blue: #007CD6;
+  --color-soft-aqua: #E6F5F6;
+  --color-sea-mist: #F0F8F8;
   --color-warm-white: #FAFAF7;
   --color-graphite: #17252D;
   --color-bg-primary: #FAFAF7;
   --color-bg-white: #FFFFFF;
   --color-navy-deep: #061B2A;
   --color-navy-secondary: #082F49;
-  --color-ocean: #0068B7;
+  --color-ocean: #007CD6;
   --color-muted: #17252D;
-  --color-border-subtle: rgba(8, 47, 73, 0.12);
+  --color-border-subtle: rgba(1, 102, 107, 0.15);
   --font-display: var(--font-jakarta);
   --font-editorial: var(--font-cinzel);
   --font-body: var(--font-inter);
@@ -28,18 +35,21 @@
   --font-inter: Inter, "Segoe UI", Arial, sans-serif;
   --font-manrope: Manrope, "Segoe UI", Arial, sans-serif;
   --color-primary-navy: #061B2A;
-  --color-deep-ocean: #082F49;
-  --color-ocean-blue: #0068B7;
-  --color-logo-cyan: #00D9E8;
-  --color-soft-aqua: #DDF7F7;
-  --color-sea-mist: #EDF5F5;
+  --color-oceanic-teal: #01666A;
+  --color-star-blue: #007CD6;
+  --color-ocean-blue: #007CD6;
+  --color-logo-teal: #01666A;
+  --color-logo-blue: #007CD6;
+  --color-deep-ocean: #014D51;
+  --color-soft-aqua: #E6F5F6;
+  --color-sea-mist: #F0F8F8;
   --color-warm-white: #FAFAF7;
   --color-graphite: #17252D;
   --color-light-bg: #FAFAF7;
   --color-card-bg: #FFFFFF;
   --color-text-dark: #061B2A;
   --color-text-muted: #17252D;
-  --color-border-light: rgba(8, 47, 73, 0.12);
+  --color-border-light: rgba(1, 102, 107, 0.15);
 }
 
 * {
@@ -105,7 +115,29 @@ input[type="text"], input[type="email"], input[type="number"], input[type="tel"]
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 600;
-  color: #0068B7;
+  color: #01666A;
+}
+
+/* Logo Brand Helpers */
+.text-brand-gradient {
+  background: linear-gradient(135deg, #01666A 0%, #007CD6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #01666A 0%, #007CD6 100%);
+}
+
+.btn-brand-primary {
+  background: linear-gradient(135deg, #01666A 0%, #007CD6 100%);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.btn-brand-primary:hover {
+  background: linear-gradient(135deg, #014D51 0%, #0064B0 100%);
+  box-shadow: 0 10px 25px -5px rgba(0, 124, 214, 0.4);
 }
 
 /* Scroll animation helpers */
@@ -160,7 +192,7 @@ input[type="text"], input[type="email"], input[type="number"], input[type="tel"]
   animation-play-state: paused;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar matching logo colors */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -171,16 +203,16 @@ input[type="text"], input[type="email"], input[type="number"], input[type="tel"]
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0068B7;
+  background: linear-gradient(180deg, #01666A 0%, #007CD6 100%);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #061B2A;
+  background: #014A4D;
 }
 
 ::selection {
-  background: #0068B7;
+  background: #01666A;
   color: #FFFFFF;
 }
 
@@ -215,7 +247,7 @@ input[type="text"], input[type="email"], input[type="number"], input[type="tel"]
 
 /* Custom range slider styling */
 input[type="range"] {
-  accent-color: #0068B7;
+  accent-color: #007CD6;
 }
 
 /* Glassmorphism helpers */

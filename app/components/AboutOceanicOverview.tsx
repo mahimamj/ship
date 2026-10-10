@@ -40,8 +40,8 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-slate-200 pb-5 gap-4">
           <div className="space-y-1.5 max-w-2xl">
-            <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#C59B27] uppercase block flex items-center gap-2">
-              <Award className="w-4 h-4 text-[#C59B27]" /> // WHAT IS OCEANIC STAR
+            <span className="font-mono text-xs font-extrabold tracking-[0.25em] text-[#01666A] uppercase block flex items-center gap-2">
+              <Award className="w-4 h-4 text-[#01666A]" /> // WHAT IS OCEANIC STAR
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#0B2545] tracking-tight leading-tight">
               World-Class Ship Management &amp; Maritime Solutions
@@ -49,14 +49,14 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
           </div>
 
           <p className="font-manrope text-xs sm:text-sm text-slate-600 max-w-md leading-relaxed">
-            Oceanic Star Group is a premier international maritime group operating from Dubai, India, Sri Lanka, Canada, and Turkey. We deliver seamless ship management, RPSL crew logistics, and technical vessel operations.
+            Oceanic Star Group is a premier international maritime group operating across 6 strategic command hubs in Dubai, India, Sri Lanka, Turkey, Singapore, and Canada. We deliver seamless ship management, RPSL crew logistics, and technical vessel operations.
           </p>
         </div>
 
         {/* Highlight Stats Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-2xl bg-[#061B2A] text-white shadow-lg border border-[#00D9E8]/30">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-2xl bg-[#061B2A] text-white shadow-lg border border-[#007CD6]/30">
           <div className="space-y-1 text-center md:text-left md:pl-4 border-r border-slate-700/60 last:border-r-0">
-            <span className="font-syne text-2xl sm:text-3xl font-black text-[#00D9E8]">24+ YEARS</span>
+            <span className="font-syne text-2xl sm:text-3xl font-black text-[#38BDF8]">24+ YEARS</span>
             <p className="font-mono text-[10px] text-slate-300 uppercase tracking-wider">Trusted Experience</p>
           </div>
 
@@ -66,8 +66,8 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
           </div>
 
           <div className="space-y-1 text-center md:text-left md:pl-4 border-r border-slate-700/60 last:border-r-0">
-            <span className="font-syne text-2xl sm:text-3xl font-black text-[#C59B27]">5 HUBS</span>
-            <p className="font-mono text-[10px] text-slate-300 uppercase tracking-wider">Dubai • India • Lanka • Turkey • CA</p>
+            <span className="font-syne text-2xl sm:text-3xl font-black text-[#007CD6]">6 HUBS</span>
+            <p className="font-mono text-[10px] text-slate-300 uppercase tracking-wider">Dubai • India • Lanka • Turkey • SG • CA</p>
           </div>
 
           <div className="space-y-1 text-center md:text-left md:pl-4">
@@ -83,7 +83,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
             return (
               <div
                 key={idx}
-                className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-[#0068B7] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+                className="group relative p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-[#007CD6] transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
@@ -96,7 +96,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
                   </div>
 
                   <div>
-                    <h3 className="font-serif text-base font-bold text-[#0B2545] tracking-tight group-hover:text-[#0068B7] transition-colors mb-1.5">
+                    <h3 className="font-serif text-base font-bold text-[#0B2545] tracking-tight group-hover:text-[#007CD6] transition-colors mb-1.5">
                       {pillar.title}
                     </h3>
                     <p className="font-manrope text-xs text-slate-600 leading-normal font-normal">
@@ -112,14 +112,14 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
         {/* Bottom CTA Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-200/80">
           <div className="flex items-center space-x-2 text-xs font-mono font-semibold text-slate-600">
-            <ShieldCheck className="w-4 h-4 text-[#0068B7]" />
+            <ShieldCheck className="w-4 h-4 text-[#01666A]" />
             <span>Fully compliant under SOLAS, MARPOL, MLC 2006 &amp; DG Shipping regulations.</span>
           </div>
 
           <div className="flex items-center space-x-3 w-full sm:w-auto">
             <a
               href="#capabilities"
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-white border border-slate-300 hover:border-[#0068B7] text-[#0B2545] font-mono text-xs font-bold transition text-center"
+              className="w-full sm:w-auto px-6 py-3 rounded-full bg-white border border-slate-300 hover:border-[#007CD6] hover:text-[#007CD6] text-[#0B2545] font-mono text-xs font-bold transition text-center"
             >
               EXPLORE CAPABILITIES
             </a>
@@ -127,7 +127,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
             {onOpenQuote && (
               <button
                 onClick={onOpenQuote}
-                className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#0068B7] hover:bg-[#061B2A] text-white font-mono text-xs font-bold transition text-center shadow-md"
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-r from-[#01666A] to-[#007CD6] hover:from-[#014D51] hover:to-[#0064B0] text-white font-mono text-xs font-bold transition text-center shadow-md cursor-pointer"
               >
                 REQUEST PROPOSAL
               </button>

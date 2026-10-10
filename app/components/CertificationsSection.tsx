@@ -323,8 +323,8 @@ export const CertificationsSection: React.FC = () => {
         {/* Compact Section Header */}
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <div className="flex items-center gap-3">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#176B87]/10 border border-[#176B87]/30 text-xs font-mono text-[#176B87] font-bold">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#176B87]" />
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#01666A]/10 border border-[#01666A]/30 text-xs font-mono text-[#01666A] font-bold">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#01666A]" />
               <span>MINISTRY &amp; GLOBAL CLASS ACCREDITATIONS</span>
             </div>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
@@ -368,7 +368,7 @@ export const CertificationsSection: React.FC = () => {
                   layout
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
                   onClick={() => setSelectedCert(cert)}
-                  className="w-[280px] sm:w-[320px] md:w-[350px] shrink-0 bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_15px_35px_rgba(23,107,135,0.16)] hover:border-[#176B87] flex flex-col justify-between group cursor-pointer relative transition-all duration-300"
+                  className="w-[280px] sm:w-[320px] md:w-[350px] shrink-0 bg-white rounded-2xl overflow-hidden border border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:shadow-[0_15px_35px_rgba(1,102,106,0.16)] hover:border-[#01666A] flex flex-col justify-between group cursor-pointer relative transition-all duration-300"
                 >
                   {/* Top Badge Overlay */}
                   <div className="absolute top-3.5 right-3.5 z-10">
@@ -379,7 +379,7 @@ export const CertificationsSection: React.FC = () => {
 
                   {/* Document Frame Stage */}
                   <div className="relative h-56 sm:h-64 w-full bg-gradient-to-b from-[#F1F5F9] to-[#E2E8F0] p-4 flex items-center justify-center overflow-hidden group">
-                    <div className="relative w-full h-full bg-white rounded-xl p-2 shadow-[0_8px_20px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden flex items-center justify-center group-hover:shadow-[0_12px_28px_rgba(23,107,135,0.18)] transition-all">
+                    <div className="relative w-full h-full bg-white rounded-xl p-2 shadow-[0_8px_20px_rgba(0,0,0,0.1)] border border-slate-200 overflow-hidden flex items-center justify-center group-hover:shadow-[0_12px_28px_rgba(1,102,106,0.18)] transition-all">
                       <img
                         src={cert.image}
                         alt={cert.title}
@@ -391,7 +391,7 @@ export const CertificationsSection: React.FC = () => {
 
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-[#071A2B]/40 backdrop-blur-xs">
                       <div className="px-3.5 py-2 rounded-full bg-[#071A2B] border border-white/30 text-white font-mono text-xs font-bold flex items-center gap-2 shadow-2xl">
-                        <Eye className="w-3.5 h-3.5 text-[#00D26A]" /> Inspect High-Res Certificate
+                        <Eye className="w-3.5 h-3.5 text-[#007CD6]" /> Inspect High-Res Certificate
                       </div>
                     </div>
                   </div>
@@ -399,15 +399,15 @@ export const CertificationsSection: React.FC = () => {
                   {/* Certificate Meta Details */}
                   <div className="p-5 space-y-2.5">
                     <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-lg bg-[#176B87]/10 border border-[#176B87]/30 text-[#176B87] flex items-center justify-center shrink-0">
+                      <div className="w-7 h-7 rounded-lg bg-[#01666A]/10 border border-[#01666A]/30 text-[#01666A] flex items-center justify-center shrink-0">
                         <Award className="w-3.5 h-3.5" />
                       </div>
-                      <h3 className="font-jakarta text-sm font-bold text-[#071A2B] group-hover:text-[#176B87] transition line-clamp-1">
+                      <h3 className="font-jakarta text-sm font-bold text-[#071A2B] group-hover:text-[#007CD6] transition line-clamp-1">
                         {cert.title}
                       </h3>
                     </div>
 
-                    <p className="text-[11px] font-mono text-[#176B87] font-semibold">{cert.subtitle}</p>
+                    <p className="text-[11px] font-mono text-[#01666A] font-semibold">{cert.subtitle}</p>
 
                     <div className="bg-[#F8FAFC] p-2.5 rounded-xl border border-slate-200 text-xs font-mono flex items-center justify-between">
                       <span className="text-[9px] text-slate-500 uppercase font-semibold">LICENCE CODE:</span>
@@ -416,9 +416,9 @@ export const CertificationsSection: React.FC = () => {
                   </div>
 
                   {/* Card Action Footer */}
-                  <div className="px-5 py-3 bg-[#F8FAFC] border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-[#071A2B] group-hover:text-[#176B87] font-bold">
+                  <div className="px-5 py-3 bg-[#F8FAFC] border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-[#071A2B] group-hover:text-[#007CD6] font-bold">
                     <span>VERIFIED OFFICIAL DOCUMENT</span>
-                    <FileText className="w-3.5 h-3.5 text-[#176B87] group-hover:translate-x-1 transition" />
+                    <FileText className="w-3.5 h-3.5 text-[#01666A] group-hover:translate-x-1 transition" />
                   </div>
                 </motion.div>
               ))}
@@ -429,8 +429,8 @@ export const CertificationsSection: React.FC = () => {
         {/* Dedicated Flag State World Map Container */}
         <div className="bg-[#FFFFFF] border border-slate-200 rounded-2xl p-4 sm:p-6 shadow-sm space-y-4 sm:space-y-6">
           <div className="text-center max-w-3xl mx-auto space-y-2">
-            <div className="inline-flex items-center space-x-2 bg-sky-50 border border-sky-100 px-3 py-1 rounded-full text-xs font-mono text-[#176B87] font-semibold">
-              <Globe className="w-3.5 h-3.5 text-[#176B87]" />
+            <div className="inline-flex items-center space-x-2 bg-sky-50 border border-sky-100 px-3 py-1 rounded-full text-xs font-mono text-[#01666A] font-semibold">
+              <Globe className="w-3.5 h-3.5 text-[#01666A]" />
               <span>GLOBAL OPEN REGISTRIES WORLD MAP</span>
             </div>
 
@@ -581,12 +581,12 @@ export const CertificationsSection: React.FC = () => {
               </button>
 
               <div className="flex items-center space-x-3.5 border-b border-slate-100 pb-3 pr-8">
-                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#176B87] border border-sky-100 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#01666A] border border-sky-100 flex items-center justify-center shrink-0">
                   <ShieldCheck size={22} />
                 </div>
                 <div>
                   <h3 className="font-jakarta text-lg sm:text-xl font-bold text-[#071A2B]">{selectedCert.title}</h3>
-                  <p className="text-xs font-mono text-[#176B87] font-bold">{selectedCert.subtitle}</p>
+                  <p className="text-xs font-mono text-[#01666A] font-bold">{selectedCert.subtitle}</p>
                 </div>
               </div>
 
@@ -606,7 +606,7 @@ export const CertificationsSection: React.FC = () => {
                 </div>
                 <div className="bg-[#F8FAFC] p-3 rounded-xl border border-slate-200 space-y-1">
                   <span className="text-[10px] text-slate-500 uppercase block font-semibold">ISSUING ENTITY:</span>
-                  <span className="text-[#176B87] font-bold truncate block">{selectedCert.entity}</span>
+                  <span className="text-[#007CD6] font-bold truncate block">{selectedCert.entity}</span>
                 </div>
               </div>
 
@@ -627,7 +627,7 @@ export const CertificationsSection: React.FC = () => {
 
               <button
                 onClick={() => setSelectedCert(null)}
-                className="w-full py-3 rounded-xl bg-[#071A2B] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#176B87] transition shadow-md"
+                className="w-full py-3 rounded-xl bg-[#071A2B] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#007CD6] transition shadow-md"
               >
                 CLOSE DOCUMENT INSPECTOR
               </button>

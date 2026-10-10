@@ -23,7 +23,7 @@ export const MaritimeRoute: React.FC<MaritimeRouteProps> = ({
       <path
         d={d}
         fill="none"
-        stroke={isHighlighted ? "#00D9FF" : "#0077FF"}
+        stroke={isHighlighted ? "#007CD6" : "#01666A"}
         strokeWidth={isHighlighted ? 2.5 : 1.5}
         strokeOpacity={isHighlighted ? 0.6 : 0.25}
         className="transition-all duration-300"
@@ -34,7 +34,7 @@ export const MaritimeRoute: React.FC<MaritimeRouteProps> = ({
         id={id}
         d={d}
         fill="none"
-        stroke={isHighlighted ? "#00D9FF" : "#0077FF"}
+        stroke={isHighlighted ? "#007CD6" : "#01666A"}
         strokeWidth={isHighlighted ? 2 : 1.2}
         strokeDasharray="4 6"
         strokeOpacity={isHighlighted ? 0.95 : 0.55}
@@ -42,7 +42,7 @@ export const MaritimeRoute: React.FC<MaritimeRouteProps> = ({
       />
 
       {/* Animated Moving Particle / Dot */}
-      <circle r={isHighlighted ? 3 : 2} fill={isHighlighted ? "#00D9FF" : "#0077FF"}>
+      <circle r={isHighlighted ? 3 : 2} fill={isHighlighted ? "#007CD6" : "#01666A"}>
         <animateMotion
           path={d}
           dur="6s"

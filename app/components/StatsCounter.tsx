@@ -21,11 +21,11 @@ export const StatsCounter: React.FC = () => {
       color: "from-cyan-400 to-blue-500",
     },
     {
-      value: "Worldwide",
+      value: "6 Hubs",
       label: "Operations Hubs",
-      subtext: "Dubai • India • Sri Lanka",
+      subtext: "Dubai • India • Lanka • TR • SG • CA",
       icon: Globe2,
-      color: "from-emerald-400 to-teal-500",
+      color: "from-[#01666A] to-[#007CD6]",
     },
     {
       value: "24/7",

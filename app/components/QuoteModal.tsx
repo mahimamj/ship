@@ -63,45 +63,45 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 bg-[#071A2B]/85 backdrop-blur-md flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 bg-[#061B2A]/85 backdrop-blur-md flex items-center justify-center p-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="bg-[#0F2C59] border border-[#176B87]/40 rounded-3xl p-6 sm:p-8 max-w-2xl w-full text-white shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto"
+          className="bg-[#061B2A] border border-[#007CD6]/40 rounded-3xl p-6 sm:p-8 max-w-2xl w-full text-white shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto"
         >
           {/* Close button */}
           <button
             onClick={resetModal}
-            className="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl bg-[#071A2B] border border-white/10 transition-colors"
+            className="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl bg-[#061B2A] border border-white/10 transition-colors"
           >
             <X size={20} />
           </button>
 
           {/* Modal Header */}
-          <div className="flex items-center space-x-3 border-b border-[#176B87]/30 pb-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#176B87]/30 border border-[#176B87] text-[#00D26A] flex items-center justify-center shrink-0">
+          <div className="flex items-center space-x-3 border-b border-[#007CD6]/30 pb-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#01666A]/20 border border-[#01666A] text-[#007CD6] flex items-center justify-center shrink-0">
               <Calculator size={24} />
             </div>
             <div>
               <h3 className="text-xl sm:text-2xl font-bold font-jakarta text-white">4-Step Instant Vessel Quote Wizard</h3>
-              <p className="text-xs text-[#00D26A] font-mono font-semibold">Instant Commercial Proposal Engine</p>
+              <p className="text-xs text-[#007CD6] font-mono font-semibold">Instant Commercial Proposal Engine</p>
             </div>
           </div>
 
           {/* Stepper Header Bar */}
           {!submitted && (
-            <div className="grid grid-cols-4 gap-2 border-b border-[#176B87]/20 pb-4">
+            <div className="grid grid-cols-4 gap-2 border-b border-[#007CD6]/20 pb-4">
               {steps.map((s) => (
                 <div
                   key={s.num}
                   onClick={() => setStep(s.num)}
                   className={`cursor-pointer p-2 rounded-xl border text-center transition-all ${
                     step === s.num
-                      ? "bg-[#176B87] border-[#00D26A] text-white shadow-lg"
+                      ? "bg-[#007CD6] border-[#007CD6] text-white shadow-lg"
                       : step > s.num
-                      ? "bg-[#071A2B] border-[#00D26A]/50 text-[#00D26A]"
-                      : "bg-[#071A2B]/40 border-white/10 text-slate-400"
+                      ? "bg-[#061B2A] border-[#007CD6]/50 text-[#007CD6]"
+                      : "bg-[#061B2A]/40 border-white/10 text-slate-400"
                   }`}
                 >
                   <div className="text-[10px] font-mono uppercase font-bold text-slate-300">{s.title}</div>
@@ -347,12 +347,12 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
               )}
 
               {/* Navigation Button Footer */}
-              <div className="flex items-center justify-between pt-4 border-t border-[#176B87]/20">
+              <div className="flex items-center justify-between pt-4 border-t border-[#007CD6]/20">
                 {step > 1 ? (
                   <button
                     type="button"
                     onClick={handlePrevStep}
-                    className="px-4 py-2.5 rounded-xl bg-[#071A2B] border border-[#176B87]/40 text-slate-300 hover:text-white flex items-center gap-2"
+                    className="px-4 py-2.5 rounded-xl bg-[#061B2A] border border-[#007CD6]/40 text-slate-300 hover:text-white flex items-center gap-2"
                   >
                     <ArrowLeft size={16} /> Back
                   </button>
@@ -364,7 +364,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   <button
                     type="button"
                     onClick={handleNextStep}
-                    className="px-6 py-2.5 rounded-xl bg-[#176B87] hover:bg-[#176B87]/80 text-white font-bold flex items-center gap-2 shadow-lg"
+                    className="px-6 py-2.5 rounded-xl bg-[#007CD6] hover:bg-[#007CD6]/80 text-white font-bold flex items-center gap-2 shadow-lg"
                   >
                     Next Step <ArrowRight size={16} />
                   </button>
@@ -372,7 +372,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   <button
                     type="button"
                     onClick={handleSubmitFinal}
-                    className="px-8 py-3 rounded-xl bg-gradient-to-r from-[#176B87] to-[#00D26A] text-white font-black text-sm flex items-center gap-2 shadow-xl hover:opacity-90 transition-all"
+                    className="px-8 py-3 rounded-xl bg-gradient-to-r from-[#01666A] to-[#007CD6] text-white font-black text-sm flex items-center gap-2 shadow-xl hover:opacity-90 transition-all"
                   >
                     <Send size={16} /> Dispatch Official Proposal
                   </button>

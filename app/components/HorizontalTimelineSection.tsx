@@ -79,7 +79,7 @@ export const HorizontalTimelineSection: React.FC = () => {
 
       animateValue(num1Ref, 24);
       animateValue(num2Ref, 59);
-      animateValue(num3Ref, 3, true);
+      animateValue(num3Ref, 6, true);
       animateValue(num4Ref, 24);
     }, sectionRef);
 
@@ -112,7 +112,7 @@ export const HorizontalTimelineSection: React.FC = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 p-6 rounded-3xl bg-white border border-slate-200 shadow-lg">
           <div className="space-y-1 p-2">
             <div className="font-syne font-extrabold text-4xl sm:text-5xl text-[#071A2B] leading-none">
-              <span ref={num1Ref}>24</span><span className="text-[#0077B6]">+</span>
+              <span ref={num1Ref}>24</span><span className="text-[#007CD6]">+</span>
             </div>
             <p className="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">
               YEARS IN MARITIME OPS
@@ -130,7 +130,7 @@ export const HorizontalTimelineSection: React.FC = () => {
 
           <div className="space-y-1 p-2 border-l border-slate-100">
             <div className="font-syne font-extrabold text-4xl sm:text-5xl text-[#071A2B] leading-none">
-              <span ref={num3Ref}>03</span> <span className="text-xs text-[#0077B6] font-mono uppercase font-bold">HUBS</span>
+              <span ref={num3Ref}>06</span> <span className="text-xs text-[#007CD6] font-mono uppercase font-bold">HUBS</span>
             </div>
             <p className="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">
               GLOBAL COMMAND HUBS
@@ -139,7 +139,7 @@ export const HorizontalTimelineSection: React.FC = () => {
 
           <div className="space-y-1 p-2 border-l border-slate-100">
             <div className="font-syne font-extrabold text-4xl sm:text-5xl text-[#071A2B] leading-none">
-              <span ref={num4Ref}>24</span><span className="text-[#0077B6]">/7</span>
+              <span ref={num4Ref}>24</span><span className="text-[#007CD6]">/7</span>
             </div>
             <p className="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">
               ROUND-THE-CLOCK DISPATCH
@@ -161,14 +161,14 @@ export const HorizontalTimelineSection: React.FC = () => {
               >
                 <span
                   className={`font-syne text-2xl sm:text-4xl font-extrabold transition-colors ${
-                    isActive ? "text-[#0077B6]" : "text-slate-400"
+                    isActive ? "text-[#007CD6]" : "text-slate-400"
                   }`}
                 >
                   {item.year}
                 </span>
                 <div
                   className={`h-1 w-full mt-1.5 rounded-full transition-all duration-300 ${
-                    isActive ? "bg-[#0077B6]" : "bg-transparent"
+                    isActive ? "bg-[#007CD6]" : "bg-transparent"
                   }`}
                 />
               </button>
@@ -180,7 +180,7 @@ export const HorizontalTimelineSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-6 space-y-4">
             <div className="space-y-3 transition-all duration-500">
-              <span className="font-mono text-xs font-bold text-[#0077B6] tracking-widest uppercase">
+              <span className="font-mono text-xs font-bold text-[#007CD6] tracking-widest uppercase">
                 MILESTONE // {current.year}
               </span>
               <h3 className="font-syne text-2xl sm:text-4xl font-extrabold text-[#071A2B] leading-tight">
