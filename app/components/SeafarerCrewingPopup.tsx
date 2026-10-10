@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Anchor, ArrowRight, ShieldCheck, X } from "lucide-react";
-import { SEAFARER_APPLY_PATH, SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
+import { SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 const POPUP_SESSION_KEY = "oceanic_seafarer_crewing_popup_dismissed";
 
@@ -14,12 +14,9 @@ export const SeafarerCrewingPopup: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const isCrewingPage =
-      pathname === SEAFARER_APPLY_PATH ||
-      pathname === "/careers/at-sea" ||
-      pathname?.startsWith(`${SEAFARER_APPLY_PATH}/`);
+    const isCareersPage = pathname?.startsWith("/careers");
 
-    if (isCrewingPage || sessionStorage.getItem(POPUP_SESSION_KEY)) {
+    if (isCareersPage || sessionStorage.getItem(POPUP_SESSION_KEY)) {
       setIsVisible(false);
       return;
     }
@@ -32,8 +29,8 @@ export const SeafarerCrewingPopup: React.FC = () => {
   }, [pathname]);
 
   const handleDismiss = () => {
-    sessionStorage.setItem(POPUP_SESSION_KEY, "true");
     setIsVisible(false);
+    sessionStorage.setItem(POPUP_SESSION_KEY, "true");
   };
 
   return (
@@ -53,11 +50,17 @@ export const SeafarerCrewingPopup: React.FC = () => {
             <div className="absolute -bottom-20 left-10 h-40 w-40 rounded-full bg-emerald-400/10 blur-2xl pointer-events-none" />
 
             <button
+              type="button"
+              onPointerDown={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                handleDismiss();
+              }}
               onClick={handleDismiss}
-              className="absolute right-3 top-3 rounded-lg p-1.5 text-slate-300 transition hover:bg-white/10 hover:text-white"
+              className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-xl text-slate-200 transition hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#00D9E8]"
               aria-label="Close seafarer crewing popup"
             >
-              <X className="h-4 w-4" />
+              <X className="h-5 w-5" />
             </button>
 
             <div className="relative z-10 space-y-4 pr-8">
