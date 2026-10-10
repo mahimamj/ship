@@ -154,6 +154,7 @@ const MILESTONES: MilestoneItem[] = [
     yearDisplay: "2026",
     category: "LEADERSHIP",
     title: "Global Fleet Command — 59+ Managed Ships",
+<<<<<<< HEAD
     subtitle: "6 Total Global Hubs",
     desc: "Leading a multi-hub global ship management matrix controlling 59+ commercial vessels across India, UAE, Sri Lanka, Turkey, Singapore, and Canada with 24/7 vessel tracking and safety leadership.",
     icon: Ship,
@@ -163,6 +164,17 @@ const MILESTONES: MilestoneItem[] = [
     bullets: [
       "59+ Managed Fleet (Tankers, Bulkers, Container, LPG, RoRo)",
       "6 Total Global Hubs across Asia, Middle East, Europe & Americas",
+=======
+    subtitle: "5 International Operating Hubs",
+    desc: "Leading a multi-hub global ship management matrix controlling 59+ commercial vessels across India, UAE, Sri Lanka, Canada, and Turkey with 24/7 vessel tracking and safety leadership.",
+    icon: Ship,
+    highlight: true,
+    trustBadge: "59+ Managed Vessels • 5 International Hubs",
+    marketingMetric: "Industry Leader",
+    bullets: [
+      "59+ Managed Fleet (Tankers, Bulkers, Container, LPG, RoRo)",
+      "5 Strategic Hubs across Asia, Middle East, Europe & Americas",
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
       "99.4% On-time Voyage Completion & Zero Major PSC Detentions",
     ],
   },
@@ -171,7 +183,11 @@ const MILESTONES: MilestoneItem[] = [
 const METRICS_SUMMARY = [
   { label: "Years Excellence", value: "20+", detail: "Continuous Growth" },
   { label: "Managed Vessels", value: "59+", detail: "Commercial Fleet" },
+<<<<<<< HEAD
   { label: "Total Global Hubs", value: "6", detail: "IN, AE, LK, TR, SG, CA" },
+=======
+  { label: "Global Hubs", value: "5", detail: "India, UAE, LK, CA, TR" },
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
   { label: "Compliance Rate", value: "100%", detail: "RPSL & ISO 9001" },
 ];
 
@@ -210,7 +226,11 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
             </h2>
             
             <p className="font-inter text-xs sm:text-sm text-[#687384] leading-relaxed font-normal">
+<<<<<<< HEAD
               From our founding in Navi Mumbai in 2002 to managing a global fleet of 59+ commercial vessels across 6 total global hubs today—explore how Oceanic Star built its reputation as a trusted global ship management partner.
+=======
+              From our founding in Navi Mumbai in 2002 to managing a global fleet of 59+ commercial vessels across 5 strategic international hubs today—explore how Oceanic Star built its reputation as a trusted global ship management partner.
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
             </p>
           </div>
 
@@ -548,7 +568,11 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
               Partner With Oceanic Star for Your Fleet Operations
             </h3>
             <p className="font-inter text-xs sm:text-sm text-sky-100 font-normal leading-relaxed">
+<<<<<<< HEAD
               Benefit from 20+ years of audited quality, RPSL-MUM-506 compliance, and 24/7 fleet command across 6 total global hubs.
+=======
+              Benefit from 20+ years of audited quality, RPSL-MUM-506 compliance, and 24/7 fleet command across 5 international hubs.
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
             </p>
           </div>
 

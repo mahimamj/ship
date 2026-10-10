@@ -19,7 +19,11 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
 
   // Derive exact position percentage from projected D3 coordinates on 960x480 SVG map canvas
   const posX = hub.x !== undefined ? (hub.x / 960) * 100 : 50;
+<<<<<<< HEAD
   const posY = hub.y !== undefined ? (hub.y / 440) * 100 : 50;
+=======
+  const posY = hub.y !== undefined ? (hub.y / 480) * 100 : 50;
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
   return (
     <div
@@ -47,9 +51,13 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
           className={`absolute rounded-full transition-all duration-300 ${
             isActive
               ? "w-7 h-7 bg-[#071A2B] border-2 border-[#00D9FF] shadow-[0_0_15px_#00D9FF]"
+<<<<<<< HEAD
               : hub.isUpcoming
                 ? "w-5 h-5 bg-[#071A2B] border border-amber-400/80 group-hover:border-amber-300"
                 : "w-5 h-5 bg-[#071A2B] border border-[#0077FF]/60 group-hover:border-[#00D9FF]"
+=======
+              : "w-5 h-5 bg-[#071A2B] border border-[#0077FF]/60 group-hover:border-[#00D9FF]"
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
           }`}
         />
 
@@ -58,9 +66,13 @@ export const HubMarker: React.FC<HubMarkerProps> = ({ hub, isActive, onSelect })
           className={`relative rounded-full transition-all duration-300 ${
             isActive
               ? "w-2.5 h-2.5 bg-[#00D9FF] shadow-[0_0_10px_#00D9FF]"
+<<<<<<< HEAD
               : hub.isUpcoming
                 ? "w-1.5 h-1.5 bg-amber-400 group-hover:bg-amber-300"
                 : "w-1.5 h-1.5 bg-[#0077FF] group-hover:bg-[#00D9FF]"
+=======
+              : "w-1.5 h-1.5 bg-[#0077FF] group-hover:bg-[#00D9FF]"
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
           }`}
         />
       </div>

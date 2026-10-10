@@ -81,7 +81,11 @@ export const CommandHubs: React.FC<CommandHubsProps> = ({ onOpenQuote }) => {
   return (
     <section
       ref={sectionRef}
+<<<<<<< HEAD
       id="presence"
+=======
+      id="global-command-hubs"
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
       className="relative w-full bg-[#F8F8F5] text-[#071A2B] py-6 sm:py-10 px-4 sm:px-6 md:px-12 select-none border-b border-[#8B94A3]/20 overflow-hidden font-sans"
     >
       <div className="max-w-[1400px] mx-auto space-y-4 relative z-10">
@@ -90,11 +94,16 @@ export const CommandHubs: React.FC<CommandHubsProps> = ({ onOpenQuote }) => {
         <div ref={headerRef} className="space-y-2">
           <div className="flex items-center gap-2 font-mono text-xs font-bold text-[#0077FF] tracking-widest uppercase">
             <span className="w-2 h-2 rounded-full bg-[#00D9FF] animate-ping" />
+<<<<<<< HEAD
             <span>// TOTAL GLOBAL COMMAND HUBS</span>
+=======
+            <span>// GLOBAL COMMAND HUBS</span>
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
           </div>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3">
             <h2 className="font-poppins text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#071A2B] tracking-tight leading-tight">
+<<<<<<< HEAD
               Six Total Global Hubs
             </h2>
 
@@ -115,6 +124,16 @@ export const CommandHubs: React.FC<CommandHubsProps> = ({ onOpenQuote }) => {
             </span>
           </div>
 
+=======
+              Four Strategic Command Hubs
+            </h2>
+
+            <p className="font-inter text-xs sm:text-sm text-[#687384] max-w-xl font-normal leading-relaxed">
+              Strategically positioned across key maritime corridors, our command hubs enable coordinated operations, crew management and responsive support across global markets.
+            </p>
+          </div>
+
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
           {/* Thin Horizontal Divider */}
           <div className="w-full h-px bg-[#8B94A3]/25 mt-3" />
         </div>

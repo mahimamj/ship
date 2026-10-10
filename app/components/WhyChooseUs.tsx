@@ -222,7 +222,11 @@ const REASONS: ReasonItem[] = [
     number: "11",
     title: "Expanding International Footprint",
     desc: "Growing presence across multiple countries, connecting global shipping demand with skilled talent.",
+<<<<<<< HEAD
     badge: "6 Total Global Hubs",
+=======
+    badge: "4 Global Hubs",
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
     icon: Globe,
     theme: {
       border: "border-blue-200/80",

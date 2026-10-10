@@ -136,6 +136,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                       <div className="text-[10px] text-slate-500 font-normal">Officers, Captains &amp; Crew</div>
                     </div>
                   </Link>
+<<<<<<< HEAD
 
                   <Link
                     href="/careers/apply"
@@ -150,6 +151,8 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                       <div className="text-[10px] text-slate-500 font-normal">Official crewing application</div>
                     </div>
                   </Link>
+=======
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
                 </motion.div>
               )}
             </AnimatePresence>
@@ -273,6 +276,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                     <Anchor className="w-3.5 h-3.5 text-[#0068B7]" />
                     <span>AT SEA</span>
                   </Link>
+<<<<<<< HEAD
                   <Link
                     href="/careers/apply"
                     onClick={() => setMobileOpen(false)}
@@ -281,6 +285,8 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                     <Anchor className="w-3.5 h-3.5 text-[#0068B7]" />
                     <span>APPLY AS SEAFARER</span>
                   </Link>
+=======
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
                 </div>
               </div>
 

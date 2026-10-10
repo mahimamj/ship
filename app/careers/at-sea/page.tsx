@@ -11,8 +11,11 @@ import { MaritimeCommandPalette } from "../../components/MaritimeCommandPalette"
 import { OceanicAIChatbotWidget } from "../../components/OceanicAIChatbotWidget";
 import { FloatingWhatsAppButton } from "../../components/FloatingWhatsAppButton";
 import { Anchor, ShieldCheck, Award, ArrowRight, Compass } from "lucide-react";
+<<<<<<< HEAD
 import Link from "next/link";
 import { SEAFARER_APPLY_PATH } from "@/lib/content/careers";
+=======
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
 export default function AtSeaCareersPage() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -59,6 +62,7 @@ export default function AtSeaCareersPage() {
           </p>
 
           <div className="pt-4 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-700 font-bold">
+<<<<<<< HEAD
             <Link
               href={SEAFARER_APPLY_PATH}
               className="flex items-center gap-2 px-5 py-3 bg-[#0077B6] hover:bg-[#071A2B] text-white rounded-xl transition-all shadow-sm"
@@ -66,6 +70,8 @@ export default function AtSeaCareersPage() {
               APPLY AS SEAFARER
               <ArrowRight className="w-4 h-4" />
             </Link>
+=======
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
             <span className="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-xl border border-slate-200">
               <ShieldCheck className="w-4 h-4 text-[#0077B6]" /> STCW 2010 CERTIFIED
             </span>
@@ -108,22 +114,35 @@ export default function AtSeaCareersPage() {
                 <h3 className="font-syne text-xl font-bold text-[#071A2B] pt-1">{r.rank}</h3>
               </div>
 
+<<<<<<< HEAD
               <Link
                 href={SEAFARER_APPLY_PATH}
+=======
+              <button
+                onClick={() => setCareerModalState({ isOpen: true, jobTitle: r.rank })}
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
                 className="w-full py-3 bg-[#0077B6] hover:bg-[#071A2B] text-white text-xs font-mono font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
               >
                 <span>APPLY AT SEA</span>
                 <ArrowRight className="w-4 h-4" />
+<<<<<<< HEAD
               </Link>
+=======
+              </button>
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
             </div>
           ))}
         </div>
       </section>
 
       {/* FULL CAREER JOB BOARD SECTION */}
+<<<<<<< HEAD
       <CareerJobBoardSection
         onOpenApplyModal={(title) => setCareerModalState({ isOpen: true, jobTitle: title })}
       />
+=======
+      <CareerJobBoardSection onOpenApplyModal={(title) => setCareerModalState({ isOpen: true, jobTitle: title })} />
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
       {/* CONTACT & FOOTER */}
       <div className="bg-white">

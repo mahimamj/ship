@@ -1,9 +1,13 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+<<<<<<< HEAD
 import Link from "next/link";
 import { Search, MapPin, Clock, DollarSign, Anchor, Building2, ArrowRight } from "lucide-react";
 import { SEAFARER_APPLY_PATH } from "@/lib/content/careers";
+=======
+import { Search, MapPin, Clock, DollarSign, Anchor, Building2, ArrowRight } from "lucide-react";
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
 interface JobOpening {
   id: string;
@@ -333,6 +337,7 @@ export const CareerJobBoardSection: React.FC<CareerJobBoardSectionProps> = ({ on
 
                 </div>
 
+<<<<<<< HEAD
                 {/* Apply Now: seafarer (ship) jobs go to the CRM portal */}
                 <div className="pt-2">
                   {job.isShip ? (
@@ -352,6 +357,17 @@ export const CareerJobBoardSection: React.FC<CareerJobBoardSectionProps> = ({ on
                       <ArrowRight className="w-3.5 h-3.5 text-[#00D9E8]" />
                     </button>
                   )}
+=======
+                {/* Apply Now Button using Website Deep Navy / Ocean Blue Brand Colors */}
+                <div className="pt-2">
+                  <button
+                    onClick={() => onOpenApplyModal?.(job.title)}
+                    className="bg-[#061B2A] hover:bg-[#0068B7] text-white px-4.5 py-2 rounded-xl font-mono text-xs font-bold transition-all shadow-md border border-[#00D9E8]/30 flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <span>Apply now</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#00D9E8]" />
+                  </button>
+>>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
                 </div>
 
               </div>
