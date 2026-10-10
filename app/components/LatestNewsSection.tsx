@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { ExternalLink, Clock, Sparkles, RefreshCw, CheckCircle2 } from "lucide-react";
+import React, { useEffect, useMemo, useState } from "react";
+import { ExternalLink, Clock, RefreshCw, CheckCircle2, AlertCircle } from "lucide-react";
 
 export const LinkedInIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -11,18 +11,19 @@ export const LinkedInIcon: React.FC<{ className?: string }> = ({ className = "w-
 
 export interface LinkedInPost {
   id: string;
-  image: string;
+  image?: string;
   companyName: string;
-  companyId: string;
   linkedinUrl: string;
-  timeAgo: string;
+  timeAgo?: string;
+  publishedAt?: string;
   badge: string;
   title: string;
   caption: string;
 }
 
 export const LINKEDIN_COMPANY_ID = "oceanic-star-shipping-private-limited";
-export const LINKEDIN_COMPANY_URL = `https://www.linkedin.com/company/${LINKEDIN_COMPANY_ID}/`;
+export const LINKEDIN_COMPANY_URL =
+  process.env.NEXT_PUBLIC_LINKEDIN_COMPANY_URL || `https://www.linkedin.com/company/${LINKEDIN_COMPANY_ID}/`;
 
 // Real synchronized posts from OCEANIC STAR SHIPPING PVT LTD LinkedIn feed
 export const REAL_LINKEDIN_POSTS: LinkedInPost[] = [
@@ -30,7 +31,6 @@ export const REAL_LINKEDIN_POSTS: LinkedInPost[] = [
     id: "post-1",
     image: "/images/backend_operator_hiring.jpg",
     companyName: "OCEANIC STAR SHIPPING PVT LTD",
-    companyId: LINKEDIN_COMPANY_ID,
     linkedinUrl: LINKEDIN_COMPANY_URL,
     timeAgo: "6d",
     badge: "WE ARE HIRING",
@@ -41,7 +41,6 @@ export const REAL_LINKEDIN_POSTS: LinkedInPost[] = [
     id: "post-2",
     image: "/images/chief_officer_post.jpg",
     companyName: "OCEANIC STAR SHIPPING PVT LTD",
-    companyId: LINKEDIN_COMPANY_ID,
     linkedinUrl: LINKEDIN_COMPANY_URL,
     timeAgo: "3mo",
     badge: "MARITIME INSIGHTS",
@@ -52,7 +51,6 @@ export const REAL_LINKEDIN_POSTS: LinkedInPost[] = [
     id: "post-3",
     image: "/images/women_seafarers_impact.jpg",
     companyName: "OCEANIC STAR SHIPPING PVT LTD",
-    companyId: LINKEDIN_COMPANY_ID,
     linkedinUrl: LINKEDIN_COMPANY_URL,
     timeAgo: "1mo",
     badge: "URGENT RECRUITMENT",
@@ -63,7 +61,6 @@ export const REAL_LINKEDIN_POSTS: LinkedInPost[] = [
     id: "post-4",
     image: "/images/merchant_navy_guide.jpg",
     companyName: "OCEANIC STAR SHIPPING PVT LTD",
-    companyId: LINKEDIN_COMPANY_ID,
     linkedinUrl: LINKEDIN_COMPANY_URL,
     timeAgo: "4mo",
     badge: "MARITIME CAREERS",
@@ -74,7 +71,6 @@ export const REAL_LINKEDIN_POSTS: LinkedInPost[] = [
     id: "post-5",
     image: "/images/day_in_crew_management.png",
     companyName: "OCEANIC STAR SHIPPING PVT LTD",
-    companyId: LINKEDIN_COMPANY_ID,
     linkedinUrl: LINKEDIN_COMPANY_URL,
     timeAgo: "4mo",
     badge: "CREW MANAGEMENT",
@@ -83,14 +79,79 @@ export const REAL_LINKEDIN_POSTS: LinkedInPost[] = [
   },
 ];
 
+interface LinkedInFeedResponse {
+  configured: boolean;
+  companyUrl?: string;
+  posts: LinkedInPost[];
+  message?: string;
+}
+
+function getRelativeDate(post: LinkedInPost) {
+  if (post.timeAgo) return post.timeAgo;
+  if (!post.publishedAt) return "LinkedIn";
+
+  const publishedDate = new Date(post.publishedAt);
+  const diffMs = Date.now() - publishedDate.getTime();
+  const diffDays = Math.max(0, Math.floor(diffMs / 86400000));
+
+  if (diffDays === 0) return "Today";
+  if (diffDays < 7) return `${diffDays}d`;
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)}w`;
+  if (diffDays < 365) return `${Math.floor(diffDays / 30)}mo`;
+  return `${Math.floor(diffDays / 365)}y`;
+}
+
+function getReadableDate(post: LinkedInPost) {
+  if (!post.publishedAt) return getRelativeDate(post);
+
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date(post.publishedAt));
+}
+
 export const LatestNewsSection: React.FC = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [posts, setPosts] = useState<LinkedInPost[]>(REAL_LINKEDIN_POSTS);
+  const [feedMessage, setFeedMessage] = useState<string | null>(null);
+  const [isLiveFeed, setIsLiveFeed] = useState(false);
+  const [companyUrl, setCompanyUrl] = useState(LINKEDIN_COMPANY_URL);
+
+  const syncPosts = async () => {
+    setIsRefreshing(true);
+    try {
+      const response = await fetch("/api/linkedin/posts?count=5", { cache: "no-store" });
+      const feed = (await response.json()) as LinkedInFeedResponse;
+
+      setCompanyUrl(feed.companyUrl || LINKEDIN_COMPANY_URL);
+      setFeedMessage(feed.message || null);
+
+      if (feed.posts?.length) {
+        setPosts(feed.posts);
+        setIsLiveFeed(true);
+      } else {
+        setPosts(REAL_LINKEDIN_POSTS);
+        setIsLiveFeed(false);
+      }
+    } catch {
+      setFeedMessage("Unable to sync LinkedIn posts right now. Showing saved updates.");
+      setPosts(REAL_LINKEDIN_POSTS);
+      setIsLiveFeed(false);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
+  useEffect(() => {
+    syncPosts();
+  }, []);
+
+  const topPosts = useMemo(() => posts.slice(0, 3), [posts]);
+  const secondaryPosts = useMemo(() => posts.slice(3, 5), [posts]);
 
   const handleManualRefresh = () => {
-    setIsRefreshing(true);
-    setTimeout(() => {
-      setIsRefreshing(false);
-    }, 800);
+    syncPosts();
   };
 
   return (
@@ -103,7 +164,7 @@ export const LatestNewsSection: React.FC = () => {
             <div className="flex items-center gap-3 text-xs font-mono text-[#0A66C2] font-bold tracking-widest uppercase mb-2">
               <span className="flex items-center gap-1.5 px-3 py-1 bg-[#0A66C2]/10 border border-[#0A66C2]/20 rounded-full">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>SYNCED WITH LINKEDIN PAGE (OCEANIC STAR SHIPPING PVT LTD)</span>
+                <span>{isLiveFeed ? "LIVE LINKEDIN PAGE FEED" : "LINKEDIN FEED READY"}</span>
               </span>
             </div>
             <h2 className="font-syne text-3xl sm:text-5xl font-extrabold text-[#071A2B] tracking-tight">
@@ -122,7 +183,7 @@ export const LatestNewsSection: React.FC = () => {
             </button>
 
             <a
-              href={LINKEDIN_COMPANY_URL}
+              href={companyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0A66C2] hover:bg-[#084e96] text-white font-mono text-xs font-bold transition shadow-md"
@@ -136,7 +197,7 @@ export const LatestNewsSection: React.FC = () => {
 
         {/* 5 Real LinkedIn Posts Grid matching user screenshots */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {REAL_LINKEDIN_POSTS.slice(0, 3).map((post) => (
+          {topPosts.map((post) => (
             <a
               key={post.id}
               href={post.linkedinUrl}
@@ -148,7 +209,7 @@ export const LatestNewsSection: React.FC = () => {
                 {/* Real Post Image / Poster */}
                 <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-900 border-b border-slate-200">
                   <img
-                    src={post.image}
+                    src={post.image || "/images/logo.png"}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -178,7 +239,7 @@ export const LatestNewsSection: React.FC = () => {
                   <span className="font-bold text-[#071A2B] truncate max-w-[180px]">{post.companyName}</span>
                 </div>
                 <span className="text-[11px] text-slate-400 font-bold flex items-center gap-1">
-                  <Clock className="w-3 h-3" /> {post.timeAgo}
+                  <Clock className="w-3 h-3" /> {getRelativeDate(post)}
                 </span>
               </div>
             </a>
@@ -187,7 +248,7 @@ export const LatestNewsSection: React.FC = () => {
 
         {/* Sub-grid for remaining 2 Real LinkedIn Posts */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-          {REAL_LINKEDIN_POSTS.slice(3, 5).map((post) => (
+          {secondaryPosts.map((post) => (
             <a
               key={post.id}
               href={post.linkedinUrl}
@@ -197,7 +258,7 @@ export const LatestNewsSection: React.FC = () => {
             >
               <div className="w-full sm:w-44 h-36 rounded-xl overflow-hidden shrink-0 relative bg-slate-800 border border-slate-200">
                 <img
-                  src={post.image}
+                  src={post.image || "/images/logo.png"}
                   alt={post.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -218,21 +279,29 @@ export const LatestNewsSection: React.FC = () => {
                 </p>
                 <div className="pt-1 flex items-center justify-between text-[11px] font-mono text-slate-500">
                   <span className="font-bold text-[#071A2B]">{post.companyName}</span>
-                  <span className="text-slate-400 font-bold">{post.timeAgo}</span>
+                  <span className="text-slate-400 font-bold">{getRelativeDate(post)}</span>
                 </div>
               </div>
             </a>
           ))}
         </div>
 
-        {/* Real Post Sync Status Bar */}
+        {/* Post Sync Status Bar */}
         <div className="p-4 bg-sky-50 rounded-2xl border border-sky-100 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#0A66C2] gap-3">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-[#0A66C2]" />
-            <span>Showing top 5 synchronized posts from official page: <strong>OCEANIC STAR SHIPPING PVT LTD</strong></span>
+            {isLiveFeed ? (
+              <CheckCircle2 className="w-4 h-4 text-[#0A66C2]" />
+            ) : (
+              <AlertCircle className="w-4 h-4 text-amber-500" />
+            )}
+            <span>
+              {isLiveFeed
+                ? `Showing top ${posts.length} official LinkedIn posts. Latest: ${getReadableDate(posts[0])}`
+                : feedMessage || "Showing saved updates until LinkedIn OAuth access is configured."}
+            </span>
           </div>
           <a
-            href={LINKEDIN_COMPANY_URL}
+            href={companyUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline font-bold flex items-center gap-1"

@@ -3,6 +3,7 @@ import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import { SmoothScrollProvider } from "./components/SmoothScrollProvider";
 import { CinematicCustomCursor } from "./components/CinematicCustomCursor";
+import { SeafarerCrewingPopup } from "./components/SeafarerCrewingPopup";
 
 export const metadata: Metadata = {
   title: "Oceanic Star Shipping | International Maritime Operations & Ship Management",
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className="bg-[#F5F5F2] text-[#071A2B] font-sans antialiased min-h-screen overflow-x-hidden">
         <CinematicCustomCursor />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SeafarerCrewingPopup />
       </body>
     </html>
   );

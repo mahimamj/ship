@@ -41,7 +41,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
           : "bg-[#FAFAF7]/85 backdrop-blur-sm border-b border-[#082F49]/10 py-5 text-[#061B2A]"
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="max-w-[1400px] mx-auto px-5 md:px-8 xl:px-12 flex justify-between items-center gap-6">
         <Link href="/" className="flex items-center gap-3 group">
           <img
             src="/images/logo_nobg.png"
@@ -54,7 +54,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-8 text-[11px] font-mono tracking-[0.2em] text-[#061B2A] font-bold">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-8 text-[11px] font-mono tracking-[0.18em] xl:tracking-[0.2em] text-[#061B2A] font-bold">
           <Link
             href="/"
             className="relative py-1 hover:text-[#007CD6] transition-colors duration-300 cursor-pointer"
@@ -139,14 +139,14 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                   <Link
                     href="/careers/apply"
                     onClick={() => setCareersDropdownOpen(false)}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white text-[#061B2A] hover:text-[#0068B7] transition-all group"
+                    className="mt-2 flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0068B7] text-white hover:bg-[#061B2A] transition-all group shadow-md"
                   >
-                    <div className="p-2 rounded-lg bg-sky-500/10 text-[#0068B7] group-hover:bg-[#0068B7] group-hover:text-white transition-colors">
-                      <Anchor className="w-4 h-4" />
+                    <div className="p-2 rounded-lg bg-white/15 text-white group-hover:bg-[#00D9E8] group-hover:text-[#061B2A] transition-colors">
+                      <FileText className="w-4 h-4" />
                     </div>
                     <div>
                       <div className="text-xs font-bold font-mono tracking-wider">APPLY AS SEAFARER</div>
-                      <div className="text-[10px] text-slate-500 font-normal">Official crewing application</div>
+                      <div className="text-[10px] text-sky-100 group-hover:text-slate-200 font-normal">Official crewing application</div>
                     </div>
                   </Link>
                 </motion.div>
@@ -170,7 +170,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
         </nav>
 
         {/* Actions */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-3">
           {onOpenCommandPalette && (
             <button
               onClick={onOpenCommandPalette}

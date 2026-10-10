@@ -6,6 +6,7 @@ import { motion, useMotionValue } from "framer-motion";
 export const CinematicCustomCursor: React.FC = () => {
   const [cursorText, setCursorText] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const [hasLabel, setHasLabel] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const mouseX = useMotionValue(-100);
@@ -22,18 +23,16 @@ export const CinematicCustomCursor: React.FC = () => {
           "[data-cursor], button, a, [role='button'], input, select, textarea, .cursor-pointer"
         );
         if (interactiveEl) {
-          const text =
-            interactiveEl.getAttribute("data-cursor-text") ||
-            (interactiveEl.tagName === "BUTTON" || interactiveEl.tagName === "A"
-              ? "OPEN"
-              : "EXPLORE");
+          const text = interactiveEl.getAttribute("data-cursor-text") || "";
           setCursorText(text);
+          setHasLabel(Boolean(text));
           setIsHovered(true);
           return;
         }
       }
 
       setIsHovered(false);
+      setHasLabel(false);
       setCursorText("");
     };
 
@@ -75,10 +74,10 @@ export const CinematicCustomCursor: React.FC = () => {
     >
       <motion.div
         animate={{
-          width: isHovered ? 76 : 16,
-          height: isHovered ? 76 : 16,
+          width: hasLabel ? 76 : isHovered ? 24 : 16,
+          height: hasLabel ? 76 : isHovered ? 24 : 16,
           backgroundColor: isHovered
-            ? "rgba(23, 107, 135, 0.15)"
+            ? "rgba(23, 107, 135, 0.08)"
             : "rgba(7, 26, 43, 0.85)",
           borderColor: isHovered
             ? "rgba(23, 107, 135, 0.6)"
@@ -87,7 +86,7 @@ export const CinematicCustomCursor: React.FC = () => {
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
         className="rounded-full border flex items-center justify-center shadow-lg"
       >
-        {isHovered && cursorText && (
+        {hasLabel && cursorText && (
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -100,5 +99,4 @@ export const CinematicCustomCursor: React.FC = () => {
     </motion.div>
   );
 };
-
 
