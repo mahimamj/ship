@@ -11,6 +11,7 @@ import { MaritimeCommandPalette } from "../../components/MaritimeCommandPalette"
 import { OceanicAIChatbotWidget } from "../../components/OceanicAIChatbotWidget";
 import { FloatingWhatsAppButton } from "../../components/FloatingWhatsAppButton";
 import { Building2, ShieldCheck, Award, ArrowRight } from "lucide-react";
+import { SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 export default function AtShoreCareersPage() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -98,13 +99,15 @@ export default function AtShoreCareersPage() {
                 <h3 className="font-syne text-xl font-bold text-[#071A2B] pt-1">{p.title}</h3>
               </div>
 
-              <button
-                onClick={() => setCareerModalState({ isOpen: true, jobTitle: p.title })}
+              <a
+                href={SEAFARER_JOB_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-3 bg-[#01666A] hover:bg-[#007CD6] text-white text-xs font-mono font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
               >
                 <span>APPLY AT SHORE</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           ))}
         </div>

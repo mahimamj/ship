@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, FileText, ChevronDown, Building2, Anchor } from "lucide-react";
+import { SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 interface CinematicNavbarProps {
   onOpenQuote?: () => void;
@@ -136,8 +137,10 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                       <div className="text-[10px] text-slate-500 font-normal">Officers, Captains &amp; Crew</div>
                     </div>
                   </Link>
-                  <Link
-                    href="/careers/apply"
+                  <a
+                    href={SEAFARER_JOB_APPLICATION_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setCareersDropdownOpen(false)}
                     className="mt-2 flex items-center gap-3 px-4 py-3 rounded-xl bg-[#0068B7] text-white hover:bg-[#061B2A] transition-all group shadow-md"
                   >
@@ -148,7 +151,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                       <div className="text-xs font-bold font-mono tracking-wider">APPLY AS SEAFARER</div>
                       <div className="text-[10px] text-sky-100 group-hover:text-slate-200 font-normal">Official crewing application</div>
                     </div>
-                  </Link>
+                  </a>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -272,14 +275,16 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                     <Anchor className="w-3.5 h-3.5 text-[#0068B7]" />
                     <span>AT SEA</span>
                   </Link>
-                  <Link
-                    href="/careers/apply"
+                  <a
+                    href={SEAFARER_JOB_APPLICATION_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
                     className="text-xs font-mono tracking-[0.15em] text-slate-600 hover:text-[#0068B7] flex items-center gap-2"
                   >
                     <Anchor className="w-3.5 h-3.5 text-[#0068B7]" />
                     <span>APPLY AS SEAFARER</span>
-                  </Link>
+                  </a>
                 </div>
               </div>
 

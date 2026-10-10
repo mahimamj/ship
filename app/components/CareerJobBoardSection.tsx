@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import Link from "next/link";
 import { Search, MapPin, Clock, DollarSign, Anchor, Building2, ArrowRight } from "lucide-react";
-import { SEAFARER_APPLY_PATH } from "@/lib/content/careers";
+import { SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 interface JobOpening {
   id: string;
@@ -335,23 +334,15 @@ export const CareerJobBoardSection: React.FC<CareerJobBoardSectionProps> = ({ on
 
                 {/* Apply Now: seafarer (ship) jobs go to the CRM portal */}
                 <div className="pt-2">
-                  {job.isShip ? (
-                    <Link
-                      href={SEAFARER_APPLY_PATH}
-                      className="bg-[#061B2A] hover:bg-[#0068B7] text-white px-4.5 py-2 rounded-xl font-mono text-xs font-bold transition-all shadow-md border border-[#00D9E8]/30 inline-flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Apply now</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#00D9E8]" />
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => onOpenApplyModal?.(job.title)}
-                      className="bg-[#061B2A] hover:bg-[#0068B7] text-white px-4.5 py-2 rounded-xl font-mono text-xs font-bold transition-all shadow-md border border-[#00D9E8]/30 flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Apply now</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#00D9E8]" />
-                    </button>
-                  )}
+                  <a
+                    href={SEAFARER_JOB_APPLICATION_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-[#061B2A] hover:bg-[#0068B7] text-white px-4.5 py-2 rounded-xl font-mono text-xs font-bold transition-all shadow-md border border-[#00D9E8]/30 inline-flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <span>Apply now</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#00D9E8]" />
+                  </a>
                 </div>
 
               </div>

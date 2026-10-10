@@ -11,8 +11,7 @@ import { MaritimeCommandPalette } from "../../components/MaritimeCommandPalette"
 import { OceanicAIChatbotWidget } from "../../components/OceanicAIChatbotWidget";
 import { FloatingWhatsAppButton } from "../../components/FloatingWhatsAppButton";
 import { Anchor, ShieldCheck, Award, ArrowRight, Compass } from "lucide-react";
-import Link from "next/link";
-import { SEAFARER_APPLY_PATH } from "@/lib/content/careers";
+import { SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 export default function AtSeaCareersPage() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -59,13 +58,15 @@ export default function AtSeaCareersPage() {
           </p>
 
           <div className="pt-4 flex flex-wrap items-center gap-4 text-xs font-mono text-slate-700 font-bold">
-            <Link
-              href={SEAFARER_APPLY_PATH}
+            <a
+              href={SEAFARER_JOB_APPLICATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-3 bg-[#007CD6] hover:bg-[#071A2B] text-white rounded-xl transition-all shadow-sm"
             >
               APPLY AS SEAFARER
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </a>
             <span className="flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-xl border border-slate-200">
               <ShieldCheck className="w-4 h-4 text-[#007CD6]" /> STCW 2010 CERTIFIED
             </span>
@@ -108,13 +109,15 @@ export default function AtSeaCareersPage() {
                 <h3 className="font-syne text-xl font-bold text-[#071A2B] pt-1">{r.rank}</h3>
               </div>
 
-              <Link
-                href={SEAFARER_APPLY_PATH}
+              <a
+                href={SEAFARER_JOB_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-3 bg-[#007CD6] hover:bg-[#071A2B] text-white text-xs font-mono font-bold rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm"
               >
                 <span>APPLY AT SEA</span>
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           ))}
         </div>

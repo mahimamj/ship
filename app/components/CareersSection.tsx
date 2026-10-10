@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Briefcase, Upload, CheckCircle2, FileUp, Anchor, Building2 } from "lucide-react";
-import { SEAFARER_APPLY_PATH } from "@/lib/content/careers";
+import { SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 interface CareersProps {
   onOpenApplyModal: (jobTitle?: string) => void;
@@ -133,13 +132,15 @@ export const CareersSection: React.FC<CareersProps> = ({ onOpenApplyModal, activ
               <h4 className="text-lg font-bold text-white font-poppins">Ready to Apply?</h4>
               <p className="text-xs text-slate-400">Upload your CV / Resume for immediate review</p>
             </div>
-            <Link
-              href={SEAFARER_APPLY_PATH}
+            <a
+              href={SEAFARER_JOB_APPLICATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary w-full py-3 rounded-xl font-semibold text-xs flex items-center justify-center space-x-2 shadow-xl"
             >
               <Upload size={16} />
               <span>Upload Resume Now</span>
-            </Link>
+            </a>
           </div>
         </div>
 
@@ -180,21 +181,14 @@ export const CareersSection: React.FC<CareersProps> = ({ onOpenApplyModal, activ
                   </p>
                 </div>
 
-                {job.category === "sea" ? (
-                  <Link
-                    href={SEAFARER_APPLY_PATH}
-                    className="btn-outline w-full py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center space-x-2"
-                  >
-                    <span>Apply For Position</span>
-                  </Link>
-                ) : (
-                  <button
-                    onClick={() => onOpenApplyModal(job.title)}
-                    className="btn-outline w-full py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center space-x-2"
-                  >
-                    <span>Apply For Position</span>
-                  </button>
-                )}
+                <a
+                  href={SEAFARER_JOB_APPLICATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline w-full py-2.5 rounded-xl font-semibold text-xs flex items-center justify-center space-x-2"
+                >
+                  <span>Apply For Position</span>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -204,4 +198,3 @@ export const CareersSection: React.FC<CareersProps> = ({ onOpenApplyModal, activ
     </section>
   );
 };
-

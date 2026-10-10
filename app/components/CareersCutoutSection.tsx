@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useRef, useEffect } from "react";
-import Link from "next/link";
 import { initGSAP } from "@/lib/gsapHelper";
 import { Users, Wrench, Shield, ArrowRight, Award, Compass, Globe, CheckCircle2, FileCheck } from "lucide-react";
-import { SEAFARER_APPLY_PATH } from "@/lib/content/careers";
+import { SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 interface CareersCutoutSectionProps {
   onOpenApplyModal?: (jobTitle?: string) => void;
@@ -113,13 +112,15 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
               <span className="text-xs font-mono text-[#01666A] flex items-center gap-2 font-bold">
                 <Shield className="w-4 h-4 text-[#01666A]" /> STCW 2010 CERTIFIED
               </span>
-              <Link
-                href={SEAFARER_APPLY_PATH}
+              <a
+                href={SEAFARER_JOB_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2.5 bg-[#01666A] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#071A2B] transition-all duration-300 flex items-center gap-2 shadow-lg group"
               >
                 <span>APPLY AT SEA</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -145,13 +146,15 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
               <span className="text-xs font-mono text-[#01666A] flex items-center gap-2 font-bold">
                 <Award className="w-4 h-4 text-[#01666A]" /> CLASS-1 SUPERINTENDENCY
               </span>
-              <button
-                onClick={() => onOpenApplyModal?.("Careers On Shore - Technical Superintendent")}
+              <a
+                href={SEAFARER_JOB_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2.5 bg-[#01666A] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#007CD6] transition-all duration-300 flex items-center gap-2 shadow-lg group"
               >
                 <span>APPLY ON SHORE</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </div>
           </div>
 
@@ -209,13 +212,15 @@ export const CareersCutoutSection: React.FC<CareersCutoutSectionProps> = ({ onOp
               <span className="text-xs font-mono text-[#01666A] flex items-center gap-2 font-bold">
                 <Shield className="w-4 h-4 text-[#01666A]" /> DG SHIPPING APPROVED
               </span>
-              <Link
-                href={SEAFARER_APPLY_PATH}
+              <a
+                href={SEAFARER_JOB_APPLICATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2.5 bg-[#071A2B] text-white rounded-xl font-mono text-xs font-bold hover:bg-[#007CD6] transition-all duration-300 flex items-center gap-2 shadow-lg group"
               >
                 <span>APPLY NOW</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              </a>
             </div>
           </div>
 

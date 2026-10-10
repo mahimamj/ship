@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Anchor, ArrowRight, ShieldCheck, X } from "lucide-react";
-import { SEAFARER_APPLY_PATH } from "@/lib/content/careers";
+import { SEAFARER_APPLY_PATH, SEAFARER_JOB_APPLICATION_URL } from "@/lib/content/careers";
 
 const POPUP_SESSION_KEY = "oceanic_seafarer_crewing_popup_dismissed";
 
@@ -85,14 +85,16 @@ export const SeafarerCrewingPopup: React.FC = () => {
               </div>
 
               <div className="flex flex-col gap-2 sm:flex-row">
-                <Link
-                  href={SEAFARER_APPLY_PATH}
+                <a
+                  href={SEAFARER_JOB_APPLICATION_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={handleDismiss}
                   className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-[#007CD6] px-4 py-3 font-mono text-xs font-bold uppercase tracking-wider text-white shadow-md transition hover:bg-[#00D9E8] hover:text-[#061B2A]"
                 >
                   Apply as seafarer
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </a>
                 <Link
                   href="/careers/at-sea"
                   onClick={handleDismiss}
