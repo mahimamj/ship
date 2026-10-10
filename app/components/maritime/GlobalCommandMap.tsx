@@ -83,11 +83,8 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
   const dubaiPt = getPoint(55.2708, 25.2048);
   const mumbaiPt = getPoint(72.8777, 19.076);
   const colomboPt = getPoint(79.8612, 6.9271);
-<<<<<<< HEAD
   const singaporePt = getPoint(103.8198, 1.3521);
   const canadaPt = getPoint(-123.1207, 49.2827);
-=======
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
   // Regional Extension Projected Points
   const europePt = getPoint(15.0, 50.0);
@@ -114,11 +111,8 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
   const routeDxbBom = makeCurvePath(dubaiPt, mumbaiPt, 0.12);
   const routeBomCmb = makeCurvePath(mumbaiPt, colomboPt, 0.12);
   const routeDxbCmb = makeCurvePath(dubaiPt, colomboPt, -0.12);
-<<<<<<< HEAD
   const routeCmbSin = makeCurvePath(colomboPt, singaporePt, -0.1);
   const routeSinCan = makeCurvePath(singaporePt, canadaPt, 0.18);
-=======
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
   const extIstEur = makeCurvePath(istanbulPt, europePt, -0.15);
   const extIstMed = makeCurvePath(istanbulPt, medPt, 0.15);
@@ -131,11 +125,8 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
   const isDubaiActive = activeHubId === "dubai";
   const isMumbaiActive = activeHubId === "mumbai";
   const isColomboActive = activeHubId === "colombo";
-<<<<<<< HEAD
   const isSingaporeActive = activeHubId === "singapore";
   const isCanadaActive = activeHubId === "canada";
-=======
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
   return (
     <div className="relative w-full h-[300px] sm:h-[380px] lg:h-[420px] bg-[#F8F8F5] border border-[#8B94A3]/30 rounded-xl overflow-hidden shadow-inner select-none font-sans">
@@ -239,7 +230,6 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
           <MaritimeRoute
             id="ext-cmb-sea"
             d={extCmbSEA}
-<<<<<<< HEAD
             isHighlighted={isColomboActive || isSingaporeActive}
             isDimmed={Boolean(activeHubId && !isColomboActive && !isSingaporeActive)}
             particleDelay={4.0}
@@ -258,12 +248,6 @@ export const GlobalCommandMap: React.FC<GlobalCommandMapProps> = ({
             isDimmed={Boolean(activeHubId && !isSingaporeActive && !isCanadaActive)}
             particleDelay={4.8}
           />
-=======
-            isHighlighted={isColomboActive}
-            isDimmed={Boolean(activeHubId && !isColomboActive)}
-            particleDelay={4.0}
-          />
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
         </g>
 
         {/* Small Regional Destination Nodes */}

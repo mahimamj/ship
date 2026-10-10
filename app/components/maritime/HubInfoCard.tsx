@@ -17,16 +17,11 @@ export const HubInfoCard: React.FC<HubInfoCardProps> = ({ hub, onExplore }) => {
 
       <div className="space-y-2.5">
         {/* Header */}
-<<<<<<< HEAD
         <div className="flex items-center justify-between border-b border-slate-100 pb-2 gap-2">
-=======
-        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
           <span className="font-mono text-[11px] font-bold text-[#0077FF] tracking-widest uppercase flex items-center gap-1.5">
             <Compass className="w-3.5 h-3.5 text-[#00D9FF]" />
             {hub.pillLabel}
           </span>
-<<<<<<< HEAD
           <span
             className={`text-[9px] font-mono px-2 py-0.5 rounded border font-bold tracking-wider uppercase ${
               hub.isUpcoming
@@ -40,12 +35,6 @@ export const HubInfoCard: React.FC<HubInfoCardProps> = ({ hub, onExplore }) => {
         <span className="text-[9px] font-mono text-[#071A2B] bg-[#F8F8F5] px-2 py-0.5 rounded border border-slate-200 font-semibold self-start">
           {hub.coordLabel}
         </span>
-=======
-          <span className="text-[9px] font-mono text-[#071A2B] bg-[#F8F8F5] px-2 py-0.5 rounded border border-slate-200 font-semibold">
-            {hub.coordLabel}
-          </span>
-        </div>
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
 
         {/* Command Title */}
         <h3 className="font-jakarta text-base sm:text-lg font-extrabold text-[#071A2B] tracking-tight leading-snug">

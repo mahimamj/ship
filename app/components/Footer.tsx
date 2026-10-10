@@ -67,11 +67,7 @@ export const Footer: React.FC = () => {
               <li><Link href="/founder" className="hover:text-[#176B87] transition">Founder &amp; MD (Leadership)</Link></li>
               <li><a href="#capabilities" className="hover:text-[#176B87] transition">Capabilities & Services</a></li>
               <li><Link href="/careers/at-shore" className="hover:text-[#176B87] transition">Careers (At Shore & At Sea)</Link></li>
-<<<<<<< HEAD
               <li><a href="#presence" className="hover:text-[#176B87] transition">Total Global Hubs</a></li>
-=======
-              <li><a href="#presence" className="hover:text-[#176B87] transition">Global Hubs</a></li>
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
               <li><a href="#contact" className="hover:text-[#176B87] transition">Contact Operations</a></li>
               <li>
                 <Link href="/cookie-policy" className="hover:text-[#176B87] transition flex items-center space-x-1.5 text-[#176B87] font-semibold">
@@ -99,11 +95,7 @@ export const Footer: React.FC = () => {
           {/* Col 4: Corporate Offices */}
           <div className="space-y-3">
             <h4 className="font-mono text-xs font-bold text-[#071A2B] uppercase tracking-widest">
-<<<<<<< HEAD
               TOTAL GLOBAL HUBS
-=======
-              COMMAND HUBS
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
             </h4>
             <div className="space-y-3 font-light text-[#667783]">
               <div>
@@ -126,7 +118,6 @@ export const Footer: React.FC = () => {
                 <span>+971 43889981</span>
                 <span className="block text-[#176B87] font-mono mt-0.5">operations@oceanicstarfleet.com</span>
               </div>
-<<<<<<< HEAD
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Singapore Hub:</strong>
                 <span className="text-amber-700 font-semibold">Opening Soon</span>
@@ -137,8 +128,6 @@ export const Footer: React.FC = () => {
                 <span className="text-amber-700 font-semibold">Opening Soon</span>
                 <span className="block text-[#176B87] font-mono mt-0.5">North America Command</span>
               </div>
-=======
->>>>>>> 44d0b491335588c81ed40cc8e370c72ef5721f71
             </div>
           </div>
         </div>
