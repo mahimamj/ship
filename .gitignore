@@ -13,6 +13,9 @@
 # production
 /build
 
+# local asset drop folders
+/capabilities img/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
