@@ -77,13 +77,6 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
             NEWS &amp; IMPACT
           </Link>
 
-          <Link
-            href="/#capabilities"
-            className="relative py-1 hover:text-[#007CD6] transition-colors duration-300 cursor-pointer"
-          >
-            CAPABILITIES
-          </Link>
-
           {/* CAREERS Dropdown */}
           <div
             className="relative py-1"
@@ -241,15 +234,6 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
                 className="text-sm font-mono font-bold tracking-[0.2em] text-[#061B2A] hover:text-[#0068B7] transition-colors py-2 border-b border-slate-200 flex items-center justify-between"
               >
                 <span>NEWS &amp; IMPACT</span>
-                <span className="text-xs text-[#0068B7]">→</span>
-              </Link>
-
-              <Link
-                href="/#capabilities"
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-mono font-bold tracking-[0.2em] text-[#061B2A] hover:text-[#0068B7] transition-colors py-2 border-b border-slate-200 flex items-center justify-between"
-              >
-                <span>CAPABILITIES</span>
                 <span className="text-xs text-[#0068B7]">→</span>
               </Link>
 
