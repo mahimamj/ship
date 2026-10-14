@@ -2,7 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { initGSAP } from "@/lib/gsapHelper";
-import { Activity, Ship } from "lucide-react";
+import { Ship } from "lucide-react";
 
 // 1. Generate 59 distinct 10-column matrix grid coordinates
 const GENERATE_GRID_POINTS = (): { x: number; y: number }[] => {
@@ -68,9 +68,10 @@ const HULL_POINTS = GENERATE_SHIP_HULL_POINTS();
 
 interface InteractiveFleetExplosionProps {
   embedded?: boolean;
+  className?: string;
 }
 
-export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps> = ({ embedded = false }) => {
+export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps> = ({ embedded = false, className = "" }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLDivElement>(null);
@@ -183,14 +184,14 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
       <div
         ref={sectionRef}
         id="fleet-matrix-explosion"
-        className="relative w-full bg-[#061B2A] text-white p-5 sm:p-7 rounded-3xl overflow-hidden font-sans select-none border border-[#00D9E8]/30 shadow-2xl flex flex-col justify-between"
+        className={`relative w-full h-full bg-[#061B2A] text-white p-5 sm:p-7 rounded-3xl overflow-hidden font-sans select-none border border-[#00D9E8]/30 shadow-2xl flex flex-col justify-between ${className}`}
       >
         {/* Background Radar Mesh & Signature Cyan Glow */}
         <div className="absolute inset-0 bg-[radial-gradient(#00D9E8_1px,transparent_1px)] [background-size:28px_28px] opacity-20 pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-[#00D9E8]/10 rounded-full blur-[80px] pointer-events-none" />
 
         {/* Top Header Bar */}
-        <div ref={headerRef} className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 relative z-10">
+        <div ref={headerRef} className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 relative z-10 shrink-0">
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 bg-[#00D9E8]/15 text-[#00D9E8] border border-[#00D9E8]/40 rounded-full font-mono text-[10px] font-bold tracking-widest uppercase">
               FLEET // 01
@@ -199,17 +200,12 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
               MANAGED FLEET MATRIX
             </span>
           </div>
-
-          <div className="flex items-center gap-1.5 bg-[#082F49]/80 border border-[#00D9E8]/30 px-2.5 py-1 rounded-xl text-[10px] font-mono shadow-lg backdrop-blur-md">
-            <Activity className="w-3 h-3 text-[#00D9E8] animate-spin" />
-            <span className="text-[#00D9E8] font-bold">AUTO LOOP</span>
-          </div>
         </div>
 
         {/* Center Canvas Stage: Number Counter & Morphing Vessels */}
-        <div className="flex flex-col items-center justify-center text-center py-4 my-auto relative z-10 space-y-3">
+        <div className="flex flex-col items-center justify-center text-center py-3 sm:py-5 my-auto flex-1 relative z-10 space-y-3 sm:space-y-4">
           {/* Big Number Reveal Counter */}
-          <div ref={counterRef} className="relative inline-flex flex-col items-center">
+          <div ref={counterRef} className="relative inline-flex flex-col items-center shrink-0">
             <div className="flex items-baseline gap-2">
               <span className="font-syne text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-sky-100 to-[#00D9E8] tracking-tight leading-none min-w-[70px]">
                 {counterVal}
@@ -226,10 +222,10 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
           </div>
 
           {/* 59 VESSEL PARTICLE MORPH CONTAINER STAGE */}
-          <div className="relative w-full h-[200px] sm:h-[240px] flex items-center justify-center overflow-hidden">
+          <div className="relative w-full flex-1 min-h-[200px] sm:min-h-[240px] flex items-center justify-center overflow-hidden">
             <div
               ref={vesselContainerRef}
-              className="relative w-full h-full flex items-center justify-center transform scale-[0.52] sm:scale-[0.62] origin-center transition-transform"
+              className="relative w-full h-full flex items-center justify-center transform scale-[0.55] sm:scale-[0.66] origin-center transition-transform"
             >
               {Array.from({ length: 59 }).map((_, i) => (
                 <div
@@ -272,11 +268,6 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
             <span className="text-[11px] sm:text-xs text-slate-300 font-mono tracking-wider font-bold">
               MANAGED FLEET MATRIX
             </span>
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3 bg-[#082F49]/80 border border-[#00D9E8]/30 px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-mono shadow-lg backdrop-blur-md">
-            <Activity className="w-3.5 h-3.5 text-[#00D9E8] animate-spin" />
-            <span className="text-[#00D9E8] font-bold">AUTOMATED FLEET LOOP ACTIVE</span>
           </div>
         </div>
 

@@ -99,15 +99,14 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
           loop
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover scale-105 filter brightness-110 contrast-105 saturate-125 transition-all duration-700"
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
         >
           <source src={VIDEOS.hero} type="video/mp4" />
-          <source src={VIDEOS.heroSecondary} type="video/mp4" />
         </video>
 
-        {/* Dual Gradient Overlay: Left dark vignette for 100% text contrast, right side open for bright video */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061B2A]/90 via-[#061B2A]/70 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#061B2A]/60 via-transparent to-[#061B2A]/90 pointer-events-none" />
+        {/* Clean subtle gradient for readability without muddying video quality */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#061B2A]/80 via-[#061B2A]/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#061B2A]/80 via-transparent to-[#061B2A]/30 pointer-events-none" />
       </div>
 
       {/* Main Hero Content */}

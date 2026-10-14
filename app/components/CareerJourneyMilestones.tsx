@@ -19,7 +19,6 @@ import {
   Clock,
   Layers,
   Star,
-  ExternalLink,
 } from "lucide-react";
 
 interface MilestoneItem {
@@ -184,10 +183,23 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
   const [selectedMilestone, setSelectedMilestone] = useState<MilestoneItem>(MILESTONES[MILESTONES.length - 1]);
   const [viewMode, setViewMode] = useState<"TIMELINE" | "GRID">("TIMELINE");
 
-  const filteredMilestones = MILESTONES.filter((m) => {
-    if (activeCategory === "ALL") return true;
-    return m.category === activeCategory;
-  });
+  const isMatchCategory = (m: MilestoneItem, cat: string) => {
+    if (cat === "ALL") return true;
+    if (cat === "CORPORATE") return m.category === "CORPORATE" || m.category === "FOUNDATION";
+    return m.category === cat;
+  };
+
+  const filteredMilestones = MILESTONES.filter((m) => isMatchCategory(m, activeCategory));
+
+  const handleCategoryChange = (catId: string) => {
+    setActiveCategory(catId);
+    const matches = MILESTONES.filter((m) => isMatchCategory(m, catId));
+    if (matches.length > 0) {
+      if (!matches.some((m) => m.year === selectedMilestone.year)) {
+        setSelectedMilestone(matches[0]);
+      }
+    }
+  };
 
   return (
     <section id="milestones" className="w-full bg-[#F8F8F5] text-[#071A2B] py-16 sm:py-24 px-4 sm:px-8 relative overflow-hidden select-none font-sans border-b border-[#8B94A3]/20">
@@ -281,7 +293,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveCategory(tab.id)}
+              onClick={() => handleCategoryChange(tab.id)}
               className={`px-4 py-2 rounded-full text-xs font-mono font-bold transition-all duration-300 whitespace-nowrap shrink-0 ${
                 activeCategory === tab.id
                   ? "bg-[#071A2B] text-white shadow-md"
@@ -304,15 +316,15 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                 <span>INTERACTIVE MILESTONE VOYAGE LINE — SELECT A YEAR TO EXPLORE DETAILS</span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 sm:gap-3">
-                {MILESTONES.map((item) => {
+              <div className="flex flex-wrap gap-2 sm:gap-3">
+                {filteredMilestones.map((item) => {
                   const isSelected = selectedMilestone.year === item.year;
                   const Icon = item.icon;
                   return (
                     <button
                       key={item.year}
                       onClick={() => setSelectedMilestone(item)}
-                      className={`p-3 rounded-xl border text-center transition-all duration-300 flex flex-col items-center justify-center space-y-1 relative overflow-hidden group ${
+                      className={`flex-1 min-w-[110px] sm:min-w-[130px] p-3 rounded-xl border text-center transition-all duration-300 flex flex-col items-center justify-center space-y-1 relative overflow-hidden group ${
                         isSelected
                           ? "bg-[#071A2B] border-[#0077FF] text-white shadow-md scale-105"
                           : "bg-[#F0F4F8] border-[#8B94A3]/20 text-[#687384] hover:border-[#0077FF] hover:text-[#071A2B]"
@@ -451,17 +463,6 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
                       </div>
                     </div>
                   </div>
-
-                  <div className="space-y-3 pt-4 border-t border-[#8B94A3]/25">
-                    <a
-                      href="#certifications"
-                      className="w-full inline-flex items-center justify-center space-x-2 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-[#071A2B] text-xs font-mono font-bold transition-all duration-300 border border-[#8B94A3]/30 shadow-xs"
-                    >
-                      <ExternalLink className="w-4 h-4 text-[#0077FF]" />
-                      <span>Inspect Audited Certifications</span>
-                    </a>
-                  </div>
-
                 </div>
 
               </motion.div>

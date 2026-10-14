@@ -80,7 +80,7 @@ export const FinalCinematicCTA: React.FC<FinalCTAProps> = ({ onOpenQuote }) => {
           <source src={VIDEOS.cta} type="video/mp4" />
           <source src={VIDEOS.hero} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#071A2B]/60 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-[#071A2B]/50" />
       </div>
 
       {/* Content */}

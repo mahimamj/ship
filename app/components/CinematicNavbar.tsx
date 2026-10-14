@@ -34,6 +34,19 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
     }, 200);
   };
 
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = document.getElementById("contact");
+    if (el) {
+      e.preventDefault();
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(el, { offset: -70 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      window.history.pushState(null, "", "#contact");
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -159,6 +172,7 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
 
           <Link
             href="/#contact"
+            onClick={handleContactClick}
             className="relative py-1 hover:text-[#0068B7] transition-colors duration-300 cursor-pointer"
           >
             CONTACT
@@ -283,7 +297,10 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
 
               <Link
                 href="/#contact"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => {
+                  setMobileOpen(false);
+                  handleContactClick(e);
+                }}
                 className="text-sm font-mono font-bold tracking-[0.2em] text-[#061B2A] hover:text-[#0068B7] transition-colors py-2 border-b border-slate-200 flex items-center justify-between"
               >
                 <span>CONTACT</span>

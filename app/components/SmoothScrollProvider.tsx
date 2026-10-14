@@ -20,6 +20,8 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
           infinite: false,
         });
 
+        (window as any).lenis = lenis;
+
         lenis.on("scroll", ScrollTrigger.update);
 
         tickerFn = (time: number) => {
@@ -28,6 +30,15 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
         gsap.ticker.add(tickerFn);
         gsap.ticker.lagSmoothing(0);
+
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            setTimeout(() => {
+              lenis.scrollTo(target, { offset: -70 });
+            }, 500);
+          }
+        }
       } catch (e) {
         console.warn("Lenis smooth scroll fallback", e);
       }
@@ -35,9 +46,36 @@ export const SmoothScrollProvider: React.FC<{ children: React.ReactNode }> = ({ 
 
     initSmoothScroll();
 
+    const handleAnchorClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement)?.closest("a");
+      if (!anchor) return;
+      const href = anchor.getAttribute("href");
+      if (!href) return;
+
+      if (href.startsWith("#") || (href.startsWith("/#") && window.location.pathname === "/")) {
+        const hash = href.includes("#") ? href.substring(href.indexOf("#")) : "";
+        if (hash && hash !== "#") {
+          const el = document.querySelector(hash);
+          if (el) {
+            e.preventDefault();
+            if ((window as any).lenis) {
+              (window as any).lenis.scrollTo(el, { offset: -70 });
+            } else {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+            window.history.pushState(null, "", hash);
+          }
+        }
+      }
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+
     return () => {
+      document.removeEventListener("click", handleAnchorClick);
       if (lenis) {
         lenis.destroy();
+        delete (window as any).lenis;
       }
       if (tickerFn) {
         const { gsap } = initGSAP();

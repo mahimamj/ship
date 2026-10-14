@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Radar, X, Ship, FileText } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { Ship } from "lucide-react";
 import { initGSAP } from "@/lib/gsapHelper";
 
 import { InteractiveFleetExplosion } from "./InteractiveFleetExplosion";
@@ -39,23 +39,8 @@ function CountUpNumber({ end, duration = 2 }: { end: number; duration?: number }
   return <span ref={ref}>{count}</span>;
 }
 
-// Live Fleet Vessel Data Structure
-interface LiveVessel {
-  name: string;
-  type: string;
-  dwt: string;
-  speed: string;
-  position: string;
-  dest: string;
-  eta: string;
-  status: "AT SEA" | "IN PORT" | "DRY DOCK";
-  classSociety: string;
-  engineLoad: string;
-}
-
 export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps> = ({ onOpenQuote }) => {
   const [activeFilter, setActiveFilter] = useState<"ALL" | "AT SEA" | "IN PORT" | "DRY DOCK">("ALL");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -82,8 +67,6 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
     return () => ctx.revert();
   }, []);
 
-
-
   const fleetData = [
     {
       id: "tankers",
@@ -91,12 +74,6 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
       count: 30,
       percentage: 51,
       desc: "Aframax, MR Product & Chemical Carriers operating in Gulf, Mediterranean & Asia",
-      vessels: [
-        { name: "M/V Oceanic Star Vanguard", type: "Aframax Oil Tanker", dwt: "108,500 DWT", speed: "14.8 Knots", position: "25° 15' N, 55° 18' E (Persian Gulf)", dest: "JNPT Mumbai", eta: "16 Aug 14:00", status: "AT SEA", classSociety: "DNV GL", engineLoad: "82% MGO" },
-        { name: "M/V Star Horizon", type: "MR Product Tanker", dwt: "49,999 DWT", speed: "13.2 Knots", position: "18° 55' N, 72° 49' E (Arabian Sea)", dest: "Fujairah Port", eta: "17 Aug 09:30", status: "AT SEA", classSociety: "Lloyd's Register", engineLoad: "78% VLSFO" },
-        { name: "M/V Chemical Pioneer", type: "IMO II Chemical Carrier", dwt: "19,800 DWT", speed: "0.0 Knots", position: "Port Rashid, Berth 4 (Dubai)", dest: "Port Rashid", eta: "AT BERTH", status: "IN PORT", classSociety: "ClassNK", engineLoad: "15% Auxiliary" },
-        { name: "M/V Star Endurance", type: "Suezmax Crude Tanker", dwt: "158,000 DWT", speed: "15.1 Knots", position: "05° 58' N, 80° 12' E (Bay of Bengal)", dest: "Singapore Hub", eta: "19 Aug 22:15", status: "AT SEA", classSociety: "ABS", engineLoad: "85% Dual-Fuel" },
-      ] as LiveVessel[],
     },
     {
       id: "bulk",
@@ -104,11 +81,6 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
       count: 14,
       percentage: 24,
       desc: "Handymax & Supramax Bulk Carriers handling Iron Ore, Coal & Grains",
-      vessels: [
-        { name: "M/V Oceanic Trade Wind", type: "Supramax Bulk Carrier", dwt: "58,000 DWT", speed: "12.9 Knots", position: "12° 04' N, 75° 12' E (Malabar Coast)", dest: "Colombo Port", eta: "17 Aug 18:00", status: "AT SEA", classSociety: "DNV GL", engineLoad: "75% MGO" },
-        { name: "M/V Star Merchant", type: "Handymax Bulker", dwt: "45,200 DWT", speed: "0.0 Knots", position: "Kandla Port, Gujarat", dest: "Kandla Port", eta: "DISCHARGING", status: "IN PORT", classSociety: "Lloyd's Register", engineLoad: "12% Aux" },
-        { name: "M/V Star Express", type: "Ultramax Bulker", dwt: "63,500 DWT", speed: "13.8 Knots", position: "01° 16' N, 103° 50' E (Malacca Strait)", dest: "Tianjin China", eta: "22 Aug 08:00", status: "AT SEA", classSociety: "ABS", engineLoad: "80% VLSFO" },
-      ] as LiveVessel[],
     },
     {
       id: "containers",
@@ -116,10 +88,6 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
       count: 7,
       percentage: 12,
       desc: "Regional Feeder & Panamax Container Carriers (1,200 TEU - 4,500 TEU)",
-      vessels: [
-        { name: "M/V Oceanic Express Feeder", type: "Feeder Container Ship", dwt: "24,000 DWT / 1,850 TEU", speed: "16.4 Knots", position: "23° 40' N, 68° 30' E (Gulf of Kutch)", dest: "Jebel Ali Port", eta: "16 Aug 06:00", status: "AT SEA", classSociety: "DNV GL", engineLoad: "88% MGO" },
-        { name: "M/V Star Container 4", type: "Panamax Container Ship", dwt: "52,000 DWT / 4,250 TEU", speed: "0.0 Knots", position: "Dry Dock Yard 2 (Dubai)", dest: "Under Maintenance", eta: "24 Aug Completion", status: "DRY DOCK", classSociety: "Lloyd's Register", engineLoad: "0% Docked" },
-      ] as LiveVessel[],
     },
     {
       id: "roro",
@@ -127,9 +95,6 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
       count: 4,
       percentage: 7,
       desc: "Pure Car & Truck Carriers (PCTC) with 3,500 CEU deck capacity",
-      vessels: [
-        { name: "M/V Oceanic Highway", type: "PCTC Ro-Ro Carrier", dwt: "18,500 DWT / 3,800 CEU", speed: "15.6 Knots", position: "15° 20' N, 58° 10' E (Arabian Sea)", dest: "Jeddah Islamic Port", eta: "18 Aug 12:00", status: "AT SEA", classSociety: "ClassNK", engineLoad: "84% MGO" },
-      ] as LiveVessel[],
     },
     {
       id: "offshore",
@@ -137,13 +102,8 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
       count: 4,
       percentage: 6,
       desc: "Dynamic Positioning DP2 Anchor Handling Tug Supply Vessels & Towage",
-      vessels: [
-        { name: "M/V Oceanic Titan Tug", type: "DP2 AHTS Vessel", dwt: "3,200 DWT / 120T Bollard Pull", speed: "11.2 Knots", position: "Bombay High Offshore Rig Field", dest: "ON STATION", status: "AT SEA", classSociety: "ABS", engineLoad: "65% DP Hold" },
-      ] as LiveVessel[],
     },
   ];
-
-  const selectedCategoryObj = fleetData.find((f) => f.type === selectedCategory);
 
   return (
     <section id="vessels" ref={sectionRef} className="py-10 md:py-16 bg-[#F5F5F2] text-[#071A2B] border-b border-[rgba(7,26,43,0.12)] relative">
@@ -189,26 +149,25 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
         </div>
 
         {/* 2-Column Split: Left = Fleet Category Cards, Right = Interactive Particle Fleet Matrix */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           {/* LEFT: Fleet Category Cards */}
-          <div className="lg:col-span-7 fleet-cards-container space-y-4">
+          <div className="fleet-cards-container flex flex-col justify-between gap-3.5 h-full">
             {fleetData.map((item, index) => {
               return (
                 <div
                   key={item.type}
-                  onClick={() => setSelectedCategory(item.type)}
-                  className="fleet-card group p-4 sm:p-5 rounded-2xl bg-white border border-[rgba(7,26,43,0.12)] hover:border-[#176B87] shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative overflow-hidden space-y-3"
+                  className="fleet-card group flex-1 p-3.5 sm:p-4 rounded-2xl bg-white border border-[rgba(7,26,43,0.12)] hover:border-[#176B87] shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
                 >
                   {/* Glowing top accent line on hover */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#176B87] via-[#00D26A] to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#071A2B]/5 border border-[rgba(7,26,43,0.12)] flex items-center justify-center text-[#176B87] group-hover:bg-[#071A2B] group-hover:text-white transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-[#071A2B]/5 border border-[rgba(7,26,43,0.12)] flex items-center justify-center text-[#176B87] group-hover:bg-[#071A2B] group-hover:text-white transition-colors shrink-0">
                         <Ship className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="font-syne text-base sm:text-lg font-bold tracking-tight text-[#071A2B] group-hover:text-[#176B87] transition-colors block">
+                        <span className="font-syne text-sm sm:text-base font-bold tracking-tight text-[#071A2B] group-hover:text-[#176B87] transition-colors block">
                           {item.type}
                         </span>
                         <span className="text-xs text-[#667783] font-manrope hidden sm:block">
@@ -218,15 +177,15 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
                     </div>
 
                     {/* Animated Live Count Up Number */}
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-lg sm:text-xl font-extrabold text-[#176B87]">
-                        <CountUpNumber end={item.count} /> <span className="text-xs text-[#667783] font-normal uppercase">UNITS</span>
+                    <div className="flex items-center gap-1.5 shrink-0 pl-2">
+                      <span className="font-mono text-base sm:text-lg font-extrabold text-[#176B87]">
+                        <CountUpNumber end={item.count} /> <span className="text-[10px] sm:text-xs text-[#667783] font-normal uppercase">UNITS</span>
                       </span>
                     </div>
                   </div>
 
                   {/* Automatic Growing Progress Bar on Scroll */}
-                  <div className="w-full h-2 bg-[#F5F5F2] rounded-full overflow-hidden border border-[rgba(7,26,43,0.08)]">
+                  <div className="w-full h-2 bg-[#F5F5F2] rounded-full overflow-hidden border border-[rgba(7,26,43,0.08)] mt-2">
                     <motion.div
                       initial={{ width: "0%" }}
                       whileInView={{ width: `${item.percentage}%` }}
@@ -241,109 +200,10 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
           </div>
 
           {/* RIGHT: Interactive 59 Vessels Particle Matrix Console */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <InteractiveFleetExplosion embedded />
+          <div className="h-full flex flex-col">
+            <InteractiveFleetExplosion embedded className="h-full flex-1" />
           </div>
         </div>
-
-        {/* Live Interactive Fleet Radar Inspector Drawer Modal */}
-        <AnimatePresence>
-          {selectedCategoryObj && (
-            <div className="fixed inset-0 z-[9999] bg-[#071A2B]/85 backdrop-blur-md flex items-center justify-center p-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-[#0F2C59] border border-[#176B87]/40 rounded-3xl p-6 sm:p-8 max-w-3xl w-full text-white shadow-2xl relative space-y-6 max-h-[90vh] overflow-y-auto"
-              >
-                {/* Close Button */}
-                <button
-                  onClick={() => setSelectedCategory(null)}
-                  className="absolute top-5 right-5 text-slate-400 hover:text-white p-2 rounded-xl bg-[#071A2B] border border-white/10 transition-colors"
-                >
-                  <X size={20} />
-                </button>
-
-                {/* Modal Title Header */}
-                <div className="flex items-center gap-3 border-b border-[#176B87]/30 pb-4">
-                  <div className="p-3 rounded-2xl bg-[#176B87]/30 border border-[#176B87] text-[#00D26A]">
-                    <Radar className="w-6 h-6 animate-radar" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold font-jakarta text-white">{selectedCategoryObj.type}</h3>
-                    <p className="text-xs text-[#00D26A] font-mono font-semibold flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-[#00D26A] animate-ping"></span> Live AIS Satellite Telemetry Stream ({selectedCategoryObj.count} Units Active)
-                    </p>
-                  </div>
-                </div>
-
-                {/* Live Vessels List Grid */}
-                <div className="space-y-4">
-                  <h4 className="text-xs font-mono uppercase tracking-widest text-slate-400">Active Vessel Roster &amp; Coordinates</h4>
-                  {selectedCategoryObj.vessels.map((v, idx) => (
-                    <div
-                      key={idx}
-                      className="p-4 rounded-2xl bg-[#071A2B]/90 border border-[#176B87]/30 hover:border-[#176B87] transition-all space-y-2.5"
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-white text-sm">{v.name}</span>
-                          <span className="px-2 py-0.5 rounded-full bg-[#176B87]/30 text-cyan-300 text-[10px] font-mono font-bold">
-                            {v.type}
-                          </span>
-                        </div>
-                        <span
-                          className={`px-2.5 py-1 rounded-full text-[10px] font-mono font-bold ${
-                            v.status === "AT SEA"
-                              ? "bg-[#00D26A]/20 text-[#00D26A] border border-[#00D26A]/40"
-                              : v.status === "IN PORT"
-                              ? "bg-amber-500/20 text-amber-300 border border-amber-500/40"
-                              : "bg-purple-500/20 text-purple-300 border border-purple-500/40"
-                          }`}
-                        >
-                          ● {v.status}
-                        </span>
-                      </div>
-
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono text-slate-300">
-                        <div>
-                          <span className="text-slate-500 block text-[10px]">DWT &amp; Class</span>
-                          <span className="font-bold text-white">{v.dwt} ({v.classSociety})</span>
-                        </div>
-                        <div>
-                          <span className="text-slate-500 block text-[10px]">Speed / Engine Load</span>
-                          <span className="font-bold text-[#00D26A]">{v.speed} ({v.engineLoad})</span>
-                        </div>
-                        <div>
-                          <span className="text-slate-500 block text-[10px]">AIS Position</span>
-                          <span className="font-bold text-white truncate block">{v.position}</span>
-                        </div>
-                        <div>
-                          <span className="text-slate-500 block text-[10px]">Destination / ETA</span>
-                          <span className="font-bold text-cyan-300">{v.dest} ({v.eta})</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Modal Footer */}
-                <div className="pt-4 border-t border-[#176B87]/30 flex items-center justify-between">
-                  <span className="text-xs text-slate-400 font-mono">Verified Class DNV GL &amp; ABS Compliant</span>
-                  <button
-                    onClick={() => {
-                      setSelectedCategory(null);
-                      if (onOpenQuote) onOpenQuote();
-                    }}
-                    className="py-2.5 px-5 rounded-xl bg-gradient-to-r from-[#176B87] to-[#00D26A] text-white font-bold text-xs flex items-center gap-2 hover:opacity-90 transition-all shadow-md"
-                  >
-                    <FileText className="w-3.5 h-3.5" /> Request Charter Availability Quote
-                  </button>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
       </div>
     </section>
   );

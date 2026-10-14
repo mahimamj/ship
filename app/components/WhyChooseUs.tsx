@@ -266,13 +266,13 @@ export const WhyChooseUs: React.FC = () => {
           </p>
         </div>
 
-        {/* Continuous moving card carousel (same motion as certifications) */}
+        {/* Continuous moving card carousel (right to left) */}
         <div className="relative overflow-hidden group/why-scroll">
           <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-14 bg-gradient-to-r from-[#FAFAF7] to-transparent z-20 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-14 bg-gradient-to-l from-[#FAFAF7] to-transparent z-20 pointer-events-none" />
 
           <div className="flex items-stretch overflow-hidden py-1">
-            <div className="flex items-stretch gap-4 animate-marquee-reverse shrink-0">
+            <div className="flex items-stretch gap-4 animate-marquee shrink-0">
               {[...REASONS, ...REASONS].map((item, idx) => {
                 const Icon = item.icon;
                 const t = item.theme;

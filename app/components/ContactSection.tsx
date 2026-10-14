@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, MessageSquare, Send, CheckCircle2, FileText, Anchor } from "lucide-react";
+import { MapPin, Phone, Mail, Send, CheckCircle2, FileText, Anchor, ArrowRight } from "lucide-react";
 
 interface FormData {
   fullName: string;
@@ -403,24 +403,25 @@ export const ContactSection: React.FC = () => {
               )}
             </div>
 
-            {/* Direct WhatsApp Quick Contact */}
+            {/* Seafarer Job Application Link Button */}
             <a
-              href="https://wa.me/919004390041?text=Hello%20Oceanic%20Star%20Fleet%2C%20I%20would%20like%20to%20inquire%20about%20your%20maritime%20services."
+              href="https://crmoceanicstarshipping.com/pages/job-application.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center justify-between text-emerald-800 transition group hover:bg-emerald-100 shadow-sm"
+              className="mt-4 bg-[#01666A]/5 border border-[#01666A]/20 hover:border-[#01666A] rounded-2xl p-4 flex items-center justify-between text-[#061B2A] transition group hover:bg-[#01666A]/10 shadow-sm"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
-                  <MessageSquare className="w-5 h-5" />
+                <div className="w-9 h-9 rounded-xl bg-[#01666A]/10 flex items-center justify-center text-[#01666A] group-hover:bg-[#01666A] group-hover:text-white transition-colors">
+                  <FileText className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold font-syne text-emerald-950">Direct WhatsApp Operations</h4>
-                  <p className="text-xs text-emerald-700 font-mono">Dispatch Hotline (+91 90043 90041)</p>
+                  <h4 className="text-sm font-bold font-syne text-[#061B2A]">Seafarer Job Application</h4>
+                  <p className="text-xs text-slate-600 font-mono">Apply online for crew &amp; officer vacancies</p>
                 </div>
               </div>
-              <span className="text-[10px] font-mono font-bold px-3 py-1.5 bg-emerald-600 text-white rounded-full">
-                CHAT NOW
+              <span className="text-[10px] font-mono font-bold px-3.5 py-1.5 bg-[#01666A] group-hover:bg-[#007CD6] text-white rounded-full transition-colors flex items-center gap-1.5 shrink-0">
+                <span>APPLY NOW</span>
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </a>
           </div>

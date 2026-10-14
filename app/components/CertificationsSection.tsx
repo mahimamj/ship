@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Award, FileText, Globe, ArrowRight, X, Plus, Minus, Target, Eye, Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { ShieldCheck, Award, FileText, Globe, X, Plus, Minus, Target, Eye, Check, ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface CertItem {
   id: string;
@@ -516,17 +516,6 @@ export const CertificationsSection: React.FC = () => {
                       </p>
                     </div>
                   </div>
-
-                  <button
-                    onClick={() => {
-                      const matchCert = OFFICIAL_CERTIFICATES.find((c) => c.title.includes("PANAMA")) || OFFICIAL_CERTIFICATES[0];
-                      setSelectedCert(matchCert);
-                    }}
-                    className="w-full py-2.5 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono font-bold text-xs tracking-wider flex items-center justify-center gap-2 transition mt-3"
-                  >
-                    <span>View Registry Details</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
