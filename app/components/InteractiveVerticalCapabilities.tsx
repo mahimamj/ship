@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { ArrowUpRight, ShieldCheck, Award, Ship, Scale, CheckCircle2, Wifi } from "lucide-react";
+import { ShieldCheck, Award, Ship, Scale, CheckCircle2, Wifi } from "lucide-react";
 import { CAPABILITIES } from "@/lib/content/capabilities";
 import { initGSAP } from "@/lib/gsapHelper";
 
@@ -10,10 +10,7 @@ interface CapabilitiesProps {
   onOpenQuote?: () => void;
 }
 
-export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
-  onSelectService,
-  onOpenQuote,
-}) => {
+export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = () => {
   const [activeIdx, setActiveIdx] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -249,11 +246,7 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
                 <div
                   key={cap.id}
                   onMouseEnter={() => setActiveIdx(idx)}
-                  onClick={() => {
-                    setActiveIdx(idx);
-                    if (onSelectService) onSelectService(cap.title);
-                    else if (onOpenQuote) onOpenQuote();
-                  }}
+                  onClick={() => setActiveIdx(idx)}
                   className={`group py-6 sm:py-8 border-b border-slate-200 cursor-pointer transition-all duration-300 flex items-center justify-between ${
                     isActive ? "px-4 bg-white shadow-sm rounded-xl" : "hover:px-2"
                   }`}
@@ -298,16 +291,6 @@ export const InteractiveVerticalCapabilities: React.FC<CapabilitiesProps> = ({
                         </div>
                       )}
                     </div>
-                  </div>
-
-                  <div
-                    className={`w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center transition-all duration-300 ${
-                      isActive
-                        ? "bg-[#007CD6] text-white border-[#007CD6] rotate-45 scale-110"
-                        : "text-[#071A2B] group-hover:border-[#071A2B]"
-                    }`}
-                  >
-                    <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
               );

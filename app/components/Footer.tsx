@@ -125,8 +125,8 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <strong className="text-[#071A2B] block font-semibold">Canada Hub:</strong>
-                <span className="text-amber-700 font-semibold">Opening Soon</span>
-                <span className="block text-[#007CD6] font-mono mt-0.5">North America Command</span>
+                <span>+971 43889981</span>
+                <span className="block text-[#007CD6] font-mono mt-0.5">canada@oceanicstarfleet.com</span>
               </div>
             </div>
           </div>

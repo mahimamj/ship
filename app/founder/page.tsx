@@ -70,7 +70,7 @@ export default function FounderPage() {
                   <Building2 className="w-4 h-4 text-[#007CD6]" /> 6 Global Command Hubs
                 </span>
                 <span className="px-3.5 py-1.5 rounded-xl bg-white/10 text-white border border-white/15 font-mono text-xs font-semibold flex items-center gap-2">
-                  <Anchor className="w-4 h-4 text-sky-400" /> 59+ Vessels Managed
+                  <Anchor className="w-4 h-4 text-sky-400" /> 65+ Vessels Managed
                 </span>
               </div>
             </div>

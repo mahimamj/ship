@@ -57,10 +57,10 @@ export const MILESTONES: TimelineMilestone[] = [
   },
   {
     year: "2026",
-    title: "59 MANAGED FLEET VESSELS & GLOBAL CORRIDORS",
-    badge: "59 Fleet Ships • International Hubs",
-    description: "Expanded managed fleet matrix to 59 active commercial vessels (Tankers, Bulkers, Containers, RoRo, AHTS, LPG) with global port dispatch.",
-    details: ["30 Tankers, 14 Bulkers, 7 Containers", "Dubai, Mumbai, Colombo, Istanbul, SG & CA Hubs", "100% SOLAS & ISM Code Safety Standard"],
+    title: "65 MANAGED FLEET VESSELS & GLOBAL CORRIDORS",
+    badge: "65 Fleet Ships • International Hubs",
+    description: "Expanded managed fleet matrix to 65 active commercial vessels (Tankers, Bulkers, Containers, RoRo, AHTS, LPG) with global port dispatch.",
+    details: ["33 Tankers, 16 Bulkers, 8 Containers", "Dubai, Mumbai, Colombo, Istanbul, SG & CA Hubs", "100% SOLAS & ISM Code Safety Standard"],
     icon: CheckCircle2,
   },
 ];
@@ -90,7 +90,7 @@ export const CompanyTimelineSection: React.FC = () => {
           </div>
 
           <p className="text-sm font-light text-[#667783] max-w-md leading-relaxed font-manrope">
-            A continuous decade of maritime expansion—sailing from initial incorporation in 2011 to managing 59 commercial fleet vessels across 6 global command hubs in Dubai, Mumbai, Colombo, Istanbul, Singapore, and Canada.
+            A continuous decade of maritime expansion—sailing from initial incorporation in 2011 to managing 65 commercial fleet vessels across 6 global command hubs in Dubai, Mumbai, Colombo, Istanbul, Singapore, and Canada.
           </p>
         </div>
 

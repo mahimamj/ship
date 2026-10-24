@@ -21,44 +21,44 @@ export const FLEET_BREAKDOWN: FleetItem[] = [
   {
     id: "tanker",
     name: "TANKER",
-    count: 30,
+    count: 33,
     percentage: 50.8,
     category: "Liquid Cargo & Petroleum",
     dwtRange: "45,000 — 300,000 DWT",
     cargoType: "Crude Oil, Refined Products, Chemicals & Jet Fuel",
     image: "/images/hero_vessel.png",
-    description: "30 Tanker vessels managed under strict SIRE 2.0 vetting standards, inert gas system (IGS) protocols, double hull inspection protocols, and OCIMF safety guidelines.",
+    description: "33 Tanker vessels managed under strict SIRE 2.0 vetting standards, inert gas system (IGS) protocols, double hull inspection protocols, and OCIMF safety guidelines.",
     protocols: ["SIRE 2.0 Vetting Inspection Ready", "Double Hull Integrity Audits", "Inert Gas & COW Systems", "Marpol Annex I Compliance"],
   },
   {
     id: "bulk",
     name: "BULK CARRIER",
-    count: 14,
-    percentage: 23.7,
+    count: 16,
+    percentage: 24.6,
     category: "Dry Bulk Commodity",
     dwtRange: "28,000 — 180,000 DWT",
     cargoType: "Iron Ore, Coal, Grain, Cement, Bauxite",
     image: "/images/hero_vessel.png",
-    description: "14 Bulk carriers including Handysize, Supramax, Ultramax, and Capesize bulkers operated under strict hold cleanliness protocols and grain loading stability calculations.",
+    description: "16 Bulk carriers including Handysize, Supramax, Ultramax, and Capesize bulkers operated under strict hold cleanliness protocols and grain loading stability calculations.",
     protocols: ["Gears & Grabs Maintenance", "Grain Code Stability Math", "Hold Washing & Inspection", "BIMCO Chartering Compliance"],
   },
   {
     id: "container",
     name: "CONTAINER",
-    count: 7,
-    percentage: 11.9,
+    count: 8,
+    percentage: 12.3,
     category: "Liner Cargo & TEU",
     dwtRange: "1,200 — 14,000 TEU",
     cargoType: "TEU Containers, Reefer Plugs, Dangerous Goods",
     image: "/images/hero_vessel.png",
-    description: "7 Feeder, Panamax, and Post-Panamax container vessels managed for high-speed schedule reliability, 24/7 reefer plug monitoring, and IMDG dangerous goods stowage.",
+    description: "8 Feeder, Panamax, and Post-Panamax container vessels managed for high-speed schedule reliability, 24/7 reefer plug monitoring, and IMDG dangerous goods stowage.",
     protocols: ["Reefer Plug Monitoring 24/7", "IMDG Code Dangerous Goods", "Lashing Bridge Audits", "High Speed Engine Care"],
   },
   {
     id: "roro",
     name: "RO RO CARGO",
     count: 4,
-    percentage: 6.8,
+    percentage: 6.3,
     category: "Vehicle & Rolling Cargo",
     dwtRange: "12,000 — 25,000 DWT",
     cargoType: "Automobiles, Trucks, Heavy Machinery, Trailers",
@@ -70,7 +70,7 @@ export const FLEET_BREAKDOWN: FleetItem[] = [
     id: "ahts",
     name: "AHTS",
     count: 1,
-    percentage: 1.7,
+    percentage: 1.5,
     category: "Offshore Towage & Anchor Handling",
     dwtRange: "3,500 DWT / 150T BP",
     cargoType: "Offshore Rigs, Rig Anchors, Towage Supplies",
@@ -82,7 +82,7 @@ export const FLEET_BREAKDOWN: FleetItem[] = [
     id: "gen-cargo",
     name: "GEN CARGO",
     count: 1,
-    percentage: 1.7,
+    percentage: 1.5,
     category: "Breakbulk & General Commodities",
     dwtRange: "15,000 DWT",
     cargoType: "Steel Coils, Timber, Bagged Goods, Heavy Equipment",
@@ -94,7 +94,7 @@ export const FLEET_BREAKDOWN: FleetItem[] = [
     id: "lpg-tanker",
     name: "LPG TANKER",
     count: 1,
-    percentage: 1.7,
+    percentage: 1.5,
     category: "Liquefied Gas Logistics",
     dwtRange: "35,000 CBM",
     cargoType: "Liquefied Petroleum Gas (Propane & Butane)",
@@ -106,7 +106,7 @@ export const FLEET_BREAKDOWN: FleetItem[] = [
     id: "offshore-support",
     name: "OFFSHORE SUPPORT",
     count: 1,
-    percentage: 1.7,
+    percentage: 1.5,
     category: "Offshore Field Operations",
     dwtRange: "4,000 DWT",
     cargoType: "Drilling Fluids, Fuel Oil, Deck Supplies, Crew Transfer",
@@ -118,7 +118,7 @@ export const FLEET_BREAKDOWN: FleetItem[] = [
 
 export const VesselFleetShowcase: React.FC = () => {
   const [selectedFleet, setSelectedFleet] = useState<FleetItem>(FLEET_BREAKDOWN[0]);
-  const totalFleetCount = FLEET_BREAKDOWN.reduce((acc, curr) => acc + curr.count, 0); // 59
+  const totalFleetCount = FLEET_BREAKDOWN.reduce((acc, curr) => acc + curr.count, 0); // 65
 
   return (
     <section id="vessels" className="py-28 md:py-36 bg-[#F8FAFC] border-t border-slate-200 text-[#0F172A] relative overflow-hidden">
@@ -156,7 +156,7 @@ export const VesselFleetShowcase: React.FC = () => {
         <div className="mb-14 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
           <div className="flex justify-between items-center text-xs font-mono text-[#64748B]">
             <span>FLEET DISTRIBUTION CAPACITY (%)</span>
-            <span className="text-[#0284C7] font-bold">TOTAL: 59 UNITS</span>
+            <span className="text-[#0284C7] font-bold">TOTAL: 65 UNITS</span>
           </div>
 
           {/* Segmented Bar */}

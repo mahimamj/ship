@@ -94,9 +94,9 @@ const REASONS: ReasonItem[] = [
   },
   {
     number: "04",
-    title: "59 Vessels Under Management",
+    title: "65 Vessels Under Management",
     desc: "A robust, growing fleet portfolio that reflects our operational scale and reliability.",
-    badge: "59 Managed Ships",
+    badge: "65 Managed Ships",
     icon: Layers,
     theme: {
       border: "border-indigo-200/80",

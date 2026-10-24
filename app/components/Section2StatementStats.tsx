@@ -56,7 +56,7 @@ export const Section2StatementStats: React.FC = () => {
       };
 
       animateValue(num1Ref, 24);
-      animateValue(num2Ref, 59);
+      animateValue(num2Ref, 65);
       animateValue(num3Ref, 6, true);
       animateValue(num4Ref, 24);
     }, sectionRef);
@@ -98,10 +98,10 @@ export const Section2StatementStats: React.FC = () => {
             </p>
           </div>
 
-          {/* Stat 2: Initial SSR renders 59 for SEO crawlers */}
+          {/* Stat 2: Initial SSR renders 65 for SEO crawlers */}
           <div className="flex flex-col justify-between">
             <div className="font-syne font-extrabold text-6xl sm:text-7xl md:text-8xl tracking-tight text-[#071A2B] leading-none mb-4">
-              <span ref={num2Ref}>59</span>
+              <span ref={num2Ref}>65</span>
             </div>
             <p className="text-xs font-mono tracking-widest text-[#667783] uppercase leading-relaxed font-semibold">
               VESSELS UNDER TECHNICAL MANAGEMENT

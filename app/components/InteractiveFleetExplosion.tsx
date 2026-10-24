@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { initGSAP } from "@/lib/gsapHelper";
 import { Ship } from "lucide-react";
 
-// 1. Generate 59 distinct 10-column matrix grid coordinates
+// 1. Generate 65 distinct 10-column matrix grid coordinates
 const GENERATE_GRID_POINTS = (): { x: number; y: number }[] => {
   const points: { x: number; y: number }[] = [];
   const cols = 10;
@@ -13,7 +13,7 @@ const GENERATE_GRID_POINTS = (): { x: number; y: number }[] => {
   const startX = -((cols - 1) * colSpacing) / 2; // centered
   const startY = -90;
 
-  for (let i = 0; i < 59; i++) {
+  for (let i = 0; i < 65; i++) {
     const col = i % cols;
     const row = Math.floor(i / cols);
     points.push({
@@ -24,7 +24,7 @@ const GENERATE_GRID_POINTS = (): { x: number; y: number }[] => {
   return points;
 };
 
-// 2. Generate 59 distinct ship-hull coordinates forming a high-fidelity commercial ship silhouette
+// 2. Generate 65 distinct ship-hull coordinates forming a high-fidelity commercial ship silhouette
 const GENERATE_SHIP_HULL_POINTS = (): { x: number; y: number }[] => {
   const points: { x: number; y: number }[] = [];
 
@@ -47,9 +47,9 @@ const GENERATE_SHIP_HULL_POINTS = (): { x: number; y: number }[] => {
   points.push({ x: 75, y: -20 });
   points.push({ x: 0, y: -40 });
 
-  // Container Deck Blocks (30 points)
-  for (let i = 0; i < 15; i++) {
-    const offsetX = -180 + i * 25.5;
+  // Container Deck Blocks (36 points)
+  for (let i = 0; i < 18; i++) {
+    const offsetX = -190 + i * 22.3;
     points.push({ x: offsetX, y: 15 });
     points.push({ x: offsetX, y: 45 });
   }
@@ -77,8 +77,8 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
   const counterRef = useRef<HTMLDivElement>(null);
   const vesselContainerRef = useRef<HTMLDivElement>(null);
 
-  // Initial SSR state is 59 so crawlers see "59 VESSELS" in static HTML
-  const [counterVal, setCounterVal] = useState(59);
+  // Initial SSR state is 65 so crawlers see "65 VESSELS" in static HTML
+  const [counterVal, setCounterVal] = useState(65);
 
   useEffect(() => {
     const { gsap, ScrollTrigger } = initGSAP();
@@ -105,7 +105,7 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
         }
       );
 
-      // 2. INFINITE LOOPING GSAP TIMELINE SYNCHRONIZING 1->59 COUNT UP WITH VESSEL APPEARANCE
+      // 2. INFINITE LOOPING GSAP TIMELINE SYNCHRONIZING 1->65 COUNT UP WITH VESSEL APPEARANCE
       const loopTl = gsap.timeline({
         repeat: -1,
         repeatDelay: 1,
@@ -122,9 +122,9 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
           y: (i) => GRID_POINTS[i].y,
         })
 
-        // Step B: Counter 1 -> 59 & Synchronized 1-by-1 Vessel Pop-in
+        // Step B: Counter 1 -> 65 & Synchronized 1-by-1 Vessel Pop-in
         .to(counterObj, {
-          val: 59,
+          val: 65,
           duration: 2.5,
           ease: "linear",
           onUpdate: () => setCounterVal(Math.round(counterObj.val)),
@@ -144,7 +144,7 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
         // Step C: Hold Grid View for 1.4s
         .to({}, { duration: 1.4 })
 
-        // Step D: Morph 59 Vessels from GRID_POINTS to HULL_POINTS (Ship Silhouette)
+        // Step D: Morph 65 Vessels from GRID_POINTS to HULL_POINTS (Ship Silhouette)
         .to(vessels, {
           x: (i) => HULL_POINTS[i % HULL_POINTS.length].x,
           y: (i) => HULL_POINTS[i % HULL_POINTS.length].y,
@@ -168,7 +168,7 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
         .to(
           counterObj,
           {
-            val: 59,
+            val: 65,
             duration: 0.4,
             onUpdate: () => setCounterVal(Math.round(counterObj.val)),
           },
@@ -221,13 +221,13 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
             </span>
           </div>
 
-          {/* 59 VESSEL PARTICLE MORPH CONTAINER STAGE */}
+          {/* 65 VESSEL PARTICLE MORPH CONTAINER STAGE */}
           <div className="relative w-full flex-1 min-h-[200px] sm:min-h-[240px] flex items-center justify-center overflow-hidden">
             <div
               ref={vesselContainerRef}
               className="relative w-full h-full flex items-center justify-center transform scale-[0.55] sm:scale-[0.66] origin-center transition-transform"
             >
-              {Array.from({ length: 59 }).map((_, i) => (
+              {Array.from({ length: 65 }).map((_, i) => (
                 <div
                   key={i}
                   className="vessel-particle absolute w-6 h-6 rounded-lg bg-[#082F49] border border-[#00D9E8]/60 flex items-center justify-center shadow-[0_0_10px_rgba(0,217,232,0.3)] text-[#00D9E8]"
@@ -290,13 +290,13 @@ export const InteractiveFleetExplosion: React.FC<InteractiveFleetExplosionProps>
             </span>
           </div>
 
-          {/* 59 VESSEL PARTICLE MORPH CONTAINER STAGE WITH SIGNATURE CYAN GLOW */}
+          {/* 65 VESSEL PARTICLE MORPH CONTAINER STAGE WITH SIGNATURE CYAN GLOW */}
           <div className="relative w-full max-w-3xl h-[160px] sm:h-[210px] flex items-center justify-center overflow-hidden">
             <div
               ref={vesselContainerRef}
               className="relative w-full h-full flex items-center justify-center transform scale-[0.55] sm:scale-[0.75] origin-center transition-transform"
             >
-              {Array.from({ length: 59 }).map((_, i) => (
+              {Array.from({ length: 65 }).map((_, i) => (
                 <div
                   key={i}
                   className="vessel-particle absolute w-6 h-6 rounded-lg bg-[#082F49] border border-[#00D9E8]/60 flex items-center justify-center shadow-[0_0_10px_rgba(0,217,232,0.3)] text-[#00D9E8]"

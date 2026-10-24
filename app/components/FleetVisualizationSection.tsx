@@ -71,21 +71,21 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
     {
       id: "tankers",
       type: "OIL & CHEMICAL TANKERS",
-      count: 30,
+      count: 33,
       percentage: 51,
       desc: "Aframax, MR Product & Chemical Carriers operating in Gulf, Mediterranean & Asia",
     },
     {
       id: "bulk",
       type: "DRY BULK CARRIERS",
-      count: 14,
-      percentage: 24,
+      count: 16,
+      percentage: 25,
       desc: "Handymax & Supramax Bulk Carriers handling Iron Ore, Coal & Grains",
     },
     {
       id: "containers",
       type: "CONTAINER VESSELS",
-      count: 7,
+      count: 8,
       percentage: 12,
       desc: "Regional Feeder & Panamax Container Carriers (1,200 TEU - 4,500 TEU)",
     },
@@ -93,7 +93,7 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
       id: "roro",
       type: "RO-RO CAR CARRIERS",
       count: 4,
-      percentage: 7,
+      percentage: 6,
       desc: "Pure Car & Truck Carriers (PCTC) with 3,500 CEU deck capacity",
     },
     {
@@ -117,7 +117,7 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
               // FLEET OVERVIEW &amp; VESSEL MATRIX
             </span>
             <h2 className="font-syne text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#071A2B] leading-tight">
-              59 VESSELS
+              65 VESSELS
             </h2>
             <p className="font-mono text-xs text-[#667783] uppercase tracking-widest mt-2 flex items-center gap-2">
               <span>UNDER TECHNICAL &amp; COMMERCIAL MANAGEMENT</span>
@@ -141,7 +141,7 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
                       : "bg-white text-[#667783] border-[rgba(7,26,43,0.12)] hover:border-[#176B87] hover:text-[#071A2B]"
                   }`}
                 >
-                  {filter === "ALL" ? "All Fleet (59)" : filter === "AT SEA" ? "🟢 At Sea (42)" : filter === "IN PORT" ? "⚓ In Port (12)" : "🔧 Dry Dock (5)"}
+                  {filter === "ALL" ? "All Fleet (65)" : filter === "AT SEA" ? "🟢 At Sea (46)" : filter === "IN PORT" ? "⚓ In Port (13)" : "🔧 Dry Dock (6)"}
                 </button>
               ))}
             </div>
@@ -199,7 +199,7 @@ export const FleetVisualizationSection: React.FC<FleetVisualizationSectionProps>
             })}
           </div>
 
-          {/* RIGHT: Interactive 59 Vessels Particle Matrix Console */}
+          {/* RIGHT: Interactive 65 Vessels Particle Matrix Console */}
           <div className="h-full flex flex-col">
             <InteractiveFleetExplosion embedded className="h-full flex-1" />
           </div>

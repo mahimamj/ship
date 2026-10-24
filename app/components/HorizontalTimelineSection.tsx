@@ -26,8 +26,8 @@ export const HorizontalTimelineSection: React.FC = () => {
     },
     {
       year: "2024",
-      title: "59 MANAGED FLEET MILESTONE",
-      desc: "Crossed 59 active managed vessels across tankers, containers, dry bulk, and DP2 offshore field support ships.",
+      title: "65 MANAGED FLEET MILESTONE",
+      desc: "Crossed 65 active managed vessels across tankers, containers, dry bulk, and DP2 offshore field support ships.",
       image: "/images/hero_vessel.png",
     },
     {
@@ -78,7 +78,7 @@ export const HorizontalTimelineSection: React.FC = () => {
       };
 
       animateValue(num1Ref, 24);
-      animateValue(num2Ref, 59);
+      animateValue(num2Ref, 65);
       animateValue(num3Ref, 6, true);
       animateValue(num4Ref, 24);
     }, sectionRef);
@@ -121,7 +121,7 @@ export const HorizontalTimelineSection: React.FC = () => {
 
           <div className="space-y-1 p-2 border-l border-slate-100">
             <div className="font-syne font-extrabold text-4xl sm:text-5xl text-[#071A2B] leading-none">
-              <span ref={num2Ref}>59</span>
+              <span ref={num2Ref}>65</span>
             </div>
             <p className="text-[10px] font-mono tracking-wider text-slate-500 font-bold uppercase">
               VESSELS MANAGED

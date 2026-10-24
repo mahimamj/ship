@@ -61,7 +61,7 @@ export const AboutOceanicOverview: React.FC<AboutOceanicOverviewProps> = ({ onOp
           </div>
 
           <div className="space-y-1 text-center md:text-left md:pl-4 border-r border-slate-700/60 last:border-r-0">
-            <span className="font-syne text-2xl sm:text-3xl font-black text-white">59+ VESSELS</span>
+            <span className="font-syne text-2xl sm:text-3xl font-black text-white">65+ VESSELS</span>
             <p className="font-mono text-[10px] text-slate-300 uppercase tracking-wider">Under Management</p>
           </div>
 

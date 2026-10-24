@@ -63,10 +63,7 @@ export default function Home() {
       <CinematicOperationsSection />
 
       {/* 5. CAPABILITIES & WHY US PRINCIPLES */}
-      <InteractiveVerticalCapabilities
-        onSelectService={() => setIsQuoteOpen(true)}
-        onOpenQuote={() => setIsQuoteOpen(true)}
-      />
+      <InteractiveVerticalCapabilities />
 
       {/* WHY CHOOSE US 11-POINT ADVANTAGE GRID */}
       <WhyChooseUs />
@@ -74,7 +71,7 @@ export default function Home() {
       {/* 6. GLOBAL NETWORK MAP */}
       <GlobalPresenceMap />
 
-      {/* 9. UNIFIED FLEET MATRIX & VISUALIZATION (LEFT: CATEGORIES, RIGHT: 59 VESSELS INTERACTIVE MATRIX) */}
+      {/* 9. UNIFIED FLEET MATRIX & VISUALIZATION (LEFT: CATEGORIES, RIGHT: 65 VESSELS INTERACTIVE MATRIX) */}
       <FleetVisualizationSection onOpenQuote={() => setIsQuoteOpen(true)} />
 
       {/* 11. COMPACT CERTIFICATIONS */}

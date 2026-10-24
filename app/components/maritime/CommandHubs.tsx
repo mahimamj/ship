@@ -99,19 +99,16 @@ export const CommandHubs: React.FC<CommandHubsProps> = ({ onOpenQuote }) => {
             </h2>
 
             <p className="font-inter text-xs sm:text-sm text-[#687384] max-w-xl font-normal leading-relaxed">
-              Four operational command centres in Mumbai, Dubai, Colombo and Istanbul, with Singapore and Canada opening soon to extend coverage across Asia-Pacific and North America.
+              Five operational command centres in Mumbai, Dubai, Colombo, Istanbul, and Vancouver (Canada), with Singapore opening soon to extend coverage across Asia-Pacific.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 pt-1">
             <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[#071A2B] bg-white border border-slate-200 px-2.5 py-1 rounded-full">
-              4 Active
+              5 Active
             </span>
             <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
               Opening Soon — Singapore
-            </span>
-            <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-full">
-              Opening Soon — Canada
             </span>
           </div>
           {/* Thin Horizontal Divider */}

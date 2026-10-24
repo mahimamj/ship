@@ -17,11 +17,11 @@ export const FleetSilhouetteStats: React.FC<FleetSilhouetteStatsProps> = ({ onOp
     const { gsap } = initGSAP();
 
     const ctx = gsap.context(() => {
-      // Counter animation for 59 Vessels
+      // Counter animation for 65 Vessels
       if (numberRef.current) {
         const obj = { val: 0 };
         gsap.to(obj, {
-          val: 59,
+          val: 65,
           duration: 2,
           ease: "power2.out",
           scrollTrigger: {
@@ -70,14 +70,14 @@ export const FleetSilhouetteStats: React.FC<FleetSilhouetteStatsProps> = ({ onOp
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* LEFT: 59 VESSELS BIG NUMBERS & SILHOUETTE GRID (Screenshot 3 Style) */}
+          {/* LEFT: 65 VESSELS BIG NUMBERS & SILHOUETTE GRID (Screenshot 3 Style) */}
           <div className="lg:col-span-8 space-y-6">
             <div className="flex items-baseline gap-4">
               <span
                 ref={numberRef}
                 className="font-syne text-7xl sm:text-9xl font-extrabold tracking-tight text-white leading-none"
               >
-                59
+                65
               </span>
               <div className="flex flex-col">
                 <span className="font-syne font-extrabold text-2xl sm:text-4xl text-white tracking-wide uppercase leading-tight">
@@ -131,7 +131,7 @@ export const FleetSilhouetteStats: React.FC<FleetSilhouetteStatsProps> = ({ onOp
                     TOTAL GLOBAL HUBS
                   </span>
                   <span className="font-mono text-[10px] text-sky-200 uppercase font-semibold">
-                    DUBAI &bull; MUMBAI &bull; COLOMBO &bull; ISTANBUL &bull; SINGAPORE SOON &bull; CANADA SOON
+                    DUBAI &bull; MUMBAI &bull; COLOMBO &bull; ISTANBUL &bull; CANADA &bull; SINGAPORE SOON
                   </span>
                 </div>
               </div>

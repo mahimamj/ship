@@ -237,7 +237,7 @@ export const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-syne text-sm font-bold text-[#071A2B] leading-tight">
-                    Oceanic Star Canada (Opening Soon)
+                    Oceanic Star Canada
                   </h3>
                   <p className="text-xs font-mono text-[#007CD6] font-semibold">North America Strategic Hub</p>
                 </div>
@@ -369,7 +369,7 @@ export const ContactSection: React.FC = () => {
                         <option value="Sri Lanka Branch">Sri Lanka Branch (Colombo)</option>
                         <option value="Turkey Office">Turkey Office (Istanbul)</option>
                         <option value="Singapore Hub">Singapore Hub (Opening Soon)</option>
-                        <option value="Canada Hub">Canada Hub (Opening Soon)</option>
+                        <option value="Canada Hub">Canada Hub</option>
                       </select>
                     </div>
                   </div>

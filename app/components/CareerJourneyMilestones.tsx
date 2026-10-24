@@ -152,15 +152,15 @@ const MILESTONES: MilestoneItem[] = [
     year: "Present",
     yearDisplay: "2026",
     category: "LEADERSHIP",
-    title: "Global Fleet Command — 59+ Managed Ships",
+    title: "Global Fleet Command — 65+ Managed Ships",
     subtitle: "6 Total Global Hubs",
-    desc: "Leading a multi-hub global ship management matrix controlling 59+ commercial vessels across India, UAE, Sri Lanka, Turkey, Singapore, and Canada with 24/7 vessel tracking and safety leadership.",
+    desc: "Leading a multi-hub global ship management matrix controlling 65+ commercial vessels across India, UAE, Sri Lanka, Turkey, Singapore, and Canada with 24/7 vessel tracking and safety leadership.",
     icon: Ship,
     highlight: true,
-    trustBadge: "59+ Managed Vessels • 6 Total Global Hubs",
+    trustBadge: "65+ Managed Vessels • 6 Total Global Hubs",
     marketingMetric: "Industry Leader",
     bullets: [
-      "59+ Managed Fleet (Tankers, Bulkers, Container, LPG, RoRo)",
+      "65+ Managed Fleet (Tankers, Bulkers, Container, LPG, RoRo)",
       "6 Total Global Hubs across Asia, Middle East, Europe & Americas",
       "99.4% On-time Voyage Completion & Zero Major PSC Detentions",
     ],
@@ -169,7 +169,7 @@ const MILESTONES: MilestoneItem[] = [
 
 const METRICS_SUMMARY = [
   { label: "Years Excellence", value: "20+", detail: "Continuous Growth" },
-  { label: "Managed Vessels", value: "59+", detail: "Commercial Fleet" },
+  { label: "Managed Vessels", value: "65+", detail: "Commercial Fleet" },
   { label: "Total Global Hubs", value: "6", detail: "IN, AE, LK, TR, SG, CA" },
   { label: "Compliance Rate", value: "100%", detail: "RPSL & ISO 9001" },
 ];
@@ -222,7 +222,7 @@ export const CareerJourneyMilestones: React.FC<CareerJourneyMilestonesProps> = (
             </h2>
             
             <p className="font-inter text-xs sm:text-sm text-[#687384] leading-relaxed font-normal">
-              From our founding in Navi Mumbai in 2002 to managing a global fleet of 59+ commercial vessels across 6 total global hubs today—explore how Oceanic Star built its reputation as a trusted global ship management partner.
+              From our founding in Navi Mumbai in 2002 to managing a global fleet of 65+ commercial vessels across 6 total global hubs today—explore how Oceanic Star built its reputation as a trusted global ship management partner.
             </p>
           </div>
 
