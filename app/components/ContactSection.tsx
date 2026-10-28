@@ -122,7 +122,7 @@ export const ContactSection: React.FC = () => {
               <div className="text-[11px] font-manrope text-slate-600 space-y-2 pt-3 border-t border-slate-100">
                 <p className="flex items-start space-x-2">
                   <MapPin className="w-4 h-4 text-[#007CD6] shrink-0 mt-0.5" />
-                  <span>Office No. 601, 6th Floor, Al Jawharah Building, Bur Dubai, UAE</span>
+                  <span>Office No. 405, 4th Floor, Al Jawharah Building, Bur Dubai, UAE</span>
                 </p>
                 <p className="flex items-center space-x-2">
                   <Phone className="w-4 h-4 text-[#007CD6] shrink-0" />
