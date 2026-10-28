@@ -73,8 +73,8 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   const handleDownloadBrochure = () => {
     setDownloading(true);
     const link = document.createElement("a");
-    link.href = "/Oceanic_Star_Company_Brochure.pdf";
-    link.download = "Oceanic_Star_Company_Brochure.pdf";
+    link.href = "/Oceanic_Star_Shipping_INDIA.pdf";
+    link.download = "Oceanic Star Shipping INDIA.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -188,9 +188,9 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                         65 Managed Ships • 6 Global Hubs • RPSL-MUM-506 &amp; ISO 9001:2015
                       </p>
                       <div className="flex items-center gap-2 text-[10px] font-mono text-slate-500 pt-0.5">
-                        <span>Official PDF</span>
+                        <span>Official PDF (2.9 MB)</span>
                         <span>•</span>
-                        <span>Instant Download</span>
+                        <span>Oceanic Star Shipping INDIA</span>
                       </div>
                     </div>
                   </div>
@@ -384,7 +384,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                         Download Corporate Brochure
                       </p>
                       <p className="text-[10px] font-mono text-[#667783]">
-                        Official Fleet &amp; Capabilities Deck (PDF)
+                        Oceanic Star Shipping INDIA (PDF • 2.9 MB)
                       </p>
                     </div>
                   </div>
