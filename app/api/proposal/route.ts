@@ -3,7 +3,13 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, company, service, message } = body;
+    const name = body.name || body.fullName;
+    const email = body.email;
+    const phone = body.phone;
+    const company = body.company || body.companyName || body.vesselName;
+    const service = body.service || body.serviceCategory || "Full Technical Management";
+    const entity = body.entity || body.entityPreference;
+    const message = body.message;
 
     if (!name || (!email && !phone)) {
       return NextResponse.json(

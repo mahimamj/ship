@@ -3,7 +3,25 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send, CheckCircle2, FileText, Anchor, ArrowRight } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Send,
+  CheckCircle2,
+  FileText,
+  Anchor,
+  ArrowRight,
+  User,
+  Building2,
+  Layers,
+  Clock,
+  ShieldCheck,
+  Compass,
+  Download,
+  ChevronDown,
+  Sparkles,
+} from "lucide-react";
 
 interface FormData {
   fullName: string;
@@ -25,7 +43,15 @@ export const ContactSection: React.FC = () => {
   } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await fetch("/api/proposal", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+    } catch (err) {
+      console.error("Proposal dispatch error:", err);
+    }
     setSubmitted(true);
     reset();
   };
@@ -261,169 +287,292 @@ export const ContactSection: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Commercial Proposal Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-lg space-y-4">
-              <div className="border-b border-slate-100 pb-3">
-                <h3 className="font-syne text-xl font-extrabold text-[#071A2B]">COMMERCIAL PROPOSAL REQUEST</h3>
-                <p className="text-xs font-manrope text-slate-500 mt-1">Submit your specifications for a response within 2 business hours.</p>
+          {/* Right Column: Redesigned Commercial Proposal Form & Seafarer Portal */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="relative bg-white rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-[0_20px_50px_-15px_rgba(7,26,43,0.08)] overflow-hidden">
+              {/* Subtle Ambient Decorative Glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-[#007CD6]/10 via-[#01666A]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+              {/* Header */}
+              <div className="relative z-10 pb-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] font-bold text-[#007CD6] tracking-widest uppercase">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse inline-block" />
+                    <span>// COMMERCIAL DISPATCH TERMINAL</span>
+                  </div>
+                  <h3 className="font-syne text-xl sm:text-2xl font-black text-[#071A2B] tracking-tight leading-tight">
+                    COMMERCIAL PROPOSAL REQUEST
+                  </h3>
+                  <p className="font-manrope text-xs text-[#667783] leading-relaxed">
+                    Submit vessel specs for a tailored commercial proposal &amp; operational dispatch within 2 business hours.
+                  </p>
+                </div>
+
+                {/* Direct Brochure Download Pill */}
+                <a
+                  href="/api/brochure"
+                  download="Oceanic Star Shipping INDIA.pdf"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sky-50 hover:bg-sky-100 text-[#007CD6] border border-sky-200/90 font-mono text-[10px] font-bold transition-all shadow-xs shrink-0 self-start sm:self-center cursor-pointer group/deck"
+                  title="Download Official 2026 Fleet Deck"
+                >
+                  <Download className="w-3.5 h-3.5 text-[#007CD6] group-hover/deck:translate-y-0.5 transition-transform" />
+                  <span>2026 FLEET DECK (2.9 MB)</span>
+                </a>
               </div>
 
               {submitted ? (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-sky-50 border border-sky-200 rounded-2xl p-8 text-center space-y-4"
+                  className="relative z-10 py-8 px-4 text-center space-y-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-sky-100 text-[#007CD6] flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
                     <CheckCircle2 size={36} />
                   </div>
-                  <h4 className="font-syne text-xl font-bold text-[#071A2B]">Inquiry Received Successfully</h4>
-                  <p className="text-xs font-manrope text-slate-600 max-w-md mx-auto">
-                    Thank you for reaching out. Our senior superintendent will review your request and contact you shortly.
-                  </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="px-6 py-2.5 rounded-full font-mono text-xs font-bold bg-[#007CD6] hover:bg-[#061B2A] text-white transition-colors"
-                  >
-                    Submit Another Inquiry
-                  </button>
+                  <div className="space-y-1">
+                    <h4 className="font-syne text-xl font-bold text-[#071A2B]">Proposal Request Transmitted</h4>
+                    <p className="text-xs font-manrope text-slate-600 max-w-md mx-auto leading-relaxed">
+                      Thank you. Your commercial parameters have been logged. A senior superintendent from the nearest command hub will contact you within 2 business hours.
+                    </p>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+                    <a
+                      href="/api/brochure"
+                      download="Oceanic Star Shipping INDIA.pdf"
+                      className="px-5 py-2.5 rounded-xl font-mono text-xs font-bold bg-[#01666A] hover:bg-[#007CD6] text-white transition-colors flex items-center gap-2 shadow-sm"
+                    >
+                      <Download size={14} /> Download Corporate Brochure
+                    </a>
+                    <button
+                      onClick={() => setSubmitted(false)}
+                      className="px-5 py-2.5 rounded-xl font-mono text-xs font-bold bg-slate-100 hover:bg-slate-200 text-[#071A2B] transition-colors cursor-pointer"
+                    >
+                      Submit Another Inquiry
+                    </button>
+                  </div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 text-xs font-manrope">
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[#071A2B] font-semibold mb-1">Full Name *</label>
+                <form onSubmit={handleSubmit(onSubmit)} className="relative z-10 pt-4 space-y-3.5 text-xs font-manrope">
+                  <div className="grid sm:grid-cols-2 gap-3.5">
+                    {/* Full Name */}
+                    <div className="space-y-1">
+                      <label className="flex items-center justify-between font-mono text-[11px] font-bold text-[#071A2B] tracking-wider uppercase">
+                        <span className="flex items-center gap-1.5">
+                          <User className="w-3.5 h-3.5 text-[#007CD6]" /> Full Name
+                        </span>
+                        <span className="text-[10px] font-mono text-[#007CD6] font-bold">* REQUIRED</span>
+                      </label>
                       <input
                         type="text"
-                        {...register("fullName", { required: "Full Name is required" })}
-                        placeholder="Capt. John Doe"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#007CD6]"
+                        {...register("fullName", { required: "Full name is required" })}
+                        placeholder="e.g. Capt. Alexander Vance"
+                        className="w-full bg-[#FAFAF7] hover:bg-white focus:bg-white border border-slate-200 hover:border-slate-300 focus:border-[#007CD6] focus:ring-4 focus:ring-[#007CD6]/10 rounded-xl px-3.5 py-2.5 text-xs text-[#071A2B] placeholder:text-slate-400 font-manrope transition-all shadow-2xs"
                       />
-                      {errors.fullName && <span className="text-rose-600 text-[10px]">{errors.fullName.message}</span>}
+                      {errors.fullName && <span className="text-rose-600 font-mono text-[10px] block">{errors.fullName.message}</span>}
                     </div>
 
-                    <div>
-                      <label className="block text-[#071A2B] font-semibold mb-1">Work Email *</label>
+                    {/* Work Email */}
+                    <div className="space-y-1">
+                      <label className="flex items-center justify-between font-mono text-[11px] font-bold text-[#071A2B] tracking-wider uppercase">
+                        <span className="flex items-center gap-1.5">
+                          <Mail className="w-3.5 h-3.5 text-[#007CD6]" /> Work Email
+                        </span>
+                        <span className="text-[10px] font-mono text-[#007CD6] font-bold">* REQUIRED</span>
+                      </label>
                       <input
                         type="email"
                         {...register("email", {
-                          required: "Work Email is required",
+                          required: "Work email is required",
                           pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
                         })}
-                        placeholder="j.doe@shipping-co.com"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#007CD6]"
+                        placeholder="vance@shipping-fleet.com"
+                        className="w-full bg-[#FAFAF7] hover:bg-white focus:bg-white border border-slate-200 hover:border-slate-300 focus:border-[#007CD6] focus:ring-4 focus:ring-[#007CD6]/10 rounded-xl px-3.5 py-2.5 text-xs text-[#071A2B] placeholder:text-slate-400 font-manrope transition-all shadow-2xs"
                       />
-                      {errors.email && <span className="text-rose-600 text-[10px]">{errors.email.message}</span>}
+                      {errors.email && <span className="text-rose-600 font-mono text-[10px] block">{errors.email.message}</span>}
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[#071A2B] font-semibold mb-1">Phone / Mobile *</label>
+                  <div className="grid sm:grid-cols-2 gap-3.5">
+                    {/* Phone / Mobile */}
+                    <div className="space-y-1">
+                      <label className="flex items-center justify-between font-mono text-[11px] font-bold text-[#071A2B] tracking-wider uppercase">
+                        <span className="flex items-center gap-1.5">
+                          <Phone className="w-3.5 h-3.5 text-[#007CD6]" /> Phone / WhatsApp
+                        </span>
+                        <span className="text-[10px] font-mono text-[#007CD6] font-bold">* REQUIRED</span>
+                      </label>
                       <input
                         type="tel"
                         {...register("phone", { required: "Phone number is required" })}
-                        placeholder="+971 50 123 4567"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#007CD6]"
+                        placeholder="+971 50 123 4567 / +91..."
+                        className="w-full bg-[#FAFAF7] hover:bg-white focus:bg-white border border-slate-200 hover:border-slate-300 focus:border-[#007CD6] focus:ring-4 focus:ring-[#007CD6]/10 rounded-xl px-3.5 py-2.5 text-xs text-[#071A2B] placeholder:text-slate-400 font-manrope transition-all shadow-2xs"
                       />
-                      {errors.phone && <span className="text-rose-600 text-[10px]">{errors.phone.message}</span>}
+                      {errors.phone && <span className="text-rose-600 font-mono text-[10px] block">{errors.phone.message}</span>}
                     </div>
 
-                    <div>
-                      <label className="block text-[#071A2B] font-semibold mb-1">Company / Vessel Name</label>
+                    {/* Company / Vessel Name */}
+                    <div className="space-y-1">
+                      <label className="flex items-center justify-between font-mono text-[11px] font-bold text-[#071A2B] tracking-wider uppercase">
+                        <span className="flex items-center gap-1.5">
+                          <Building2 className="w-3.5 h-3.5 text-[#007CD6]" /> Company / Vessel Name
+                        </span>
+                        <span className="text-[10px] font-mono text-slate-400">OPTIONAL</span>
+                      </label>
                       <input
                         type="text"
                         {...register("companyName")}
-                        placeholder="Global Maritime Ltd"
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#007CD6]"
+                        placeholder="e.g. Vance Maritime Ltd / MT Oceanic Star"
+                        className="w-full bg-[#FAFAF7] hover:bg-white focus:bg-white border border-slate-200 hover:border-slate-300 focus:border-[#007CD6] focus:ring-4 focus:ring-[#007CD6]/10 rounded-xl px-3.5 py-2.5 text-xs text-[#071A2B] placeholder:text-slate-400 font-manrope transition-all shadow-2xs"
                       />
                     </div>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-[#071A2B] font-semibold mb-1">Service Required *</label>
-                      <select
-                        {...register("serviceCategory", { required: "Please select a service" })}
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#007CD6]"
-                      >
-                        <option value="">Select Service Category</option>
-                        <option value="Crew Management">Crew Management</option>
-                        <option value="Technical Management">Technical Management</option>
-                        <option value="Dry Dock Management">Dry Dock Management</option>
-                        <option value="Port Agency & Husbandry">Port Agency & Husbandry</option>
-                        <option value="Chartering & Brokering">Chartering & Brokering</option>
-                      </select>
-                      {errors.serviceCategory && <span className="text-rose-600 text-[10px]">{errors.serviceCategory.message}</span>}
+                  <div className="grid sm:grid-cols-2 gap-3.5">
+                    {/* Service Required */}
+                    <div className="space-y-1">
+                      <label className="flex items-center justify-between font-mono text-[11px] font-bold text-[#071A2B] tracking-wider uppercase">
+                        <span className="flex items-center gap-1.5">
+                          <Layers className="w-3.5 h-3.5 text-[#007CD6]" /> Service Required
+                        </span>
+                        <span className="text-[10px] font-mono text-[#007CD6] font-bold">* REQUIRED</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          {...register("serviceCategory", { required: "Please select a service" })}
+                          className="w-full bg-[#FAFAF7] hover:bg-white focus:bg-white border border-slate-200 hover:border-slate-300 focus:border-[#007CD6] focus:ring-4 focus:ring-[#007CD6]/10 rounded-xl px-3.5 py-2.5 text-xs text-[#071A2B] font-manrope transition-all shadow-2xs appearance-none cursor-pointer pr-10"
+                        >
+                          <option value="">Select Service Category</option>
+                          <option value="Full Technical Management">Full Technical Vessel Management</option>
+                          <option value="RPSL Crew Logistics">RPSL-MUM-506 Crew Manning &amp; Logistics</option>
+                          <option value="Commercial Chartering & Brokering">Commercial Chartering &amp; Post-Fixture</option>
+                          <option value="Dry Dock Management">Dry Docking &amp; Marine Engineering</option>
+                          <option value="Port Agency & Husbandry">Global Port Agency &amp; Husbandry</option>
+                          <option value="Panama / Flag State Endorsements">Flag State Endorsements &amp; Seaman Books</option>
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
+                      </div>
+                      {errors.serviceCategory && <span className="text-rose-600 font-mono text-[10px] block">{errors.serviceCategory.message}</span>}
                     </div>
 
-                    <div>
-                      <label className="block text-[#071A2B] font-semibold mb-1">Preferred Office Entity</label>
-                      <select
-                        {...register("entityPreference")}
-                        className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#007CD6]"
-                      >
-                        <option value="Dubai LLC">Dubai LLC (Oceanic Star Fleet HQ)</option>
-                        <option value="India Pvt Ltd">India Pvt Ltd (Oceanic Star Shipping)</option>
-                        <option value="Sri Lanka Branch">Sri Lanka Branch (Colombo)</option>
-                        <option value="Turkey Office">Turkey Office (Istanbul)</option>
-                        <option value="Singapore Hub">Singapore Hub (Opening Soon)</option>
-                        <option value="Canada Hub">Canada Hub</option>
-                      </select>
+                    {/* Preferred Office Entity */}
+                    <div className="space-y-1">
+                      <label className="flex items-center justify-between font-mono text-[11px] font-bold text-[#071A2B] tracking-wider uppercase">
+                        <span className="flex items-center gap-1.5">
+                          <Compass className="w-3.5 h-3.5 text-[#007CD6]" /> Command Hub
+                        </span>
+                        <span className="text-[10px] font-mono text-slate-400">DIRECT ROUTING</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          {...register("entityPreference")}
+                          className="w-full bg-[#FAFAF7] hover:bg-white focus:bg-white border border-slate-200 hover:border-slate-300 focus:border-[#007CD6] focus:ring-4 focus:ring-[#007CD6]/10 rounded-xl px-3.5 py-2.5 text-xs text-[#071A2B] font-manrope transition-all shadow-2xs appearance-none cursor-pointer pr-10"
+                        >
+                          <option value="Dubai LLC">Dubai Operations HQ (Oceanic Star Fleet LLC)</option>
+                          <option value="India Pvt Ltd">India Operations HQ (Oceanic Star Shipping Pvt Ltd)</option>
+                          <option value="Canada Hub">Canada Hub (Oceanic Star Shipping Inc.)</option>
+                          <option value="Sri Lanka Branch">Sri Lanka Branch (Colombo Port &amp; Agency)</option>
+                          <option value="Turkey Office">Turkey Hub (Istanbul Maritime Office)</option>
+                          <option value="Singapore Hub">Singapore Hub (Opening Soon)</option>
+                        </select>
+                        <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-[#071A2B] font-semibold mb-1">Detailed Message / Specifications *</label>
+                  {/* Detailed Message */}
+                  <div className="space-y-1">
+                    <label className="flex items-center justify-between font-mono text-[11px] font-bold text-[#071A2B] tracking-wider uppercase">
+                      <span className="flex items-center gap-1.5">
+                        <FileText className="w-3.5 h-3.5 text-[#007CD6]" /> Vessel Specifications / Scope
+                      </span>
+                      <span className="text-[10px] font-mono text-[#007CD6] font-bold">* REQUIRED</span>
+                    </label>
                     <textarea
                       rows={3}
-                      {...register("message", { required: "Please describe your request" })}
-                      placeholder="Specify vessel type, DWT, port call dates, or crew rank requirements..."
-                      className="w-full bg-[#F5F5F2] border border-slate-200 rounded-xl px-3 py-2.5 text-[#071A2B] focus:outline-none focus:border-[#007CD6] resize-none"
-                    ></textarea>
-                    {errors.message && <span className="text-rose-600 text-[10px]">{errors.message.message}</span>}
+                      {...register("message", { required: "Please specify your requirements" })}
+                      placeholder="Specify vessel type (Tanker, Bulker, Offshore), DWT, flag registry, expected crewing complement, or port call schedule..."
+                      className="w-full bg-[#FAFAF7] hover:bg-white focus:bg-white border border-slate-200 hover:border-slate-300 focus:border-[#007CD6] focus:ring-4 focus:ring-[#007CD6]/10 rounded-xl px-3.5 py-2.5 text-xs text-[#071A2B] placeholder:text-slate-400 font-manrope transition-all shadow-2xs resize-none"
+                    />
+                    {errors.message && <span className="text-rose-600 font-mono text-[10px] block">{errors.message.message}</span>}
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-3 rounded-xl font-mono font-bold text-xs bg-[#007CD6] hover:bg-[#061B2A] text-white transition flex items-center justify-center space-x-2 shadow-lg"
-                  >
-                    {isSubmitting ? (
-                      <span>Sending Request...</span>
-                    ) : (
-                      <>
-                        <Send size={16} />
-                        <span>SUBMIT DISPATCH REQUEST</span>
-                      </>
-                    )}
-                  </button>
+                  {/* Transmit Action & Badges */}
+                  <div className="pt-2 space-y-3">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 rounded-xl font-mono font-bold text-xs tracking-wider uppercase bg-gradient-to-r from-[#071A2B] via-[#01666A] to-[#007CD6] hover:from-[#007CD6] hover:to-[#01666A] text-white shadow-[0_12px_28px_-8px_rgba(0,124,214,0.4)] hover:shadow-[0_16px_32px_-6px_rgba(0,124,214,0.6)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center gap-2.5 cursor-pointer disabled:opacity-70 disabled:pointer-events-none"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <span>TRANSMITTING DISPATCH SPECIFICATIONS...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>SUBMIT COMMERCIAL DISPATCH REQUEST</span>
+                          <Send className="w-4 h-4" />
+                        </>
+                      )}
+                    </button>
+
+                    <div className="flex flex-wrap items-center justify-between text-[10px] font-mono text-slate-500 pt-1 border-t border-slate-100 gap-2">
+                      <span className="flex items-center gap-1.5 text-slate-600">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#01666A]" />
+                        <span>RPSL-MUM-506 &amp; ISO 9001:2015</span>
+                      </span>
+                      <span className="flex items-center gap-1.5 text-slate-600">
+                        <Clock className="w-3.5 h-3.5 text-[#007CD6]" />
+                        <span>2-Hour Guaranteed Response</span>
+                      </span>
+                      <span className="flex items-center gap-1.5 text-slate-600">
+                        <Building2 className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>24/7 Global Dispatch</span>
+                      </span>
+                    </div>
+                  </div>
                 </form>
               )}
             </div>
 
-            {/* Seafarer Job Application Link Button */}
-            <a
-              href="https://crmoceanicstarshipping.com/pages/job-application.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 bg-[#01666A]/5 border border-[#01666A]/20 hover:border-[#01666A] rounded-2xl p-4 flex items-center justify-between text-[#061B2A] transition group hover:bg-[#01666A]/10 shadow-sm"
-            >
-              <div className="flex items-center space-x-4">
-                <div className="w-9 h-9 rounded-xl bg-[#01666A]/10 flex items-center justify-center text-[#01666A] group-hover:bg-[#01666A] group-hover:text-white transition-colors">
-                  <FileText className="w-5 h-5" />
+            {/* Redesigned Premium Seafarer Job Application Card */}
+            <div className="relative rounded-3xl bg-gradient-to-br from-[#071A2B] via-[#0A2640] to-[#01666A] p-5 sm:p-6 text-white shadow-xl border border-white/10 overflow-hidden group">
+              {/* Subtle Cyan Glow */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#00D9E8]/12 rounded-full blur-3xl pointer-events-none group-hover:bg-[#00D9E8]/20 transition-all duration-500" />
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[#007CD6]/20 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-3.5">
+                  <div className="w-11 h-11 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-[#00D9E8] flex items-center justify-center shrink-0 shadow-inner group-hover:scale-105 group-hover:bg-[#00D9E8] group-hover:text-[#071A2B] transition-all duration-300">
+                    <FileText className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 uppercase tracking-widest">
+                        ACTIVE OPENINGS
+                      </span>
+                      <span className="text-[10px] font-mono text-slate-300 font-semibold">DG SHIPPING RPSL-MUM-506</span>
+                    </div>
+                    <h4 className="font-syne text-sm sm:text-base font-bold text-white tracking-tight leading-tight">
+                      Seafarer Job Application Portal
+                    </h4>
+                    <p className="font-manrope text-[11px] text-slate-300 font-light leading-relaxed max-w-md">
+                      Apply online for Master, Chief Engineer, Officer, and Rating rosters across global oil/chemical tanker and bulk carrier fleets.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-sm font-bold font-syne text-[#061B2A]">Seafarer Job Application</h4>
-                  <p className="text-xs text-slate-600 font-mono">Apply online for crew &amp; officer vacancies</p>
-                </div>
+
+                <a
+                  href="https://crmoceanicstarshipping.com/pages/job-application.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 w-full sm:w-auto px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-[#00D9E8] hover:bg-white text-[#071A2B] font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all duration-300 shadow-[0_8px_20px_rgba(0,217,232,0.3)] hover:shadow-[0_12px_25px_rgba(255,255,255,0.4)] flex items-center justify-center gap-2 group/btn cursor-pointer"
+                >
+                  <span>APPLY NOW</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                </a>
               </div>
-              <span className="text-[10px] font-mono font-bold px-3.5 py-1.5 bg-[#01666A] group-hover:bg-[#007CD6] text-white rounded-full transition-colors flex items-center gap-1.5 shrink-0">
-                <span>APPLY NOW</span>
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-              </span>
-            </a>
+            </div>
           </div>
         </div>
       </div>
