@@ -250,7 +250,7 @@ export const ContactSection: React.FC = () => {
                 </p>
                 <p className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#007CD6] shrink-0" />
-                  <a href="mailto:singapore@oceanicstarfleet.com" className="hover:text-[#007CD6] transition font-bold">singapore@oceanicstarfleet.com</a>
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#007CD6] transition font-bold">info@oceanicstarshipping.com</a>
                 </p>
               </div>
             </div>
@@ -280,7 +280,7 @@ export const ContactSection: React.FC = () => {
                 </p>
                 <p className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#007CD6] shrink-0" />
-                  <a href="mailto:canada@oceanicstarfleet.com" className="hover:text-[#007CD6] transition font-bold">canada@oceanicstarfleet.com</a>
+                  <a href="mailto:info@oceanicstarshipping.com" className="hover:text-[#007CD6] transition font-bold">info@oceanicstarshipping.com</a>
                 </p>
               </div>
             </div>
