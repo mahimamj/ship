@@ -49,22 +49,19 @@ export const CinematicNavbar: React.FC<CinematicNavbarProps> = ({ onOpenQuote, o
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#FAFAF7]/95 backdrop-blur-md border-b border-[#082F49]/15 py-3.5 shadow-md text-[#061B2A]"
-          : "bg-[#FAFAF7]/85 backdrop-blur-sm border-b border-[#082F49]/10 py-5 text-[#061B2A]"
+          ? "bg-[#FAFAF7]/95 backdrop-blur-md border-b border-[#082F49]/15 py-2 shadow-md text-[#061B2A]"
+          : "bg-[#FAFAF7]/90 backdrop-blur-sm border-b border-[#082F49]/10 py-2.5 sm:py-3 text-[#061B2A]"
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-5 md:px-8 xl:px-12 flex justify-between items-center gap-6">
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center group">
           <img
             src="/images/logo_nobg.png"
             alt="Oceanic Star Shipping"
-            className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-14 sm:h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
           />
-          <span className="hidden sm:block font-syne text-sm font-black tracking-[0.15em] text-[#01666A]">
-            OCEANIC <span className="text-[#007CD6]">STAR</span> <span className="text-[#061B2A] text-xs font-semibold">SHIPPING</span>
-          </span>
         </Link>
 
         {/* Desktop Nav Links */}
