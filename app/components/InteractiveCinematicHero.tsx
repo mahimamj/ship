@@ -174,7 +174,7 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
       >
         <p className="label-mono text-white/80 font-semibold tracking-widest text-xs flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#00D26A] animate-ping"></span>
-          OCEANIC STAR FLEET — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
+          OCEANIC STAR SHIPPING — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
         </p>
 
         <div className="select-none space-y-1">

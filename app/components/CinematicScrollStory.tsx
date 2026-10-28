@@ -115,7 +115,7 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061B2A]/80 border border-[#007CD6]/50 backdrop-blur-md w-fit">
             <span className="w-2 h-2 rounded-full bg-[#007CD6] animate-ping" />
             <span className="label-mono text-[#007CD6] font-bold tracking-widest text-[11px] uppercase">
-              OCEANIC STAR FLEET — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
+              OCEANIC STAR SHIPPING — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
             </span>
           </div>
 
