@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Award, FileText, Globe, X, Plus, Minus, Target, Eye, Check, ChevronLeft, ChevronRight } from "lucide-react";
+import { ShieldCheck, Award, FileText, Globe, X, Plus, Minus, Target, Eye, Check, ChevronLeft, ChevronRight, Download } from "lucide-react";
 
 export interface CertItem {
   id: string;
@@ -19,6 +19,7 @@ export interface CertItem {
   verifiedBadge: string;
   image: string;
   features: string[];
+  pdfUrl?: string;
 }
 
 export interface FlagStateLocation {
@@ -225,6 +226,28 @@ export const OFFICIAL_CERTIFICATES: CertItem[] = [
       "Incorporated under Companies Act 1956",
       "Registrar of Companies Mumbai Certification",
       "Registered Corporate Identity No: U63000MH2011PTC212994"
+    ],
+  },
+  {
+    id: "certificate-of-incorporation-canada",
+    category: "inc",
+    title: "CANADA CERTIFICATE OF INCORPORATION",
+    subtitle: "Corporations Canada (CBCA / s. 6 Form 1)",
+    authority: "Innovation, Science and Economic Development Canada",
+    certNumber: "Corp No: 1640547-9",
+    entity: "Oceanic Star Shipping Inc.",
+    jurisdiction: "Govt. of Canada (Canada Business Corporations Act)",
+    validity: "Registered 05 October 2024 (Active)",
+    scope: "Canada Business Corporations Act (CBCA / Form 1)",
+    details: "Official Federal Certificate of Incorporation (Certificat de constitution) issued by Director Hantz Prosper under the Canada Business Corporations Act (CBCA), formally registering Oceanic Star Shipping Inc. (Corporation # 1640547-9) in Ontario, Canada.",
+    verifiedBadge: "Govt of Canada Registered",
+    image: "/images/certificates/cert_canada_incorporation.png",
+    pdfUrl: "/certificates/Incorporation-Constitution.pdf",
+    features: [
+      "Federal Incorporation under Canada Business Corporations Act (CBCA)",
+      "Issued by Innovation, Science and Economic Development Canada",
+      "Federal Corporation Number: 1640547-9 (Registered 2024-10-05)",
+      "Registered Corporate Entity: Brampton, Ontario, Canada"
     ],
   },
 ];
@@ -614,12 +637,27 @@ export const CertificationsSection: React.FC = () => {
                 {selectedCert.details}
               </p>
 
-              <button
-                onClick={() => setSelectedCert(null)}
-                className="w-full py-3 rounded-xl bg-[#071A2B] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#007CD6] transition shadow-md"
-              >
-                CLOSE DOCUMENT INSPECTOR
-              </button>
+              <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
+                {selectedCert.pdfUrl && (
+                  <a
+                    href={selectedCert.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 px-4 rounded-xl bg-[#01666A] text-white font-mono font-bold text-xs tracking-wider hover:bg-[#007CD6] transition shadow-md flex items-center justify-center gap-2 text-center cursor-pointer"
+                  >
+                    <Download size={15} />
+                    <span>VIEW / DOWNLOAD FULL PDF (3 PAGES)</span>
+                  </a>
+                )}
+                <button
+                  onClick={() => setSelectedCert(null)}
+                  className={`${
+                    selectedCert.pdfUrl ? "sm:w-auto px-6" : "w-full"
+                  } py-3 rounded-xl bg-[#071A2B] text-white font-mono font-bold text-xs tracking-wider hover:bg-slate-800 transition shadow-md cursor-pointer`}
+                >
+                  CLOSE INSPECTOR
+                </button>
+              </div>
             </motion.div>
           </div>
         )}
