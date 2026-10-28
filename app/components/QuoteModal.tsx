@@ -73,7 +73,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   const handleDownloadBrochure = () => {
     setDownloading(true);
     const link = document.createElement("a");
-    link.href = "/Oceanic_Star_Shipping_INDIA.pdf";
+    link.href = "/api/brochure";
     link.download = "Oceanic Star Shipping INDIA.pdf";
     document.body.appendChild(link);
     link.click();
