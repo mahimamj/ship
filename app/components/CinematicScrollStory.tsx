@@ -57,7 +57,7 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
         },
       });
 
-      tl.to(bgRef.current, { scale: 1.08, ease: "none" }, 0)
+      tl.to(bgRef.current, { scale: 1.02, ease: "none" }, 0)
         .to(contentRef.current, { y: -50, opacity: 0.85, ease: "none" }, 0);
 
     }, sectionRef);
@@ -97,10 +97,9 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
           poster="/images/hero_vessel.png"
           className="absolute inset-0 w-full h-full object-cover"
           style={{
-            filter: "contrast(1.06) saturate(1.16) brightness(1.03)",
-            transform: "translate3d(0, 0, 0)",
-            WebkitBackfaceVisibility: "hidden",
-            backfaceVisibility: "hidden",
+            objectPosition: "center center",
+            filter: "contrast(1.03) saturate(1.08) brightness(1.02)",
+            transform: "translateZ(0)",
           }}
         >
           <source src={VIDEOS.hero} type="video/mp4" />
