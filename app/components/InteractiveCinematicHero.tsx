@@ -157,14 +157,19 @@ export const InteractiveCinematicHero: React.FC<HeroProps> = ({ onOpenVideoModal
           loop
           playsInline
           preload="auto"
+          poster="/images/hero_vessel.png"
           className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            filter: "contrast(1.06) saturate(1.16) brightness(1.03)",
+            transform: "translate3d(0, 0, 0)",
+          }}
         >
           <source src={VIDEOS.hero} type="video/mp4" />
           <source src={VIDEOS.heroSecondary} type="video/mp4" />
         </video>
-        {/* Subtle white/transparent gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#071A2B]/60 via-transparent to-[#071A2B]/85" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071A2B]/50 via-transparent to-transparent" />
+        {/* Subtle edge blend only */}
+        <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#071A2B]/40 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#071A2B]/60 to-transparent pointer-events-none" />
       </motion.div>
 
       {/* Hero content */}

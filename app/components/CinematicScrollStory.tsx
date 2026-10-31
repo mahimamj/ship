@@ -87,11 +87,6 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
     <section ref={sectionRef} className="relative min-h-screen w-full bg-[#071A2B] text-white overflow-hidden flex flex-col justify-center">
       {/* Background Ocean Video & Fallback Vignette */}
       <div ref={bgRef} className="absolute inset-0 z-0 bg-[#071A2B] origin-center will-change-transform">
-        <img
-          src="/images/hero_vessel.png"
-          alt="Oceanic Star Hero Vessel"
-          className="absolute inset-0 w-full h-full object-cover scale-105"
-        />
         <video
           ref={videoRef}
           autoPlay
@@ -99,35 +94,45 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
           loop
           playsInline
           preload="auto"
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+          poster="/images/hero_vessel.png"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            filter: "contrast(1.06) saturate(1.16) brightness(1.03)",
+            transform: "translate3d(0, 0, 0)",
+            WebkitBackfaceVisibility: "hidden",
+            backfaceVisibility: "hidden",
+          }}
         >
           <source src={VIDEOS.hero} type="video/mp4" />
         </video>
 
-        {/* Clean subtle gradient for readability without muddying video quality */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#061B2A]/80 via-[#061B2A]/40 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#061B2A]/80 via-transparent to-[#061B2A]/30 pointer-events-none" />
+        {/* Minimal subtle edge blends so the video remains completely vibrant, sharp, and true to original colors */}
+        <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#071A2B]/40 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-28 bg-gradient-to-t from-[#071A2B]/60 to-transparent pointer-events-none" />
       </div>
 
       {/* Main Hero Content */}
       <div ref={contentRef} className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-20 flex flex-col justify-center min-h-[82vh] will-change-transform">
-        <div className="space-y-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061B2A]/80 border border-[#007CD6]/50 backdrop-blur-md w-fit">
+        <div className="space-y-4 max-w-3xl relative">
+          {/* Localized soft dark ambient back-glow strictly behind text so ocean & container ship stay 100% crystal-clear */}
+          <div className="absolute -inset-8 -left-8 bg-[#04121F]/60 blur-3xl rounded-3xl pointer-events-none -z-10" />
+
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#061B2A]/90 border border-[#007CD6]/50 backdrop-blur-md w-fit shadow-lg">
             <span className="w-2 h-2 rounded-full bg-[#007CD6] animate-ping" />
-            <span className="label-mono text-[#007CD6] font-bold tracking-widest text-[11px] uppercase">
+            <span className="label-mono text-[#00D9E8] font-bold tracking-widest text-[11px] uppercase">
               OCEANIC STAR SHIPPING — INTERNATIONAL SHIP MANAGEMENT &amp; CREWING
             </span>
           </div>
 
-          <h1 className="font-syne font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-            <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">THE OCEAN</span> <br />
-            <span className="text-[#01666A] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] font-black">IS OUR</span> <br />
-            <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">OPERATING</span> <br />
-            <span className="text-[#007CD6] drop-shadow-[0_0_25px_rgba(0,124,214,0.6)]">GROUND.</span>
+          <h1 className="font-syne font-black text-3xl sm:text-5xl md:text-6xl tracking-tight leading-[1.05] text-white">
+            <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">THE OCEAN</span> <br />
+            <span className="text-[#00D9E8] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] drop-shadow-[0_0_20px_rgba(0,217,232,0.5)] font-black">IS OUR</span> <br />
+            <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">OPERATING</span> <br />
+            <span className="text-[#0091FF] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(0,145,255,0.6)]">GROUND.</span>
           </h1>
 
           <div className="pt-1 max-w-xl">
-            <p className="text-xs sm:text-sm font-manrope font-normal text-slate-100 leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <p className="text-xs sm:text-sm font-manrope font-normal text-white leading-relaxed drop-shadow-[0_3px_10px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
               Global provider of technical vessel management, RPSL approved crew logistics, and maritime operations across 6 global command hubs in Dubai, Mumbai, Colombo, Istanbul, Singapore, and Canada.
             </p>
           </div>
