@@ -84,7 +84,7 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
   };
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen w-full bg-[#071A2B] text-white overflow-hidden flex flex-col justify-center">
+    <section ref={sectionRef} className="relative min-h-screen w-full bg-[#071A2B] text-white overflow-hidden flex flex-col justify-center pt-28 sm:pt-32 md:pt-36 pb-12 sm:pb-16">
       {/* Background Ocean Video & Fallback Vignette */}
       <div ref={bgRef} className="absolute inset-0 z-0 bg-[#071A2B] origin-center will-change-transform">
         <video
@@ -112,7 +112,7 @@ export const CinematicHeroLayer: React.FC<StoryProps> = ({ onOpenVideoModal, onO
       </div>
 
       {/* Main Hero Content */}
-      <div ref={contentRef} className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 py-16 md:py-20 flex flex-col justify-center min-h-[82vh] will-change-transform">
+      <div ref={contentRef} className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col justify-center will-change-transform">
         <div className="space-y-4 max-w-3xl relative">
           {/* Localized soft dark ambient back-glow strictly behind text so ocean & container ship stay 100% crystal-clear */}
           <div className="absolute -inset-8 -left-8 bg-[#04121F]/60 blur-3xl rounded-3xl pointer-events-none -z-10" />
